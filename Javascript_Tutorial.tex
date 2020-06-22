@@ -1,0 +1,330 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath} 
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{sectsty}
+\usepackage{amssymb}
+ \usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{romannum}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage[super]{nth}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{pagecolor,lipsum}
+\usepackage{color,soul}
+\usepackage{xcolor}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{orange}{RGB}{255,127,0}
+\pagecolor{white}
+\graphicspath{ {./images/} }
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   %frame = tb
+   language=JavaScript,
+   backgroundcolor=\color{backcolour},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numberstyle=\tiny\color{codegray},
+   keywordstyle=\color{blue},
+   commentstyle=\color{gray},
+   stringstyle=\color{mauve},
+   numbers=none,
+   %numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+\iffalse
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{frame=tb,
+  language=Javascript,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left, %eller none
+  numberstyle=\tiny\color{codegray},
+  keywordstyle=\color{mauve},
+  commentstyle=\color{gray},
+  stringstyle=\color{orange},
+  breaklines=false,
+  breakatwhitespace=true,
+  tabsize=3,
+ % backgroundcolor=\color{backcolour},  
+}
+
+\fi
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\setlist[itemize,1]{leftmargin=\dimexpr 26pt-.5in}
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+\title{Introduction to Programming with Javascript}
+\author{Qitian Liao}
+\date{Aug 3, 2020} 
+\usepackage[left=2cm, right=2cm, top=2cm]{geometry}
+%\setlength\parindent{0pt}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\def\Arg{\mathop{\operator@font Arg}\nolimits}
+%\newpage
+\pagenumbering{arabic}
+\titleformat*{\section}{\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+
+%\titlespacing\section{0pt}{5pt plus 4pt minus 2pt}{5pt plus 2pt minus 2pt}
+%\titlespacing\subsection{0pt}{10pt plus 4pt minus 2pt}{5pt plus 2pt minus 2pt}
+%\titlespacing\subsubsection{0pt}{5pt plus 4pt minus 2pt}{5pt plus 2pt minus 2pt}
+\newpage
+\section{Introduction to Javascript}
+\subsection{What is Javascript? }
+Last year, millions of learners from our community started with JavaScript. Why? JavaScript is primarily known as the language of most modern web browsers, and its early quirks gave it a bit of a bad reputation. However, the language has continued to evolve and improve. JavaScript is a powerful, flexible, and fast programming language now being used for increasingly complex web development and beyond! \\
+\newline
+Since JavaScript remains at the core of web development, it’s often the first language learned by self-taught coders eager to learn and build. We’re excited for what you’ll be able to create with the JavaScript foundation you gain here. JavaScript powers the dynamic behavior on most websites, including this one. \\
+\newline
+In this lesson, you will learn introductory coding concepts including data types and built-in objects—essential knowledge for all aspiring developers. Make sure to take notes and pace yourself. This foundation will set you up for understanding the more complex concepts you’ll encounter later. 
+\subsection{Console}
+The console is a panel that displays important messages, like errors, for developers. Much of the work the computer does with our code is invisible to us by default. If we want to see things appear on our screen, we can print, or log, to our console directly. \\
+\newline
+In JavaScript, the \colorbox{lightgray}{console} keyword refers to an object, a collection of data and actions, that we can use in our code. Keywords are words that are built into the JavaScript language, so the computer will recognize them and treats them specially. \\
+\newline
+One action, or method, that is built into the \colorbox{lightgray}{console} object is the \colorbox{lightgray}{.log()} method. When we write \colorbox{lightgray}{console.log()} what we put inside the parentheses will get printed, or logged, to the console. It is going to be very useful for us to print values to the console, so we can see the work that we are doing.
+\begin{lstlisting}
+console.log(5); 
+\end{lstlisting}
+This example logs 5 to the console. The semicolon denotes the end of the line, or statement. Although in JavaScript your code will usually run as intended without a semicolon, we recommend learning the habit of ending each statement with a semicolon so you never leave one out in the few instances when they are required. \\
+\newline
+You’ll see later on that we can use \colorbox{lightgray}{console.log()} to print different kinds of data.
+\subsection{Comments}
+Programming is often highly collaborative. In addition, our own code can quickly become difficult to understand when we return to it. For these reasons, it’s often useful to leave notes in our code for other developers or ourselves.\\
+\newline
+As we write JavaScript, we can write comments in our code that the computer will ignore as our program runs. These comments exist just for human readers. Comments can explain what the code is doing, leave instructions for developers using the code, or add any other useful annotations. There are two types of code comments in JavaScript: 
+\begin{enumerate}[leftmargin = *]
+\item A \textit{single line comment} will comment out a single line and is denoted with two forward slashes \colorbox{lightgray}{//} preceding it.
+\begin{lstlisting} 
+// Prints 5 to the console
+console.log(5);
+\end{lstlisting}
+You can also use a single line comment to comment after a line of code: 
+\begin{lstlisting}
+console.log(5);  // Prints 5 
+\end{lstlisting}
+\item A \textit{multi-line comment} will comment out multiple lines and is denoted with \colorbox{lightgray}{/*} to begin the comment, and \colorbox{lightgray}{*/} to end the comment.
+\begin{lstlisting}
+/*
+This is all commented 
+console.log(10);
+None of this is going to run!
+console.log(99);
+*/
+\end{lstlisting} 
+You can also use this syntax to comment something out in the middle of a line of code: 
+\begin{lstlisting} 
+console.log(/*IGNORED!*/ 5);  // Still just prints 5 
+\end{lstlisting}
+\end{enumerate}
+\subsection{Data Types}
+\textit{Data types} are the classifications we give to the different kinds of data that we use in programming. In JavaScript, there are seven fundamental data types:
+\begin{enumerate}[leftmargin = *]
+\item \textit{Number}: Any number, including numbers with decimals: \colorbox{lightgray}{4}, \colorbox{lightgray}{8}, \colorbox{lightgray}{1516}, \colorbox{lightgray}{23.42}.
+\item \textit{String}: Any grouping of characters on your keyboard (letters, numbers, spaces, symbols, etc.) surrounded by single quotes: \colorbox{lightgray}{` ... '} or double quotes \colorbox{lightgray}{`` ... "}. Though we prefer single quotes. Some people like to think of string as a fancy word for text. 
+\item \textit{Boolean}: This data type only has two possible values— either \colorbox{lightgray}{true} or \colorbox{lightgray}{false} (without quotes). It’s helpful to think of booleans as on and off switches or as the answers to a “yes” or “no” question. 
+\item \textit{Null}: This data type represents the intentional absence of a value, and is represented by the keyword \colorbox{lightgray}{null} (without quotes).
+\item \textit{Undefined}: This data type is denoted by the keyword \colorbox{lightgray}{undefined} (without quotes). It also represents the absence of a value though it has a different use than \colorbox{lightgray}{null}.
+\item \textit{Symbol}: A newer feature to the language, symbols are unique identifiers, useful in more complex coding. No need to worry about these for now.
+\item \textit{Object}: Collections of related data.
+\end{enumerate}
+The first 6 of those types are considered \textit{primitive data types}. They are the most basic data types in the language. \textit{Objects} are more complex, and you will learn much more about them as you progress through JavaScript. At first, seven types may not seem like that many, but soon you will observe the world opens with possibilities once you start leveraging each one. As you learn more about objects, you’ll be able to create complex collections of data. But before we do that, let us first get comfortable with strings and numbers!
+\begin{lstlisting}
+console.log("Location of The Metropolitan: 2301 Durant Ave, Berkeley");
+console.log(40);
+\end{lstlisting}
+In the example above, we first printed a string. Our string is not just a single word; it includes both capital and lowercase letters, spaces, and punctuation. Next, we printed the number 40, notice we did not use quotes.
+
+\subsection{Arithmetic Operators}
+Basic arithmetic often comes in handy when programming. An \textit{operator} is a character that performs a task in our code. JavaScript has several built-in in \textit{arithmetic operators}, that allow us to perform mathematical calculations on numbers. These include the following operators and their corresponding symbols:
+\begin{enumerate}[leftmargin = *]
+\item Add: \colorbox{lightgray}{$+$} 
+\item Subtract: \colorbox{lightgray}{$-$}
+\item Multiply: \colorbox{lightgray}{$*$}
+\item Divide: \colorbox{lightgray}{$/$}
+\item Remainder: \colorbox{lightgray}{$\%$}
+\end{enumerate}
+The first four work how you might guess:
+\begin{lstlisting}
+console.log(3 + 4); // Prints 7
+console.log(5 - 1); // Prints 4
+console.log(4 * 2); // Prints 8
+console.log(9 / 3); // Prints 3
+\end{lstlisting}
+Note that when we \colorbox{lightgray}{console.log()} the computer will evaluate the expression inside the parentheses and print that result to the console. If we wanted to print the characters \colorbox{lightgray}{3 + 4}, we would wrap them in quotes and print them as a string.
+\begin{lstlisting}
+console.log(11 % 3); // Prints 2
+console.log(12 % 3); // Prints 0 
+\end{lstlisting}
+The remainder operator, sometimes called \textit{modulo}, returns the number that remains after the right-hand number divides into the left-hand number as many times as it evenly can: \colorbox{lightgray}{11 \% 3} equals 2 because 3 fits into 11 three times, leaving 2 as the remainder.
+\subsection{String Concatenation}
+Operators are not just for numbers! When a \colorbox{lightgray}{$+$} operator is used on two strings, it appends the right string to the left string:
+\begin{lstlisting}
+console.log("hi" + "ya"); // Prints "hiya"
+console.log("wo" + "ah"); // Prints "woah"
+console.log("I love to " + "code."); // Prints "I love to code."
+\end{lstlisting}
+This process of appending one string to another is called \textit{concatenation}. Notice in the third example we had to make sure to include a space at the end of the first string. The computer will join the strings exactly, so we needed to make sure to include the space we wanted between the two strings.
+\begin{lstlisting}
+console.log("front " + "space"); // Prints "front space"
+console.log("back" + " space"); // Prints "back space"
+console.log("no" + "space"); // Prints "nospace"
+console.log("middle" + " " + "space"); // Prints "middle space"
+\end{lstlisting}
+Just like with regular math, we can combine, or chain, our operations to get a final result:
+\begin{lstlisting}
+console.log("One" + ", " + "two" + ", " + "three!"); // Prints "One, two, three!"
+\end{lstlisting}
+\subsection{Properties}
+When you introduce a new piece of data into a JavaScript program, the browser saves it as an instance of the data type. Every string instance has a property called \colorbox{lightgray}{length} that stores the number of characters in that string. You can retrieve property information by appending the string with a period and the property name:
+\begin{lstlisting}
+console.log("Hello".length); // Prints 5
+\end{lstlisting}
+The \colorbox{lightgray}{$.$} is another operator! We call it the dot operator. In the example above, the value saved to the \colorbox{lightgray}{length} property is retrieved from the instance of the string, \colorbox{lightgray}{'Hello'}. The program prints \colorbox{lightgray}{5} to the console, because \colorbox{lightgray}{Hello} has five characters in it.
+
+\subsection{Methods}
+Remember that methods are actions we can perform. JavaScript provides a number of string methods. We \textit{call}, or use, these methods by appending an instance with:
+\begin{itemize}[leftmargin = *]
+\item a period (the dot operator)
+\item the name of the method
+\item opening and closing parentheses
+\end{itemize}
+E.g. \colorbox{lightgray}{`example string'.methodName()}. \\
+The syntax looks familiar. When we use \colorbox{lightgray}{console.log()} we’re calling the \colorbox{lightgray}{.log()} method on the \colorbox{lightgray}{console} object. Let us see \colorbox{lightgray}{console.log()} and some real string methods in action!
+\begin{lstlisting}
+console.log("hello".toUpperCase()); // Prints "HELLO"
+console.log("Hey".startsWith("H")); // Prints true
+\end{lstlisting}
+Let’s look at each of the lines above: 
+\begin{itemize}[leftmargin = *]
+\item On the first line, the \colorbox{lightgray}{.toUpperCase()} method is called on the string instance \colorbox{lightgray}{`hello'}. The result is logged to the console. This method returns a string in all capital letters: \colorbox{lightgray}{`HELLO'}.
+\item On the second line, the \colorbox{lightgray}{.startsWith()} method is called on the string instance \colorbox{lightgray}{`Hey'}. This method also accepts the character \colorbox{lightgray}{`H'} as an input, or argument, between the parentheses. Since the string \colorbox{lightgray}{`Hey'} does start with the letter \colorbox{lightgray}{`H'}, the method returns the boolean \colorbox{lightgray}{true}.
+\end{itemize}
+You can find a list of built-in string methods in the JavaScript documentation. \\
+\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/String}\\
+Developers use documentation as a reference tool. It describes JavaScript’s keywords, methods, and syntax.
+\subsection{Built-in Objects}
+In addition to \colorbox{lightgray}{console}, there are other objects built into JavaScript. \\
+\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects} \\
+Down the line, you’ll build your own objects, but for now these “built-in” objects are full of useful functionality.
+For example, if you wanted to perform more complex mathematical operations than arithmetic, JavaScript has the built-in \colorbox{lightgray}{Math} object. \\
+\newline
+The great thing about objects is that they have methods! Let’s call the \colorbox{lightgray}{.random()} method from the built-in \colorbox{lightgray}{Math} object:
+\begin{lstlisting}
+console.log(Math.random()); // Prints a random number between 0 and 1
+\end{lstlisting}
+In the example above, we called the \colorbox{lightgray}{.random()} method by appending the object name with the dot operator, the name of the method, and opening and closing parentheses. This method returns a random number between 0 and 1. \\
+\newline
+To generate a random number between 0 and 50, we could multiply this result by 50, like so:
+\begin{lstlisting}
+Math.random() * 50;
+\end{lstlisting}
+The example above will likely evaluate to a decimal. To ensure the answer is a whole number, we can take advantage of another useful \colorbox{lightgray}{Math} method called \colorbox{lightgray}{Math.floor()}. \\
+\newline
+\colorbox{lightgray}{Math.floor()} takes a decimal number, and rounds down to the nearest whole number. You can use \colorbox{lightgray}{Math.floor()} to round down a random number like this:
+\begin{lstlisting}
+Math.floor(Math.random() * 50);
+\end{lstlisting}
+In this case: 
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{Math.random} generates a random number between 0 and 1.
+\item We then multiply that number by \colorbox{lightgray}{50}, so now we have a number between 0 and 50.
+\item Then, \colorbox{lightgray}{Math.floor()} rounds the number down to the nearest whole number.
+\end{enumerate}
+If you wanted to see the number printed to the terminal, you would still need to use a \colorbox{lightgray}{console.log()} statement:
+\begin{lstlisting}
+console.log(Math.floor(Math.random() * 50)); // Prints a random whole number between 0 and 50
+\end{lstlisting}
+To see all of the properties and methods on the Math object, take a look at the documentation here. \\
+\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Math} \\
+\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Number}
+\subsection{Review}
+Let’s take one more glance at the concepts we just learned:
+\begin{itemize}[leftmargin = *]
+\item Data is printed, or logged, to the console, a panel that displays messages, with \colorbox{lightgray}{console.log()}.
+\item We can write single-line comments with \colorbox{lightgray}{//} and multi-line comments between \colorbox{lightgray}{/*} and \colorbox{lightgray}{*/}.
+\item There are 7 fundamental data types in JavaScript: strings, numbers, booleans, null, undefined, symbol, and object.
+\item Numbers are any number without quotes: \colorbox{lightgray}{23.8879}
+\item Strings are characters wrapped in single or double quotes: \colorbox{lightgray}{`Sample String'}
+\item The built-in arithmetic operators include \colorbox{lightgray}{$+$}, \colorbox{lightgray}{$-$}, \colorbox{lightgray}{$*$}, \colorbox{lightgray}{$/$}, and \colorbox{lightgray}{$\%$}.
+\item Objects, including instances of data types, can have properties, stored information. The properties are denoted with a \colorbox{lightgray}{.} after the name of the object, for example: \colorbox{lightgray}{`Hello'.length}.
+\item Objects, including instances of data types, can have methods which perform actions. Methods are called by appending the object or instance with a period, the method name, and parentheses. For example: \colorbox{lightgray}{`hello'.toUpperCase()}.
+\item We can access properties and methods by using the \colorbox{lightgray}{.}, dot operator.
+\item Built-in objects, including \colorbox{lightgray}{Math}, are collections of methods and properties that JavaScript provides.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

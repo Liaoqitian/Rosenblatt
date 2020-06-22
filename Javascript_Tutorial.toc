@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Introduction to Javascript}{2}%
+\contentsline {subsection}{\numberline {1.1}What is Javascript? }{2}%
+\contentsline {subsection}{\numberline {1.2}Console}{2}%
+\contentsline {subsection}{\numberline {1.3}Comments}{2}%
+\contentsline {subsection}{\numberline {1.4}Data Types}{3}%
+\contentsline {subsection}{\numberline {1.5}Arithmetic Operators}{4}%
+\contentsline {subsection}{\numberline {1.6}String Concatenation}{4}%
+\contentsline {subsection}{\numberline {1.7}Properties}{5}%
+\contentsline {subsection}{\numberline {1.8}Methods}{5}%
+\contentsline {subsection}{\numberline {1.9}Built-in Objects}{6}%
+\contentsline {subsection}{\numberline {1.10}Review}{7}%
