@@ -15,6 +15,8 @@
 \usepackage{pagecolor,lipsum}
 \usepackage{color,soul}
 \usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -28,9 +30,9 @@
 \graphicspath{ {./images/} }
 
 \lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, let, log, const},
   keywordstyle=\color{blue}\bfseries,
-  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywords={class, export, boolean, throw, implements, import, this, console},
   ndkeywordstyle=\color{darkgray}\bfseries,
   identifierstyle=\color{black},
   sensitive=false,
@@ -51,6 +53,7 @@
    showstringspaces=false,
    showspaces=false,
    numberstyle=\tiny\color{codegray},
+   ndkeywordstyle=\color{codegreen}\bfseries,
    keywordstyle=\color{blue},
    commentstyle=\color{gray},
    stringstyle=\color{mauve},
@@ -60,23 +63,10 @@
    tabsize=2,
    breaklines=true,
    showtabs=false,
-   captionpos=b
+   captionpos=b, 
+   escapeinside={(*@}{@*)} 
 }
 \iffalse
-\lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
-}
 
 \lstset{frame=tb,
   language=Javascript,
@@ -93,6 +83,7 @@
   breaklines=false,
   breakatwhitespace=true,
   tabsize=3,
+  escapeinside={(*@}{@*)}, 
  % backgroundcolor=\color{backcolour},  
 }
 
@@ -114,8 +105,12 @@
 
 \begin{document}
 \maketitle
+\thispagestyle{empty}
 \newpage
 \tableofcontents
+\thispagestyle{empty}
+\cleardoublepage
+\setcounter{page}{1}
 \def\Arg{\mathop{\operator@font Arg}\nolimits}
 %\newpage
 \pagenumbering{arabic}
@@ -298,7 +293,7 @@ To see all of the properties and methods on the Math object, take a look at the 
 \underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Math} \\
 \underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Number}
 \subsection{Review}
-Let’s take one more glance at the concepts we just learned:
+Let us take one more glance at the concepts we just learned:
 \begin{itemize}[leftmargin = *]
 \item Data is printed, or logged, to the console, a panel that displays messages, with \colorbox{lightgray}{console.log()}.
 \item We can write single-line comments with \colorbox{lightgray}{//} and multi-line comments between \colorbox{lightgray}{/*} and \colorbox{lightgray}{*/}.
@@ -312,13 +307,177 @@ Let’s take one more glance at the concepts we just learned:
 \item Built-in objects, including \colorbox{lightgray}{Math}, are collections of methods and properties that JavaScript provides.
 \end{itemize}
 
+\newpage
+\section{Variables}
+\subsection{Variables}
+In programming, a \textit{variable} is a container for a value. You can think of variables as little containers for information that live in a computer’s memory. Information stored in variables, such as a username, account number, or even personalized greeting can then be found in memory. \\
+\newline
+Variables also provide a way of labeling data with a descriptive name, so our programs can be understood more clearly by the reader and ourselves. \\
+\newline
+In short, variables label and store data in memory. There are only a few things you can do with variables: 
+\begin{enumerate}[leftmargin = *]
+\item Create a variable with a descriptive name.
+\item Store or update information stored in a variable.
+\item Reference or “get” information stored in a variable.
+\end{enumerate}
+It is important to distinguish that variables are not values; they contain values and represent them with a name. Later, we will cover how to use the \colorbox{lightgray}{var}, \colorbox{lightgray}{let}, and \colorbox{lightgray}{const} keywords to create variables.
 
+\subsection{Create a Variable: var} 
+There were a lot of changes introduced in the ES6 version of JavaScript in 2015. One of the biggest changes was two new keywords, \colorbox{lightgray}{let} and \colorbox{lightgray}{const}, to create, or declare, variables. Prior to the ES6, programmers could only use the \colorbox{lightgray}{var} keyword to declare variables.
+\begin{lstlisting}
+var myName = "Arya";
+console.log(myName); // Output: Arya
+\end{lstlisting}
+Let’s consider the example above:
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{var}, short for variable, is a JavaScript \textit{keyword} that creates, or \textit{declares}, a new variable.
+\item \colorbox{lightgray}{myName} is the variable’s name. Capitalizing in this way is a standard convention in JavaScript called \textit{camel casing}. In camel casing you group words into one, the first word is lowercase, then every word that follows will have its first letter uppercased. (e.g. camelCaseEverything).
+\item \colorbox{lightgray}{=} is the assignment operator. It assigns the value (\colorbox{lightgray}{`Arya'}) to the variable (\colorbox{lightgray}{myName}).
+\item \colorbox{lightgray}{`Arya'} is the value assigned (\colorbox{lightgray}{=}) to the variable \colorbox{lightgray}{myName}. You can also say that the \colorbox{lightgray}{myName} variable is initialized with a value of \colorbox{lightgray}{`Arya'}.
+\item After the variable is declared, the string value \colorbox{lightgray}{`Arya'} is printed to the console by referencing the variable name: \colorbox{lightgray}{console.log(myName)}.
+\end{enumerate}
+There are a few general rules for naming variables:
+\begin{itemize}[leftmargin = *]
+\item Variable names cannot start with numbers.
+\item Variable names are case sensitive, so \colorbox{lightgray}{myName} and \colorbox{lightgray}{myname} would be different variables. It is bad practice to create two variables that have the same name using different cases.
+\item Variable names cannot be the same as \textit{keywords}. For a comprehensive list of keywords check out MDN’s keyword documentation. \\
+\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var}
+\end{itemize}
+Later, we will learn why ES6’s \colorbox{lightgray}{let} and \colorbox{lightgray}{const} are the preferred variable keywords by many programmers. Because there is still a ton of code written prior to ES6, it is helpful to be familiar with the pre-ES6 \colorbox{lightgray}{var} keyword. To learn more about \colorbox{lightgray}{var} and the quirks associated with it, check out the MDN var documentation. \\
+\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var}
 
+\subsection{Create a Variable: let}
+As mentioned before, the \colorbox{lightgray}{let} keyword was introduced in ES6. The \colorbox{lightgray}{let} keyword signals that the variable can be reassigned a different value. Take a look at the example: 
+\begin{lstlisting}
+let meal = "Enchiladas";
+console.log(meal); // Output: Enchiladas
+meal = "Burrito";
+console.log(meal); // Output: Burrito
+\end{lstlisting}
+Another concept that we should be aware of when using \colorbox{lightgray}{let} (and even \colorbox{lightgray}{var}) is that we can declare a variable without assigning the variable a value. In such a case, the variable will be automatically initialized with a value of \colorbox{lightgray}{undefined}:
+\begin{lstlisting}
+let price;
+console.log(price); // Output: undefined
+price = 350;
+console.log(price); // Output: 350
+\end{lstlisting}
+Notice in the example above: 
+\begin{itemize}[leftmargin = *]
+\item If we don’t assign a value to a variable declared using the \colorbox{lightgray}{let} keyword, it automatically has a value of \colorbox{lightgray}{undefined}.
+\item We can reassign the value of the variable.
+\end{itemize}
 
+\subsection{Create a Variable: const}
+The \colorbox{lightgray}{const} keyword was also introduced in ES6, and is short for the word constant. Just like with \colorbox{lightgray}{var} and \colorbox{lightgray}{let} you can store any value in a \colorbox{lightgray}{const} variable. The way you declare a \colorbox{lightgray}{const} variable and assign a value to it follows the same structure as \colorbox{lightgray}{let} and \colorbox{lightgray}{var}. Take a look at the following example: 
+\begin{lstlisting}
+const myName = "Gilberto";
+console.log(myName); // Output: Gilberto
+\end{lstlisting}
+However, a \colorbox{lightgray}{const} variable cannot be reassigned because it is constant. If you try to reassign a \colorbox{lightgray}{const} variable, you’ll get a \colorbox{lightgray}{TypeError}. \\
+\newline
+Constant variables must be assigned a value when declared. If you try to declare a \colorbox{lightgray}{const} variable without a value, you’ll get a \colorbox{lightgray}{SyntaxError}. \\
+\newline
+If you’re trying to decide between which keyword to use, \colorbox{lightgray}{let} or \colorbox{lightgray}{const}, think about whether you’ll need to reassign the variable later on. If you do need to reassign the variable use \colorbox{lightgray}{let}, otherwise, use \colorbox{lightgray}{const}.
 
+\subsection{Mathematical Assignment Operators}
+Let us consider how we can use variables and math operators to calculate new values and assign them to a variable. Check out the example below:
+\begin{lstlisting}
+let w = 4;
+w = w + 1;
+console.log(w); // Output: 5
+\end{lstlisting}
+In the example above, we created the variable \colorbox{lightgray}{w} with the number \colorbox{lightgray}{4} assigned to it. The following line, \colorbox{lightgray}{w = w + 1}, increases the value of \colorbox{lightgray}{w} from \colorbox{lightgray}{4} to \colorbox{lightgray}{5}. \\
+\newline
+Another way we could have reassigned \colorbox{lightgray}{w} after performing some mathematical operation on it is to use built-in \textit{mathematical assignment operators}. We could re-write the code above to be:
+\begin{lstlisting}
+let w = 4;
+w += 1;
+console.log(w); // Output: 5
+\end{lstlisting}
+In the second example, we used the \colorbox{lightgray}{+=} assignment operator to reassign \colorbox{lightgray}{w}. We’re performing the mathematical operation of the first operator \colorbox{lightgray}{+} using the number to the right, then reassigning \colorbox{lightgray}{w} to the computed value. \\
+\newline
+We also have access to other mathematical assignment operators: \colorbox{lightgray}{-=}, \colorbox{lightgray}{*=}, and \colorbox{lightgray}{/=} which work in a similar fashion. 
+\begin{lstlisting}
+let x = 20;
+x -= 5; // Can be written as x = x - 5
+console.log(x); // Output: 15
 
+let y = 50;
+y *= 2; // Can be written as y = y * 2
+console.log(y); // Output: 100
 
+let z = 8;
+z /= 2; // Can be written as z = z / 2
+console.log(z); // Output: 4 
+\end{lstlisting}
 
+\subsection{The Increment and Decrement Operator}
+Other mathematical assignment operators include the increment operator (\colorbox{lightgray}{++}) and decrement operator (\colorbox{lightgray}{$--$}). The increment operator will increase the value of the variable by 1. The decrement operator will decrease the value of the variable by 1. For example:
+\begin{lstlisting}
+let a = 10;
+a++;
+console.log(a); // Output: 11
+\end{lstlisting}
+\begin{lstlisting}
+let b = 20;
+b--;
+console.log(b); // Output: 19
+\end{lstlisting}
+Just like the previous mathematical assignment operators (\colorbox{lightgray}{+=}, \colorbox{lightgray}{$-$=}, \colorbox{lightgray}{*=}, \colorbox{lightgray}{/=}), the variable’s value is updated and assigned as the new value of that variable.
+
+\subsection{String Concatenation with Variables}
+Before we assigned strings to variables. Now, let us go over how to connect, or concatenate, strings in variables. The \colorbox{lightgray}{+} operator can be used to combine two string values even if those values are being stored in variables:
+\begin{lstlisting}
+let myPet = "armadillo";
+console.log("I own a pet " + myPet + "."); // Output: "I own a pet armadillo."
+\end{lstlisting}
+In the example above, we assigned the value \colorbox{lightgray}{`armadillo'} to the \colorbox{lightgray}{myPet} variable. On the second line, the \colorbox{lightgray}{+} operator is used to combine three strings: \colorbox{lightgray}{`I own a pet'}, the value saved to \colorbox{lightgray}{myPet}, and \colorbox{lightgray}{`.'}. We log the result of this concatenation to the console as:
+\begin{lstlisting}
+I own a pet armadillo.
+\end{lstlisting}
+
+\subsection{String Interpolation}
+In the ES6 version of JavaScript, we can insert, or \textit{interpolate}, variables into strings using \textit{template literals}. Check out the following example where a template literal is used to log strings together:
+\textasciigrave
+\begin{lstlisting}
+const myPet = 'armadillo';
+console.log((*@\texttt{\textasciigrave}@*)I own a pet ${myPet}.(*@\texttt{\textasciigrave}@*)); // Output: I own a pet armadillo.
+\end{lstlisting}
+Notice that:
+\begin{itemize}[leftmargin = *]
+\item a template literal is wrapped by backticks \colorbox{lightgray}{\textasciigrave} (this key is usually located on the top of your keyboard, left of the \fbox{1} key).
+\item Inside the template literal, you’ll see a placeholder, \colorbox{lightgray}{\$\{myPet\}}. The value of \colorbox{lightgray}{myPet} is inserted into the template literal.
+\item When we interpolate \colorbox{lightgray}{\textasciigrave I own a pet \$\{myPet\}.\textasciigrave}, the output we print is the string: \colorbox{lightgray}{`I own a pet armadillo.'}
+\end{itemize}
+One of the biggest benefits to using template literals is the readability of the code. Using template literals, you can more easily tell what the new string will be. You also do not have to worry about escaping double quotes or single quotes. 
+
+\subsection{typeof operator}
+While writing code, it can be useful to keep track of the data types of the variables in your program. If you need to check the data type of a variable’s value, you can use the \colorbox{lightgray}{typeof} operator. The \colorbox{lightgray}{typeof} operator checks the value to its right and \textit{returns}, or passes back, a string of the data type. 
+\begin{lstlisting}
+const unknown1 = 'foo';
+console.log(typeof unknown1); // Output: string
+
+const unknown2 = 10;
+console.log(typeof unknown2); // Output: number
+
+const unknown3 = true; 
+console.log(typeof unknown3); // Output: boolean
+\end{lstlisting}
+Let us break down the first example. Since the value \colorbox{lightgray}{unknown1} is \colorbox{lightgray}{`foo'}, a string, \colorbox{lightgray}{typeof unknown1} will return \colorbox{lightgray}{`string'}.
+
+\subsection{Review Variables}
+Variables is a powerful concept you will use in all your future programming endeavors. Let us take one more glance at the concepts we just learned:
+\begin{itemize}[leftmargin = *]
+\item Variables hold reusable data in a program and associate it with a name. 
+\item Variables are stored in memory.
+\item The \colorbox{lightgray}{var} keyword is used in pre-ES6 versions of JS. 
+\item \colorbox{lightgray}{let} is the preferred way to declare a variable when it can be reassigned, and \colorbox{lightgray}{const} is the preferred way to declare a variable with a constant value.
+\item Variables that have not been initialized store the primitive data type \colorbox{lightgray}{undefined}. 
+\item Mathematical assignment operators make it easy to calculate a new value and assign it to the same variable. 
+\item The \colorbox{lightgray}{+} operator is used to concatenate strings including string values held in variables. 
+\item In ES6, template literals use backticks \colorbox{lightgray}{\textasciigrave} and \colorbox{lightgray}{\$\{\}} to interpolate values into a string.
+\item The \colorbox{lightgray}{typeof} keyword returns the data type (as a string) of a value.
+\end{itemize}
 
 
 
