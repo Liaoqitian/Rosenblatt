@@ -31,4 +31,7 @@
 \contentsline {subsection}{\numberline {3.8}Ternary Operator}{16}%
 \contentsline {subsection}{\numberline {3.9}Else If Statements}{17}%
 \contentsline {subsection}{\numberline {3.10}The switch keyword}{17}%
-\contentsline {subsection}{\numberline {3.11}Review}{18}%
+\contentsline {subsection}{\numberline {3.11}Review}{19}%
+\contentsline {section}{\numberline {4}Functions}{20}%
+\contentsline {subsection}{\numberline {4.1}What are Functions?}{20}%
+\contentsline {subsection}{\numberline {4.2}Function Declarations}{20}%

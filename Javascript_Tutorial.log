@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  22 JUN 2020 16:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  22 JUN 2020 22:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -602,7 +602,15 @@ Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
 (/usr/local/texlive/2020/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
-\GPT@outputbox=\box64
+(/usr/local/texlive/2020/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count297
+\float@exts=\toks41
+\float@box=\box64
+\@float@everytoks=\toks42
+\@floatcapt=\box65
+)
+\GPT@outputbox=\box66
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
@@ -610,9 +618,9 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 (/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count297
-\Gm@cntv=\count298
-\c@Gm@tempcnt=\count299
+\Gm@cnth=\count298
+\Gm@cntv=\count299
+\c@Gm@tempcnt=\count300
 \Gm@bindingoffset=\dimen282
 \Gm@wd@mp=\dimen283
 \Gm@odd@mp=\dimen284
@@ -621,7 +629,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen287
 \Gm@layouthoffset=\dimen288
 \Gm@layoutvoffset=\dimen289
-\Gm@dimlist=\toks41
+\Gm@dimlist=\toks43
 )
 (./Javascript_Tutorial.aux)
 \openout1 = `Javascript_Tutorial.aux'.
@@ -643,17 +651,17 @@ LaTeX Font Info:    ... okay on input line 106.
 
 (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count300
+\scratchcounter=\count301
 \scratchdimen=\dimen290
-\scratchbox=\box65
-\nofMPsegments=\count301
-\nofMParguments=\count302
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count303
+\scratchbox=\box67
+\nofMPsegments=\count302
+\nofMParguments=\count303
+\everyMPshowfont=\toks44
+\MPscratchCnt=\count304
 \MPscratchDim=\dimen291
-\MPnumerator=\count304
-\makeMPintoPDFobject=\count305
-\everyMPtoPDFconversion=\toks43
+\MPnumerator=\count305
+\makeMPintoPDFobject=\count306
+\everyMPtoPDFconversion=\toks45
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -664,11 +672,12 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-\c@lstlisting=\count306
+\c@lstlisting=\count307
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -819,7 +828,7 @@ Overfull \hbox (13.2475pt too wide) in paragraph at lines 450--451
 s the string: [][][][][][] 
  []
 
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 463.
 [10] [11]
 Underfull \hbox (badness 10000) in paragraph at lines 485--489
@@ -881,38 +890,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 703--706
 
  []
 
-
+[17]
 Underfull \hbox (badness 10000) in paragraph at lines 720--723
 
  []
 
-[17] [18] [19] (./Javascript_Tutorial.aux) ) 
+[18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 797--800
+
+ []
+
+<./images/4_1.png, id=85, 266.9975pt x 207.77625pt>
+File: ./images/4_1.png Graphic file (type png)
+<use ./images/4_1.png>
+Package pdftex.def Info: ./images/4_1.png  used on input line 804.
+(pdftex.def)             Requested size: 213.59827pt x 166.2212pt.
+[20] [21 <./images/4_1.png>] (./Javascript_Tutorial.aux) ) 
 Here is how much of TeX's memory you used:
- 18629 strings out of 480608
- 348854 string characters out of 5903631
- 726130 words of memory out of 5000000
- 34178 multiletter control sequences out of 15000+600000
- 546652 words of font info for 61 fonts, out of 8000000 for 9000
+ 18700 strings out of 480608
+ 349803 string characters out of 5903631
+ 739531 words of memory out of 5000000
+ 34244 multiletter control sequences out of 15000+600000
+ 546337 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,6n,60p,977b,1638s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist
-/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2020/texmf-dist/
-fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2020/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/
-type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
-pe1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2020/texmf-dist/fonts/type
-1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
-public/cm-super/sfrm1095.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pu
-blic/cm-super/sfrm1200.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/publ
-ic/cm-super/sfrm1728.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public
-/cm-super/sfti1095.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/c
-m-super/sftt0900.pfb>
-Output written on Javascript_Tutorial.pdf (21 pages, 259761 bytes).
+ 60i,8n,60p,977b,1636s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2
+020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/20
+20/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2020
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/tex
+mf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2020/texmf
+-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2020/texmf-d
+ist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2020/texmf-dis
+t/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2020/texmf-dist/
+fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2020/texmf-dist/fo
+nts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2020/texmf-dist/font
+s/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2020/texmf-dist/fonts/
+type1/public/cm-super/sftt1000.pfb>
+Output written on Javascript_Tutorial.pdf (23 pages, 279208 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 134 PDF objects out of 1000 (max. 8388607)
+ 95 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
