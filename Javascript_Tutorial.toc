@@ -34,4 +34,7 @@
 \contentsline {subsection}{\numberline {3.11}Review}{19}%
 \contentsline {section}{\numberline {4}Functions}{20}%
 \contentsline {subsection}{\numberline {4.1}What are Functions?}{20}%
-\contentsline {subsection}{\numberline {4.2}Function Declarations}{20}%
+\contentsline {subsection}{\numberline {4.2}Function Declarations}{21}%
+\contentsline {subsection}{\numberline {4.3}Calling a Function}{22}%
+\contentsline {subsection}{\numberline {4.4}Parameters and Arguments}{22}%
+\contentsline {subsection}{\numberline {4.5}Default Parameters}{23}%

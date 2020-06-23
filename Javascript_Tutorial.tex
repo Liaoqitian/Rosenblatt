@@ -90,7 +90,7 @@
 \fi
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
-
+\setlength\parindent{0pt}
 \setlist[itemize,1]{leftmargin=\dimexpr 26pt-.5in}
 
 \sectionfont{\fontsize{12}{15}\selectfont}
@@ -104,7 +104,23 @@
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 
 \begin{document}
-\maketitle
+\begin{titlepage}
+	\begin{center} 
+	\line(1, 0){400}\\
+	[0.25in]
+	\huge{\bfseries Introduction to Javascript} \\
+	[2mm]
+	\line(1, 0){300} \\
+	[1.5cm]
+	\textsc{\LARGE Qitian Liao} \\
+	[0.5cm]
+	\textsc{\large University of California, Berkeley} \\
+	[15cm]
+	\end{center}
+	\begin{flushright}	
+	\end{flushright}
+\end{titlepage}
+
 \thispagestyle{empty}
 \newpage
 \tableofcontents
@@ -722,7 +738,6 @@ In the code above, we have a series of conditions checking for a value that matc
 A \colorbox{lightgray}{switch} statement provides an alternative syntax that is easier to read and write. A \colorbox{lightgray}{switch} statement looks like this:
 \begin{lstlisting}
 let groceryItem = "papaya";
-
 switch (groceryItem) {
   case "tomato":
     console.log("Tomatoes are $0.49");
@@ -798,13 +813,16 @@ In programming, we often use code to perform a specific task multiple times. Ins
 \newline
 Now, you will learn how to create and use functions, and how they can be used to create clearer and more concise code.
 
+\newpage
 \subsection{Function Declarations} 
 In JavaScript, there are many ways to create a function. One way to create a function is by using a \textit{function declaration}. Just like how a variable declaration binds a value to a variable name, a function declaration binds a function to a name, or an \textit{identifier}. Take a look at the anatomy of a function declaration below:
+\vspace{-4mm}
 \begin{figure}[H]
 \includegraphics[scale = 0.8]{4_1}
 \centering
 \end{figure}
-\noindent A function declaration consists of: 
+\vspace{-4mm}
+A function declaration consists of: 
 \begin{itemize}[leftmargin = *]
 \item The \colorbox{lightgray}{function} keyword.
 \item The name of the function, or its identifier, followed by parentheses.
@@ -820,6 +838,64 @@ function greetWorld() {
 }
 \end{lstlisting}
 Notice how hoisting allowed \colorbox{lightgray}{greetWorld()} to be called before the \colorbox{lightgray}{greetWorld()} function was defined! Since hoisting is not considered good practice, we simply want you to be aware of this feature.
+
+\newpage
+\subsection{Calling a Function}
+As we saw in the previous chapter, a function declaration binds a function to an identifier. However, a function declaration does not ask the code inside the function body to run, it just declares the existence of the function. The code inside a function body runs, or \textit{executes}, only when the function is \textit{called}. To call a function in your code, you type the function name followed by parentheses.
+\vspace{-2mm}
+\begin{figure}[H]
+\includegraphics[scale = 0.65]{4_2}
+\centering
+\end{figure}
+\vspace{-3mm}
+This \textit{function call} executes the function body, or all of the statements between the curly braces in the function declaration.
+\begin{figure}[H]
+\includegraphics[scale = 0.6]{4_3}
+\centering
+\end{figure}
+We can call the same function as many times as needed.
+
+\subsection{Parameters and Arguments}
+So far, the functions we have created execute a task without an input. However, some functions can take inputs and use the inputs to perform a task. When declaring a function, we can specify its \textit{parameters}. Parameters allow functions to accept input(s) and perform a task using the input(s). We use parameters as placeholders for information that will be passed to the function when it is called. \\
+\newline
+Let’s observe how to specify parameters in our function declaration:
+\begin{figure}[H]
+\includegraphics[scale = 0.75]{4_4}
+\centering
+\end{figure}
+In the diagram above, \colorbox{lightgray}{calculateArea()}, computes the area of a rectangle, based on two inputs, \colorbox{lightgray}{width} and \colorbox{lightgray}{height}. The parameters are specified between the parenthesis as \colorbox{lightgray}{width} and \colorbox{lightgray}{height}, and inside the function body, they act just like regular variables. \colorbox{lightgray}{width} and \colorbox{lightgray}{height} act as placeholders for values that will be multiplied together. \\
+\newline
+When calling a function that has parameters, we specify the values in the parentheses that follow the function name. The values that are passed to the function when it is called are called \textit{arguments}. Arguments can be passed to the function as values or variables.
+\begin{figure}[H]
+\includegraphics[scale = 0.65]{4_5}
+\centering
+\end{figure}
+In the function call above, the number \colorbox{lightgray}{10} is passed as the \colorbox{lightgray}{width} and \colorbox{lightgray}{6} is passed as \colorbox{lightgray}{height}. Notice that the order in which arguments are passed and assigned follows the order that the parameters are declared.
+\begin{figure}[H]
+\includegraphics[scale = 0.73]{4_6}
+\centering
+\end{figure}
+The variables \colorbox{lightgray}{rectWidth} and \colorbox{lightgray}{rectHeight} are initialized with the values for the height and width of a rectangle before being used in the function call. \\
+\newline
+By using parameters, \colorbox{lightgray}{calculateArea()} can be reused to compute the area of any rectangle! Functions are a powerful tool in computer programming so let’s practice creating and calling functions with parameters.
+
+\subsection{Default Parameters}
+One of the features added in ES6 is the ability to use \textit{default parameters}. Default parameters allow parameters to have a predetermined value in case there is no argument passed into the function or if the argument is \colorbox{lightgray}{undefined} when called. \\
+\newline
+Take a look at the code snippet below that uses a default parameter:
+\begin{lstlisting}
+function greeting (name = "stranger") {
+  console.log((*@\texttt{\textasciigrave}@*)Hello, ${name}!(*@\texttt{\textasciigrave}@*))
+}
+
+greeting("Nick") // Output: Hello, Nick!
+greeting() // Output: Hello, stranger!
+\end{lstlisting}
+
+
+
+
+
 
 
 
