@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  23 JUN 2020 01:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  23 JUN 2020 18:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -726,11 +726,11 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+) [1])
 \tf@toc=\write4
 \openout4 = `Javascript_Tutorial.toc'.
 
- [1]
+ [2]
 Underfull \hbox (badness 10000) in paragraph at lines 145--150
 
  []
@@ -901,23 +901,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 812--815
  []
 
 [20]
-<./images/4_1.png, id=89, 266.9975pt x 207.77625pt>
+<./images/4_1.png, id=92, 266.9975pt x 207.77625pt>
 File: ./images/4_1.png Graphic file (type png)
 <use ./images/4_1.png>
 Package pdftex.def Info: ./images/4_1.png  used on input line 821.
 (pdftex.def)             Requested size: 213.59827pt x 166.2212pt.
  [21 <./images/4_1.png>]
-<./images/4_2.png, id=95, 131.49126pt x 88.33pt>
+<./images/4_2.png, id=98, 131.49126pt x 88.33pt>
 File: ./images/4_2.png Graphic file (type png)
 <use ./images/4_2.png>
 Package pdftex.def Info: ./images/4_2.png  used on input line 847.
 (pdftex.def)             Requested size: 85.46829pt x 57.4138pt.
-<./images/4_3.png, id=96, 395.4775pt x 202.7575pt>
+<./images/4_3.png, id=99, 395.4775pt x 202.7575pt>
 File: ./images/4_3.png Graphic file (type png)
 <use ./images/4_3.png>
 Package pdftex.def Info: ./images/4_3.png  used on input line 853.
 (pdftex.def)             Requested size: 237.28833pt x 121.65543pt.
-<./images/4_4.png, id=97, 312.16624pt x 146.5475pt>
+<./images/4_4.png, id=100, 312.16624pt x 146.5475pt>
 File: ./images/4_4.png Graphic file (type png)
 <use ./images/4_4.png>
 Package pdftex.def Info: ./images/4_4.png  used on input line 863.
@@ -927,7 +927,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 859--865
 
  []
 
-<./images/4_5.png, id=98, 223.83624pt x 119.44624pt>
+<./images/4_5.png, id=101, 223.83624pt x 119.44624pt>
 File: ./images/4_5.png Graphic file (type png)
 <use ./images/4_5.png>
 Package pdftex.def Info: ./images/4_5.png  used on input line 870.
@@ -938,7 +938,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 866--872
  []
 
 [22 <./images/4_2.png> <./images/4_3.png> <./images/4_4.png>]
-<./images/4_6.png, id=105, 299.1175pt x 132.495pt>
+<./images/4_6.png, id=109, 299.1175pt x 132.495pt>
 File: ./images/4_6.png Graphic file (type png)
 <use ./images/4_6.png>
 Package pdftex.def Info: ./images/4_6.png  used on input line 875.
@@ -953,34 +953,100 @@ Underfull \hbox (badness 10000) in paragraph at lines 883--886
 
  []
 
-[23 <./images/4_5.png> <./images/4_6.png>] (./Javascript_Tutorial.aux) ) 
+[23 <./images/4_5.png> <./images/4_6.png>]
+<./images/4_7.png, id=115, 311.1625pt x 110.4125pt>
+File: ./images/4_7.png Graphic file (type png)
+<use ./images/4_7.png>
+Package pdftex.def Info: ./images/4_7.png  used on input line 911.
+(pdftex.def)             Requested size: 227.14673pt x 80.60043pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 914--917
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 931--934
+
+ []
+
+[24 <./images/4_7.png>] [25]
+<./images/4_8.png, id=123, 380.42125pt x 130.4875pt>
+File: ./images/4_8.png Graphic file (type png)
+<use ./images/4_8.png>
+Package pdftex.def Info: ./images/4_8.png  used on input line 961.
+(pdftex.def)             Requested size: 277.70518pt x 95.25507pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 976--979
+
+ []
+
+<./images/4_9.png, id=124, 382.42876pt x 168.63pt>
+File: ./images/4_9.png Graphic file (type png)
+<use ./images/4_9.png>
+Package pdftex.def Info: ./images/4_9.png  used on input line 992.
+(pdftex.def)             Requested size: 279.17065pt x 123.09886pt.
+[26 <./images/4_8.png>]
+<./images/4_10.png, id=129, 357.335pt x 154.5775pt>
+File: ./images/4_10.png Graphic file (type png)
+<use ./images/4_10.png>
+Package pdftex.def Info: ./images/4_10.png  used on input line 998.
+(pdftex.def)             Requested size: 260.85237pt x 112.84062pt.
+ [27 <./images/4_9.png> <./images/4_10.png>]
+File: ./images/4_1.png Graphic file (type png)
+<use ./images/4_1.png>
+Package pdftex.def Info: ./images/4_1.png  used on input line 1025.
+(pdftex.def)             Requested size: 194.90654pt x 151.67538pt.
+File: ./images/4_4.png Graphic file (type png)
+<use ./images/4_4.png>
+Package pdftex.def Info: ./images/4_4.png  used on input line 1030.
+(pdftex.def)             Requested size: 234.1241pt x 109.91034pt.
+File: ./images/4_2.png Graphic file (type png)
+<use ./images/4_2.png>
+Package pdftex.def Info: ./images/4_2.png  used on input line 1036.
+(pdftex.def)             Requested size: 85.46829pt x 57.4138pt.
+File: ./images/4_8.png Graphic file (type png)
+<use ./images/4_8.png>
+Package pdftex.def Info: ./images/4_8.png  used on input line 1043.
+(pdftex.def)             Requested size: 277.70518pt x 95.25507pt.
+ [28]
+<./images/4_11.png, id=139, 312.16624pt x 121.45375pt>
+File: ./images/4_11.png Graphic file (type png)
+<use ./images/4_11.png>
+Package pdftex.def Info: ./images/4_11.png  used on input line 1048.
+(pdftex.def)             Requested size: 249.73334pt x 97.1631pt.
+File: ./images/4_10.png Graphic file (type png)
+<use ./images/4_10.png>
+Package pdftex.def Info: ./images/4_10.png  used on input line 1053.
+(pdftex.def)             Requested size: 260.85237pt x 112.84062pt.
+
+[29 <./images/4_11.png>] (./Javascript_Tutorial.aux) ) 
 Here is how much of TeX's memory you used:
- 18739 strings out of 480608
- 350368 string characters out of 5903631
- 738530 words of memory out of 5000000
- 34281 multiletter control sequences out of 15000+600000
+ 18784 strings out of 480608
+ 351053 string characters out of 5903631
+ 738531 words of memory out of 5000000
+ 34326 multiletter control sequences out of 15000+600000
  547600 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,8n,60p,977b,1634s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/l
-ocal/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/lo
-cal/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/loca
-l/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local
-/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
-exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
-xlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texl
-ive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texliv
-e/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/
-2020/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/20
-20/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive/2020
-/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/local/texlive/2020/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2020/tex
-mf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2020/texmf
--dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Javascript_Tutorial.pdf (25 pages, 337185 bytes).
+{/usr/local/texlive/2020/
+texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2020/t
+exmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2020/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-d
+ist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2020/texmf-dis
+t/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2020/texmf-dist/
+fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2020/texmf-dist/fo
+nts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2020/texmf-dist/font
+s/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive/2020/texmf-dist/fonts/
+type1/public/cm-super/sfcc1728.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
+pe1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2020/texmf-dist/fonts/type
+1/public/cm-super/sfti1095.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
+public/cm-super/sftt1000.pfb>
+Output written on Javascript_Tutorial.pdf (32 pages, 422429 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
+ 188 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

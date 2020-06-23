@@ -38,3 +38,9 @@
 \contentsline {subsection}{\numberline {4.3}Calling a Function}{22}%
 \contentsline {subsection}{\numberline {4.4}Parameters and Arguments}{22}%
 \contentsline {subsection}{\numberline {4.5}Default Parameters}{23}%
+\contentsline {subsection}{\numberline {4.6}Return}{24}%
+\contentsline {subsection}{\numberline {4.7}Helper Functions}{25}%
+\contentsline {subsection}{\numberline {4.8}Function Expressions}{26}%
+\contentsline {subsection}{\numberline {4.9}Arrow Functions}{26}%
+\contentsline {subsection}{\numberline {4.10}Concise Body Arrow Functions}{27}%
+\contentsline {subsection}{\numberline {4.11}Review Functions}{28}%
