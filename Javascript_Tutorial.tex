@@ -243,7 +243,8 @@ console.log("middle" + " " + "space"); // Prints "middle space"
 \end{lstlisting}
 Just like with regular math, we can combine, or chain, our operations to get a final result:
 \begin{lstlisting}
-console.log("One" + ", " + "two" + ", " + "three!"); // Prints "One, two, three!"
+console.log("One" + ", " + "two" + ", " + "three!"); 
+// Prints "One, two, three!"
 \end{lstlisting}
 \subsection{Properties}
 When you introduce a new piece of data into a JavaScript program, the browser saves it as an instance of the data type. Every string instance has a property called \colorbox{lightgray}{length} that stores the number of characters in that string. You can retrieve property information by appending the string with a period and the property name:
@@ -1201,6 +1202,302 @@ Let us review the following terms:
 \item \textbf{Global namespace} is the space in our code that contains globally scoped information.
 \item \textbf{Scope pollution} is when too many variables exist in a namespace or variable names are reused.
 \end{itemize}
+
+\newpage
+\section{Arrays}
+\subsection{Arrays}
+Organizing and storing data is a foundational concept of programming. One way we organize data in real life is by making lists. Let us make one here:
+\begin{lstlisting}
+(*@New Year's Resolutions:@*)
+(*@1. Keep a journal @*)
+(*@2. Take a falconry class@*)
+(*@3. Learn to juggle@*)
+\end{lstlisting}
+Let us now write this list in JavaScript, as an array:
+\begin{lstlisting}
+let newYearsResolutions = ["Keep a journal", "Take a falconry class", "Learn to juggle"];
+\end{lstlisting}
+Arrays are JavaScript’s way of making lists. Arrays can store any data types (including strings, numbers, and booleans). Like lists, arrays are ordered, meaning each item has a numbered position.
+Here is an array of the concepts we’ll cover:
+\begin{lstlisting}
+let concepts = ["creating arrays", "array structures", "array manipulation"];
+\end{lstlisting}
+
+\subsection{Create an Array}
+One way we can create an array is to use an \textit{array literal}. An array literal creates an array by wrapping items in square brackets \colorbox{lightgray}{$[$ $]$}. Remember from the previous exercise, arrays can store any data type — we can have an array that holds all the same data types or an array that holds different data types.
+\begin{figure}[H]
+\includegraphics[scale = 0.65]{6_1}
+\centering
+\end{figure}
+Let us take a closer look at the syntax in the array example:
+\begin{itemize}[leftmargin = *]
+\item The array is represented by the square brackets \colorbox{lightgray}{$[$ $]$} and the content inside.
+\item Each content item inside an array is called an \textit{element}.
+\item There are three different elements inside the array.
+Each element inside the array is a different data type.
+\end{itemize}
+We can also save an array to a variable. You may have noticed we did this in the previous chapter:
+\begin{lstlisting}
+let newYearsResolutions = ['Keep a journal', 'Take a falconry class', 'Learn to juggle'];
+\end{lstlisting}
+\subsection{Accessing Elements}
+Each element in an array has a numbered position known as its \textit{index}. We can access individual items using their index, which is similar to referencing an item in a list based on the item’s position. \\
+\newline
+Arrays in JavaScript are \textit{zero-indexed}, meaning the positions start counting from \colorbox{lightgray}{0} rather than \colorbox{lightgray}{1}. Therefore, the first item in an array will be at position \colorbox{lightgray}{0}. Let us see how we could access an element in an array:
+\begin{figure}[H]
+\includegraphics[scale = 0.65]{6_2}
+\centering
+\end{figure}
+In the code snippet above:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{cities} is an array that has three elements.
+\item We are using bracket notation, \colorbox{lightgray}{$[$ $]$} with the index after the name of the array to access the element.
+\item \colorbox{lightgray}{cities[0]} will access the element at index \colorbox{lightgray}{0} in the array \colorbox{lightgray}{cities}. You can think of \colorbox{lightgray}{cities[0]} as accessing the space in memory that holds the string \colorbox{lightgray}{`New York'}.
+\end{itemize}
+You can also access individual characters in a string using bracket notation and the index. For instance, you can write:
+\begin{lstlisting}
+const hello = "Hello World";
+console.log(hello[6]); // Output: W
+\end{lstlisting}
+The console will display \colorbox{lightgray}{W} since it is the character that is at index \colorbox{lightgray}{6}.\\
+\newline
+If you try to access an index that is beyond the last element, console will return \colorbox{lightgray}{undefined}. 
+
+\subsection{Update Elements} 
+In the previous exercise, you learned how to access elements inside an array or a string by using an index. Once you have access to an element in an array, you can update its value. 
+\begin{lstlisting}
+let seasons = ["Winter", "Spring", "Summer", "Fall"];
+
+seasons[3] = "Autumn";
+console.log(seasons); 
+//Output: ["Winter", "Spring", "Summer", "Autumn"]
+\end{lstlisting}
+In the example above, the \colorbox{lightgray}{seasons} array contained the names of the four seasons. However, we decided that we preferred to say \colorbox{lightgray}{`Autumn'} instead of \colorbox{lightgray}{`Fall'}. The line, \colorbox{lightgray}{seasons[3] = `Autumn';} tells our program to change the item at index 3 of the seasons array to be \colorbox{lightgray}{`Autumn'} instead of what is already there.
+
+\subsection{Arrays with let and const}
+You may recall that you can declare variables with both the \colorbox{lightgray}{let} and \colorbox{lightgray}{const} keywords. Variables declared with \colorbox{lightgray}{let} can be reassigned. \\
+\newline
+Variables declared with the \colorbox{lightgray}{const} keyword cannot be reassigned. However, elements in an array declared with \colorbox{lightgray}{const} remain mutable. Meaning that we can change the contents of a \colorbox{lightgray}{const} array, but cannot reassign a new array or a different value. \\
+\newline
+The instructions below will illustrate this concept more clearly. Pay close attention to the similarities and differences between the \colorbox{lightgray}{condiments} array and the \colorbox{lightgray}{utensils} array as you complete the steps.
+\begin{lstlisting}
+let condiments = ["Ketchup", "Mustard", "Soy Sauce", "Sriracha"];
+const utensils = ["Fork", "Knife", "Chopsticks", "Spork"];
+
+condiments[0] = "Mayo";
+console.log(condiments); 
+// Output: [ "Mayo", "Mustard", "Soy Sauce", "Sriracha" ]
+
+condiments = ["Mayo"]; 
+console.log(condiments); 
+// Output: [ "Mayo" ]
+
+utensils[3] = "Spoon";
+console.log(utensils); 
+// Output: [ "Fork", "Knife", "Chopsticks", "Spoon" ]
+
+utensils = ["Spoon"]; 
+// TypeError: Assignment to constant variable.
+\end{lstlisting}
+
+\subsection{The .length property}
+One of an array’s built-in properties is \colorbox{lightgray}{length} and it returns the number of items in the array. We access the \colorbox{lightgray}{.length} property just like we do with strings. Check the example below: 
+\begin{lstlisting}
+const newYearsResolutions = ["Keep a journal", "Take a falconry class"];
+
+console.log(newYearsResolutions.length); // Output: 2
+\end{lstlisting}
+In the example above, we log \colorbox{lightgray}{newYearsResolutions.length} to the console using the following steps:
+\begin{itemize}[leftmargin = *]
+\item We use \textit{dot notation}, chaining a period with the property name to the array, to access the \colorbox{lightgray}{length} property of the \colorbox{lightgray}{newYearsResolutions} array.
+\item Then we log the \colorbox{lightgray}{length} of \colorbox{lightgray}{newYearsResolution} to the console.
+\item Since \colorbox{lightgray}{newYearsResolution} has two elements, so \colorbox{lightgray}{2} would be logged to the console.
+\end{itemize}
+When we want to know how many elements are in an array, we can access the \colorbox{lightgray}{.length} property.
+
+\subsection{The .push() Method}
+Let us learn about some built-in JavaScript methods that make working with arrays easier. These methods are specifically called on arrays to make common tasks, like adding and removing elements, more straightforward. \\
+\newline
+One method, \colorbox{lightgray}{.push()} allows us to add items to the end of an array. Here is an example of how this is used:
+\begin{lstlisting}
+const itemTracker = ["item 0", "item 1", "item 2"];
+
+itemTracker.push("item 3", "item 4");
+
+console.log(itemTracker); 
+// Output: ["item 0", "item 1", "item 2", "item 3", "item 4"];
+\end{lstlisting}
+So, how does \colorbox{lightgray}{.push()} work?
+\begin{itemize}[leftmargin = *]
+\item We access the \colorbox{lightgray}{push} method by using dot notation, connecting \colorbox{lightgray}{push} to \colorbox{lightgray}{itemTracker} with a period.
+\item Then we call it like a function. That is because \colorbox{lightgray}{.push()} is a function and one that JavaScript allows us to use right on an array.
+\item \colorbox{lightgray}{.push()} can take a single argument or multiple arguments separated by commas. In this case, we’re adding two elements: \colorbox{lightgray}{`item 3'} and \colorbox{lightgray}{`item 4'} to \colorbox{lightgray}{itemTracker}.
+\item Notice that \colorbox{lightgray}{.push()} changes, or \textit{mutates}, itemTracker. You might also see \colorbox{lightgray}{.push()} referred to as a \textit{destructive} array method since it changes the initial array.
+\end{itemize}
+If you are looking for a method that will mutate an array by adding elements to it, then \colorbox{lightgray}{.push()} is the method for you. 
+
+\subsection{The .pop() Method}
+Another array method, \colorbox{lightgray}{.pop()}, removes the last item of an array.
+\begin{lstlisting}
+const newItemTracker = ["item 0", "item 1", "item 2"];
+
+const removed = newItemTracker.pop();
+
+console.log(newItemTracker); // Output: [ "item 0", "item 1" ]
+console.log(removed); // Output: item 2
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item In the example above, calling \colorbox{lightgray}{.pop()} on the \colorbox{lightgray}{newItemTracker} array removed \colorbox{lightgray}{item 2} from the end.
+\item \colorbox{lightgray}{.pop()} does not take any arguments, it simply removes the last element of \colorbox{lightgray}{newItemTracker}.
+\item \colorbox{lightgray}{.pop()} returns the value of the last element. In the example, we store the returned value in a variable \colorbox{lightgray}{removed} to be used for later.
+\item \colorbox{lightgray}{.pop()} is a method that mutates the initial array.
+
+\end{itemize}
+When you need to mutate an array by removing the last element, use \colorbox{lightgray}{.pop()}.
+
+\subsection{More Array Methods}
+There are many more array methods than just \colorbox{lightgray}{.push()} and \colorbox{lightgray}{.pop()}. You can read about all of the array methods that exist on the Mozilla Developer Network (MDN) array documentation. \\
+\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Array}\\
+\newline
+\colorbox{lightgray}{.pop()} and \colorbox{lightgray}{.push()} mutate the array on which they are called. However, there are times that we do not want to mutate the original array and we can use non-mutating array methods. \\
+\newline
+Some arrays methods that are available to JavaScript developers include: \colorbox{lightgray}{.join()}, \colorbox{lightgray}{.slice()}, \colorbox{lightgray}{.splice()}, \colorbox{lightgray}{.shift()}, \colorbox{lightgray}{.unshift()}, and \colorbox{lightgray}{.concat()} amongst many others. Using these built-in methods make it easier to do some common tasks when working with arrays. \\
+\newline
+Below, we will explore \colorbox{lightgray}{.shift()}, \colorbox{lightgray}{.unshift()}, and \colorbox{lightgray}{.slice()}. 
+
+\subsubsection{The .shift() Method}
+The \colorbox{lightgray}{.shift()} method removes the first element from an array and returns that removed element. This method changes the length of the array. The original array is modified. 
+\begin{lstlisting}
+const array1 = [1, 2, 3];
+const firstElement = array1.shift();
+console.log(array1); // Output: Array [2, 3]
+
+console.log(firstElement); // Output: 1
+\end{lstlisting}
+
+\subsubsection{The .unshift() Method}
+The \colorbox{lightgray}{.unshift()} method adds one or more elements to the beginning of an array and returns the new length of the array. The original array is modified. 
+\begin{lstlisting}
+const array1 = [1, 2, 3];
+console.log(array1.unshift(4, 5)); // Output: 5
+
+console.log(array1); // Output: Array [4, 5, 1, 2, 3]
+\end{lstlisting}
+
+\subsubsection{The .slice() Method}
+The \colorbox{lightgray}{.slice()} method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) where start and end represent the index of items in that array. The original array will not be modified.
+\begin{lstlisting}
+const animals = ["ant", "bison", "camel", "duck", "elephant"];
+console.log(animals.slice(2)); // Output: Array ["camel", "duck", "elephant"]
+
+console.log(animals.slice(2, 4)); // Output: Array ["camel", "duck"]
+
+console.log(animals.slice(1, 5)); 
+// Output: Array ["bison", "camel", "duck", "elephant"]
+\end{lstlisting}
+
+\subsection{Arrays and Functions}
+Throughout the lesson we went over arrays being mutable, or changeable. What happens if we try to change an array inside a function? Does the array keep the change after the function call or is it scoped to inside the function? \\
+\newline
+Take a look at the following example where we call \colorbox{lightgray}{.push()} on an array inside a function. Recall, the \colorbox{lightgray}{.push()} method mutates, or changes, an array:
+\begin{lstlisting}
+const flowers = ["peony", "daffodil", "marigold"];
+
+function addFlower(arr) {
+  arr.push("lily");
+}
+
+addFlower(flowers);
+console.log(flowers); // Output: ["peony", "daffodil", "marigold", "lily"]
+\end{lstlisting}
+Let’s go over what happened in the example:
+\begin{itemize}[leftmargin = *]
+\item The \colorbox{lightgray}{flowers} array that has 3 elements.
+\item The function \colorbox{lightgray}{addFlower()} has a parameter of \colorbox{lightgray}{arr} uses \colorbox{lightgray}{.push()} to add a \colorbox{lightgray}{`lily'} element into \colorbox{lightgray}{arr}.
+\item We call \colorbox{lightgray}{addFlower()} with an argument of \colorbox{lightgray}{flowers} which will execute the code inside \colorbox{lightgray}{addFlower}.
+\item We check the value of \colorbox{lightgray}{flowers} and it now includes the \colorbox{lightgray}{`lily'} element! The array was mutated!
+\end{itemize}
+So when you pass an array into a function, if the array is mutated inside the function, that change will be maintained outside the function as well. You might also see this concept explained as \textit{pass-by-reference} since what we are actually passing the function is a reference to where the variable memory is stored and changing the memory.
+
+\subsection{Nested Arrays}
+Earlier we mentioned that arrays can store other arrays. When an array contains another array it is known as a \textit{nested array}. Examine the example below:
+\begin{lstlisting}
+const nestedArr = [[1], [2, 3]];
+\end{lstlisting}
+To access the nested arrays we can use bracket notation with the index value, just like we did to access any other element:
+\begin{lstlisting}
+const nestedArr = [[1], [2, 3]];
+
+console.log(nestedArr[1]); // Output: [2, 3]
+\end{lstlisting}
+Notice that \colorbox{lightgray}{nestedArr[1]} will grab the element in index 1 which is the array \colorbox{lightgray}{[2, 3]}. Then, if we wanted to access the elements within the nested array we can \textit{chain}, or add on, more bracket notation with index values. 
+\begin{lstlisting}
+const nestedArr = [[1], [2, 3]];
+
+console.log(nestedArr[1]); // Output: [2, 3]
+console.log(nestedArr[1][0]); // Output: 2
+\end{lstlisting}
+In the second \colorbox{lightgray}{console.log()} statement, we have two bracket notations chained to \colorbox{lightgray}{nestedArr}. We know that \colorbox{lightgray}{nestedArr[1]} is the array \colorbox{lightgray}{[2, 3]}. Then to grab the first element from that array, we use \colorbox{lightgray}{nestedArr[1][0]} and we get the value of \colorbox{lightgray}{2}.
+
+\subsection{Review Arrays}
+In this chapter, we learned these concepts regarding arrays:
+\begin{itemize}[leftmargin = *]
+\item Arrays are lists that store data in JavaScript.
+\item Arrays are created with brackets \colorbox{lightgray}{$[$ $]$}.
+\item Each item inside of an array is at a numbered position, or index, starting at \colorbox{lightgray}{0}.
+\item We can access one item in an array using its index, with syntax like: \colorbox{lightgray}{myArray[0]}.
+\item We can also change an item in an array using its index, with syntax like \colorbox{lightgray}{myArray[0] = `new string'};
+\item Arrays have a \colorbox{lightgray}{length} property, which allows you to see how many items are in an array.
+\item Arrays have their own methods, including \colorbox{lightgray}{.push()} and \colorbox{lightgray}{.pop()}, which add and remove items from an array, respectively.
+\item Arrays have many methods that perform different tasks, such as \colorbox{lightgray}{.slice()} and \colorbox{lightgray}{.shift()}, you can find documentation at the Mozilla Developer Network website.
+\item Some built-in methods are mutating, meaning the method will change the array, while others are not mutating. You can always check the documentation.
+\item Variables that contain arrays can be declared with \colorbox{lightgray}{let} or \colorbox{lightgray}{const}. Even when declared with \colorbox{lightgray}{const}, arrays are still mutable. However, a variable declared with \colorbox{lightgray}{const} cannot be reassigned.
+\item Arrays mutated inside of a function will keep that change even outside the function.
+\item Arrays can be nested inside other arrays.
+\item To access elements in nested arrays chain indices using bracket notation.
+\end{itemize}
+Learning how to work with and manipulate arrays will help you work with chunks of data. 
+
+\newpage
+\section{Loops}
+\subsection{Loops}
+A \textit{loop} is a programming tool that repeats a set of instructions until a specified condition, called a \textit{stopping condition} is reached. As a programmer, you will find that you rely on loops all the time! You’ll hear the generic term iterate when referring to loops; \textit{iterate} simply means “to repeat”. \\
+\newline
+When we need to reuse a task in our code, we often bundle that action in a function. Similarly, when we see that a process has to repeat multiple times in a row, we write a loop. Loops allow us to create efficient code that automates processes to make scalable, manageable programs. \\
+\newline
+Loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on to the next part of the program.
+
+\subsection{The For Loop}
+Instead of writing out the same code over and over, loops allow us to tell computers to repeat a given block of code on its own. One way to give computers these instructions is with a \colorbox{lightgray}{for} loop. \\
+\newline
+The typical \colorbox{lightgray}{for} loop includes an \textit{iterator variable} that usually appears in all three expressions. The iterator variable is initialized, checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but it’s best practice to use a descriptive variable name.
+
+A for loop contains three expressions separated by ; inside the parentheses:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
