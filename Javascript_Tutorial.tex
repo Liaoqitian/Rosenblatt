@@ -276,8 +276,7 @@ Let’s look at each of the lines above:
 You can find a list of built-in string methods in the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String}{JavaScript documentation}. \\
 Developers use documentation as a reference tool. It describes JavaScript’s keywords, methods, and syntax.
 \subsection{Built-in Objects}
-In addition to \colorbox{lightgray}{console}, there are other objects built into JavaScript. \\
-\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects} \\
+In addition to \colorbox{lightgray}{console}, there are other \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects}{objects built into JavaScript}. \\
 Down the line, you’ll build your own objects, but for now these “built-in” objects are full of useful functionality.
 For example, if you wanted to perform more complex mathematical operations than arithmetic, JavaScript has the built-in \colorbox{lightgray}{Math} object. \\
 \newline
@@ -305,11 +304,11 @@ In this case:
 \end{enumerate}
 If you wanted to see the number printed to the terminal, you would still need to use a \colorbox{lightgray}{console.log()} statement:
 \begin{lstlisting}
-console.log(Math.floor(Math.random() * 50)); // Prints a random whole number between 0 and 50
+console.log(Math.floor(Math.random() * 50)); 
+// Prints a random whole number between 0 and 50
 \end{lstlisting}
-To see all of the properties and methods on the Math object, take a look at the documentation here. \\
-\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Math} \\
-\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Number}
+To see all of the properties and methods on the Math object, take a look at the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math}{documentation} here. \\
+To see all of the properties and methods on the Number object, take a look at the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number}{documentation} here. 
 \subsection{Review}
 Let us take one more glance at the concepts we just learned:
 \begin{itemize}[leftmargin = *]
@@ -358,12 +357,9 @@ There are a few general rules for naming variables:
 \begin{itemize}[leftmargin = *]
 \item Variable names cannot start with numbers.
 \item Variable names are case sensitive, so \colorbox{lightgray}{myName} and \colorbox{lightgray}{myname} would be different variables. It is bad practice to create two variables that have the same name using different cases.
-\item Variable names cannot be the same as \textit{keywords}. For a comprehensive list of keywords check out MDN’s keyword documentation. \\
-\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var}
+\item Variable names cannot be the same as \textit{keywords}. For a comprehensive list of keywords check out \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var}{MDN’s keyword documentation}. 
 \end{itemize}
-Later, we will learn why ES6’s \colorbox{lightgray}{let} and \colorbox{lightgray}{const} are the preferred variable keywords by many programmers. Because there is still a ton of code written prior to ES6, it is helpful to be familiar with the pre-ES6 \colorbox{lightgray}{var} keyword. To learn more about \colorbox{lightgray}{var} and the quirks associated with it, check out the MDN var documentation. \\
-\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var}
-
+Later, we will learn why ES6’s \colorbox{lightgray}{let} and \colorbox{lightgray}{const} are the preferred variable keywords by many programmers. Because there is still a ton of code written prior to ES6, it is helpful to be familiar with the pre-ES6 \colorbox{lightgray}{var} keyword. To learn more about \colorbox{lightgray}{var} and the quirks associated with it, check out the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var}{MDN var documentation}. 
 \subsection{Create a Variable: let}
 As mentioned before, the \colorbox{lightgray}{let} keyword was introduced in ES6. The \colorbox{lightgray}{let} keyword signals that the variable can be reassigned a different value. Take a look at the example: 
 \begin{lstlisting}
@@ -1357,8 +1353,7 @@ console.log(removed); // Output: item 2
 When you need to mutate an array by removing the last element, use \colorbox{lightgray}{.pop()}.
 
 \subsection{More Array Methods}
-There are many more array methods than just \colorbox{lightgray}{.push()} and \colorbox{lightgray}{.pop()}. You can read about all of the array methods that exist on the Mozilla Developer Network (MDN) array documentation. \\
-\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Array}\\
+There are many more array methods than just \colorbox{lightgray}{.push()} and \colorbox{lightgray}{.pop()}. You can read about all of the array methods that exist on the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array}{Mozilla Developer Network (MDN) array documentation}. \\
 \newline
 \colorbox{lightgray}{.pop()} and \colorbox{lightgray}{.push()} mutate the array on which they are called. However, there are times that we do not want to mutate the original array and we can use non-mutating array methods. \\
 \newline
@@ -1681,8 +1676,8 @@ busy(); // This function call barely takes any space!
 \end{lstlisting}
 \colorbox{lightgray}{busy} is a variable that holds a reference to our original function. If we could look up the address in memory of \colorbox{lightgray}{busy} and the address in memory of \colorbox{lightgray}{announceThatIAmDoingImportantWork} they would point to the same place. Our new \colorbox{lightgray}{busy()} function can be invoked with parentheses as if that was the name we originally gave our function. \\
 \newline
-Notice how we assign \colorbox{lightgray}{announceThatIAmDoingImportantWork} without parentheses as the value to the \colorbox{lightgray}{busy} variable. We want to assign the value of the function itself, not the value it returns when invoked. In JavaScript, functions are first class objects. This means that, like other objects you have encountered, JavaScript functions can have properties and methods. Since functions are a type of object, they have properties such as \colorbox{lightgray}{.length} and \colorbox{lightgray}{.name} and methods such as \colorbox{lightgray}{.toString()}. You can see more about the methods and properties of functions in the documentation. \\
-\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Function} \\
+Notice how we assign \colorbox{lightgray}{announceThatIAmDoingImportantWork} without parentheses as the value to the \colorbox{lightgray}{busy} variable. We want to assign the value of the function itself, not the value it returns when invoked. In JavaScript, functions are first class objects. This means that, like other objects you have encountered, JavaScript functions can have properties and methods. Since functions are a type of object, they have properties such as \colorbox{lightgray}{.length} and \colorbox{lightgray}{.name} and methods such as \colorbox{lightgray}{.toString()}. You can see more about the methods and properties of functions in the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function}{documentation}. \\
+\newline
 Functions are special because we can invoke them, but we can still treat them like any other type of data. 
 
 \subsection{Functions as Parameters}
