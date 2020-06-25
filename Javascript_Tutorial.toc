@@ -1,73 +1,104 @@
-\contentsline {section}{\numberline {1}Introduction to Javascript}{1}%
-\contentsline {subsection}{\numberline {1.1}What is Javascript? }{1}%
-\contentsline {subsection}{\numberline {1.2}Console}{1}%
-\contentsline {subsection}{\numberline {1.3}Comments}{1}%
-\contentsline {subsection}{\numberline {1.4}Data Types}{2}%
-\contentsline {subsection}{\numberline {1.5}Arithmetic Operators}{3}%
-\contentsline {subsection}{\numberline {1.6}String Concatenation}{3}%
-\contentsline {subsection}{\numberline {1.7}Properties}{4}%
-\contentsline {subsection}{\numberline {1.8}Methods}{4}%
-\contentsline {subsection}{\numberline {1.9}Built-in Objects}{5}%
-\contentsline {subsection}{\numberline {1.10}Review}{6}%
-\contentsline {section}{\numberline {2}Variables}{7}%
-\contentsline {subsection}{\numberline {2.1}Variables}{7}%
-\contentsline {subsection}{\numberline {2.2}Create a Variable: var}{7}%
-\contentsline {subsection}{\numberline {2.3}Create a Variable: let}{8}%
-\contentsline {subsection}{\numberline {2.4}Create a Variable: const}{8}%
-\contentsline {subsection}{\numberline {2.5}Mathematical Assignment Operators}{9}%
-\contentsline {subsection}{\numberline {2.6}The Increment and Decrement Operator}{9}%
-\contentsline {subsection}{\numberline {2.7}String Concatenation with Variables}{10}%
-\contentsline {subsection}{\numberline {2.8}String Interpolation}{10}%
-\contentsline {subsection}{\numberline {2.9}typeof operator}{10}%
-\contentsline {subsection}{\numberline {2.10}Review Variables}{11}%
-\contentsline {section}{\numberline {3}Conditional Statements}{12}%
-\contentsline {subsection}{\numberline {3.1}What are Conditional Statements?}{12}%
-\contentsline {subsection}{\numberline {3.2}If Statement}{12}%
-\contentsline {subsection}{\numberline {3.3}If...Else Statements}{13}%
-\contentsline {subsection}{\numberline {3.4}Comparison Operators}{13}%
-\contentsline {subsection}{\numberline {3.5}Logical Operators}{14}%
-\contentsline {subsection}{\numberline {3.6}Truthy and Falsy}{15}%
-\contentsline {subsection}{\numberline {3.7}Truthy and Falsy Assignment}{16}%
-\contentsline {subsection}{\numberline {3.8}Ternary Operator}{16}%
-\contentsline {subsection}{\numberline {3.9}Else If Statements}{17}%
-\contentsline {subsection}{\numberline {3.10}The switch keyword}{17}%
-\contentsline {subsection}{\numberline {3.11}Review}{19}%
-\contentsline {section}{\numberline {4}Functions}{20}%
-\contentsline {subsection}{\numberline {4.1}What are Functions?}{20}%
-\contentsline {subsection}{\numberline {4.2}Function Declarations}{21}%
-\contentsline {subsection}{\numberline {4.3}Calling a Function}{22}%
-\contentsline {subsection}{\numberline {4.4}Parameters and Arguments}{22}%
-\contentsline {subsection}{\numberline {4.5}Default Parameters}{23}%
-\contentsline {subsection}{\numberline {4.6}Return}{24}%
-\contentsline {subsection}{\numberline {4.7}Helper Functions}{25}%
-\contentsline {subsection}{\numberline {4.8}Function Expressions}{26}%
-\contentsline {subsection}{\numberline {4.9}Arrow Functions}{26}%
-\contentsline {subsection}{\numberline {4.10}Concise Body Arrow Functions}{27}%
-\contentsline {subsection}{\numberline {4.11}Review Functions}{28}%
-\contentsline {section}{\numberline {5}Scope}{30}%
-\contentsline {subsection}{\numberline {5.1}Scope}{30}%
-\contentsline {subsection}{\numberline {5.2}Blocks and Scope}{30}%
-\contentsline {subsection}{\numberline {5.3}Global Scope}{30}%
-\contentsline {subsection}{\numberline {5.4}Block Scope}{31}%
-\contentsline {subsection}{\numberline {5.5}Scope Pollution}{31}%
-\contentsline {subsection}{\numberline {5.6}Practice Good Scoping}{32}%
-\contentsline {subsection}{\numberline {5.7}Review: Scope}{33}%
-\contentsline {section}{\numberline {6}Arrays}{34}%
-\contentsline {subsection}{\numberline {6.1}Arrays}{34}%
-\contentsline {subsection}{\numberline {6.2}Create an Array}{34}%
-\contentsline {subsection}{\numberline {6.3}Accessing Elements}{35}%
-\contentsline {subsection}{\numberline {6.4}Update Elements}{35}%
-\contentsline {subsection}{\numberline {6.5}Arrays with let and const}{36}%
-\contentsline {subsection}{\numberline {6.6}The .length property}{36}%
-\contentsline {subsection}{\numberline {6.7}The .push() Method}{37}%
-\contentsline {subsection}{\numberline {6.8}The .pop() Method}{37}%
-\contentsline {subsection}{\numberline {6.9}More Array Methods}{38}%
-\contentsline {subsubsection}{\numberline {6.9.1}The .shift() Method}{38}%
-\contentsline {subsubsection}{\numberline {6.9.2}The .unshift() Method}{38}%
-\contentsline {subsubsection}{\numberline {6.9.3}The .slice() Method}{38}%
-\contentsline {subsection}{\numberline {6.10}Arrays and Functions}{39}%
-\contentsline {subsection}{\numberline {6.11}Nested Arrays}{39}%
-\contentsline {subsection}{\numberline {6.12}Review Arrays}{40}%
-\contentsline {section}{\numberline {7}Loops}{41}%
-\contentsline {subsection}{\numberline {7.1}Loops}{41}%
-\contentsline {subsection}{\numberline {7.2}The For Loop}{41}%
+\contentsline {section}{\numberline {1}Introduction to Javascript}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}What is Javascript? }{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Console}{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Comments}{1}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Data Types}{2}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Arithmetic Operators}{3}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}String Concatenation}{3}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Properties}{4}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}Methods}{4}{subsection.1.8}%
+\contentsline {subsection}{\numberline {1.9}Built-in Objects}{5}{subsection.1.9}%
+\contentsline {subsection}{\numberline {1.10}Review}{6}{subsection.1.10}%
+\contentsline {section}{\numberline {2}Variables}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Variables}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Create a Variable: var}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Create a Variable: let}{8}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Create a Variable: const}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Mathematical Assignment Operators}{9}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}The Increment and Decrement Operator}{9}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}String Concatenation with Variables}{10}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}String Interpolation}{10}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}typeof operator}{10}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Review Variables}{11}{subsection.2.10}%
+\contentsline {section}{\numberline {3}Conditional Statements}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}What are Conditional Statements?}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}If Statement}{12}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}If...Else Statements}{13}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Comparison Operators}{13}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Logical Operators}{14}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Truthy and Falsy}{15}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Truthy and Falsy Assignment}{16}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Ternary Operator}{16}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Else If Statements}{17}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}The switch keyword}{17}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}Review}{19}{subsection.3.11}%
+\contentsline {section}{\numberline {4}Functions}{20}{section.4}%
+\contentsline {subsection}{\numberline {4.1}What are Functions?}{20}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Function Declarations}{21}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Calling a Function}{22}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Parameters and Arguments}{22}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Default Parameters}{23}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Return}{24}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Helper Functions}{25}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Function Expressions}{26}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}Arrow Functions}{26}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}Concise Body Arrow Functions}{27}{subsection.4.10}%
+\contentsline {subsection}{\numberline {4.11}Review Functions}{28}{subsection.4.11}%
+\contentsline {section}{\numberline {5}Scope}{30}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Scope}{30}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Blocks and Scope}{30}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Global Scope}{30}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Block Scope}{31}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Scope Pollution}{31}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Practice Good Scoping}{32}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Review: Scope}{33}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Arrays}{34}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Arrays}{34}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Create an Array}{34}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Accessing Elements}{35}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Update Elements}{35}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Arrays with let and const}{36}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}The .length property}{36}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}The .push() Method}{37}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}The .pop() Method}{37}{subsection.6.8}%
+\contentsline {subsection}{\numberline {6.9}More Array Methods}{38}{subsection.6.9}%
+\contentsline {subsubsection}{\numberline {6.9.1}The .shift() Method}{38}{subsubsection.6.9.1}%
+\contentsline {subsubsection}{\numberline {6.9.2}The .unshift() Method}{38}{subsubsection.6.9.2}%
+\contentsline {subsubsection}{\numberline {6.9.3}The .slice() Method}{38}{subsubsection.6.9.3}%
+\contentsline {subsection}{\numberline {6.10}Arrays and Functions}{39}{subsection.6.10}%
+\contentsline {subsection}{\numberline {6.11}Nested Arrays}{39}{subsection.6.11}%
+\contentsline {subsection}{\numberline {6.12}Review Arrays}{40}{subsection.6.12}%
+\contentsline {section}{\numberline {7}Loops}{41}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Loops}{41}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}The For Loop}{41}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Looping in Reverse}{42}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Looping through Arrays}{42}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Nested Loops}{43}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}The While Loop}{43}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Do...While Statements}{44}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}The break Keyword}{45}{subsection.7.8}%
+\contentsline {subsection}{\numberline {7.9}Review}{45}{subsection.7.9}%
+\contentsline {section}{\numberline {8}Higher-Order Functions}{46}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Introduction}{46}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Functions as Data}{46}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Functions as Parameters}{47}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Review}{48}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Iterators}{49}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Introduction to Iterators}{49}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}The .forEach() Method}{49}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}The .map() Method}{50}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}The .filter() Method}{51}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}The .findIndex() Method}{51}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}The .reduce() Method}{52}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}Iterator Documentation}{53}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}More Iterators}{54}{subsection.9.8}%
+\contentsline {subsubsection}{\numberline {9.8.1}The .some() Method}{54}{subsubsection.9.8.1}%
+\contentsline {subsubsection}{\numberline {9.8.2}The .every() Method}{54}{subsubsection.9.8.2}%
+\contentsline {subsection}{\numberline {9.9}Review}{54}{subsection.9.9}%
+\contentsline {section}{\numberline {10}Objects}{55}{section.10}%
+\contentsline {section}{\numberline {11}Classes}{56}{section.11}%
+\contentsline {section}{\numberline {12}Browser Compatibility and Transpilation}{57}{section.12}%
+\contentsline {section}{\numberline {13}Modules}{58}{section.13}%
+\contentsline {section}{\numberline {14}Promises}{59}{section.14}%
+\contentsline {section}{\numberline {15}Async-Await}{60}{section.15}%
+\contentsline {section}{\numberline {16}Requests}{61}{section.16}%

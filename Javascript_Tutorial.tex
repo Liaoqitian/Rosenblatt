@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage[table]{xcolor}
 \usepackage{amsmath} 
 \usepackage{graphicx}
 \usepackage{subcaption}
@@ -15,6 +16,7 @@
 \usepackage{pagecolor,lipsum}
 \usepackage{color,soul}
 \usepackage{xcolor}
+\usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{float}
@@ -191,7 +193,7 @@ console.log(/*IGNORED!*/ 5);  // Still just prints 5
 \textit{Data types} are the classifications we give to the different kinds of data that we use in programming. In JavaScript, there are seven fundamental data types:
 \begin{enumerate}[leftmargin = *]
 \item \textit{Number}: Any number, including numbers with decimals: \colorbox{lightgray}{4}, \colorbox{lightgray}{8}, \colorbox{lightgray}{1516}, \colorbox{lightgray}{23.42}.
-\item \textit{String}: Any grouping of characters on your keyboard (letters, numbers, spaces, symbols, etc.) surrounded by single quotes: \colorbox{lightgray}{` ... '} or double quotes \colorbox{lightgray}{`` ... "}. Though we prefer single quotes. Some people like to think of string as a fancy word for text. 
+\item \textit{String}: Any grouping of characters on your keyboard (letters, numbers, spaces, symbols, etc.) surrounded by single quotes: \colorbox{lightgray}{` ... '} or double quotes \colorbox{lightgray}{`` ... ''}. Though we prefer single quotes. Some people like to think of string as a fancy word for text. If there is a single quote character, \colorbox{lightgray}{'}, in our string, we can use double quotes around the string to make sure character prints.
 \item \textit{Boolean}: This data type only has two possible values— either \colorbox{lightgray}{true} or \colorbox{lightgray}{false} (without quotes). It’s helpful to think of booleans as on and off switches or as the answers to a “yes” or “no” question. 
 \item \textit{Null}: This data type represents the intentional absence of a value, and is represented by the keyword \colorbox{lightgray}{null} (without quotes).
 \item \textit{Undefined}: This data type is denoted by the keyword \colorbox{lightgray}{undefined} (without quotes). It also represents the absence of a value though it has a different use than \colorbox{lightgray}{null}.
@@ -271,8 +273,7 @@ Let’s look at each of the lines above:
 \item On the first line, the \colorbox{lightgray}{.toUpperCase()} method is called on the string instance \colorbox{lightgray}{`hello'}. The result is logged to the console. This method returns a string in all capital letters: \colorbox{lightgray}{`HELLO'}.
 \item On the second line, the \colorbox{lightgray}{.startsWith()} method is called on the string instance \colorbox{lightgray}{`Hey'}. This method also accepts the character \colorbox{lightgray}{`H'} as an input, or argument, between the parentheses. Since the string \colorbox{lightgray}{`Hey'} does start with the letter \colorbox{lightgray}{`H'}, the method returns the boolean \colorbox{lightgray}{true}.
 \end{itemize}
-You can find a list of built-in string methods in the JavaScript documentation. \\
-\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/String}\\
+You can find a list of built-in string methods in the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String}{JavaScript documentation}. \\
 Developers use documentation as a reference tool. It describes JavaScript’s keywords, methods, and syntax.
 \subsection{Built-in Objects}
 In addition to \colorbox{lightgray}{console}, there are other objects built into JavaScript. \\
@@ -1470,9 +1471,509 @@ Loops iterate or repeat an action until a specific condition is met. When the co
 \subsection{The For Loop}
 Instead of writing out the same code over and over, loops allow us to tell computers to repeat a given block of code on its own. One way to give computers these instructions is with a \colorbox{lightgray}{for} loop. \\
 \newline
-The typical \colorbox{lightgray}{for} loop includes an \textit{iterator variable} that usually appears in all three expressions. The iterator variable is initialized, checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but it’s best practice to use a descriptive variable name.
+The typical \colorbox{lightgray}{for} loop includes an \textit{iterator variable} that usually appears in all three expressions. The iterator variable is initialized, checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but it is best practice to use a descriptive variable name. \\
+\newline
+A \colorbox{lightgray}{for} loop contains three expressions separated by \colorbox{lightgray}{;} inside the parentheses:
+\begin{enumerate}[leftmargin = *]
+\item an \textit{initialization} starts the loop and can also be used to declare the iterator variable.
+\item a \textit{stopping condition} is the condition that the iterator variable is evaluated against— if the condition evaluates to \colorbox{lightgray}{true} the code block will run, and if it evaluates to \colorbox{lightgray}{false} the code will stop.
+\item an \textit{iteration statement} is used to update the iterator variable on each loop.
+\end{enumerate}
+The \colorbox{lightgray}{for} loop syntax looks like this:
+\begin{lstlisting}
+for (let counter = 0; counter < 4; counter++) {
+  console.log(counter);
+}
+\end{lstlisting}
+In this example, the output would be the following:
+\begin{lstlisting}
+0
+1
+2
+3
+\end{lstlisting}
+Let us break down the example:
+\begin{itemize}[leftmargin = *]
+\item The initialization is \colorbox{lightgray}{let counter = 0}, so the loop will start counting at \colorbox{lightgray}{0}.
+\item The stopping condition is \colorbox{lightgray}{counter < 4}, meaning the loop will run as long as the iterator variable, \colorbox{lightgray}{counter}, is less than 4.
+\item The iteration statement is \colorbox{lightgray}{counter++}. This means after each loop, the value of \colorbox{lightgray}{counter} will increase by 1. For the first iteration \colorbox{lightgray}{counter} will equal \colorbox{lightgray}{0}, for the second iteration \colorbox{lightgray}{counter} will equal 1, and so on.
+\item The code block is inside of the curly braces, \colorbox{lightgray}{console.log(counter)}, will execute until the condition evaluates to \colorbox{lightgray}{false}. The condition will be \colorbox{lightgray}{false} when counter is greater than or equal to 4 — the point that the condition becomes false is sometimes called the \textit{stop condition}.
+\end{itemize}
+This \colorbox{lightgray}{for} loop makes it possible to write 0, 1, 2, and 3 programmatically.
 
-A for loop contains three expressions separated by ; inside the parentheses:
+\subsection{Looping in Reverse}
+
+What if we want the \colorbox{lightgray}{for} loop to log \colorbox{lightgray}{3}, \colorbox{lightgray}{2}, \colorbox{lightgray}{1}, and then \colorbox{lightgray}{0}? With simple modifications to the expressions, we can make our loop run backward. \\
+\newline
+To run a backward \colorbox{lightgray}{for} loop, we must:
+\begin{itemize}[leftmargin = *]
+\item Set the iterator variable to the highest desired value in the initialization expression.
+\item Set the stopping condition for when the iterator variable is less than the desired amount.
+\item The iterator should decrease in intervals after each iteration.
+\end{itemize} 
+\begin{lstlisting}
+// The loop below loops from 3 to 0.
+for (let counter = 3; counter >= 0; counter--){
+  console.log(counter);
+}
+\end{lstlisting}
+
+\subsection{Looping through Arrays}
+ \colorbox{lightgray}{for} loops are very handy for iterating over data structures. For example, we can use a  \colorbox{lightgray}{for} loop to perform the same operation on each element on an array. Arrays hold lists of data, like customer names or product information. Imagine we owned a store and wanted to increase the price of every product in our catalog. That could be a lot of repeating code, but by using a \colorbox{lightgray}{for} loop to iterate through the array we could accomplish this task easily. \\
+\newline
+To loop through each element in an array, a for loop should use the array’s  \colorbox{lightgray}{.length} property in its condition. Check out the example below to see how  \colorbox{lightgray}{for} loops iterate on arrays: 
+\begin{lstlisting}
+const animals = ["Grizzly Bear", "Sloth", "Sea Lion"];
+for (let i = 0; i < animals.length; i++){
+  console.log(animals[i]);
+}
+\end{lstlisting}
+This example would give you the following output:
+\begin{lstlisting}
+Grizzly Bear
+Sloth
+Sea Lion
+\end{lstlisting}
+In the loop above, we have named our iterator variable \colorbox{lightgray}{i}. This is a variable naming convention you will see in a lot of loops. When we use \colorbox{lightgray}{i} to iterate through arrays we can think of it as being short-hand for the word \textbf{i}ndex. Notice how our stopping condition checks that \colorbox{lightgray}{i} is less than \colorbox{lightgray}{animals.length}. Remember that arrays are zero-indexed, the index of the last element of an array is equivalent to the length of that array minus 1. If we tried to access an element at the index of \colorbox{lightgray}{animals.length} we will have gone too far. With \colorbox{lightgray}{for} loops, it’s easier for us to work with elements in arrays.
+
+\subsection{Nested Loops}
+When we have a loop running inside another loop, we call that a \textit{nested loop}. One use for a nested \colorbox{lightgray}{for} loop is to compare the elements in two arrays. For each round of the outer \colorbox{lightgray}{for} loop, the inner \colorbox{lightgray}{for} loop will run completely. \\
+\newline
+Let us look at an example of a nested \colorbox{lightgray}{for} loop:
+\begin{lstlisting}
+const myArray = [6, 19, 20];
+const yourArray = [19, 81, 2];
+for (let i = 0; i < myArray.length; i++) {
+  for (let j = 0; j < yourArray.length; j++) {
+    if (myArray[i] === yourArray[j]) {
+      console.log("Both loops have the number: " + yourArray[j])
+    }
+  }
+};
+\end{lstlisting}
+Let us think about what is happening in the nested loop in the example above. For each element in the outer loop array, \colorbox{lightgray}{myArray}, the inner loop will run in its entirety comparing the current element from the outer array, \colorbox{lightgray}{myArray[i]}, to each element in the inner array, \colorbox{lightgray}{yourArray[j]}. When it finds a match, it prints a string to the console.
+
+\subsection{The While Loop}
+To start, let us convert a for loop into a while loop:
+\begin{lstlisting}
+// A for loop that prints 1, 2, and 3
+for (let counterOne = 1; counterOne < 4; counterOne++){
+  console.log(counterOne);
+}
+
+// A while loop that prints 1, 2, and 3
+let counterTwo = 1;
+while (counterTwo < 4) {
+  console.log(counterTwo);
+  counterTwo++;
+}
+\end{lstlisting}
+Let us break down what was happening with the while loop syntax:
+\begin{itemize}[leftmargin = *]
+\item The \colorbox{lightgray}{counterTwo} variable is declared before the loop. We can access it inside our \colorbox{lightgray}{while} loop since it is in the global scope.
+\item We start our loop with the keyword \colorbox{lightgray}{while} followed by our stopping condition, or \textit{test condition}. This will be evaluated before each round of the loop. While the condition evaluates to \colorbox{lightgray}{true}, the block will continue to run. Once it evaluates to \colorbox{lightgray}{false} the loop will stop.
+\item Next, we have our loop’s code block which prints \colorbox{lightgray}{counterTwo} to the console and increments \colorbox{lightgray}{counterTwo}.
+\end{itemize}
+What would happen if we did not increment \colorbox{lightgray}{counterTwo} inside our block? If we did not include this, \colorbox{lightgray}{counterTwo} would always have its initial value, \colorbox{lightgray}{1}. That would mean the testing condition \colorbox{lightgray}{counterTwo < 4} would always evaluate to \colorbox{lightgray}{true} and our loop would never stop running. This is called an \textit{infinite loop} and it is something we always want to \textbf{avoid}. Infinite loops can take up all of your computer’s processing power potentially freezing your computer. \\
+\newline
+So you may be wondering when to use a \colorbox{lightgray}{while} loop. The syntax of a \colorbox{lightgray}{for} loop is ideal when we know how many times the loop should run, but we do not always know this in advance. Think of eating like a \colorbox{lightgray}{while} loop: when you start taking bites, you do not know the exact number you will need to become full. Rather you will eat while you are hungry. In situations when we want a loop to execute an undetermined number of times, \colorbox{lightgray}{while} loops are the best choice.
+
+\subsection{Do...While Statements}
+In some cases, you want a piece of code to run at least once and then loop based on a specific condition after its initial run. This is where the \colorbox{lightgray}{do...while} statement comes in. A \colorbox{lightgray}{do...while} statement says to do a task once and then keep doing it until a specified condition is no longer met. The syntax for a \colorbox{lightgray}{do...while} statement looks like this:
+\begin{lstlisting}
+let countString = "";
+let i = 0;
+
+do {
+  countString = countString + i;
+  i++;
+} while (i < 5);
+
+console.log(countString);
+\end{lstlisting}
+In this example, the code block makes changes to the \colorbox{lightgray}{countString} variable by appending the string form of the \colorbox{lightgray}{i} variable to it. First, the code block after the \colorbox{lightgray}{do} keyword is executed once. Then the condition is evaluated. If the condition evaluates to \colorbox{lightgray}{true}, the block will execute again. The looping stops when the condition evaluates to \colorbox{lightgray}{false}. \\
+\newline
+Note that the \colorbox{lightgray}{while} and \colorbox{lightgray}{do...while} loop are different. Unlike the \colorbox{lightgray}{while} loop, \colorbox{lightgray}{do...while} will run at least once whether or not the condition evaluates to \colorbox{lightgray}{true}.
+\begin{lstlisting}
+const firstMessage = "I will print!";
+const secondMessage = "I will not print!"; 
+
+// A do while with a stopping condition that evaluates to false
+do {
+ console.log(firstMessage)
+} while (true === false);
+// Output: I will print! 
+
+// A while loop with a stopping condition that evaluates to false
+while (true === false){
+  console.log(secondMessage)
+};
+// No Output 
+\end{lstlisting}
+
+\subsection{The break Keyword}
+Imagine we are looking to adopt a dog. We plan to go to the shelter every day for a year and then give up. But what if we meet our dream dog on day 65? We do not want to keep going to the shelter for the next 300 days just because our original plan was to go for a whole year. In our code, when we want to stop a loop from continuing to execute even though the original stopping condition we wrote for our loop has not been met, we can use the keyword \colorbox{lightgray}{break}. \\
+\newline
+The \colorbox{lightgray}{break} keyword allows programs to “break” out of the loop from within the loop’s block. Let us check out the syntax of a break keyword:
+\begin{lstlisting}
+for (let i = 0; i < 99; i++) {
+  if (i > 2 ) {
+     break;
+  }
+  console.log("Banana.");
+}
+
+console.log("Orange you glad I broke out the loop!");
+\end{lstlisting}
+This is the output for the above code:
+\begin{lstlisting}
+Banana.
+Banana.
+Banana.
+Orange you glad I broke out the loop!
+\end{lstlisting}
+\colorbox{lightgray}{break} statements can be especially helpful when we are looping through large data structures! With breaks, we can add test conditions besides the stopping condition, and exit the loop when they are met.
+
+\subsection{Review}
+In this chapter, we learned how to write cleaner code with loops.
+\begin{itemize}[leftmargin = *]
+\item Loops perform repetitive actions so we do not have to code that process manually every time.
+\item How to write \colorbox{lightgray}{for} loops with an iterator variable that increments or decrements.
+\item How to use a \colorbox{lightgray}{for} loop to iterate through an array.
+\item A nested \colorbox{lightgray}{for} loop is a loop inside another loop.
+\item \colorbox{lightgray}{while} loops allow for different types of stopping conditions.
+\item Stopping conditions are crucial for avoiding infinite loops.
+\item \colorbox{lightgray}{do...while} loops run code at least once— only checking the stopping condition after the first execution.
+\item The \colorbox{lightgray}{break} keyword allows programs to leave a loop during the execution of its block.
+\end{itemize}
+
+\newpage
+\section{Higher-Order Functions}
+\subsection{Introduction}
+We are often unaware of the number of assumptions we make when we communicate with other people in our native languages. If we told you to “count to three,” we would expect you to say or think the numbers one, two and three. We assumed you would know to start with “one” and end with “three”. With programming, we are faced with needing to be more explicit with our directions to the computer. Here’s how we might tell the computer to “count to three”:
+\begin{lstlisting}
+for (let i = 1; i<=3; i++) {
+  console.log(i)
+}
+\end{lstlisting}
+When we speak to other humans, we share a vocabulary that gives us quick ways to communicate complicated concepts. When we say “bake”, it calls to mind a familiar subroutine— preheating an oven, putting something into an oven for a set amount of time, and finally removing it. This allows us to \textit{abstract} away a lot of the details and communicate key concepts more concisely. Instead of listing all those details, we can say, “We baked a cake,” and still impart all that meaning to you. \\
+\newline
+In programming, we can accomplish “abstraction” by writing functions. In addition to allowing us to reuse our code, functions help to make clear, readable programs. If you encountered \colorbox{lightgray}{countToThree()} in a program, you might be able to quickly guess what the function did without having to stop and read the function’s body. \\
+\newline
+We are also going to learn about another way to add a level of abstraction to our programming: \textit{higher-order functions}. \textit{Higher-order functions} are functions that accept other functions as arguments and/or return functions as output. This enables us to build abstractions on other abstractions, just like “We hosted a birthday party” is an abstraction that may build on the abstraction “We made a cake.” \\
+\newline
+In summary, using more abstraction in our code allows us to write more modular code which is easier to read and debug.
+
+\subsection{Functions as Data}
+JavaScript functions behave like any other data type in the language; we can assign functions to variables, and we can reassign them to new variables. \\
+\newline
+Below, we have an annoyingly long function name that hurts the readability of any code in which it is used. Let us pretend this function does important work and needs to be called repeatedly!
+\begin{lstlisting}
+const announceThatIAmDoingImportantWork = () => {
+    console.log("I am doing very important work!");
+};
+\end{lstlisting}
+What if we wanted to rename this function without sacrificing the source code? We can re-assign the function to a variable with a suitably short name:
+\begin{lstlisting}
+const busy = announceThatIAmDoingImportantWork;
+
+busy(); // This function call barely takes any space!
+\end{lstlisting}
+\colorbox{lightgray}{busy} is a variable that holds a reference to our original function. If we could look up the address in memory of \colorbox{lightgray}{busy} and the address in memory of \colorbox{lightgray}{announceThatIAmDoingImportantWork} they would point to the same place. Our new \colorbox{lightgray}{busy()} function can be invoked with parentheses as if that was the name we originally gave our function. \\
+\newline
+Notice how we assign \colorbox{lightgray}{announceThatIAmDoingImportantWork} without parentheses as the value to the \colorbox{lightgray}{busy} variable. We want to assign the value of the function itself, not the value it returns when invoked. In JavaScript, functions are first class objects. This means that, like other objects you have encountered, JavaScript functions can have properties and methods. Since functions are a type of object, they have properties such as \colorbox{lightgray}{.length} and \colorbox{lightgray}{.name} and methods such as \colorbox{lightgray}{.toString()}. You can see more about the methods and properties of functions in the documentation. \\
+\underline{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Function} \\
+Functions are special because we can invoke them, but we can still treat them like any other type of data. 
+
+\subsection{Functions as Parameters}
+Since functions can behave like any other type of data in JavaScript, it might not surprise you to learn that we can also pass functions (into other functions) as parameters. A \textit{higher-order function} is a function that either accepts functions as parameters, returns a function, or both! We call the functions that get passed in as parameters and invoked \textit{callback functions} because they get called during the execution of the higher-order function. \\
+\newline
+When we pass a function in as an argument to another function, we do not invoke it. Invoking the function would evaluate to the return value of that function call. With callbacks, we pass in the function itself by typing the function name \textit{without} the parentheses (that would evaluate to the result of calling the function):
+\begin{lstlisting}
+const timeFuncRuntime = funcParameter => {
+   let t1 = Date.now();
+   funcParameter();
+   let t2 = Date.now();
+   return t2 - t1;
+}
+
+const addOneToOne = () => 1 + 1;
+
+timeFuncRuntime(addOneToOne);
+\end{lstlisting}
+We wrote a higher-order function, \colorbox{lightgray}{timeFuncRuntime()}. It takes in a function as an argument, saves a starting time, invokes the callback function, records the time after the function was called, and returns the time the function took to run by subtracting the starting time from the ending time. \\
+\newline
+This higher-order function could be used with any callback function which makes it a potentially powerful piece of code. \\
+\newline
+We then invoked \colorbox{lightgray}{timeFuncRuntime()} first with the \colorbox{lightgray}{addOneToOne()} function - note how we passed in \colorbox{lightgray}{addOneToOne} and did not invoke it. \\
+\newpage
+Let us look at another example: 
+\begin{lstlisting}
+timeFuncRuntime(() => {
+  for (let i = 10; i>0; i--){
+    console.log(i);
+  }
+});
+\end{lstlisting}
+In this example, we invoked \colorbox{lightgray}{timeFuncRuntime()} with an anonymous function that counts backwards from 10. Anonymous functions can be arguments too.
+
+\subsection{Review}
+By thinking about functions as data and learning about higher-order functions, you have taken important steps in being able to write clean, modular code and take advantage of JavaScript’s flexibility. Let us review what we learned in this chapter:
+\begin{itemize}[leftmargin = *]
+\item Abstraction allows us to write complicated code in a way that’s easy to reuse, debug, and understand for human readers. 
+\item We can work with functions the same way we would any other type of data including reassigning them to new variables. 
+\item JavaScript functions are first-class objects, so they have properties and methods like any object. 
+\item Functions can be passed into other functions as parameters. 
+\item A higher-order function is a function that either accepts functions as parameters, returns a function, or both
+\end{itemize}
+
+\newpage
+\section{Iterators}
+\subsection{Introduction to Iterators}
+Imagine you had a grocery list and you wanted to know what each item on the list was. You would have to scan through each row and check for the item. This common task is similar to what we have to do when we want to iterate over, or loop through, an array. One tool at our disposal is the \colorbox{lightgray}{for} loop. However, we also have access to built-in array methods which make looping easier. \\
+\newline
+The built-in JavaScript array methods that help us iterate are called \textit{iteration methods}, at times referred to as \textit{iterators}. Iterators are methods called on arrays to manipulate elements and return values. \\
+\newline
+In this chapter, you will learn the syntax for these methods, their return values, how to use the documentation to understand them, and how to choose the right iterator method for a given task.
+
+\subsection{The .forEach() Method}
+The first iteration method we learn is \colorbox{lightgray}{.forEach()}. Aptly named, \colorbox{lightgray}{.forEach()} will execute the same code for each element of an array.
+\begin{figure}[H]
+\includegraphics[scale = 0.7]{9_1}
+\centering
+\end{figure}
+The code above will log a nicely formatted list of the groceries to the console. Let us explore the syntax of invoking \colorbox{lightgray}{.forEach()}.
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{groceries.forEach()} calls the \colorbox{lightgray}{forEach} method on the groceries array.
+\item \colorbox{lightgray}{.forEach()} takes an argument of callback function. Remember, a callback function is a function passed as an argument into another function.
+\item \colorbox{lightgray}{.forEach()} loops through the array and executes the callback function for each element. During each execution, the current element is passed as an argument to the callback function.
+\item The return value for \colorbox{lightgray}{.forEach()} will always be \colorbox{lightgray}{undefined}.
+\end{itemize}
+Another way to pass a callback for \colorbox{lightgray}{.forEach()} is to use arrow function syntax.
+\begin{lstlisting}
+groceries.forEach(groceryItem => console.log(groceryItem));
+\end{lstlisting}
+We can also define a function beforehand to be used as the callback function.
+\begin{lstlisting}
+function printGrocery(element){
+  console.log(element);
+}
+
+groceries.forEach(printGrocery);
+\end{lstlisting}
+The above example uses a function declaration but you can also use a function expression or arrow function as well. \\
+\newline
+All three code snippets do the same thing. In each array iteration method, we can use any of the three examples to supply a callback function as an argument to the iterator. It is good to be aware of the different ways to pass in callback functions as arguments in iterators because developers have different stylistic preferences. Nonetheless, due to the strong adoption of ES6, we will be using arrow function syntax in the later exercises.
+\begin{lstlisting}
+const fruits = ["mango", "papaya", "pineapple", "apple"];
+
+// Iterate over fruits below
+fruits.forEach(item => console.log("I want to eat a " + item));
+// Output: 
+// I want to eat a mango
+// I want to eat a papaya
+// I want to eat a pineapple
+// I want to eat a apple
+\end{lstlisting}
+
+
+
+\subsection{The .map() Method} 
+The second iterator to cover is \colorbox{lightgray}{.map()}. When \colorbox{lightgray}{.map()} is called on an array, it takes an argument of a callback function and returns a new array! Take a look at an example of calling \colorbox{lightgray}{.map()}:
+\begin{lstlisting}
+const numbers = [1, 2, 3, 4, 5]; 
+
+const bigNumbers = numbers.map(number => {
+  return number * 10;
+});
+\end{lstlisting}
+\colorbox{lightgray}{.map()} works in a similar manner to \colorbox{lightgray}{.forEach()}— the major difference is that \colorbox{lightgray}{.map()} returns a new array.
+
+In the example above:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{numbers} is an array of numbers.
+\item \colorbox{lightgray}{bigNumbers} will store the return value of calling \colorbox{lightgray}{.map()} on \colorbox{lightgray}{numbers}.
+\item \colorbox{lightgray}{numbers.map} will iterate through each element in the \colorbox{lightgray}{numbers} array and pass the element into the callback function.
+\item \colorbox{lightgray}{return number * 10} is the code we wish to execute upon each element in the array. This will save each value from the \colorbox{lightgray}{numbers} array, multiplied by \colorbox{lightgray}{10}, to a new array.
+\end{itemize}
+If we take a look at \colorbox{lightgray}{numbers} and \colorbox{lightgray}{bigNumbers}:
+\begin{lstlisting}
+console.log(numbers); // Output: [1, 2, 3, 4, 5]
+console.log(bigNumbers); // Output: [10, 20, 30, 40, 50]
+\end{lstlisting}
+Notice that the elements in \colorbox{lightgray}{numbers} were not altered and \colorbox{lightgray}{bigNumbers} is a new array.
+
+\subsection{The .filter() Method}
+Another useful iterator method is \colorbox{lightgray}{.filter()}. Like \colorbox{lightgray}{.map()}, \colorbox{lightgray}{.filter()} returns a new array. However, \colorbox{lightgray}{.filter()} returns an array of elements after filtering out certain elements from the original array. The callback function for the \colorbox{lightgray}{.filter()} method should return \colorbox{lightgray}{true} or \colorbox{lightgray}{false} depending on the element that is passed to it. The elements that cause the callback function to return \colorbox{lightgray}{true} are added to the new array. Take a look at the following example:
+\begin{lstlisting}
+const words = ["chair", "music", "pillow", "brick", "pen", "door"]; 
+
+const shortWords = words.filter(word => {
+  return word.length < 6;
+});
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{words} is an array that contains string elements.
+\item \colorbox{lightgray}{const shortWords =} declares a new variable that will store the returned array from invoking \colorbox{lightgray}{.filter()}.
+\item The callback function is an arrow function has a single parameter, \colorbox{lightgray}{word}. Each element in the \colorbox{lightgray}{words} array will be passed to this function as an argument.
+\item \colorbox{lightgray}{word.length < 6;} is the condition in the callback function. Any \colorbox{lightgray}{word} from the \colorbox{lightgray}{words} array that has fewer than 6 characters will be added to the \colorbox{lightgray}{shortWords} array.
+\end{itemize}
+Let’s also check the values of \colorbox{lightgray}{words} and \colorbox{lightgray}{shortWords}:
+\begin{lstlisting}
+console.log(words); 
+// Output: ["chair", "music", "pillow", "brick", "pen", "door"]
+
+console.log(shortWords); 
+// Output: ["chair", "music", "brick", "pen", "door"]
+\end{lstlisting}
+Observe how \colorbox{lightgray}{words} was not mutated, i.e. changed, and \colorbox{lightgray}{shortWords} is a new array.
+
+\subsection{The .findIndex() Method}
+We sometimes want to find the location of an element in an array. That is where the \colorbox{lightgray}{.findIndex()} method comes in. Calling \colorbox{lightgray}{.findIndex()} on an array will return the index of the first element that evaluates to \colorbox{lightgray}{true} in the callback function.
+\begin{lstlisting}
+const jumbledNums = [123, 25, 78, 5, 9]; 
+
+const lessThanTen = jumbledNums.findIndex(num => {
+  return num < 10;
+});
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{jumbledNums} is an array that contains elements that are numbers.
+\item \colorbox{lightgray}{const lessThanTen =} declares a new variable that stores the returned index number from invoking \colorbox{lightgray}{.findIndex()}.
+\item The callback function is an arrow function has a single parameter, \colorbox{lightgray}{num}. Each element in the \colorbox{lightgray}{jumbledNums} array will be passed to this function as an argument.
+\item \colorbox{lightgray}{num < 10;} is the condition that elements are checked against. \colorbox{lightgray}{.findIndex()} will return the index of the first element which evaluates to \colorbox{lightgray}{true} for that condition.
+\end{itemize}
+Let us take a look at what \colorbox{lightgray}{lessThanTen} evaluates to:
+\begin{lstlisting}
+console.log(lessThanTen); // Output: 3 
+\end{lstlisting}
+If we check what element has index of 3:
+\begin{lstlisting}
+console.log(jumbledNums[3]); // Output: 5
+\end{lstlisting}
+Great, the element in index \colorbox{lightgray}{3} is the number \colorbox{lightgray}{5}. This makes sense since \colorbox{lightgray}{5} is the first element that is less than 10. \\
+\newline
+If there is not a single element in the array that satisfies the condition in the callback, then \colorbox{lightgray}{.findIndex()} will return \colorbox{lightgray}{-1}.
+\begin{lstlisting}
+const greaterThan1000 = jumbledNums.findIndex(num => {
+  return num > 1000;
+});
+
+console.log(greaterThan1000); // Output: -1
+\end{lstlisting}
+
+\subsection{The .reduce() Method}
+Another widely used iteration method is \colorbox{lightgray}{.reduce()}. The \colorbox{lightgray}{.reduce()} method returns a single value after iterating through the elements of an array, thereby reducing the array. Take a look at the example below:
+\begin{lstlisting}
+const numbers = [1, 2, 4, 10];
+
+const summedNums = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue
+})
+
+console.log(summedNums) // Output: 17
+\end{lstlisting}
+Here are the values of \colorbox{lightgray}{accumulator} and \colorbox{lightgray}{currentValue} as we iterate through the numbers array:
+\begin{center}
+\rowcolors{2}{white}{yellow}
+\begin{tabular}[H]{ |c|c|c|c| } 
+ \hline
+ Iteration & \colorbox{lightgray}{accumulator} & \colorbox{lightgray}{currentValue} & return value \\ 
+ \hline
+ First & 1 & 2 & 3 \\ 
+ \hline
+ Second & 3 & 4 & 7\\ 
+ \hline
+ Third & 7 & 10 & 17\\
+ \hline
+\end{tabular}
+\end{center}
+
+Now let us go over the use of \colorbox{lightgray}{.reduce()} from the example above:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{numbers} is an array that contains numbers.
+\item \colorbox{lightgray}{summedNums} is a variable that stores the returned value of invoking \colorbox{lightgray}{.reduce()} on numbers.
+\item \colorbox{lightgray}{numbers.reduce()} calls the \colorbox{lightgray}{.reduce()} method on the \colorbox{lightgray}{numbers} array and takes in a callback function as argument.
+\item The callback function has two parameters, \colorbox{lightgray}{accumulator} and \colorbox{lightgray}{currentValue}. The value of \colorbox{lightgray}{accumulator} starts off as the value of the first element in the array and the \colorbox{lightgray}{currentValue} starts as the second element. To see the value of \colorbox{lightgray}{accumulator} and \colorbox{lightgray}{currentValue} change, review the chart above.
+\item As \colorbox{lightgray}{.reduce()} iterates through the array, the return value of the callback function becomes the \colorbox{lightgray}{accumulator} value for the next iteration, \colorbox{lightgray}{currentValue} takes on the value of the current element in the looping process.
+\end{itemize}
+The \colorbox{lightgray}{.reduce()} method can also take an optional second parameter to set an initial value for \colorbox{lightgray}{accumulator} (remember, the first argument is the callback function). For instance:
+\begin{lstlisting}
+const numbers = [1, 2, 4, 10];
+
+const summedNums = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue
+}, 100)  // <- Second argument for .reduce()
+
+console.log(summedNums); // Output: 117
+\end{lstlisting}
+Here is an updated chart that accounts for the second argument of \colorbox{lightgray}{100}:
+
+\begin{center}
+\rowcolors{2}{white}{yellow}
+\begin{tabular}[H]{ |c|c|c|c| } 
+ \hline
+ Iteration & \colorbox{lightgray}{accumulator} & \colorbox{lightgray}{currentValue} & return value \\ 
+ \hline
+ First & 100 & 1 & 101 \\ 
+ \hline
+ Second & 101 & 2 & 103\\ 
+ \hline
+ Third & 103 & 4 & 107\\
+ \hline
+ Fourth & 107 & 10 & 17 \\
+ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Iterator Documentation}
+There are many additional built-in array methods, a complete list of which is on the 
+\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array}{MDN’s Array iteration methods page}.
+The documentation for each method contains several sections:
+\begin{enumerate}[leftmargin = *]
+\item A short definition.
+\item A block with the correct syntax for using the method.
+\item A list of parameters the method accepts or requires.
+\item The return value of the function.
+\item An extended description.
+\item Examples of the method’s use.
+\item Other additional information.
+\end{enumerate}
+
+\subsection{More Iterators}
+Let us briefly learn two other popular iterators. Below we will explore \colorbox{lightgray}{some()} and \colorbox{lightgray}{every()}.
+\subsubsection{The .some() Method}
+The \colorbox{lightgray}{some()} method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.
+\begin{lstlisting}
+const array = [1, 2, 3, 4, 5];
+
+// checks whether an element is even
+const even = (element) => element % 2 === 0;
+
+console.log(array.some(even)); // Output: true
+\end{lstlisting}
+
+\subsubsection{The .every() Method}
+The \colorbox{lightgray}{every()} method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+\begin{lstlisting}
+const isBelowThreshold = (currentValue) => currentValue < 40;
+
+const array1 = [1, 30, 39, 29, 10, 13];
+
+console.log(array1.every(isBelowThreshold)); // Output: true
+\end{lstlisting}
+
+\subsection{Review}
+We have learned a number of useful methods in this chapter as well as how to use the JavaScript documentation from the Mozilla Developer Network to discover and understand additional methods. 
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{.forEach()} is used to execute the same code on every element in an array but does not change the array and returns undefined.
+\item \colorbox{lightgray}{.map()} executes the same code on every element in an array and returns a new array with the updated elements.
+\item \colorbox{lightgray}{.filter()} checks every element in an array to see if it meets certain criteria and returns a new array with the elements that return truthy for the criteria.
+\item \colorbox{lightgray}{.findIndex()} returns the index of the first element of an array which satisfies a condition in the callback function. It returns -1 if none of the elements in the array satisfies the condition.
+\item \colorbox{lightgray}{.reduce()} iterates through an array and takes the values of the elements and returns a single value.
+\item All iterator methods takes a callback function that can be pre-defined, or a function expression, or an arrow function.
+\item You can visit the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array}{Mozilla Developer Network} to learn more about iterator methods (and all other parts of JavaScript!).
+\end{itemize}
 
 
 
@@ -1480,22 +1981,20 @@ A for loop contains three expressions separated by ; inside the parentheses:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\newpage
+\section{Objects}
+\newpage
+\section{Classes}
+\newpage
+\section{Browser Compatibility and Transpilation}
+\newpage
+\section{Modules}
+\newpage
+\section{Promises}
+\newpage
+\section{Async-Await}
+\newpage
+\section{Requests}
 
 
 
