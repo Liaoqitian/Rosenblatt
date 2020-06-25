@@ -97,9 +97,15 @@
 \BOOKMARK [2][-]{subsection.9.9}{Review}{section.9}% 97
 \BOOKMARK [1][-]{section.10}{Objects}{}% 98
 \BOOKMARK [2][-]{subsection.10.1}{Introduction to Objects}{section.10}% 99
-\BOOKMARK [1][-]{section.11}{Classes}{}% 100
-\BOOKMARK [1][-]{section.12}{Browser Compatibility and Transpilation}{}% 101
-\BOOKMARK [1][-]{section.13}{Modules}{}% 102
-\BOOKMARK [1][-]{section.14}{Promises}{}% 103
-\BOOKMARK [1][-]{section.15}{Async-Await}{}% 104
-\BOOKMARK [1][-]{section.16}{Requests}{}% 105
+\BOOKMARK [2][-]{subsection.10.2}{Creating Object Literals}{section.10}% 100
+\BOOKMARK [2][-]{subsection.10.3}{Accessing Properties}{section.10}% 101
+\BOOKMARK [2][-]{subsection.10.4}{Bracket Notation}{section.10}% 102
+\BOOKMARK [2][-]{subsection.10.5}{Property Assignment}{section.10}% 103
+\BOOKMARK [2][-]{subsection.10.6}{Methods}{section.10}% 104
+\BOOKMARK [2][-]{subsection.10.7}{Nested Objects}{section.10}% 105
+\BOOKMARK [1][-]{section.11}{Classes}{}% 106
+\BOOKMARK [1][-]{section.12}{Browser Compatibility and Transpilation}{}% 107
+\BOOKMARK [1][-]{section.13}{Modules}{}% 108
+\BOOKMARK [1][-]{section.14}{Promises}{}% 109
+\BOOKMARK [1][-]{section.15}{Async-Await}{}% 110
+\BOOKMARK [1][-]{section.16}{Requests}{}% 111
