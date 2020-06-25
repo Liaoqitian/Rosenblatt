@@ -30,6 +30,8 @@
 \definecolor{orange}{RGB}{255,127,0}
 \pagecolor{white}
 \graphicspath{ {./images/} }
+\setlength{\fboxsep}{1pt}
+
 
 \lstdefinelanguage{JavaScript}{
   keywords={typeof, new, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, let, log, const, console},
@@ -2251,6 +2253,215 @@ Let us review what we learned in this chapter:
 \item We can iterate through objects using the \colorbox{lightgray}{For...in} syntax.
 \end{itemize}
 
+\newpage
+\section{Advanced Objects}
+\subsection{Advanced Objects Introduction}
+Remember, objects in JavaScript are containers that store data and functionality. In this lesson, we will build upon the fundamentals of creating objects and explore some advanced concepts.
+In this chapter we will learn to:
+\begin{itemize}[leftmargin = *]
+\item use the \colorbox{lightgray}{this} keyword.
+\item convey privacy in JavaScript methods.
+\item define getters and setters in objects.
+\item create factory functions.
+\item use destructuring techniques.
+\end{itemize}
+
+\subsection{The this Keyword}
+Objects are collections of related data and functionality. We store that functionality in methods on our objects:
+\begin{lstlisting}
+const goat = {
+  dietType: "herbivore",
+  makeSound() {
+    console.log("baaa");
+  }
+};
+\end{lstlisting}
+In our \colorbox{lightgray}{goat} object we have a \colorbox{lightgray}{.makeSound()} method. We can invoke the \colorbox{lightgray}{.makeSound()} method on \colorbox{lightgray}{goat}.
+\begin{lstlisting}
+goat.makeSound(); // Prints baaa
+\end{lstlisting}
+We have a \colorbox{lightgray}{goat} object that can print \colorbox{lightgray}{baaa} to the console. What if we wanted to add a new method to our \colorbox{lightgray}{goat} object called \colorbox{lightgray}{.diet()} that prints the goat's \colorbox{lightgray}{dietType}?
+\begin{lstlisting}
+const goat = {
+  dietType: "herbivore",
+  makeSound() {
+    console.log("baaa");
+  },
+  diet() {
+    console.log(dietType);
+  }
+};
+goat.diet(); 
+// Output will be "ReferenceError: dietType is not defined"
+\end{lstlisting}
+That is strange, why is \colorbox{lightgray}{dietType} not defined even though it is a property of \colorbox{lightgray}{goat}? That is because inside the scope of the \colorbox{lightgray}{.diet()} method, we do not automatically have access to other properties of the \colorbox{lightgray}{goat} object. Here is where the \colorbox{lightgray}{this} keyword comes to the rescue. If we change the \colorbox{lightgray}{.diet()} method to use the \colorbox{lightgray}{this}, the \colorbox{lightgray}{.diet()} works. 
+\begin{lstlisting}
+const goat = {
+  dietType: "herbivore",
+  makeSound() {
+    console.log("baaa");
+  },
+  diet() {
+    console.log(this.dietType);
+  }
+};
+
+goat.diet(); // Output: herbivore
+\end{lstlisting}
+The \colorbox{lightgray}{this} keyword references the \textit{calling object} which provides access to the calling object’s properties. In the example above, the calling object is \colorbox{lightgray}{goat} and by using \colorbox{lightgray}{this} we are accessing the \colorbox{lightgray}{goat} object itself, and then the \colorbox{lightgray}{dietType} property of \colorbox{lightgray}{goat} by using property dot notation.
+
+\subsection{Arrow Functions and this}
+We saw in the previous exercise that for a method, the calling object is the object the method belongs to. If we use the \colorbox{lightgray}{this} keyword in a method then the value of \colorbox{lightgray}{this} is the calling object. However, it becomes more complicated when we start using arrow functions for methods. Take a look at the example below:
+\begin{lstlisting}
+const goat = {
+  dietType: "herbivore",
+  makeSound() {
+    console.log("baaa");
+  },
+  diet: () => {
+    console.log(this.dietType);
+  }
+};
+
+goat.diet(); // Prints undefined
+\end{lstlisting}
+In the comment, you can see that \colorbox{lightgray}{goat.diet()} would log \colorbox{lightgray}{undefined}. What happened? Notice that in the \colorbox{lightgray}{.diet()} is defined using an arrow function. \\
+\newline
+Arrow functions inherently \textit{bind}, or tie, an already defined \colorbox{lightgray}{this} value to the function itself that is NOT the calling object. In the code snippet above, the value of \colorbox{lightgray}{this} is the global object, or an object that exists in the \textit{global scope}, which does not have a \colorbox{lightgray}{dietType} property and therefore returns \colorbox{lightgray}{undefined}. \\
+\newline
+To read more about either arrow functions or the global object check out the MDN documentation of \href{https://developer.mozilla.org/en-US/docs/Glossary/Global_object}{the global object} and \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions}{arrow functions}. \\
+\newline
+The key takeaway from the example above is to \textit{avoid} using arrow functions when using \colorbox{lightgray}{this} in a method!
+
+\subsection{Privacy}
+Accessing and updating properties is fundamental in working with objects. However, there are cases in which we don’t want other code simply accessing and updating an object’s properties. When discussing \textit{privacy} in objects, we define it as the idea that only certain properties should be mutable or able to change in value. \\
+\newline
+Certain languages have privacy built-in for objects, but JavaScript does not have this feature. Rather, JavaScript developers follow naming conventions that signal to other developers how to interact with a property. One common convention is to place an underscore \colorbox{lightgray}{\_} before the name of a property to mean that the property should not be altered. Here’s an example of using \colorbox{lightgray}{\_} to prepend a property.
+\begin{lstlisting}
+const bankAccount = {
+  _amount: 1000
+}
+\end{lstlisting}
+In the example above, the \colorbox{lightgray}{\_amount} is not intended to be directly manipulated. Even so, it is still possible to reassign \colorbox{lightgray}{\_amount}:
+\begin{lstlisting}
+bankAccount._amount = 1000000;
+\end{lstlisting}
+%\colorbox{black!85}{\makebox[0.5em]{\strut\textcolor{white}{\_}}}
+Later, we will cover the use of methods called \textit{getters} and \textit{setters}. Both methods are used to respect the intention of properties prepended, or began, with \colorbox{lightgray}{\_}. Getters can return the value of internal properties and setters can safely reassign property values. 
+
+\subsection{Getters}
+\textit{Getters} are methods that get and return the internal properties of an object. But they can do more than just retrieve the value of a property. Let us take a look at a getter method:
+\begin{lstlisting}
+const person = {
+  _firstName: "John",
+  _lastName: "Doe",
+  get fullName() {
+    if (this._firstName && this._lastName){
+      return (*@\texttt{\textasciigrave}@*)${this._firstName} ${this._lastName}(*@\texttt{\textasciigrave}@*);
+    } else {
+      return "Missing a first name or a last name.";
+    }
+  }
+}
+
+// To call the getter method: 
+person.fullName; // 'John Doe'
+\end{lstlisting}
+Notice that in the getter method above:
+\begin{itemize}[leftmargin = *]
+\item We use the \colorbox{lightgray}{get} keyword followed by a function.
+\item We use an \colorbox{lightgray}{if...else} conditional to check if both \colorbox{lightgray}{\_firstName} and \colorbox{lightgray}{\_lastName} exist (by making sure they both return truthy values) and then return a different value depending on the result.
+\item We can access the calling object’s internal properties using \colorbox{lightgray}{this}. In \colorbox{lightgray}{fullName}, we are accessing both \colorbox{lightgray}{this.\_firstName} and \colorbox{lightgray}{this.\_lastName}.
+\item In the last line we call \colorbox{lightgray}{fullName} on \colorbox{lightgray}{person}. In general, getter methods do not need to be called with a set of parentheses. Syntactically, it looks like we are accessing a property.
+\end{itemize}
+Now that we have gone over syntax, let’s discuss some notable advantages of using getter methods:
+\begin{itemize}[leftmargin = *]
+\item Getters can perform an action on the data when getting a property.
+\item Getters can return different values using conditionals.
+\item In a getter, we can access the properties of the calling object using \colorbox{lightgray}{this}.
+\item The functionality of our code is easier for other developers to understand.
+\end{itemize}
+Another thing to keep in mind when using getter (and setter) methods is that properties cannot share the same name as the getter/setter function. If we do so, then calling the method will result in an infinite call stack error. One workaround is to add an underscore before the property name like we did in the example above.
+
+\subsection{Setters}
+Along with getter methods, we can also create \textit{setter} methods which reassign values of existing properties within an object. Let us see an example of a setter method:
+\begin{lstlisting}
+const person = {
+  _age: 37,
+  set age(newAge){
+    if (typeof newAge === "number"){
+      this._age = newAge;
+    } else {
+      console.log("You must assign a number to age");
+    }
+  }
+};
+\end{lstlisting}
+Notice that in the example above:
+\begin{itemize}[leftmargin = *]
+\item We can perform a check for what value is being assigned to \colorbox{lightgray}{this.\_age}.
+\item When we use the setter method, only values that are numbers will reassign \colorbox{lightgray}{this.\_age}.
+\item There are different outputs depending on what values are used to reassign \colorbox{lightgray}{this.\_age}.
+\end{itemize}
+Then to use the setter method:
+\begin{lstlisting}
+person.age = 40;
+console.log(person._age); // Logs: 40
+person.age = "40"; // Logs: You must assign a number to age
+\end{lstlisting}
+Setter methods like \colorbox{lightgray}{age} do not need to be called with a set of parentheses. Syntactically, it looks like we are reassigning the value of a property. \\
+\newline
+Like getter methods, there are similar advantages to using setter methods that include checking input, performing actions on properties, and displaying a clear intention for how the object is supposed to be used. Nonetheless, even with a setter method, it is still possible to directly reassign properties. For example, in the example above, we can still set \colorbox{lightgray}{.\_age} directly: 
+\begin{lstlisting}
+person._age = "forty-five"
+console.log(person._age); // Prints forty-five
+\end{lstlisting}
+
+\subsection{Factory Functions}
+So far we have been creating objects individually, but there are times where we want to create many instances of an object quickly. Here is where factory functions come in. A real world factory manufactures multiple copies of an item quickly and on a massive scale. A factory function is a function that returns an object and can be reused to make multiple object instances. Factory functions can also have parameters allowing us to customize the object that gets returned. \\
+\newline
+Let us say we wanted to create an object to represent monsters in JavaScript. There are many different types of monsters and we could go about making each monster individually but we can also use a factory function to make our lives easier. To achieve this diabolical plan of creating multiple monsters objects, we can use a factory function that has parameters: 
+\begin{lstlisting}
+const monsterFactory = (name, age, energySource, catchPhrase) => {
+  return { 
+    name: name,
+    age: age, 
+    energySource: energySource,
+    scare() {
+      console.log(catchPhrase);
+    } 
+  }
+};
+\end{lstlisting}
+In the \colorbox{lightgray}{monsterFactory} function above, it has four parameters and returns an object that has the properties: \colorbox{lightgray}{name}, \colorbox{lightgray}{age}, \colorbox{lightgray}{energySource}, and \colorbox{lightgray}{scare()}. To make an object that represents a specific monster like a ghost, we can call \colorbox{lightgray}{monsterFactory} with the necessary arguments and assign the return value to a variable:
+\begin{lstlisting}
+const ghost = monsterFactory("Ghouly", 251, "ectoplasm", "BOO!");
+ghost.scare(); // "BOO!"
+\end{lstlisting}
+Now we have a \colorbox{lightgray}{ghost} object as a result of calling \colorbox{lightgray}{monsterFactory()} with the needed arguments. With \colorbox{lightgray}{monsterFactory} in place, we do not have to create an object literal every time we need a new monster. Instead, we can invoke the \colorbox{lightgray}{monsterFactory} function with the necessary arguments to make a monster. 
+
+\subsection{Property Value Shorthand}
+ES6 introduced some new shortcuts for assigning properties to variables known as \textit{destructuring}. \\
+\newline
+In the previous chapter, we created a factory function that helped us create objects. We had to assign each property a key and value even though the key name was the same as the parameter name we assigned to it. To remind ourselves, here is a truncated version of the factory function:
+\begin{lstlisting}
+const monsterFactory = (name, age) => {
+  return { 
+    name: name,
+    age: age
+  }
+};
+\end{lstlisting}
+Imagine if we had to include more properties, that process would quickly become tedious. But we can use a destructuring technique, called \textit{property value shorthand}, to save ourselves some keystrokes. The example below works exactly like the example above: 
+\begin{lstlisting}
+const monsterFactory = (name, age) => {
+  return { 
+    name,
+    age 
+  }
+};
+\end{lstlisting}
+Notice that we do not have to repeat ourselves for property assignments. 
 
 
 

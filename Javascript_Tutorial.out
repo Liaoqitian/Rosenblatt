@@ -106,9 +106,18 @@
 \BOOKMARK [2][-]{subsection.10.8}{Pass By Reference}{section.10}% 106
 \BOOKMARK [2][-]{subsection.10.9}{Looping Through Objects}{section.10}% 107
 \BOOKMARK [2][-]{subsection.10.10}{Review}{section.10}% 108
-\BOOKMARK [1][-]{section.11}{Classes}{}% 109
-\BOOKMARK [1][-]{section.12}{Browser Compatibility and Transpilation}{}% 110
-\BOOKMARK [1][-]{section.13}{Modules}{}% 111
-\BOOKMARK [1][-]{section.14}{Promises}{}% 112
-\BOOKMARK [1][-]{section.15}{Async-Await}{}% 113
-\BOOKMARK [1][-]{section.16}{Requests}{}% 114
+\BOOKMARK [1][-]{section.11}{Advanced Objects}{}% 109
+\BOOKMARK [2][-]{subsection.11.1}{Advanced Objects Introduction}{section.11}% 110
+\BOOKMARK [2][-]{subsection.11.2}{The this Keyword}{section.11}% 111
+\BOOKMARK [2][-]{subsection.11.3}{Arrow Functions and this}{section.11}% 112
+\BOOKMARK [2][-]{subsection.11.4}{Privacy}{section.11}% 113
+\BOOKMARK [2][-]{subsection.11.5}{Getters}{section.11}% 114
+\BOOKMARK [2][-]{subsection.11.6}{Setters}{section.11}% 115
+\BOOKMARK [2][-]{subsection.11.7}{Factory Functions}{section.11}% 116
+\BOOKMARK [2][-]{subsection.11.8}{Property Value Shorthand}{section.11}% 117
+\BOOKMARK [1][-]{section.12}{Classes}{}% 118
+\BOOKMARK [1][-]{section.13}{Browser Compatibility and Transpilation}{}% 119
+\BOOKMARK [1][-]{section.14}{Modules}{}% 120
+\BOOKMARK [1][-]{section.15}{Promises}{}% 121
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 122
+\BOOKMARK [1][-]{section.17}{Requests}{}% 123
