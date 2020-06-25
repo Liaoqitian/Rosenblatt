@@ -103,9 +103,12 @@
 \contentsline {subsection}{\numberline {10.5}Property Assignment}{57}{subsection.10.5}%
 \contentsline {subsection}{\numberline {10.6}Methods}{58}{subsection.10.6}%
 \contentsline {subsection}{\numberline {10.7}Nested Objects}{58}{subsection.10.7}%
-\contentsline {section}{\numberline {11}Classes}{60}{section.11}%
-\contentsline {section}{\numberline {12}Browser Compatibility and Transpilation}{61}{section.12}%
-\contentsline {section}{\numberline {13}Modules}{62}{section.13}%
-\contentsline {section}{\numberline {14}Promises}{63}{section.14}%
-\contentsline {section}{\numberline {15}Async-Await}{64}{section.15}%
-\contentsline {section}{\numberline {16}Requests}{65}{section.16}%
+\contentsline {subsection}{\numberline {10.8}Pass By Reference}{59}{subsection.10.8}%
+\contentsline {subsection}{\numberline {10.9}Looping Through Objects}{60}{subsection.10.9}%
+\contentsline {subsection}{\numberline {10.10}Review}{61}{subsection.10.10}%
+\contentsline {section}{\numberline {11}Classes}{63}{section.11}%
+\contentsline {section}{\numberline {12}Browser Compatibility and Transpilation}{64}{section.12}%
+\contentsline {section}{\numberline {13}Modules}{65}{section.13}%
+\contentsline {section}{\numberline {14}Promises}{66}{section.14}%
+\contentsline {section}{\numberline {15}Async-Await}{67}{section.15}%
+\contentsline {section}{\numberline {16}Requests}{68}{section.16}%

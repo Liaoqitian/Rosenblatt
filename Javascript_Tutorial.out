@@ -103,9 +103,12 @@
 \BOOKMARK [2][-]{subsection.10.5}{Property Assignment}{section.10}% 103
 \BOOKMARK [2][-]{subsection.10.6}{Methods}{section.10}% 104
 \BOOKMARK [2][-]{subsection.10.7}{Nested Objects}{section.10}% 105
-\BOOKMARK [1][-]{section.11}{Classes}{}% 106
-\BOOKMARK [1][-]{section.12}{Browser Compatibility and Transpilation}{}% 107
-\BOOKMARK [1][-]{section.13}{Modules}{}% 108
-\BOOKMARK [1][-]{section.14}{Promises}{}% 109
-\BOOKMARK [1][-]{section.15}{Async-Await}{}% 110
-\BOOKMARK [1][-]{section.16}{Requests}{}% 111
+\BOOKMARK [2][-]{subsection.10.8}{Pass By Reference}{section.10}% 106
+\BOOKMARK [2][-]{subsection.10.9}{Looping Through Objects}{section.10}% 107
+\BOOKMARK [2][-]{subsection.10.10}{Review}{section.10}% 108
+\BOOKMARK [1][-]{section.11}{Classes}{}% 109
+\BOOKMARK [1][-]{section.12}{Browser Compatibility and Transpilation}{}% 110
+\BOOKMARK [1][-]{section.13}{Modules}{}% 111
+\BOOKMARK [1][-]{section.14}{Promises}{}% 112
+\BOOKMARK [1][-]{section.15}{Async-Await}{}% 113
+\BOOKMARK [1][-]{section.16}{Requests}{}% 114

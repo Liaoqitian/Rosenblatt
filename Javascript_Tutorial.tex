@@ -2109,7 +2109,7 @@ With the new method syntax introduced in ES6 we can omit the colon and the \colo
 \begin{lstlisting}
 const alienShip = {
   invade () { 
-    console.log('Hello! We have come to dominate your planet.")
+    console.log("Hello! We have come to dominate your planet.")
   }
 };
 \end{lstlisting}
@@ -2161,6 +2161,101 @@ In the preceding code:
 \item We accessed the \colorbox{lightgray}{back-up} object by appending \colorbox{lightgray}{["back-up"]}.
 \item The \colorbox{lightgray}{back-up} object has a battery property, accessed with \colorbox{lightgray}{.battery} which returned the value stored there: \colorbox{lightgray}{"Lithium"}. 
 \end{itemize}
+
+\subsection{Pass By Reference}
+Objects are \textit{passed by reference}. This means when we pass a variable assigned to an object into a function as an argument, the computer interprets the parameter name as pointing to the space in memory holding that object. As a result, functions which change object properties actually mutate the object permanently (even when the object is assigned to a \colorbox{lightgray}{const} variable).
+\begin{lstlisting}
+const spaceship = {
+  homePlanet : "Earth",
+  color : "silver"
+};
+
+let paintIt = obj => {
+  obj.color = "glorious gold"
+};
+
+paintIt(spaceship);
+
+spaceship.color // Returns "glorious gold"
+\end{lstlisting}
+Our function \colorbox{lightgray}{paintIt()} permanently changed the color of our \colorbox{lightgray}{spaceship} object. However, reassignment of the \colorbox{lightgray}{spaceship} variable would not work in the same way:
+\begin{lstlisting}
+let spaceship = {
+  homePlanet : "Earth",
+  color : "red"
+};
+let tryReassignment = obj => {
+  obj = {
+    identified : false, 
+    "transport type": "flying"
+  }
+  console.log(obj) // Prints {"identified": false, "transport type": "flying"}
+};
+tryReassignment(spaceship) // The attempt at reassignment does not work.
+spaceship // Still returns {homePlanet : "Earth", color : "red"};
+
+spaceship = {
+  identified : false, 
+  "transport type": "flying"
+}; // Regular reassignment still works.
+\end{lstlisting}
+Let us look at what happened in the code example:
+\begin{itemize}[leftmargin = *]
+\item We declared this \colorbox{lightgray}{spaceship} object with \colorbox{lightgray}{let}. This allowed us to reassign it to a new object with \colorbox{lightgray}{identified} and \colorbox{lightgray}{'transport type'} properties with no problems.
+\item When we tried the same thing using a function designed to reassign the object passed into it, the reassignment didn’t stick (even though calling \colorbox{lightgray}{console.log()} on the object produced the expected result).
+\item When we passed \colorbox{lightgray}{spaceship} into that function, \colorbox{lightgray}{obj} became a reference to the memory location of the spaceship object, but \textit{not} to the \colorbox{lightgray}{spaceship} variable. This is because the \colorbox{lightgray}{obj} parameter of the \colorbox{lightgray}{tryReassignment()} function is a variable in its own right. The body of \colorbox{lightgray}{tryReassignment()} has no knowledge of the spaceship variable at all!
+\item When we did the reassignment in the body of \colorbox{lightgray}{tryReassignment()}, the \colorbox{lightgray}{obj} variable came to refer to the memory location of the object \colorbox{lightgray}{\{`identified' : false, `transport type' : `flying'\}}, while the \colorbox{lightgray}{spaceship} variable was completely unchanged from its earlier value.
+\end{itemize}
+
+\subsection{Looping Through Objects}
+Loops are programming tools that repeat a block of code until a condition is met. We learned how to iterate through arrays using their numerical indexing, but the key-value pairs in objects are not ordered. \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in}{JavaScript has given us alternative solution for iterating through objects with the \colorbox{lightgray}{for...in} syntax}. \\
+\newline
+\colorbox{lightgray}{for...in} will execute a given block of code for each property in an object. 
+\begin{lstlisting}
+let spaceship = {
+    crew: {
+    captain: { 
+        name: "Lily", 
+        degree: "Computer Engineering", 
+        cheerTeam() { console.log("You got this!") } 
+        },
+    "chief officer": { 
+        name: "Dan", 
+        degree: "Aerospace Engineering", 
+        agree() { console.log("I agree, captain!") } 
+        },
+    medic: { 
+        name: "Clementine", 
+        degree: "Physics", 
+        announce() { console.log("Jets on!") } },
+    translator: {
+        name: "Shauna", 
+        degree: 'Conservation Science', 
+        powerFuel() { console.log("The tank is full!") } 
+        }
+    }
+}; 
+// for...in
+for (let crewMember in spaceship.crew) {
+  console.log{(*@\texttt{\textasciigrave}@*)${crewMember}: ${spaceship.crew[crewMember].name}(*@\texttt{\textasciigrave}@*))
+};
+\end{lstlisting}
+Our \colorbox{lightgray}{for...in} will iterate through each element of the \colorbox{lightgray}{spaceship.crew} object. In each iteration, the variable \colorbox{lightgray}{crewMember} is set to one of \colorbox{lightgray}{spaceship.crew}'s keys, enabling us to log a list of crew members’ role and \colorbox{lightgray}{name}.
+
+\subsection{Review}
+Let us review what we learned in this chapter:
+\begin{itemize}[leftmargin = *]
+\item Objects store collections of \textit{key-value} pairs.
+\item Each key-value pair is a property—when a property is a function it is known as a method.
+\item An object literal is composed of comma-separated key-value pairs surrounded by curly braces.
+\item You can access, add or edit a property within an object by using dot notation or bracket notation.
+\item We can add methods to our object literals using key-value syntax with anonymous function expressions as values or by using the new ES6 method syntax.
+\item We can navigate complex, nested objects by chaining operators.
+\item Objects are mutable—we can change their properties even when they are declared with \colorbox{lightgray}{const}.
+\item Objects are passed by reference— when we make changes to an object passed into a function, those changes are permanent.
+\item We can iterate through objects using the \colorbox{lightgray}{For...in} syntax.
+\end{itemize}
+
 
 
 
