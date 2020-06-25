@@ -96,9 +96,10 @@
 \BOOKMARK [3][-]{subsubsection.9.8.2}{The .every\(\) Method}{subsection.9.8}% 96
 \BOOKMARK [2][-]{subsection.9.9}{Review}{section.9}% 97
 \BOOKMARK [1][-]{section.10}{Objects}{}% 98
-\BOOKMARK [1][-]{section.11}{Classes}{}% 99
-\BOOKMARK [1][-]{section.12}{Browser Compatibility and Transpilation}{}% 100
-\BOOKMARK [1][-]{section.13}{Modules}{}% 101
-\BOOKMARK [1][-]{section.14}{Promises}{}% 102
-\BOOKMARK [1][-]{section.15}{Async-Await}{}% 103
-\BOOKMARK [1][-]{section.16}{Requests}{}% 104
+\BOOKMARK [2][-]{subsection.10.1}{Introduction to Objects}{section.10}% 99
+\BOOKMARK [1][-]{section.11}{Classes}{}% 100
+\BOOKMARK [1][-]{section.12}{Browser Compatibility and Transpilation}{}% 101
+\BOOKMARK [1][-]{section.13}{Modules}{}% 102
+\BOOKMARK [1][-]{section.14}{Promises}{}% 103
+\BOOKMARK [1][-]{section.15}{Async-Await}{}% 104
+\BOOKMARK [1][-]{section.16}{Requests}{}% 105

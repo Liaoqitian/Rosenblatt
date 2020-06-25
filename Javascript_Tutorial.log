@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  24 JUN 2020 21:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  24 JUN 2020 21:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1427,20 +1427,42 @@ Overfull \hbox (11.96294pt too wide) in paragraph at lines 1898--1899
 value of the call-back func-tion be-comes the [][][][][][]
  []
 
-[53] [54] [55] [56] [57] [58] [59] [60] [61]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2004.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2004.
- (./Javascript_Tutorial.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2004.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2004.
+[53] [54]
+Underfull \hbox (badness 10000) in paragraph at lines 1981--1988
 
-Package rerunfilecheck Info: File `Javascript_Tutorial.out' has not changed.
-(rerunfilecheck)             Checksum: 85D57055A0CB0D142E89AB6758F40A81;6761.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2004.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1981--1988
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1981--1988
+
+ []
+
+[55] [56] [57] [58] [59] [60] [61]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2021.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2021.
+ (./Javascript_Tutorial.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2021.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2021.
+
+
+
+Package rerunfilecheck Warning: File `Javascript_Tutorial.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Javascript_Tutorial.out':
+(rerunfilecheck)             Before: 85D57055A0CB0D142E89AB6758F40A81;6761
+(rerunfilecheck)             After:  16A282B0F55020703B4103496F7CBCE8;6837.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2021.
  ) 
 Here is how much of TeX's memory you used:
- 23470 strings out of 480608
- 423504 string characters out of 5903631
+ 23471 strings out of 480608
+ 423519 string characters out of 5903631
  820403 words of memory out of 5000000
  38053 multiletter control sequences out of 15000+600000
  547600 words of font info for 58 fonts, out of 8000000 for 9000
@@ -1460,10 +1482,10 @@ live/2020/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/local/texli
 ve/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive
 /2020/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2
 020/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Javascript_Tutorial.pdf (65 pages, 598064 bytes).
+Output written on Javascript_Tutorial.pdf (65 pages, 599189 bytes).
 PDF statistics:
- 1779 PDF objects out of 2073 (max. 8388607)
- 1655 compressed objects within 17 object streams
- 865 named destinations out of 1000 (max. 500000)
+ 1780 PDF objects out of 2073 (max. 8388607)
+ 1656 compressed objects within 17 object streams
+ 866 named destinations out of 1000 (max. 500000)
  915 words of extra memory for PDF output out of 10000 (max. 10000000)
 
