@@ -2463,10 +2463,114 @@ const monsterFactory = (name, age) => {
 \end{lstlisting}
 Notice that we do not have to repeat ourselves for property assignments. 
 
+\subsection{Destructured Assignment}
+We often want to extract key-value pairs from objects and save them as variables. Take for example the following object:
+\begin{lstlisting}
+const vampire = {
+  name: "Dracula",
+  residence: "Transylvania",
+  preferences: {
+    day: "stay inside",
+    night: "satisfy appetite"
+  }
+};
+\end{lstlisting}
+If we wanted to extract the \colorbox{lightgray}{residence} property as a variable, we could using the following code:
+\begin{lstlisting}
+const residence = vampire.residence; 
+console.log(residence); // Prints "Transylvania"
+\end{lstlisting}
+However, we can also take advantage of a destructuring technique called \textit{destructured assignment} to save ourselves some keystrokes. In destructured assignment we create a variable with the name of an object’s key that is wrapped in curly braces \colorbox{lightgray}{\{ \}} and assign to it the object. Take a look at the example below:
+\begin{lstlisting}
+const { residence } = vampire; 
+console.log(residence); // Prints "Transylvania"
+\end{lstlisting}
+Look back at the \colorbox{lightgray}{vampire} object’s properties in the first code example. Then, in the example above, we declare a new variable \colorbox{lightgray}{residence} that extracts the value of the \colorbox{lightgray}{residence} property of \colorbox{lightgray}{vampire}. When we log the value of \colorbox{lightgray}{residence} to the console, \colorbox{lightgray}{`Transylvania'} is printed. \\
+\newline
+We can even use destructured assignment to grab nested properties of an object: 
+\begin{lstlisting}
+const { day } = vampire.preferences; 
+console.log(day); // Prints "stay inside"
+\end{lstlisting}
+Variables created by destructured assignment references the object directly. 
+\begin{lstlisting}
+const robot = {
+  functionality: {
+    beep() {
+      console.log("Beep Boop");
+    },
+  }
+};
+const { functionality } = robot; 
+functionality.beep(); \\Output: Beep Boop
+\end{lstlisting}
+Since \colorbox{lightgray}{functionality} is referencing \colorbox{lightgray}{robot.functionality}, we can call the methods available to \colorbox{lightgray}{robot.functionality} simply through \colorbox{lightgray}{functionality}.
 
+\subsection{Built-in Object Methods}
+Previously, we have been creating instances of objects that have their own methods. But, we can also take advantage of built-in methods for Objects. For example, we have access to object instance methods like: \colorbox{lightgray}{.hasOwnProperty()}, \colorbox{lightgray}{.valueOf()}, and many others. Check out: \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods}{MDN’s object instance documentation}. \\
+\newline
+There are also useful Object class methods such as \colorbox{lightgray}{Object.assign()}, \colorbox{lightgray}{Object.entries()}, and \colorbox{lightgray}{Object.keys()} just to name a few. For a comprehensive list, browse: \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods_of_the_Object_constructor}{MDN’s object instance documentation}. \\
+\newline
+Below we will explore \colorbox{lightgray}{Object.keys()}, \colorbox{lightgray}{Object.entries()}, and \colorbox{lightgray}{Object.assign()}. 
+\subsubsection{The Object.keys() Method}
+The \colorbox{lightgray}{Object.keys()} method returns an array of a given object's own enumerable property \textbf{names}, iterated in the same order that a normal loop would.
+\begin{lstlisting}
+const object1 = {
+  a: "somestring",
+  b: 42,
+  c: false
+};
 
+console.log(Object.keys(object1)); // Output: Array ["a", "b", "c"]
+\end{lstlisting}
 
+\subsubsection{The Object.entries() Method}
+The \colorbox{lightgray}{Object.entries()} method returns an array of a given object's own enumerable string-keyed property \colorbox{lightgray}{[key, value]} pairs, in the same order as that provided by a \colorbox{lightgray}{for...in} loop. (The only important difference is that a \colorbox{lightgray}{for...in} loop enumerates properties in the prototype chain as well). \\
+\newline 
+The order of the array returned by \colorbox{lightgray}{Object.entries()} does not depend on how an object is defined. If there is a need for certain ordering, then the array should be sorted first. \\ Like \colorbox{lightgray}{Object.entries(obj).sort((a, b) => b[0].localeCompare(a[0]));}.
+\begin{lstlisting}
+const object1 = {
+  a: "somestring",
+  b: 42
+};
 
+for (const [key, value] of Object.entries(object1)) {
+  console.log((*@\texttt{\textasciigrave}@*)${key}: ${value}(*@\texttt{\textasciigrave}@*));
+}
+
+// Output:
+// "a: somestring"
+// "b: 42"
+// order is not guaranteed
+\end{lstlisting}
+
+\subsubsection{The Object.assign() Method}
+The \colorbox{lightgray}{Object.assign()} method copies all enumerable own properties from one or more source objects to a target object. It returns the target object.
+\begin{lstlisting}
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+const returnedTarget = Object.assign(target, source);
+
+console.log(target); // Output: Object { a: 1, b: 4, c: 5 }
+
+console.log(returnedTarget); // Output: Object { a: 1, b: 4, c: 5 }
+\end{lstlisting}
+
+\subsection{Review}
+\begin{itemize}[leftmargin = *]
+\item The object that a method belongs to is called the \textit{calling object}.
+\item The \colorbox{lightgray}{this} keyword refers the calling object and can be used to access properties of the calling object.
+\item Methods do not automatically have access to other internal properties of the calling object.
+\item The value of \colorbox{lightgray}{this} depends on where the \colorbox{lightgray}{this} is being accessed from.
+\item We cannot use arrow functions as methods if we want to access other internal properties.
+\item JavaScript objects do not have built-in privacy, rather there are conventions to follow to notify other developers about the intent of the code.
+\item The usage of an underscore before a property name means that the original developer did not intend for that property to be directly changed.
+\item Setters and getter methods allow for more detailed ways of accessing and assigning properties.
+\item Factory functions allow us to create object instances quickly and repeatedly.
+\item There are different ways to use object destructuring: one way is the property value shorthand and another is destructured assignment.
+As with any concept, it is a good skill to learn how to use the documentation with objects.
+\end{itemize}
 
 
 \newpage

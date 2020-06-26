@@ -115,9 +115,15 @@
 \BOOKMARK [2][-]{subsection.11.6}{Setters}{section.11}% 115
 \BOOKMARK [2][-]{subsection.11.7}{Factory Functions}{section.11}% 116
 \BOOKMARK [2][-]{subsection.11.8}{Property Value Shorthand}{section.11}% 117
-\BOOKMARK [1][-]{section.12}{Classes}{}% 118
-\BOOKMARK [1][-]{section.13}{Browser Compatibility and Transpilation}{}% 119
-\BOOKMARK [1][-]{section.14}{Modules}{}% 120
-\BOOKMARK [1][-]{section.15}{Promises}{}% 121
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 122
-\BOOKMARK [1][-]{section.17}{Requests}{}% 123
+\BOOKMARK [2][-]{subsection.11.9}{Destructured Assignment}{section.11}% 118
+\BOOKMARK [2][-]{subsection.11.10}{Built-in Object Methods}{section.11}% 119
+\BOOKMARK [3][-]{subsubsection.11.10.1}{The Object.keys\(\) Method}{subsection.11.10}% 120
+\BOOKMARK [3][-]{subsubsection.11.10.2}{The Object.entries\(\) Method}{subsection.11.10}% 121
+\BOOKMARK [3][-]{subsubsection.11.10.3}{The Object.assign\(\) Method}{subsection.11.10}% 122
+\BOOKMARK [2][-]{subsection.11.11}{Review}{section.11}% 123
+\BOOKMARK [1][-]{section.12}{Classes}{}% 124
+\BOOKMARK [1][-]{section.13}{Browser Compatibility and Transpilation}{}% 125
+\BOOKMARK [1][-]{section.14}{Modules}{}% 126
+\BOOKMARK [1][-]{section.15}{Promises}{}% 127
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 128
+\BOOKMARK [1][-]{section.17}{Requests}{}% 129
