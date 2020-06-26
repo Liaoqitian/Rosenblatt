@@ -3054,7 +3054,7 @@ project
 Inside \textbf{.babelrc} we need to define the preset for our source JavaScript file. The preset specifies the version of our initial JavaScript file. Usually, we want to transpile JavaScript code from versions ES6 and later (ES6+) to ES5. From this point on, we will refer to our source code as ES6+, because Ecma introduces new syntax with each new version of JavaScript. \\
 \newline
 To specify that we are transpiling code from an ES6+ source, we have to add the following JavaScript object into \textbf{.babelrc}:
-\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+\begin{lstlisting}%[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
 {
   "presets": ["env"]
 }
@@ -3065,14 +3065,14 @@ When you run Babel, it looks in \textbf{.babelrc} to determine the version of th
 There is one last step before we can transpile our code. We need to specify a script in \textbf{package.json} that initiates the ES6+ to ES5 transpilation. 
 
 Inside of the \textbf{package.json} file, there is a property named \colorbox{lightgray}{``scripts''} that holds an object for specifying command line shortcuts. It looks like this:
-\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+\begin{lstlisting}%[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
 ...
 "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1"
 }, ...
 \end{lstlisting}
 In the code above, the \colorbox{lightgray}{``scripts''} property contains an object with one property called \colorbox{lightgray}{``test''}. Below the \colorbox{lightgray}{``test''} property, we will add a script that runs Babel like this:
-\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+\begin{lstlisting}%[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
 ...
 "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1",
@@ -3089,7 +3089,7 @@ In the \colorbox{lightgray}{``scripts''} object above, we add a property called 
 
 \subsection{Build}
 We are ready to transpile our code. Previously, we wrote the following script in package.json:
-\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+\begin{lstlisting}
 "build": "babel src -d lib"
 \end{lstlisting}
 Now, we need to call \colorbox{lightgray}{``build''} from the command line to transpile and write ES5 code to a directory called \colorbox{lightgray}{lib}. From the command line, we type:
@@ -3138,20 +3138,68 @@ npm install babel-cli -D
 npm install babel-preset-env -D
 \end{lstlisting}
 \item Create a \textbf{.babelrc} file inside your project and add the following code inside it:
-\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+\begin{lstlisting}%[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
 {
   "presets": ["env"]
 }
 \end{lstlisting}
 \item Add the following script to your \colorbox{lightgray}{scripts} object in \textbf{package.json}:
-\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+\begin{lstlisting}
 "build": "babel src -d lib"
 \end{lstlisting}
 \item Run \colorbox{lightgray}{npm run build} whenever you want to transpile your code from your \textbf{src} to \textbf{lib} directories.
 \end{enumerate}
 
 \newpage
-\section{Modules}
+\section{Intermediate JavaScript Modules}
+\subsection{Hello Modules}
+JavaScript \textit{modules} are reusable pieces of code that can be exported from one program and imported for use in another program. Modules are particularly useful for a number of reasons. By separating code with similar logic into files called modules, we can:
+\begin{itemize}[leftmargin = *]
+\item find, fix, and debug code more easily;
+\item reuse and recycle defined logic in different parts of our application;
+\item keep information private and protected from other modules;
+\item and, importantly, prevent pollution of the global namespace and potential naming collisions, by cautiously selecting variables and behavior we load into a program.
+\end{itemize}
+In this chapter, we will cover two ways to implement modules in JavaScript: \href{https://nodejs.org/en/about/}{Node.js’s} \colorbox{lightgray}{module.exports} and \colorbox{lightgray}{require()} syntax, as well as the ES6 \colorbox{lightgray}{import}/\colorbox{lightgray}{export} syntax.
+
+\subsection{module.exports}
+We can get started with modules by defining a module in one file and making the module available for use in another file with Node.js \colorbox{lightgray}{module.exports} syntax. Every JavaScript file run in Node has a local \colorbox{lightgray}{module} object with an \colorbox{lightgray}{exports} property used to define what should be exported from the file. \\
+\newline
+Below is an example of how to define a module and how to export it using the statement \colorbox{lightgray}{module.exports}. In \textbf{menu.js} we write:
+\begin{lstlisting}
+let Menu = {};
+Menu.specialty = "Roasted Beet Burger with Mint Sauce";
+
+module.exports = Menu; 
+\end{lstlisting}
+Let us consider what this code means.
+\begin{enumerate}[leftmargin = *]
+\item let \colorbox{lightgray}{Menu = \{\};} creates the object that represents the module \colorbox{lightgray}{Menu}. The statement contains an uppercase variable named \colorbox{lightgray}{Menu} which is set equal to an empty object.
+\item \colorbox{lightgray}{Menu.specialty} is defined as a property of the \colorbox{lightgray}{Menu} module. We add data to the \colorbox{lightgray}{Menu} object by setting properties on that object and giving the properties a value.
+\item \colorbox{lightgray}{``Roasted Beet Burger with Mint Sauce'';} is the value stored in the \colorbox{lightgray}{Menu.specialty} property.
+\item \colorbox{lightgray}{module.exports = Menu;} exports the \colorbox{lightgray}{Menu} object as a module. \colorbox{lightgray}{module} is a variable that represents the module, and \colorbox{lightgray}{exports} exposes the module as an object.
+\end{enumerate}
+The pattern we use to export modules is thus:
+\begin{enumerate}[leftmargin = *]
+\item Create an object to represent the module.
+\item Add properties or methods to the module object.
+\item Export the module with module.exports.
+\end{enumerate}
+
+\subsection{require()}
+
+
+
+
+
+
+
+
+
+
+
+
+
 \newpage
 \section{Promises}
 \newpage

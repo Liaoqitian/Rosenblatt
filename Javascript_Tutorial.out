@@ -141,7 +141,10 @@
 \BOOKMARK [2][-]{subsection.13.8}{Babel Source Lib}{section.13}% 141
 \BOOKMARK [2][-]{subsection.13.9}{Build}{section.13}% 142
 \BOOKMARK [2][-]{subsection.13.10}{Review}{section.13}% 143
-\BOOKMARK [1][-]{section.14}{Modules}{}% 144
-\BOOKMARK [1][-]{section.15}{Promises}{}% 145
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 146
-\BOOKMARK [1][-]{section.17}{Requests}{}% 147
+\BOOKMARK [1][-]{section.14}{Intermediate JavaScript Modules}{}% 144
+\BOOKMARK [2][-]{subsection.14.1}{Hello Modules}{section.14}% 145
+\BOOKMARK [2][-]{subsection.14.2}{module.exports}{section.14}% 146
+\BOOKMARK [2][-]{subsection.14.3}{require\(\)}{section.14}% 147
+\BOOKMARK [1][-]{section.15}{Promises}{}% 148
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 149
+\BOOKMARK [1][-]{section.17}{Requests}{}% 150
