@@ -2780,6 +2780,82 @@ In the example above, the \colorbox{lightgray}{Animal} class contains the proper
 \includegraphics[scale = 0.242]{12_1}
 \centering
 \end{figure}
+Now that we have these shared properties and methods in the parent \colorbox{lightgray}{Animal} class, we can extend them to the subclass, \colorbox{lightgray}{Cat}.
+\begin{lstlisting}
+class Cat extends Animal {
+  constructor(name, usesLitter) {
+    super(name);
+    this._usesLitter = usesLitter;
+  }
+}
+\end{lstlisting}
+In the example above, we create a new class named \colorbox{lightgray}{Cat} that extends the \colorbox{lightgray}{Animal} class. Let us pay special attention to the new keywords: \colorbox{lightgray}{extends} and \colorbox{lightgray}{super}.
+\begin{itemize}[leftmargin = *]
+\item The \colorbox{lightgray}{extends} keyword makes the methods of the animal class available inside the cat class.
+\item The constructor, called when you create a new \colorbox{lightgray}{Cat} object, accepts two arguments, \colorbox{lightgray}{name} and \colorbox{lightgray}{usesLitter}.
+\item The \colorbox{lightgray}{super} keyword calls the constructor of the parent class. In this case, \colorbox{lightgray}{super(name)} passes the name argument of the \colorbox{lightgray}{Cat} class to the constructor of the \colorbox{lightgray}{Animal} class. When the \colorbox{lightgray}{Animal} constructor runs, it sets \colorbox{lightgray}{this.\_name = name;} for new \colorbox{lightgray}{Cat} instances.
+\item \colorbox{lightgray}{\_usesLitter} is a new property that is unique to the \colorbox{lightgray}{Cat} class, so we set it in the \colorbox{lightgray}{Cat} constructor.
+\end{itemize}
+Notice, we call \colorbox{lightgray}{super} on the first line of our \colorbox{lightgray}{constructor()}, then set the \colorbox{lightgray}{usesLitter} property on the second line. In a \colorbox{lightgray}{constructor()}, you must always call the \colorbox{lightgray}{super} method before you can use the \colorbox{lightgray}{this} keyword — if you do not, JavaScript will throw a reference error. To avoid reference errors, it is best practice to call \colorbox{lightgray}{super} on the first line of subclass constructors. \\
+\newline
+Below, we create a new \colorbox{lightgray}{Cat} instance and call its name with the same syntax as we did with the \colorbox{lightgray}{Dog} class:
+\begin{lstlisting}
+const bryceCat = new Cat("Bryce", false); 
+console.log(bryceCat._name); // output: Bryce
+\end{lstlisting}
+In the example above, we create a new instance the \colorbox{lightgray}{Cat} class, named \colorbox{lightgray}{bryceCat}. We pass it \colorbox{lightgray}{`Bryce'} and \colorbox{lightgray}{false} for our \colorbox{lightgray}{name} and \colorbox{lightgray}{usesLitter} arguments. When we call \colorbox{lightgray}{console.log(bryceCat.\_name)} our program prints, \colorbox{lightgray}{Bryce}. \\
+\newline
+In the example above, we abandoned best practices by calling our \colorbox{lightgray}{\_name} property directly. In the next exercise, we will address this by calling an inherited getter method for our \colorbox{lightgray}{name} property. \\
+\newline
+Now that we know how to create an object that inherits properties from a parent class let us turn our attention to methods. When we call extends in a class declaration, all of the parent methods are available to the child class. \\
+\newline
+Here, we extend our \colorbox{lightgray}{Animal} class to a \colorbox{lightgray}{Cat} subclass.
+\newpage
+\begin{lstlisting}
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+} 
+
+
+class Cat extends Animal {
+  constructor(name, usesLitter) {
+    super(name);
+    this._usesLitter = usesLitter;
+  }
+}
+
+const bryceCat = new Cat("Bryce", false);
+\end{lstlisting}
+In the example above, our \colorbox{lightgray}{Cat} class extends \colorbox{lightgray}{Animal}. As a result, the \colorbox{lightgray}{Cat} class has access to the \colorbox{lightgray}{Animal} getters and the \colorbox{lightgray}{.incrementBehavior()} method. \\
+\newline
+Also in the code above, we create a \colorbox{lightgray}{Cat} instance named \colorbox{lightgray}{bryceCat}. Because \colorbox{lightgray}{bryceCat} has access to the \colorbox{lightgray}{name} getter, the code below logs \colorbox{lightgray}{`Bryce'} to the console. 
+\begin{lstlisting}
+console.log(bryceCat.name);
+\end{lstlisting}
+Since the  \colorbox{lightgray}{extends} keyword brings all of the parent’s getters and methods into the child class, bryceCat.name accesses the name getter and returns the value saved to the name property.
+
+Now consider a more involved example and try to answer the following question: What will the code below log to the console?
+
+
+
+
+
+
 
 
 
