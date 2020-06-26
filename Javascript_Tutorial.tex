@@ -20,6 +20,13 @@
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{float}
+\usepackage{media9}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{parskip}
+
+\definecolor{theWhite}{gray}{0.9}
+\definecolor{theBlack}{gray}{0.0}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -48,6 +55,23 @@
   morestring=[b]"
 }
 
+\lstdefinelanguage{Comment}{
+  %keywords={typeof, new, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, let, log, const, console},
+  %keywordstyle=\color{blue}\bfseries,
+  %ndkeywords={class, export, boolean, throw, implements, import, this, true, false},
+  %ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{white},
+  sensitive=false,
+  %comment=[l]{//},
+  %morecomment=[s]{/*}{*/},
+  %commentstyle=\color{purple}\ttfamily,
+  %stringstyle=\color{red}\ttfamily,
+  %morestring=[b]',
+  %morestring=[b]"
+}
+
+
+
 \lstset{
    %frame = tb
    language=JavaScript,
@@ -70,28 +94,7 @@
    captionpos=b, 
    escapeinside={(*@}{@*)} 
 }
-\iffalse
 
-\lstset{frame=tb,
-  language=Javascript,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=left, %eller none
-  numberstyle=\tiny\color{codegray},
-  keywordstyle=\color{mauve},
-  commentstyle=\color{gray},
-  stringstyle=\color{orange},
-  breaklines=false,
-  breakatwhitespace=true,
-  tabsize=3,
-  escapeinside={(*@}{@*)}, 
- % backgroundcolor=\color{backcolour},  
-}
-
-\fi
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 \setlength\parindent{0pt}
@@ -2721,7 +2724,7 @@ console.log(bradford.behavior); // Logs 0 to the console
 \end{lstlisting}
 In the example above, we create two new \colorbox{lightgray}{Dog} instances, \colorbox{lightgray}{nikko} and \colorbox{lightgray}{bradford}. Because we increment the behavior of our \colorbox{lightgray}{nikko} instance, but not \colorbox{lightgray}{bradford}, accessing \colorbox{lightgray}{nikko.behavior} returns \colorbox{lightgray}{1} and accessing \colorbox{lightgray}{bradford.behavior} returns \colorbox{lightgray}{0}.
 
-\subsection{Inheritance I}
+\subsection{Inheritance}
 Imagine our doggy daycare is so successful that we decide to expand the business and open a kitty daycare. Before the daycare opens, we need to create a Cat class so we can quickly generate \colorbox{lightgray}{Cat} instances. We know that the properties in our \colorbox{lightgray}{Cat} class (\colorbox{lightgray}{name}, \colorbox{lightgray}{behavior}) are similar to the properties in our \colorbox{lightgray}{Dog} class, though, there will be some differences. \\
 \newline
 Let us say that our Cat class looks like this:
@@ -2932,10 +2935,221 @@ The example above will result in an error, because you cannot call static method
 \item Static methods are called on the class, but not on instances of the class.
 \end{itemize}
 
-
-
 \newpage
 \section{Browser Compatibility and Transpilation}
+\subsection{Introduction}
+Everyone is prompted to update your web browser every few months. A few reasons include addressing security vulnerabilities, adding features, and supporting new HTML, CSS, and JavaScript syntax. The reasons above imply there is a period before a software update is released when there are security vulnerabilities and unsupported language syntax. This chapter focuses on the latter. Specifically, how developers address the gap between the new JavaScript syntax that they use and the JavaScript syntax that web browsers recognize. \\
+\newline
+This has become a widespread concern for web developers since Ecma International, the organization responsible for standardizing JavaScript, released a new version of it in 2015, called ECMAScript2015, commonly referred to as ES6. Note, the 6 refers to the version of JavaScript and is not related to the year it was released (the previous version was ES5). Upon release, web developers quickly adopted the new ES6 syntax, as it improved readability and efficiency. However, ES6 was not supported by most web browsers, so developers ran into browser compatibility issues. \\
+\newline 
+This chapter covers two important tools for addressing browser compatibility issues.
+\begin{itemize}[leftmargin = *]
+\item caniuse.com — A website that provides data on web browser compatibility for HTML, CSS, and JavaScript features. You will learn how to use it to look up ES6 feature support.
+\item Babel — A Javascript library that you can use to convert new, unsupported JavaScript (ES6), into an older version (ES5) that is recognized by most modern browsers.
+\end{itemize}
+
+\subsection{caniuse.com}
+Since Ecma’s release of ECMAScript2015 (ES6), software companies have slowly added support for ES6 features and syntax. While most new browser versions support the majority of the ES6 library, there are still a couple sources of compatibility issues:
+\begin{itemize}[leftmargin = *]
+\item Some users have not updated to the latest, ES6 supported web browser version.
+\item A few ES6 features, like modules, are still not supported by most web browsers.
+\end{itemize}
+Because companies add support for ES6 features gradually, it is important for you to know how to look up browser support on a feature-by-feature basis. The website \href{https://caniuse.com/}{caniuse.com} is the best resource for finding browser compatibility information.
+
+In caniuse, you can enter an ES6 feature, like \colorbox{lightgray}{let}, and see the percentage of browsers that recognize it. You can also see when each major web browser (Chrome, Safari, Edge, etc.) added support for the keyword.
+
+
+%The video below shows you how to get started with caniuse.com.
+%\includemedia[width=0.6\linewidth,height=0.6\linewidth,activate=pageopen,
+%passcontext,
+%transparent,
+%addresource=caniuse.mov,
+%flashvars={source=caniuse.mov}
+%]{\includegraphics[width=0.6\linewidth]{12_1}}{VPlayer.swf}
+
+\subsection{Why ES6?}
+Before we learn how to set up a JavaScript project that converts ES6 to an older version, it is worth understanding a few of the reasons Ecma made such substantial updates. The version of JavaScript that preceded ES6 is called JavaScript ES5. Three reasons for the ES5 to ES6 updates are listed below: 
+\begin{itemize}[leftmargin = *]
+\item Readability and economy of code — The new syntax is often easier to understand (more readable) and requires fewer characters to create the same functionality (economy of code).
+\item Addresses sources of ES5 bugs — Some ES5 syntax led to common bugs. With ES6, Ecma introduced syntax that mitigates some of the most common pitfalls.
+\item A similarity to other programming languages — JavaScript ES6 is syntactically more similar to other object-oriented programming languages. This leads to less friction when experienced, non-JavaScript developers want to learn JavaScript.
+\end{itemize}
+Because ES6 addressed the above issues, Ecma knew that adoption by web developers would occur quickly, while web browser support lagged behind. To limit the impact of ES6 browser compatibility issues, Ecma made the new syntax backwards compatible, which means you can map JavaScript ES6 code to ES5.
+
+\subsection{Transpilation With Babel}
+We can manually convert ES6 code to ES5. Although manual conversion only take a few minutes, it is unsustainable as the size of the JavaScript file increases. Because ES6 is predictably backwards compatible, a collection of JavaScript programmers developed a JavaScript library called Babel that \textit{transpiles} ES6 JavaScript to ES5. \textbf{Transpilation is the process of converting one programming language to another.} In the next chapters, we will learn how to use Babel to transpile the new, easy-to-write version of JavaScript (ES6) to the old, browser-compatible version of JavaScript (ES5).
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+npm install babel-cli
+npm install babel-preset-env
+npm run build
+\end{lstlisting}
+
+\subsection{npm init}
+Next you will learn how to setup a JavaScript project that transpiles code when you run colorbox{lightgray}{npm run build} from the root directory of a JavaScript project. The first step is to place your ES6 JavaScript file in a directory called \textbf{src}. From your root directory, the path to the ES6 file is \textbf{./src/main.js}. The initial JavaScript project file structure is:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+project
+|_ src
+|___ main.js
+\end{lstlisting}
+Before we install Babel, we need to setup our project to use the \href{https://docs.npmjs.com/about-npm/index.html}{node package manager (npm)}. Developers use \textit{npm} to access and manage Node packages. Node packages are directories that contain JavaScript code written by other developers. You can use these packages to reduce duplication of work and avoid bugs.
+
+Before we can add Babel to our project directory, we need to run \colorbox{lightgray}{npm init}. The \colorbox{lightgray}{npm init} command creates a \textbf{package.json} file in the root directory. A \textbf{package.json} file contains information about the current JavaScript project. Some of this information includes:
+\begin{itemize}[leftmargin = *]
+\item Metadata — This includes a project title, description, authors, and more.
+\item A list of node packages required for the project — If another developer wants to run your project, npm looks inside \textbf{package.json} and downloads the packages in this list.
+\item Key-value pairs for command line scripts — You can use npm to run these shorthand scripts to perform some process. Later, we will add a script that runs Babel and transpiles ES6 to ES5.
+\end{itemize}
+If you have Node installed on your computer, you can create a \textbf{package.json} file by typing \colorbox{lightgray}{npm init} into the terminal. The terminal prompts you to fill in fields for the project’s metadata (name, description, etc.) You are not required to answer the prompts, though we recommend at minimum, you add your own title and description. If you do not want to fill in a field, you can press enter. npm will leave fill these fields with default values or leave them empty when it creates the \textbf{package.json} file. \\
+\newline
+After you run \colorbox{lightgray}{npm init} your directory structure will contain the following files and folders:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+project
+|_ src
+|___ main.js
+|_ package.json
+\end{lstlisting}
+
+\subsection{Install Node Packages}
+We use the npm \colorbox{lightgray}{install} command to install new Node packages locally. The \colorbox{lightgray}{install} command creates a folder called \textbf{node\_modules} and copies the package files to it. The \colorbox{lightgray}{install} command also installs all of the dependencies for the given package. \\
+\newline
+To install Babel, we need to \colorbox{lightgray}{npm install} two packages, \colorbox{lightgray}{babel-cli} and \colorbox{lightgray}{babel-preset-env}. However, npm installs over one hundred other packages that are dependencies for Babel to run properly. \\
+\newline
+We install Babel with the following two commands:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+npm install babel-cli -D
+npm install babel-preset-env -D
+\end{lstlisting}
+
+The \colorbox{lightgray}{babel-cli} package includes command line Babel tools, and the \colorbox{lightgray}{babel-preset-env} package has the code that maps any JavaScript feature, ES6 and above (ES6+), to ES5. \\
+\newline
+The \colorbox{lightgray}{-D} flag instructs npm to add each package to a property called \colorbox{lightgray}{devDependencies} in \textbf{package.json}. Once the project’s dependencies are listed in \colorbox{lightgray}{devDependencies}, other developers can run your project without installing each package separately. Instead, they can simply run \colorbox{lightgray}{npm install} — it instructs npm to look inside \textbf{package.json} and download all of the packages listed in \colorbox{lightgray}{devDependencies}. \\
+\newline
+Once you \colorbox{lightgray}{npm install} packages, you can find the Babel packages and all their dependencies in the \textbf{node\_modules} folder. The new directory structure contains the following:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+project
+|_ node_modules
+|___ .bin
+|___ ...
+|_ src 
+|___ main.js
+|_ package.json
+\end{lstlisting}
+The \colorbox{lightgray}{...} in the file structure above is a placeholder for 100+ packages that npm installed.
+
+\subsection{.babelrc}
+Now that we have downloaded the Babel packages, we need to specify the version of the source JavaScript code. We can specify the initial JavaScript version inside of a file named \textbf{.babelrc}. In your root directory, you can run \colorbox{lightgray}{touch .babelrc} to create this file. \\
+\newline
+Your project directory contains the following folders and files:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+project
+|_ node_modules
+|___ .bin
+|___ ...
+|_ src 
+|___ main.js
+|_ .babelrc
+|_ package.json
+\end{lstlisting}
+
+Inside \textbf{.babelrc} we need to define the preset for our source JavaScript file. The preset specifies the version of our initial JavaScript file. Usually, we want to transpile JavaScript code from versions ES6 and later (ES6+) to ES5. From this point on, we will refer to our source code as ES6+, because Ecma introduces new syntax with each new version of JavaScript. \\
+\newline
+To specify that we are transpiling code from an ES6+ source, we have to add the following JavaScript object into \textbf{.babelrc}:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+{
+  "presets": ["env"]
+}
+\end{lstlisting}
+When you run Babel, it looks in \textbf{.babelrc} to determine the version of the initial JavaScript file. In this case, \colorbox{lightgray}{[``env'']} instructs Babel to transpile any code from versions ES6 and later.
+
+\subsection{Babel Source Lib}
+There is one last step before we can transpile our code. We need to specify a script in \textbf{package.json} that initiates the ES6+ to ES5 transpilation. 
+
+Inside of the \textbf{package.json} file, there is a property named \colorbox{lightgray}{``scripts''} that holds an object for specifying command line shortcuts. It looks like this:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+...
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+}, ...
+\end{lstlisting}
+In the code above, the \colorbox{lightgray}{``scripts''} property contains an object with one property called \colorbox{lightgray}{``test''}. Below the \colorbox{lightgray}{``test''} property, we will add a script that runs Babel like this:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+...
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "babel src -d lib"
+}
+\end{lstlisting}
+In the \colorbox{lightgray}{``scripts''} object above, we add a property called \colorbox{lightgray}{``build''}. The property’s value, \colorbox{lightgray}{``babel src -d lib''}, is a command line method that transpiles ES6+ code to ES5. Let us consider each argument in the method call:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{babel} — The Babel command call responsible for transpiling code.
+\item \colorbox{lightgray}{src} — Instructs Babel to transpile all JavaScript code inside the src directory.
+\item \colorbox{lightgray}{-d} — Instructs Babel to write the transpiled code to a directory.
+\item \colorbox{lightgray}{lib} — Babel writes the transpiled code to a directory called lib.
+\end{itemize}
+
+\subsection{Build}
+We are ready to transpile our code. Previously, we wrote the following script in package.json:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+"build": "babel src -d lib"
+\end{lstlisting}
+Now, we need to call \colorbox{lightgray}{``build''} from the command line to transpile and write ES5 code to a directory called \colorbox{lightgray}{lib}. From the command line, we type:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+npm run build
+\end{lstlisting}
+The command above runs the \colorbox{lightgray}{build} script in \textbf{package.json}. Babel writes the ES5 code to a file named \textbf{main.js} (it is always the same name as the original file), inside of a folder called \colorbox{lightgray}{lib}. The resulting directory structure is:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+project
+|_ lib
+|___ main.js
+|_ node_modules
+|___ .bin
+|___ ...
+|_ src
+|___ main.js
+|_ .babelrc
+|_ package.json
+\end{lstlisting}
+Notice, the directory contains a new folder named \textbf{lib}, with one file, called \textbf{main.js}. \\
+\newline
+The \colorbox{lightgray}{npm run build} command will transpile all JavaScript files inside of the \textbf{src} folder. This is helpful as you build larger JavaScript projects — regardless of the number of JavaScript files, you only need to run one command (\colorbox{lightgray}{npm run build}) to transpile all of your code.
+
+\subsection{Review}
+In this chapter, we learned about browser compatibility and transpilation. Let us review the key concepts:
+\begin{itemize}[leftmargin = *]
+\item ES5 — The old JavaScript version that is supported by all modern web browsers.
+\item ES6 — The new(er) JavaScript version that is \textit{not} supported by all modern web browsers. The syntax is more readable, similar to other programming languages, and addresses the source of common bugs in ES5.
+\item caniuse.com — a website you can use to look up HTML, CSS, and JavaScript browser compatibility information.
+\item Babel — A JavaScript package that transpiles JavaScript ES6+ code to ES5.
+\item \colorbox{lightgray}{npm init} — A terminal command that creates a \textbf{package.json} file.
+\item \textbf{package.json} — A file that contains information about a JavaScript project.
+\item \colorbox{lightgray}{npm install} — A command that installs Node packages.
+\item \colorbox{lightgray}{babel-cli} — A Node package that contains command line tools for Babel.
+\item \colorbox{lightgray}{babel-preset-env} — A Node package that contains ES6+ to ES5 syntax mapping information.
+\item \textbf{.babelrc} — A file that specifies the version of the JavaScript source code.
+\item \colorbox{lightgray}{``build''} script — A \textbf{package.json} script that you use to tranpsile ES6+ code to ES5.
+\item \colorbox{lightgray}{npm run build} — A command that runs the \colorbox{lightgray}{build} script and transpiles ES6+ code to ES5.
+\end{itemize}
+For future reference, here is a list of the steps needed to set up a project for transpilation:
+\begin{enumerate}[leftmargin = *]
+\item Initialize your project using \colorbox{lightgray}{npm init} and create a directory called \textbf{src}
+\item Install babel dependencies by running
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+npm install babel-cli -D
+npm install babel-preset-env -D
+\end{lstlisting}
+\item Create a \textbf{.babelrc} file inside your project and add the following code inside it:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+{
+  "presets": ["env"]
+}
+\end{lstlisting}
+\item Add the following script to your \colorbox{lightgray}{scripts} object in \textbf{package.json}:
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+"build": "babel src -d lib"
+\end{lstlisting}
+\item Run \colorbox{lightgray}{npm run build} whenever you want to transpile your code from your \textbf{src} to \textbf{lib} directories.
+\end{enumerate}
+
 \newpage
 \section{Modules}
 \newpage

@@ -127,10 +127,21 @@
 \BOOKMARK [2][-]{subsection.12.3}{Instance}{section.12}% 127
 \BOOKMARK [2][-]{subsection.12.4}{Methods}{section.12}% 128
 \BOOKMARK [2][-]{subsection.12.5}{Method Calls}{section.12}% 129
-\BOOKMARK [2][-]{subsection.12.6}{Inheritance I}{section.12}% 130
+\BOOKMARK [2][-]{subsection.12.6}{Inheritance}{section.12}% 130
 \BOOKMARK [2][-]{subsection.12.7}{Static Methods}{section.12}% 131
-\BOOKMARK [1][-]{section.13}{Browser Compatibility and Transpilation}{}% 132
-\BOOKMARK [1][-]{section.14}{Modules}{}% 133
-\BOOKMARK [1][-]{section.15}{Promises}{}% 134
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 135
-\BOOKMARK [1][-]{section.17}{Requests}{}% 136
+\BOOKMARK [2][-]{subsection.12.8}{Review: Classes}{section.12}% 132
+\BOOKMARK [1][-]{section.13}{Browser Compatibility and Transpilation}{}% 133
+\BOOKMARK [2][-]{subsection.13.1}{Introduction}{section.13}% 134
+\BOOKMARK [2][-]{subsection.13.2}{caniuse.com}{section.13}% 135
+\BOOKMARK [2][-]{subsection.13.3}{Why ES6?}{section.13}% 136
+\BOOKMARK [2][-]{subsection.13.4}{Transpilation With Babel}{section.13}% 137
+\BOOKMARK [2][-]{subsection.13.5}{npm init}{section.13}% 138
+\BOOKMARK [2][-]{subsection.13.6}{Install Node Packages}{section.13}% 139
+\BOOKMARK [2][-]{subsection.13.7}{.babelrc}{section.13}% 140
+\BOOKMARK [2][-]{subsection.13.8}{Babel Source Lib}{section.13}% 141
+\BOOKMARK [2][-]{subsection.13.9}{Build}{section.13}% 142
+\BOOKMARK [2][-]{subsection.13.10}{Review}{section.13}% 143
+\BOOKMARK [1][-]{section.14}{Modules}{}% 144
+\BOOKMARK [1][-]{section.15}{Promises}{}% 145
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 146
+\BOOKMARK [1][-]{section.17}{Requests}{}% 147

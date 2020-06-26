@@ -39,11 +39,11 @@
 \contentsline {subsection}{\numberline {4.4}Parameters and Arguments}{22}{subsection.4.4}%
 \contentsline {subsection}{\numberline {4.5}Default Parameters}{23}{subsection.4.5}%
 \contentsline {subsection}{\numberline {4.6}Return}{24}{subsection.4.6}%
-\contentsline {subsection}{\numberline {4.7}Helper Functions}{24}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.7}Helper Functions}{25}{subsection.4.7}%
 \contentsline {subsection}{\numberline {4.8}Function Expressions}{26}{subsection.4.8}%
 \contentsline {subsection}{\numberline {4.9}Arrow Functions}{26}{subsection.4.9}%
-\contentsline {subsection}{\numberline {4.10}Concise Body Arrow Functions}{26}{subsection.4.10}%
-\contentsline {subsection}{\numberline {4.11}Review Functions}{27}{subsection.4.11}%
+\contentsline {subsection}{\numberline {4.10}Concise Body Arrow Functions}{27}{subsection.4.10}%
+\contentsline {subsection}{\numberline {4.11}Review Functions}{28}{subsection.4.11}%
 \contentsline {section}{\numberline {5}Scope}{30}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Scope}{30}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Blocks and Scope}{30}{subsection.5.2}%
@@ -61,13 +61,13 @@
 \contentsline {subsection}{\numberline {6.6}The .length property}{36}{subsection.6.6}%
 \contentsline {subsection}{\numberline {6.7}The .push() Method}{36}{subsection.6.7}%
 \contentsline {subsection}{\numberline {6.8}The .pop() Method}{37}{subsection.6.8}%
-\contentsline {subsection}{\numberline {6.9}More Array Methods}{38}{subsection.6.9}%
+\contentsline {subsection}{\numberline {6.9}More Array Methods}{37}{subsection.6.9}%
 \contentsline {subsubsection}{\numberline {6.9.1}The .shift() Method}{38}{subsubsection.6.9.1}%
 \contentsline {subsubsection}{\numberline {6.9.2}The .unshift() Method}{38}{subsubsection.6.9.2}%
 \contentsline {subsubsection}{\numberline {6.9.3}The .slice() Method}{38}{subsubsection.6.9.3}%
-\contentsline {subsection}{\numberline {6.10}Arrays and Functions}{39}{subsection.6.10}%
+\contentsline {subsection}{\numberline {6.10}Arrays and Functions}{38}{subsection.6.10}%
 \contentsline {subsection}{\numberline {6.11}Nested Arrays}{39}{subsection.6.11}%
-\contentsline {subsection}{\numberline {6.12}Review Arrays}{40}{subsection.6.12}%
+\contentsline {subsection}{\numberline {6.12}Review Arrays}{39}{subsection.6.12}%
 \contentsline {section}{\numberline {7}Loops}{41}{section.7}%
 \contentsline {subsection}{\numberline {7.1}Loops}{41}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}The For Loop}{41}{subsection.7.2}%
@@ -106,31 +106,42 @@
 \contentsline {subsection}{\numberline {10.8}Pass By Reference}{59}{subsection.10.8}%
 \contentsline {subsection}{\numberline {10.9}Looping Through Objects}{60}{subsection.10.9}%
 \contentsline {subsection}{\numberline {10.10}Review}{61}{subsection.10.10}%
-\contentsline {section}{\numberline {11}Advanced Objects}{62}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Advanced Objects Introduction}{62}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}The this Keyword}{62}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}Arrow Functions and this}{63}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11.4}Privacy}{63}{subsection.11.4}%
-\contentsline {subsection}{\numberline {11.5}Getters}{64}{subsection.11.5}%
-\contentsline {subsection}{\numberline {11.6}Setters}{65}{subsection.11.6}%
-\contentsline {subsection}{\numberline {11.7}Factory Functions}{66}{subsection.11.7}%
-\contentsline {subsection}{\numberline {11.8}Property Value Shorthand}{66}{subsection.11.8}%
-\contentsline {subsection}{\numberline {11.9}Destructured Assignment}{67}{subsection.11.9}%
-\contentsline {subsection}{\numberline {11.10}Built-in Object Methods}{68}{subsection.11.10}%
-\contentsline {subsubsection}{\numberline {11.10.1}The Object.keys() Method}{68}{subsubsection.11.10.1}%
-\contentsline {subsubsection}{\numberline {11.10.2}The Object.entries() Method}{68}{subsubsection.11.10.2}%
-\contentsline {subsubsection}{\numberline {11.10.3}The Object.assign() Method}{68}{subsubsection.11.10.3}%
-\contentsline {subsection}{\numberline {11.11}Review}{69}{subsection.11.11}%
-\contentsline {section}{\numberline {12}Classes}{70}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Introduction to Classes}{70}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Constructor}{71}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}Instance}{71}{subsection.12.3}%
-\contentsline {subsection}{\numberline {12.4}Methods}{72}{subsection.12.4}%
-\contentsline {subsection}{\numberline {12.5}Method Calls}{72}{subsection.12.5}%
-\contentsline {subsection}{\numberline {12.6}Inheritance I}{73}{subsection.12.6}%
-\contentsline {subsection}{\numberline {12.7}Static Methods}{77}{subsection.12.7}%
-\contentsline {section}{\numberline {13}Browser Compatibility and Transpilation}{79}{section.13}%
-\contentsline {section}{\numberline {14}Modules}{80}{section.14}%
-\contentsline {section}{\numberline {15}Promises}{81}{section.15}%
-\contentsline {section}{\numberline {16}Async-Await}{82}{section.16}%
-\contentsline {section}{\numberline {17}Requests}{83}{section.17}%
+\contentsline {section}{\numberline {11}Advanced Objects}{63}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Advanced Objects Introduction}{63}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}The this Keyword}{63}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Arrow Functions and this}{64}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Privacy}{64}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}Getters}{65}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}Setters}{66}{subsection.11.6}%
+\contentsline {subsection}{\numberline {11.7}Factory Functions}{67}{subsection.11.7}%
+\contentsline {subsection}{\numberline {11.8}Property Value Shorthand}{67}{subsection.11.8}%
+\contentsline {subsection}{\numberline {11.9}Destructured Assignment}{68}{subsection.11.9}%
+\contentsline {subsection}{\numberline {11.10}Built-in Object Methods}{69}{subsection.11.10}%
+\contentsline {subsubsection}{\numberline {11.10.1}The Object.keys() Method}{69}{subsubsection.11.10.1}%
+\contentsline {subsubsection}{\numberline {11.10.2}The Object.entries() Method}{69}{subsubsection.11.10.2}%
+\contentsline {subsubsection}{\numberline {11.10.3}The Object.assign() Method}{70}{subsubsection.11.10.3}%
+\contentsline {subsection}{\numberline {11.11}Review}{70}{subsection.11.11}%
+\contentsline {section}{\numberline {12}Classes}{71}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Introduction to Classes}{71}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Constructor}{72}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Instance}{72}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Methods}{73}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Method Calls}{73}{subsection.12.5}%
+\contentsline {subsection}{\numberline {12.6}Inheritance}{74}{subsection.12.6}%
+\contentsline {subsection}{\numberline {12.7}Static Methods}{79}{subsection.12.7}%
+\contentsline {subsection}{\numberline {12.8}Review: Classes}{80}{subsection.12.8}%
+\contentsline {section}{\numberline {13}Browser Compatibility and Transpilation}{81}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Introduction}{81}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}caniuse.com}{81}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Why ES6?}{81}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Transpilation With Babel}{82}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}npm init}{82}{subsection.13.5}%
+\contentsline {subsection}{\numberline {13.6}Install Node Packages}{83}{subsection.13.6}%
+\contentsline {subsection}{\numberline {13.7}.babelrc}{83}{subsection.13.7}%
+\contentsline {subsection}{\numberline {13.8}Babel Source Lib}{84}{subsection.13.8}%
+\contentsline {subsection}{\numberline {13.9}Build}{85}{subsection.13.9}%
+\contentsline {subsection}{\numberline {13.10}Review}{85}{subsection.13.10}%
+\contentsline {section}{\numberline {14}Modules}{87}{section.14}%
+\contentsline {section}{\numberline {15}Promises}{88}{section.15}%
+\contentsline {section}{\numberline {16}Async-Await}{89}{section.16}%
+\contentsline {section}{\numberline {17}Requests}{90}{section.17}%
