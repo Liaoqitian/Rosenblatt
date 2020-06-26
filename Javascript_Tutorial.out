@@ -122,8 +122,14 @@
 \BOOKMARK [3][-]{subsubsection.11.10.3}{The Object.assign\(\) Method}{subsection.11.10}% 122
 \BOOKMARK [2][-]{subsection.11.11}{Review}{section.11}% 123
 \BOOKMARK [1][-]{section.12}{Classes}{}% 124
-\BOOKMARK [1][-]{section.13}{Browser Compatibility and Transpilation}{}% 125
-\BOOKMARK [1][-]{section.14}{Modules}{}% 126
-\BOOKMARK [1][-]{section.15}{Promises}{}% 127
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 128
-\BOOKMARK [1][-]{section.17}{Requests}{}% 129
+\BOOKMARK [2][-]{subsection.12.1}{Introduction to Classes}{section.12}% 125
+\BOOKMARK [2][-]{subsection.12.2}{Constructor}{section.12}% 126
+\BOOKMARK [2][-]{subsection.12.3}{Instance}{section.12}% 127
+\BOOKMARK [2][-]{subsection.12.4}{Methods}{section.12}% 128
+\BOOKMARK [2][-]{subsection.12.5}{Method Calls}{section.12}% 129
+\BOOKMARK [2][-]{subsection.12.6}{Inheritance I}{section.12}% 130
+\BOOKMARK [1][-]{section.13}{Browser Compatibility and Transpilation}{}% 131
+\BOOKMARK [1][-]{section.14}{Modules}{}% 132
+\BOOKMARK [1][-]{section.15}{Promises}{}% 133
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 134
+\BOOKMARK [1][-]{section.17}{Requests}{}% 135

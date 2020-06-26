@@ -2572,9 +2572,218 @@ console.log(returnedTarget); // Output: Object { a: 1, b: 4, c: 5 }
 As with any concept, it is a good skill to learn how to use the documentation with objects.
 \end{itemize}
 
-
 \newpage
 \section{Classes}
+\subsection{Introduction to Classes}
+JavaScript is an \textit{object-oriented programming} (OOP) language we can use to model real-world items. In this chapter, you will learn how to make \textit{classes}. Classes are a tool that developers use to quickly produce similar objects. \\
+\newline
+Take, for example, an object representing a dog named \colorbox{lightgray}{halley}. This dog’s \colorbox{lightgray}{name} (a key) is \colorbox{lightgray}{"Halley"} (a value) and has an \colorbox{lightgray}{age} (another key) of \colorbox{lightgray}{3} (another value). We create the \colorbox{lightgray}{halley} object below:
+\begin{lstlisting}
+let halley = {
+  _name: "Halley",
+  _behavior: 0,
+
+  get name() {
+    return this._name;
+  },
+
+  get behavior() {
+    return this._behavior;
+  },
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+\end{lstlisting}
+Now, imagine you own a dog daycare and want to create a catalog of all the dogs who belong to the daycare. Instead of using the syntax above for every dog that joins the daycare, we can create a \colorbox{lightgray}{Dog} class that serves as a template for creating new \colorbox{lightgray}{Dog} objects. For each new dog, you can provide a value for their name. Afterwards, we will introduce inheritance and static methods — two features that will make your code more efficient and meaningful. 
+\begin{lstlisting}
+class Dog {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior ++;
+  }
+}
+const halley = new Dog("Halley");
+console.log(halley.name); // Print name value to console
+console.log(halley.behavior); // Print behavior value to console
+\end{lstlisting}
+
+\subsection{Constructor}
+Previously, we saw the creation of a class called \colorbox{lightgray}{Dog}, and used it to produce a \colorbox{lightgray}{Dog} object. \\
+\newline
+Although you may see similarities between class and object syntax, there is one important method that sets them apart. It is called the \textit{constructor} method. JavaScript calls the \colorbox{lightgray}{constructor()} method every time it creates a \textit{new instance} of a class. 
+\begin{lstlisting}
+class Dog {
+  constructor(name) {
+    this.name = name;
+    this.behavior = 0;
+  }
+}
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{Dog} is the name of our class. By convention, we capitalize and CamelCase class names.
+\item JavaScript will invoke the \colorbox{lightgray}{constructor()} method every time we create a new instance of our \colorbox{lightgray}{Dog} class.
+\item This \colorbox{lightgray}{constructor()} method accepts one argument, \colorbox{lightgray}{name}.
+\item Inside of the \colorbox{lightgray}{constructor()} method, we use the \colorbox{lightgray}{this} keyword. In the context of a class, \colorbox{lightgray}{this} refers to an instance of that class. In the \colorbox{lightgray}{Dog} class, we use \colorbox{lightgray}{this} to set the value of the Dog instance’s \colorbox{lightgray}{name} property to the \colorbox{lightgray}{name} argument.
+\item Under \colorbox{lightgray}{this.name}, we create a property called \colorbox{lightgray}{behavior}, which will keep track of the number of times a dog misbehaves. The \colorbox{lightgray}{behavior} property is always initialized to zero.
+\end{itemize}
+
+\subsection{Instance}
+Now, let us create class instances. An \textit{instance} is an object that contains the property names and methods of a class, but with unique property values. Let us look at our \colorbox{lightgray}{Dog} class example. 
+\begin{lstlisting}
+class Dog {
+  constructor(name) {
+    this.name = name;
+    this.behavior = 0;
+  } 
+}
+
+const halley = new Dog("Halley"); // Create new Dog instance
+console.log(halley.name); // Log the name value saved to halley
+// Output: "Halley"
+\end{lstlisting}
+Below our \colorbox{lightgray}{Dog} class, we use the \colorbox{lightgray}{new} keyword to create an instance of our \colorbox{lightgray}{Dog} class. Let us consider the line of code step-by-step.
+\begin{itemize}[leftmargin = *]
+\item We create a new variable named \colorbox{lightgray}{halley} that will store an instance of our \colorbox{lightgray}{Dog} class.
+\item We use the \colorbox{lightgray}{new} keyword to generate a new instance of the \colorbox{lightgray}{Dog} class. The \colorbox{lightgray}{new} keyword calls the \colorbox{lightgray}{constructor()}, runs the code inside of it, and then returns the new instance.
+\item We pass the \colorbox{lightgray}{`Halley'} string to the \colorbox{lightgray}{Dog} constructor, which sets the \colorbox{lightgray}{name} property to \colorbox{lightgray}{`Halley'}.
+\item Finally, we log the value saved to the \colorbox{lightgray}{name} key in our \colorbox{lightgray}{halley} object, which logs \colorbox{lightgray}{`Halley'} to the console.
+\end{itemize}
+
+\subsection{Methods}
+At this point, we have a \colorbox{lightgray}{Dog} class that spins up objects with \colorbox{lightgray}{name} and \colorbox{lightgray}{behavior} properties. Below, we will add getters and a method to bring our class to life. Class method and getter syntax is the same as it is for objects \textbf{except you can not include commas between methods}. 
+\begin{lstlisting}
+class Dog {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+\end{lstlisting}
+In the example above, we add getter methods for \colorbox{lightgray}{name} and \colorbox{lightgray}{behavior}. Notice, we also prepended our property names with underscores (\colorbox{lightgray}{\_name} and \colorbox{lightgray}{\_behavior}), which indicate these properties should not be accessed directly. Under the getters, we add a method named \colorbox{lightgray}{.incrementBehavior()}. When you call \colorbox{lightgray}{.incrementBehavior()} on a Dog instance, it adds \colorbox{lightgray}{1} to the \colorbox{lightgray}{\_behavior} property. Between each of our methods, we did not include commas.
+
+\subsection{Method Calls}
+Finally, let us use our new methods to access and manipulate data from \colorbox{lightgray}{Dog} instances.
+\begin{lstlisting}
+class Dog {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+const halley = new Dog('Halley');
+\end{lstlisting}
+In the example above, we create the \colorbox{lightgray}{Dog} class, then create an instance, and save it to a variable named \colorbox{lightgray}{halley}. The syntax for calling methods and getters on an instance is the same as calling them on an object — append the instance with a period, then the property or method name. For methods, you must also include opening and closing parentheses. \\
+\newline
+Let us take a moment to create two \colorbox{lightgray}{Dog} instances and call our \colorbox{lightgray}{.incrementBehavior()} method on one of them. 
+\begin{lstlisting}
+let nikko = new Dog("Nikko"); // Create dog named Nikko
+nikko.incrementBehavior(); // Add 1 to nikko instance's behavior
+let bradford = new Dog("Bradford"); // Create dog name Bradford
+console.log(nikko.behavior); // Logs 1 to the console
+console.log(bradford.behavior); // Logs 0 to the console
+\end{lstlisting}
+In the example above, we create two new \colorbox{lightgray}{Dog} instances, \colorbox{lightgray}{nikko} and \colorbox{lightgray}{bradford}. Because we increment the behavior of our \colorbox{lightgray}{nikko} instance, but not \colorbox{lightgray}{bradford}, accessing \colorbox{lightgray}{nikko.behavior} returns \colorbox{lightgray}{1} and accessing \colorbox{lightgray}{bradford.behavior} returns \colorbox{lightgray}{0}.
+
+\subsection{Inheritance I}
+Imagine our doggy daycare is so successful that we decide to expand the business and open a kitty daycare. Before the daycare opens, we need to create a Cat class so we can quickly generate \colorbox{lightgray}{Cat} instances. We know that the properties in our \colorbox{lightgray}{Cat} class (\colorbox{lightgray}{name}, \colorbox{lightgray}{behavior}) are similar to the properties in our \colorbox{lightgray}{Dog} class, though, there will be some differences. \\
+\newline
+Let us say that our Cat class looks like this:
+\begin{lstlisting}
+class Cat {
+  constructor(name, usesLitter) {
+    this._name = name;
+    this._usesLitter = usesLitter;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get usesLitter() {
+    return this._usesLitter;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }  
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+\end{lstlisting}
+In the example above, we create a \colorbox{lightgray}{Cat} class. It shares a couple of properties (\colorbox{lightgray}{\_name} and \colorbox{lightgray}{\_behavior}) and a method (\colorbox{lightgray}{.incrementBehavior()}) with the \colorbox{lightgray}{Dog} class from earlier chapters. The \colorbox{lightgray}{Cat} class also contains one additional property (\colorbox{lightgray}{\_usesLitter}), that holds a boolean value to indicate whether a cat can use their litter box. \\
+\newline
+When multiple classes share properties or methods, they become candidates for \textit{inheritance} — a tool developers use to decrease the amount of code they need to write. With inheritance, you can create a \textit{parent} class (also known as a superclass) with properties and methods that multiple \textit{child} classes (also known as subclasses) share. The child classes inherit the properties and methods from their parent class. \\
+\newline
+Let us abstract the shared properties and methods from our \colorbox{lightgray}{Cat} and \colorbox{lightgray}{Dog} classes into a parent class called \colorbox{lightgray}{Animal}. 
+\begin{lstlisting}
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+} 
+\end{lstlisting}
+In the example above, the \colorbox{lightgray}{Animal} class contains the properties and methods that the \colorbox{lightgray}{Cat} and \colorbox{lightgray}{Dog} classes share (\colorbox{lightgray}{name}, \colorbox{lightgray}{behavior}, \colorbox{lightgray}{.incrementBehavior()}). The diagram to the right shows the relationships we want to create between the \colorbox{lightgray}{Animal}, \colorbox{lightgray}{Cat}, and \colorbox{lightgray}{Dog} classes.
+\begin{figure}[H]
+\includegraphics[scale = 0.242]{12_1}
+\centering
+\end{figure}
+
+
+
+
 \newpage
 \section{Browser Compatibility and Transpilation}
 \newpage
