@@ -128,8 +128,9 @@
 \BOOKMARK [2][-]{subsection.12.4}{Methods}{section.12}% 128
 \BOOKMARK [2][-]{subsection.12.5}{Method Calls}{section.12}% 129
 \BOOKMARK [2][-]{subsection.12.6}{Inheritance I}{section.12}% 130
-\BOOKMARK [1][-]{section.13}{Browser Compatibility and Transpilation}{}% 131
-\BOOKMARK [1][-]{section.14}{Modules}{}% 132
-\BOOKMARK [1][-]{section.15}{Promises}{}% 133
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 134
-\BOOKMARK [1][-]{section.17}{Requests}{}% 135
+\BOOKMARK [2][-]{subsection.12.7}{Static Methods}{section.12}% 131
+\BOOKMARK [1][-]{section.13}{Browser Compatibility and Transpilation}{}% 132
+\BOOKMARK [1][-]{section.14}{Modules}{}% 133
+\BOOKMARK [1][-]{section.15}{Promises}{}% 134
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 135
+\BOOKMARK [1][-]{section.17}{Requests}{}% 136

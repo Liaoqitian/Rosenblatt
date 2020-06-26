@@ -2847,16 +2847,90 @@ Also in the code above, we create a \colorbox{lightgray}{Cat} instance named \co
 \begin{lstlisting}
 console.log(bryceCat.name);
 \end{lstlisting}
-Since the  \colorbox{lightgray}{extends} keyword brings all of the parent’s getters and methods into the child class, bryceCat.name accesses the name getter and returns the value saved to the name property.
+Since the \colorbox{lightgray}{extends} keyword brings all of the parent’s getters and methods into the child class, \colorbox{lightgray}{bryceCat.name} accesses the \colorbox{lightgray}{name} getter and returns the value saved to the \colorbox{lightgray}{name} property. \\
+\newline
+Now consider a more involved example.
+\begin{lstlisting}
+bryceCat.incrementBehavior(); // Call .incrementBehavior() on Cat instance 
+console.log(bryceCat.behavior); // Log value saved to behavior
+\end{lstlisting}
+\colorbox{lightgray}{1} is logged to the console. Let us investigate why. 
+\begin{itemize}[leftmargin = *]
+\item The \colorbox{lightgray}{Cat} class inherits the \colorbox{lightgray}{\_behavior} property, behavior getter, and the \colorbox{lightgray}{.incrementBehavior()} method from the \colorbox{lightgray}{Animal} class.
+\item When we created the \colorbox{lightgray}{bryceCat} instance, the  \colorbox{lightgray}{Animal} constructor set the  \colorbox{lightgray}{\_behavior} property to zero.
+\item The first line of code calls the inherited  \colorbox{lightgray}{.incrementBehavior()} method, which increases the  \colorbox{lightgray}{bryceCat}  \colorbox{lightgray}{\_behavior} value from zero to one.
+\item The second line of code calls the \colorbox{lightgray}{behavior} getter and logs the value saved to  \colorbox{lightgray}{\_behavior} ( \colorbox{lightgray}{1}).
+\end{itemize}
+In addition to the inherited features, child classes can contain their own properties, getters, setters, and methods. \\
+\newline
+Below, we will add a \colorbox{lightgray}{usesLitter} getter. The syntax for creating getters, setters, and methods is the same as it is in any other class.
+\begin{lstlisting}
+class Cat extends Animal {
+  constructor(name, usesLitter) {
+    super(name);
+    this._usesLitter = usesLitter;
+  }
 
-Now consider a more involved example and try to answer the following question: What will the code below log to the console?
+  get usesLitter() {
+    return this._usesLitter;
+  }
+}
+\end{lstlisting}
+In the example above, we create a \colorbox{lightgray}{usesLitter} getter in the \colorbox{lightgray}{Cat} class that returns the value saved to \colorbox{lightgray}{\_usesLitter}.
+Compare the \colorbox{lightgray}{Cat} class above to the one we created without inheritance, we decreased the number of lines required to create the \colorbox{lightgray}{Cat} class by about half. It did require an extra class (\colorbox{lightgray}{Animal}). However, the benefits (time saved, readability, efficiency) of inheritance grow as the number and size of your subclasses increase. One benefit is that when you need to change a method or property that multiple classes share, you can change the parent class, instead of each subclass. \\
+\newline
+Let us see how we would create an additional subclass, called \colorbox{lightgray}{Dog}. 
+\begin{lstlisting}
+class Dog extends Animal {
+  constructor(name) {
+    super(name);
+  }
+}
+\end{lstlisting}
+This \colorbox{lightgray}{Dog} class has access to the same properties, getters, setters, and methods as the \colorbox{lightgray}{Dog} class we made without inheritance, and is a quarter the size. Now that we have abstracted animal daycare features, it’s easy to see how you can extend Animal to support other classes, like Rabbit, Bird or Snake.
 
+\subsection{Static Methods} 
+Sometimes you will want a class to have methods that are not available in individual instances, but that you can call directly from the class.
 
+Take the \colorbox{lightgray}{Date} class, for example — you can both create \colorbox{lightgray}{Date} instances to represent whatever date you want, and call static methods, like \colorbox{lightgray}{Date.now()} which returns the current date, directly from the class. The \colorbox{lightgray}{.now()} method is static, so you can call it directly from the class, but not from an instance of the class.
 
+Let us see how to use the \colorbox{lightgray}{static} keyword to create a static method called \colorbox{lightgray}{generateName} method in our \colorbox{lightgray}{Animal} class:
+\begin{lstlisting}
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
 
+  static generateName() {
+    const names = ["Angel", "Spike", "Buffy", "Willow", "Tara"];
+    const randomNumber = Math.floor(Math.random()*5);
+    return names[randomNumber];
+  }
+} 
+\end{lstlisting}
+In the example above, we create a \colorbox{lightgray}{static} method called \colorbox{lightgray}{.generateName()} that returns a random name when it is called. Because of the \colorbox{lightgray}{static} keyword, we can only access \colorbox{lightgray}{.generateName()} by appending it to the \colorbox{lightgray}{Animal} class. \\
+\newline
+We call the \colorbox{lightgray}{.generateName()} method with the following syntax:
+\begin{lstlisting}
+console.log(Animal.generateName()); // returns a name
+\end{lstlisting}
+You cannot access the \colorbox{lightgray}{.generateName()} method from instances of the \colorbox{lightgray}{Animal} class or instances of its subclasses.
+\begin{lstlisting}
+const tyson = new Animal("Tyson"); 
+tyson.generateName(); // TypeError
+\end{lstlisting}
+The example above will result in an error, because you cannot call static methods (\colorbox{lightgray}{.generateName()}) on an instance (\colorbox{lightgray}{tyson}).
 
-
-
+\subsection{Review: Classes}
+\begin{itemize}[leftmargin = *]
+\item \textit{Classes} are templates for objects.
+\item Javascript calls a \textit{constructor} method when we create a new instance of a class.
+\item \textit{Inheritance} is when we create a parent class with properties and methods that we can extend to child classes.
+\item We use the \colorbox{lightgray}{extends} keyword to create a subclass.
+\item The \colorbox{lightgray}{super} keyword calls the \colorbox{lightgray}{constructor()} of a parent class.
+\item Static methods are called on the class, but not on instances of the class.
+\end{itemize}
 
 
 
