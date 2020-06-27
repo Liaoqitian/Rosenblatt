@@ -3321,6 +3321,107 @@ To import variables that are declared, we simply use the original syntax that de
 import { specialty, isVegetarian } from "menu";
 \end{lstlisting}
 
+\subsection{Export as}
+Named exports also conveniently offer a way to change the name of variables when we export or import them. We can do this with the \colorbox{lightgray}{as} keyword. Let us see how this works. In our \textbf{menu.js} example:
+\begin{lstlisting}
+let specialty = "";
+let isVegetarian = function() {
+}; 
+let isLowSodium = function() {
+}; 
+
+export { specialty as chefsSpecial, isVegetarian as isVeg, isLowSodium };
+\end{lstlisting}
+In the above example, take a look at the \colorbox{lightgray}{export} statement at the bottom of the of the file.
+\begin{enumerate}[leftmargin = *]
+\item The \colorbox{lightgray}{as} keyword allows us to give a variable name an alias as demonstrated in \colorbox{lightgray}{specialty as chefsSpecial} and \colorbox{lightgray}{isVegetarian as isVeg}.
+\item Since we did not give \colorbox{lightgray}{isLowSodium} an alias, it will maintain its original name.
+\end{enumerate}
+
+\subsection{Import as}
+To import named export aliases with the \colorbox{lightgray}{as} keyword, we add the aliased variable in our import statement.
+\begin{lstlisting}
+import { chefsSpecial, isVeg } from "./menu";
+\end{lstlisting}
+In \textbf{orders.js}
+\begin{enumerate}[leftmargin = *]
+\item We import \colorbox{lightgray}{chefsSpecial} and \colorbox{lightgray}{isVeg} from the \colorbox{lightgray}{Menu} object.
+\item Here, note that we have an option to alias an object that was not previously aliased when exported. For example, the \colorbox{lightgray}{isLowSodium} object that we exported could be aliased with the as keyword when imported: 
+\end{enumerate}
+\begin{lstlisting}
+import {isLowSodium as saltFree} from "Menu";
+\end{lstlisting}
+Another way of using aliases is to import the entire module as an alias:
+\begin{lstlisting}
+import * as Carte from "./menu";
+
+Carte.chefsSpecial;
+Carte.isVeg();
+Carte.isLowSodium(); 
+\end{lstlisting}
+\begin{enumerate}[leftmargin = *]
+\item This allows us to import an entire module from \textbf{menu.js} as an alias \colorbox{lightgray}{Carte}.
+\item In this example, whatever name we exported would be available to us as properties of that module. For example, if we exported the aliases \colorbox{lightgray}{chefsSpecial} and \colorbox{lightgray}{isVeg}, these would be available to us. If we did not give an alias to \colorbox{lightgray}{isLowSodium}, we would call it as defined on the \colorbox{lightgray}{Carte} module.
+\end{enumerate}
+
+\subsection{Combining Export Statements}
+We can also use named exports and default exports together. In \textbf{menu.js}:
+\begin{lstlisting}
+let specialty = "";
+function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+function isGlutenFree() {
+};
+
+export { specialty as chefsSpecial, isVegetarian as isVeg };
+export default isGlutenFree;
+\end{lstlisting}
+Here we use the keyword \colorbox{lightgray}{export} to export the named exports at the bottom of the file. Meanwhile, we export the \colorbox{lightgray}{isGlutenFree} variable using the \colorbox{lightgray}{export default} syntax. This would also work if we exported most of the variables as declared and exported others with the \colorbox{lightgray}{export default} syntax.
+\begin{lstlisting}
+export let Menu = {};
+
+export let specialty = "";
+export let isVegetarian = function() {
+}; 
+export let isLowSodium = function() {
+}; 
+let isGlutenFree = function() {
+};
+
+export default isGlutenFree;
+\end{lstlisting}
+Here we use the \colorbox{lightgray}{export} keyword to export the variables upon declaration, and again export the \colorbox{lightgray}{isGlutenFree} variable using the \colorbox{lightgray}{export default syntax}. \\
+\newline
+While it is better to avoid combining two methods of exporting, it is useful on occasion. For example, if you suspect developers may only be interested in importing a specific function and will not need to import the entire default export.
+
+\subsection{Combining Import Statements}
+We can import the collection of objects and functions with the same data. We can use an \colorbox{lightgray}{import} keyword to import both types of variables as such:
+\begin{lstlisting}
+import { specialty, isVegetarian, isLowSodium } from "./menu";
+
+import GlutenFree from "./menu";
+\end{lstlisting}
+
+\subsection{Review}
+Let us review what we learned about JavaScript modules: \\
+\newline
+\textit{Modules} in Node.js are reusable pieces of code that can be exported from one program and imported for use in another program.
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{module.exports} exports the module for use in another program.
+\item \colorbox{lightgray}{require()} imports the module for use in the current program.
+\end{itemize}
+ES6 introduced a more flexible, easier syntax to export modules:
+\begin{itemize}[leftmargin = *]
+\item default exports use \colorbox{lightgray}{export default} to export JavaScript objects, functions, and primitive data types.
+\item named exports use the \colorbox{lightgray}{export} keyword to export data in variables.
+\item named exports can be aliased with the \colorbox{lightgray}{as} keyword.
+\item \colorbox{lightgray}{import} is a keyword that imports any object, function, or data type.
+\end{itemize}
+
+
+
 \newpage
 \section{Promises}
 \newpage

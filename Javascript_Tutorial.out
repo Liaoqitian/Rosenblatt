@@ -152,6 +152,11 @@
 \BOOKMARK [2][-]{subsection.14.8}{Named Imports}{section.14}% 152
 \BOOKMARK [2][-]{subsection.14.9}{Export Named Exports}{section.14}% 153
 \BOOKMARK [2][-]{subsection.14.10}{Import Named Imports}{section.14}% 154
-\BOOKMARK [1][-]{section.15}{Promises}{}% 155
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 156
-\BOOKMARK [1][-]{section.17}{Requests}{}% 157
+\BOOKMARK [2][-]{subsection.14.11}{Export as}{section.14}% 155
+\BOOKMARK [2][-]{subsection.14.12}{Import as}{section.14}% 156
+\BOOKMARK [2][-]{subsection.14.13}{Combining Export Statements}{section.14}% 157
+\BOOKMARK [2][-]{subsection.14.14}{Combining Import Statements}{section.14}% 158
+\BOOKMARK [2][-]{subsection.14.15}{Review}{section.14}% 159
+\BOOKMARK [1][-]{section.15}{Promises}{}% 160
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 161
+\BOOKMARK [1][-]{section.17}{Requests}{}% 162
