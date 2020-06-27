@@ -3187,18 +3187,139 @@ The pattern we use to export modules is thus:
 \end{enumerate}
 
 \subsection{require()}
+To make use of the exported module and the behavior we define within it, we import the module into another file. In Node.js, use the \colorbox{lightgray}{require()} function to import modules. \\
+\newline
+For instance, say we want the module to control the menu’s data and behavior, and we want a separate file to handle placing an order. We would create a separate file \textbf{order.js} and import the \colorbox{lightgray}{Menu} module from \textbf{menu.js} to \textbf{order.js} using \colorbox{lightgray}{require()}. \colorbox{lightgray}{require()} takes a file path argument pointing to the original module file. \\
+\newline
+In \textbf{order.js} we would write:
+\begin{lstlisting}
+const Menu = require("./menu.js");
 
+function placeOrder() {
+  console.log("My order is: " + Menu.specialty);
+}
 
+placeOrder();
+\end{lstlisting}
+We now have the entire behavior of \colorbox{lightgray}{Menu} available in \textbf{order.js}. Here, we notice:
+\begin{enumerate}[leftmargin = *]
+\item In \textbf{order.js} we import the module by creating a \colorbox{lightgray}{const} variable called \colorbox{lightgray}{Menu} and setting it equal to the value of the \colorbox{lightgray}{require()} function. We can set the name of this variable to anything we like, such as \colorbox{lightgray}{menuItems}. 
+\item \colorbox{lightgray}{require()} is a JavaScript function that loads a module. Its argument is the file path of the module: \colorbox{lightgray}{./menu.js}. With \colorbox{lightgray}{require()}, the \colorbox{lightgray}{.js} extension is optional and will be assumed if it is not included.
+\item The \colorbox{lightgray}{placeOrder()} function then uses the \colorbox{lightgray}{Menu} module. By calling \colorbox{lightgray}{Menu.specialty}, we access the property \colorbox{lightgray}{specialty} defined in the \colorbox{lightgray}{Menu} module.
+\end{enumerate}
+Taking a closer look, the pattern to import a module is:
+\begin{enumerate}[leftmargin = *]
+\item Import the module with \colorbox{lightgray}{require()} and assign it to a local variable.
+\item Use the module and its properties within a program.
+\end{enumerate}
 
+\subsection{module.exports II}
+We can also wrap any collection of data and functions in an object, and export the object using \colorbox{lightgray}{module.exports}. In \textbf{menu.js}, we could write:
+\begin{lstlisting}
+module.exports = {
+  specialty: "Roasted Beet Burger with Mint Sauce",
+  getSpecialty: function() {
+    return this.specialty;
+  } 
+}; 
+\end{lstlisting}
+In the above code, notice:
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{module.exports} exposes the current module as an object.
+\item \colorbox{lightgray}{specialty} and \colorbox{lightgray}{getSpecialty} are properties on the object.
+\end{enumerate}
+Then in \textbf{order.js}, we write:
+\begin{lstlisting}
+const Menu = require("./menu.js");
 
+console.log(Menu.getSpecialty());
+\end{lstlisting}
+Here we can still access the behavior in the \colorbox{lightgray}{Menu} module.
 
+\subsection{export default}
+Node.js supports \colorbox{lightgray}{require()}/\colorbox{lightgray}{module.exports}, but as of ES6, JavaScript supports a new more readable and flexible syntax for exporting modules. These are usually broken down into one of two techniques, \textit{default export} and \textit{named exports}. \\
+\newline
+We will begin with the first syntax, default export. The default export syntax works similarly to the \colorbox{lightgray}{module.exports} syntax, allowing us to export one module per file. \\
+\newline
+Let us look at an example in \textbf{menu.js}.
+\begin{lstlisting}
+let Menu = {};
 
+export default Menu;
+\end{lstlisting}
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{export default} uses the JavaScript \colorbox{lightgray}{export} statement to export JavaScript objects, functions, and primitive data types.
+\item \colorbox{lightgray}{Menu} refers to the name of the \colorbox{lightgray}{Menu} object, the object that we are setting the properties on within our modules.
+\end{enumerate}
+When using ES6 syntax, we use \colorbox{lightgray}{export default} in place of \colorbox{lightgray}{module.exports}. Node.js does not support \colorbox{lightgray}{export default} by default, so \colorbox{lightgray}{module.exports} is usually used for Node.js development and ES6 syntax is used for front-end development. As with most ES6 features, it is common to transpile code since ES6 is \href{https://caniuse.com/#search=sd}{not supported by all browsers}.
 
+\subsection{import}
+ES6 module syntax also introduces the \colorbox{lightgray}{import} keyword for importing objects. In our \textbf{order.js} example, we import an object like this:
+\begin{lstlisting}
+import Menu from "./menu";
+\end{lstlisting}
+\begin{enumerate}[leftmargin = *]
+\item The \colorbox{lightgray}{import} keyword begins the statement.
+\item The keyword \colorbox{lightgray}{Menu} here specifies the name of the variable to store the default export in.
+\item \colorbox{lightgray}{from} specifies where to load the module from.
+\item \colorbox{lightgray}{`./menu'} is the name of the module to load. When dealing with local files, it specifically refers to the name of the file without the extension of the file.
+\end{enumerate}
+We can then continue using the \colorbox{lightgray}{Menu} module in the \textbf{order.js} file.
 
+\subsection{Named Exports}
+ES6 introduced a second common approach to export modules. In addition to \colorbox{lightgray}{export default}, \textit{named exports} allow us to export data through the use of variables. \\
+\newline
+Let us see how this works. In \textbf{menu.js} we would be sure to give each piece of data a distinct variable name:
+\begin{lstlisting}
+let specialty = "";
+function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
 
+export { specialty, isVegetarian };
+\end{lstlisting}
+\begin{enumerate}[leftmargin = *]
+\item Notice that, when we use named exports, we are not setting the properties on an object. Each export is stored in its own variable.
+\item \colorbox{lightgray}{specialty} is a string object, while \colorbox{lightgray}{isVegetarian} and \colorbox{lightgray}{isLowSodium} are objects in the form of functions. Recall that in JavaScript, every function is in fact a function object.
+\item \colorbox{lightgray}{export \{ specialty, isVegetarian \};} exports objects by their variable names. Notice the keyword \colorbox{lightgray}{export} is the prefix.
+\item \colorbox{lightgray}{specialty} and \colorbox{lightgray}{isVegetarian} are exported, while \colorbox{lightgray}{isLowSodium} is not exported, since it is not specified in the export syntax.
+\end{enumerate}
 
+\subsection{Named Imports}
+To import objects stored in a variable, we use the \colorbox{lightgray}{import} keyword and include the variables in a set of \colorbox{lightgray}{\{\}}. In the \textbf{order.js} file, for example, we would write:
+\begin{lstlisting}
+import { specialty, isVegetarian } from "./menu";
 
+console.log(specialty);
+\end{lstlisting}
+\begin{enumerate}[leftmargin = *]
+\item Here \colorbox{lightgray}{specialty} and \colorbox{lightgray}{isVegetarian} are imported.
+\item If we did not want to import either of these variables, we could omit them from the \colorbox{lightgray}{import} statement.
+\item We can then use these objects as in within our code. For example, we would use \colorbox{lightgray}{specialty} instead of \colorbox{lightgray}{Menu.specialty}.
+\end{enumerate}
 
+\subsection{Export Named Exports}
+Named exports are also distinct in that they can be exported as soon as they are declared, by placing the keyword \colorbox{lightgray}{export} in front of variable declarations. \\
+\newline
+In \textbf{menu.js}
+\begin{lstlisting}
+export let specialty = "";
+export function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+\end{lstlisting}
+\begin{enumerate}[leftmargin = *]
+\item The \colorbox{lightgray}{export} keyword allows us to export objects upon declaration, as shown in \colorbox{lightgray}{export let specialty} and \colorbox{lightgray}{export function isVegetarian() \{\}}.
+\item We no longer need an \colorbox{lightgray}{export} statement at the bottom of our file, since this behavior is handled above.
+\end{enumerate}
+
+\subsection{Import Named Imports}
+To import variables that are declared, we simply use the original syntax that describes the variable name. In other words, exporting upon declaration does not have an impact on how we import the variables.
+\begin{lstlisting}
+import { specialty, isVegetarian } from "menu";
+\end{lstlisting}
 
 \newpage
 \section{Promises}

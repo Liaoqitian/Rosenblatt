@@ -145,6 +145,13 @@
 \BOOKMARK [2][-]{subsection.14.1}{Hello Modules}{section.14}% 145
 \BOOKMARK [2][-]{subsection.14.2}{module.exports}{section.14}% 146
 \BOOKMARK [2][-]{subsection.14.3}{require\(\)}{section.14}% 147
-\BOOKMARK [1][-]{section.15}{Promises}{}% 148
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 149
-\BOOKMARK [1][-]{section.17}{Requests}{}% 150
+\BOOKMARK [2][-]{subsection.14.4}{module.exports II}{section.14}% 148
+\BOOKMARK [2][-]{subsection.14.5}{export default}{section.14}% 149
+\BOOKMARK [2][-]{subsection.14.6}{import}{section.14}% 150
+\BOOKMARK [2][-]{subsection.14.7}{Named Exports}{section.14}% 151
+\BOOKMARK [2][-]{subsection.14.8}{Named Imports}{section.14}% 152
+\BOOKMARK [2][-]{subsection.14.9}{Export Named Exports}{section.14}% 153
+\BOOKMARK [2][-]{subsection.14.10}{Import Named Imports}{section.14}% 154
+\BOOKMARK [1][-]{section.15}{Promises}{}% 155
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 156
+\BOOKMARK [1][-]{section.17}{Requests}{}% 157
