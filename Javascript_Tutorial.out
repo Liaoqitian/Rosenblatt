@@ -163,5 +163,11 @@
 \BOOKMARK [2][-]{subsection.15.3}{Constructing a Promise Object}{section.15}% 163
 \BOOKMARK [2][-]{subsection.15.4}{The Node setTimeout\(\) Function}{section.15}% 164
 \BOOKMARK [2][-]{subsection.15.5}{Consuming Promises}{section.15}% 165
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 166
-\BOOKMARK [1][-]{section.17}{Requests}{}% 167
+\BOOKMARK [2][-]{subsection.15.6}{The onFulfilled and onRejected Functions}{section.15}% 166
+\BOOKMARK [2][-]{subsection.15.7}{Using catch\(\) with Promises}{section.15}% 167
+\BOOKMARK [2][-]{subsection.15.8}{Chaining Multiple Promises}{section.15}% 168
+\BOOKMARK [2][-]{subsection.15.9}{Avoiding Common Mistakes}{section.15}% 169
+\BOOKMARK [2][-]{subsection.15.10}{Using Promise.all\(\)}{section.15}% 170
+\BOOKMARK [2][-]{subsection.15.11}{Review}{section.15}% 171
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 172
+\BOOKMARK [1][-]{section.17}{Requests}{}% 173

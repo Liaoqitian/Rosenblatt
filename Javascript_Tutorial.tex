@@ -3523,12 +3523,243 @@ In the case of our dishwasher promise, the dishwasher will run \textbf{then}:
 \item The first handler, sometimes called \colorbox{lightgray}{onFulfilled}, is a \textit{success handler}, and it should contain the logic for the promise resolving.
 \item The second handler, sometimes called \colorbox{lightgray}{onRejected}, is a \textit{failure handler}, and it should contain the logic for the promise rejecting.
 \end{itemize}
-We can invoke \colorbox{lightgray}{.then()} with one, both, or neither handler. This allows for flexibility, but it can also make for tricky debugging. If the appropriate handler is not provided, instead of throwing an error, \colorbox{lightgray}{.then()} will just return a promise with the same settled value as the promise it was called on. One important feature of \colorbox{lightgray}{.then()} is that it always returns a promise. We will return to this in more detail in a later exercise and explore why it’s so important.
+We can invoke \colorbox{lightgray}{.then()} with one, both, or neither handler. This allows for flexibility, but it can also make for tricky debugging. If the appropriate handler is not provided, instead of throwing an error, \colorbox{lightgray}{.then()} will just return a promise with the same settled value as the promise it was called on. One important feature of \colorbox{lightgray}{.then()} is that it always returns a promise. 
+\begin{figure}[H]
+\includegraphics[scale = 0.27]{15_1}
+\centering
+\end{figure}
 
+\subsection{The onFulfilled and onRejected Functions}
+To handle a “successful” promise, or a promise that resolved, we invoke \colorbox{lightgray}{.then()} on the promise, passing in a success handler callback function:
+\begin{lstlisting}
+const prom = new Promise((resolve, reject) => {
+  resolve("Yay!");
+});
 
+const handleSuccess = (resolvedValue) => {
+  console.log(resolvedValue);
+};
 
+prom.then(handleSuccess); // Prints: "Yay!"
+\end{lstlisting}
+Let us break down what is happening in the example code:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{prom} is a promise which will resolve to \colorbox{lightgray}{"Yay!"}.
+\item We define a function, \colorbox{lightgray}{handleSuccess()}, which prints the argument passed to it.
+\item We invoke prom's \colorbox{lightgray}{.then()} function passing in our \colorbox{lightgray}{handleSuccess()} function.
+\item Since prom resolves, \colorbox{lightgray}{handleSuccess()} is invoked with \colorbox{lightgray}{prom}'s resolved value, \colorbox{lightgray}{"Yay"}, so \colorbox{lightgray}{"Yay"} is logged to the console.
+\end{itemize}
+With typical promise consumption, we will not know whether a promise will resolve or reject, so we will need to provide the logic for either case. We can pass both an \colorbox{lightgray}{onFulfilled} and \colorbox{lightgray}{onRejected} callback to \colorbox{lightgray}{.then()}.
+\begin{lstlisting}
+let prom = new Promise((resolve, reject) => {
+  let num = Math.random();
+  if (num < .5 ){
+    resolve("Yay!");
+  } else {
+    reject("Ohhh noooo!");
+  }
+});
 
+const handleSuccess = (resolvedValue) => {
+  console.log(resolvedValue);
+};
 
+const handleFailure = (rejectionReason) => {
+  console.log(rejectionReason);
+};
+
+prom.then(handleSuccess, handleFailure);
+\end{lstlisting}
+Let us break down what is happening in the example code:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{prom} is a promise which will randomly either resolve with \colorbox{lightgray}{"Yay!"} or reject with \colorbox{lightgray}{"Ohhh noooo!"}.
+\item We pass two handler functions to \colorbox{lightgray}{.then()}. The first will be invoked with \colorbox{lightgray}{"Yay!"} if the promise resolves, and the second will be invoked with \colorbox{lightgray}{"Ohhh noooo!"} if the promise rejects.
+\end{itemize}
+
+\subsection{Using catch() with Promises}
+One way to write cleaner code is to follow a principle called \textit{separation of concerns}. Separation of concerns means organizing code into distinct sections each handling a specific task. It enables us to quickly navigate our code and know where to look if something is not working. \\
+\newline
+Remember, \colorbox{lightgray}{.then()} will return a promise with the same settled value as the promise it was called on if no appropriate handler was provided. This implementation allows us to separate our resolved logic from our rejected logic. Instead of passing both handlers into one \colorbox{lightgray}{.then()}, we can chain a second \colorbox{lightgray}{.then()} with a failure handler to a first \colorbox{lightgray}{.then()} with a success handler and both cases will be handled.
+\begin{lstlisting}
+prom
+  .then((resolvedValue) => {
+    console.log(resolvedValue);
+  })
+  .then(null, (rejectionReason) => {
+    console.log(rejectionReason);
+  });
+\end{lstlisting}
+Since JavaScript does not mind whitespace, we follow a common convention of putting each part of this chain on a new line to make it easier to read. To create even more readable code, we can use a different promise function: \colorbox{lightgray}{.catch()}. \\
+\newline
+The \colorbox{lightgray}{.catch()} function takes only one argument, \colorbox{lightgray}{onRejected}. In the case of a rejected promise, this failure handler will be invoked with the reason for rejection. Using \colorbox{lightgray}{.catch()} accomplishes the same thing as using a \colorbox{lightgray}{.then()} with only a failure handler. \\
+\newline
+Let us look at an example using \colorbox{lightgray}{.catch()}:
+\begin{lstlisting}
+prom
+  .then((resolvedValue) => {
+    console.log(resolvedValue);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
+\end{lstlisting}
+Let us break down what is happening in the example code:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{prom} is a promise which randomly either resolves with \colorbox{lightgray}{"Yay!"} or rejects with \colorbox{lightgray}{"Ohhh noooo!"}.
+\item We pass a success handler to \colorbox{lightgray}{.then()} and a failure handler to \colorbox{lightgray}{.catch()}.
+\item If the promise resolves, \colorbox{lightgray}{.then()}'s success handler will be invoked with \colorbox{lightgray}{"Yay!"}.
+\item If the promise rejects, \colorbox{lightgray}{.then()} will return a promise with the same rejection reason as the original promise and \colorbox{lightgray}{.catch()}'s failure handler will be invoked with that rejection reason.
+\end{itemize}
+
+\subsection{Chaining Multiple Promises}
+One common pattern we will see with asynchronous programming is multiple operations which depend on each other to execute or that must be executed in a certain order. We might make one request to a database and use the data returned to us to make another request and so on. Let us illustrate this with another cleaning example, washing clothes: \\
+\newline
+We take our dirty clothes and put them in the washing machine. If the clothes are cleaned, \textbf{then} we will want to put them in the dryer. After the dryer runs, if the clothes are dry, \textbf{then} we can fold them and put them away. \\
+\newline
+This process of chaining promises together is called \textit{composition}. Promises are designed with composition in mind. Here is a simple promise chain in code:
+\begin{lstlisting}
+firstPromiseFunction()
+.then((firstResolveVal) => {
+  return secondPromiseFunction(firstResolveVal);
+})
+.then((secondResolveVal) => {
+  console.log(secondResolveVal);
+});
+\end{lstlisting}
+Let us break down what is happening in the example:
+\begin{itemize}[leftmargin = *]
+\item We invoke a function \colorbox{lightgray}{firstPromiseFunction()} which returns a promise.
+\item We invoke \colorbox{lightgray}{.then()} with an anonymous function as the success handler.
+\item Inside the success handler we \textbf{return} a new promise— the result of invoking a second function, \colorbox{lightgray}{secondPromiseFunction()} with the first promise’s resolved value.
+\item We invoke a second \colorbox{lightgray}{.then()} to handle the logic for the second promise settling.
+\item Inside that \colorbox{lightgray}{.then()}, we have a success handler which will log the second promise’s resolved value to the console.
+\end{itemize}
+In order for our chain to work properly, we had to \colorbox{lightgray}{return} the promise \colorbox{lightgray}{secondPromiseFunction(firstResolveVal)}. This ensured that the return value of the first \colorbox{lightgray}{.then()} was our second promise rather than the default return of a new promise with the same settled value as the initial. \\
+\newline
+Let us look at a more comprehensive example. 
+\begin{lstlisting}
+const {checkInventory, processPayment, shipOrder} = require("./library.js");
+
+const order = {
+  items: [["sunglasses", 1], ["bags", 2]],
+  giftcardBalance: 79.82
+};
+
+checkInventory(order)
+.then((resolvedValueArray) => {
+  return processPayment(resolvedValueArray); 
+})
+.then((resolvedValueArray) => {
+  return shipOrder(resolvedValueArray); 
+})
+.then((successMessage) => {
+  console.log(successMessage);
+})
+.catch((errorMessage) => {
+  console.log(errorMessage);
+});
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{checkInventory()} expects an \colorbox{lightgray}{order} argument and returns a promise. If there are enough items in stock to fill the order, the promise will resolve to an array. The first element in the resolved value array will be the same \colorbox{lightgray}{order} and the second element will be the total cost of the order as a number. 
+\item \colorbox{lightgray}{processPayment()} expects an array argument with the \colorbox{lightgray}{order} as the first element and the purchase total as the second. This function returns a promise. If there is a large enough balance on the giftcard associated with the order, it will resolve to an array. The first element in the resolved value array will be the same \colorbox{lightgray}{order} and the second element will be a tracking number. 
+\item \colorbox{lightgray}{shipOrder()} expects an array argument with the \colorbox{lightgray}{order} as the first element and a tracking number as the second. It returns a promise which resolves to a string confirming the order has shipped.
+\end{itemize}
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+$ node app.js
+All of the items are in stock. The total cost of the order is 35.97.
+Payment processed with giftcard. Generating shipping label.
+The order has been shipped. The tracking number is: 652449.
+\end{lstlisting}
+
+\subsection{Avoiding Common Mistakes}
+Promise composition allows for much more readable code than the nested callback syntax that preceded it. However, it can still be easy to make mistakes. Here, we will go over two common mistakes with promise composition. \\
+\newline
+\textbf{Mistake 1}: Nesting promises instead of chaining them.
+\begin{lstlisting}
+returnsFirstPromise()
+.then((firstResolveVal) => {
+  return returnsSecondValue(firstResolveVal)
+    .then((secondResolveVal) => {
+      console.log(secondResolveVal);
+    })
+})
+\end{lstlisting}
+Let us break down what is happening in the above code:
+\begin{itemize}[leftmargin = *]
+\item We invoke \colorbox{lightgray}{returnsFirstPromise()} which returns a promise.
+\item We invoke \colorbox{lightgray}{.then()} with a success handler.
+\item Inside the success handler, we invoke \colorbox{lightgray}{returnsSecondValue()} with \colorbox{lightgray}{firstResolveVal} which will return a new promise.
+\item We invoke a second \colorbox{lightgray}{.then()} to handle the logic for the second promise settling all \textbf{inside} the first \colorbox{lightgray}{then()}.
+\item Inside that second \colorbox{lightgray}{.then()}, we have a success handler which will log the second promise’s resolved value to the console.
+\end{itemize}
+Instead of having a clean chain of promises, we have nested the logic for one inside the logic of the other. Imagine if we were handling five or ten promises. \\
+\newline
+\textbf{Mistake 2}: Forgetting to \colorbox{lightgray}{return} a promise.
+\begin{lstlisting}
+returnsFirstPromise()
+.then((firstResolveVal) => {
+  returnsSecondValue(firstResolveVal)
+})
+.then((someVal) => {
+  console.log(someVal);
+})
+\end{lstlisting}
+Let us break down what is happening in the example:
+\begin{itemize}[leftmargin = *]
+\item We invoke \colorbox{lightgray}{returnsFirstPromise()} which returns a promise.
+\item We invoke \colorbox{lightgray}{.then()} with a success handler.
+\item Inside the success handler, we create our second promise, but we forget to \colorbox{lightgray}{return} it. 
+\item We invoke a second \colorbox{lightgray}{.then()}. It is supposed to handle the logic for the second promise, but since we did not return, this \colorbox{lightgray}{.then()} is invoked on a promise with the same settled value as the original promise.
+\end{itemize}
+Since forgetting to return our promise will not throw an error, this can be a really tricky thing to debug. 
+
+\subsection{Using Promise.all()}
+When done correctly, promise composition is a great way to handle situations where asynchronous operations depend on each other or execution order matters. What if we are dealing with multiple promises, but we do not care about the order? Let us think in terms of cleaning again. \\
+\newline
+For us to consider our house clean, we need our clothes to dry, our trash bins emptied, and the dishwasher to run. We need all of these tasks to complete but not in any particular order. Furthermore, since they are all getting done asynchronously, they should really all be happening at the same time. \\
+\newline
+To maximize efficiency we should use concurrency, multiple asynchronous operations happening together. With promises, we can do this with the function \colorbox{lightgray}{Promise.all()}. \\
+\newline
+\colorbox{lightgray}{Promise.all()} accepts an array of promises as its argument and returns a single promise. That single promise will settle in one of two ways:
+\begin{itemize}[leftmargin = *]
+\item If every promise in the argument array resolves, the single promise returned from \colorbox{lightgray}{Promise.all()} will resolve with an array containing the resolve value from each promise in the argument array.
+\item If any promise from the argument array rejects, the single promise returned from \colorbox{lightgray}{Promise.all()} will immediately reject with the reason that promise rejected. This behavior is sometimes referred to as \textit{failing fast}.
+\end{itemize}
+Let us look at a code example:
+\begin{lstlisting}
+let myPromises = Promise.all([returnsPromOne, returnsPromTwo, returnsPromThree]);
+
+myPromises
+  .then((arrayOfValues) => {
+    console.log(arrayOfValues);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
+\end{lstlisting}
+Let us break down what is happening:
+\begin{itemize}[leftmargin = *]
+\item We declare \colorbox{lightgray}{myPromises} assigned to invoking \colorbox{lightgray}{Promise.all()}.
+\item We invoke \colorbox{lightgray}{Promise.all()} with an array of three promises— the returned values from functions.
+\item We invoke \colorbox{lightgray}{.then()} with a success handler which will print the array of resolved values if each promise resolves successfully.
+\item We invoke \colorbox{lightgray}{.catch()} with a failure handler which will print the first rejection message if any promise rejects.
+\end{itemize}
+
+\subsection{Review}
+Let us review about asynchronous JavaScript and promises. 
+\begin{itemize}[leftmargin = *]
+\item Promises are JavaScript objects that represent the eventual result of an asynchronous operation.
+\item Promises can be in one of three states: pending, resolved, or rejected.
+\item A promise is settled if it is either resolved or rejected.
+\item We construct a promise by using the \colorbox{lightgray}{new} keyword and passing an executor function to the \colorbox{lightgray}{Promise} constructor method.
+\item \colorbox{lightgray}{setTimeout()} is a Node function which delays the execution of a callback function using the event-loop.
+\item We use \colorbox{lightgray}{.then()} with a success handler callback containing the logic for what should happen if a promise resolves.
+\item We use \colorbox{lightgray}{.catch()} with a failure handler callback containing the logic for what should happen if a promise rejects.
+\item Promise composition enables us to write complex, asynchronous code that is still readable. We do this by chaining multiple \colorbox{lightgray}{.then()}'s and \colorbox{lightgray}{.catch()}'s.
+\item To use promise composition correctly, we have to remember to \colorbox{lightgray}{return} promises constructed within a \colorbox{lightgray}{.then()}.
+\item We should chain multiple promises rather than nesting them.
+\item To take advantage of concurrency, we can use \colorbox{lightgray}{Promise.all()}.
+\end{itemize}
 
 
 
