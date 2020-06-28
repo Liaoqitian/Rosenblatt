@@ -3483,6 +3483,32 @@ Let us break down what’s happening above:
 \end{itemize}
 In our example, \colorbox{lightgray}{myFirstPromise} resolves or rejects based on a simple condition, but, in practice, promises settle based on the results of asynchronous operations. For example, a database request may fulfill with the data from a query or reject with an error thrown. 
 
+\subsection{The Node setTimeout() Function}
+Knowing how to construct a promise is useful, but most of the time, knowing how to \textit{consume}, or use, promises will be key. Rather than constructing promises, we will be handling \colorbox{lightgray}{Promise} objects returned to us as the result of an asynchronous operation. These promises will start off pending but settle eventually. \\
+\newline
+Moving forward, we will be simulating this by providing you with functions that return promises which settle after some time. To accomplish this, we’ll be using \colorbox{lightgray}{setTimeout()}. \colorbox{lightgray}{setTimeout()} is a Node API (a comparable API is provided by web browsers) that uses callback functions to schedule tasks to be performed after a delay. \colorbox{lightgray}{setTimeout()} has two parameters: a callback function and a delay in milliseconds.
+\begin{lstlisting}
+const delayedHello = () => {
+  console.log("Hi! This is an asynchronous greeting!");
+};
+
+setTimeout(delayedHello, 2000);
+\end{lstlisting}
+Here, we invoke \colorbox{lightgray}{setTimeout()} with the callback function \colorbox{lightgray}{delayedHello()} and \colorbox{lightgray}{2000}. In at least two seconds \colorbox{lightgray}{delayedHello()} will be invoked. But why is it “at least” two seconds and not exactly two seconds? \\
+\newline
+This delay is performed asynchronously—the rest of our program will not stop executing during the delay. Asynchronous JavaScript uses something called the \textit{event-loop}. After two seconds, \colorbox{lightgray}{delayedHello()} is added to a line of code waiting to be run. Before it can run, any synchronous code from the program will run. Next, any code in front of it in the line will run. This means it might be more than two seconds before \colorbox{lightgray}{delayedHello()} is actually executed. \\
+\newline
+Let us look at how we will be using \colorbox{lightgray}{setTimeout()} to construct asynchronous promises:
+\begin{lstlisting}
+const returnPromiseFunction = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(( ) => {resolve("I resolved!")}, 1000);
+  });
+};
+
+const prom = returnPromiseFunction();
+\end{lstlisting}
+In the example code, we invoked \colorbox{lightgray}{returnPromiseFunction()} which returned a promise. We assigned that promise to the variable \colorbox{lightgray}{prom}. Similar to the asynchronous promises you may encounter in production, \colorbox{lightgray}{prom} will initially have a status of pending.
 
 
 

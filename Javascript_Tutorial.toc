@@ -161,5 +161,6 @@
 \contentsline {subsection}{\numberline {15.1}Introduction}{94}{subsection.15.1}%
 \contentsline {subsection}{\numberline {15.2}What is a Promise?}{94}{subsection.15.2}%
 \contentsline {subsection}{\numberline {15.3}Constructing a Promise Object}{95}{subsection.15.3}%
-\contentsline {section}{\numberline {16}Async-Await}{96}{section.16}%
-\contentsline {section}{\numberline {17}Requests}{97}{section.17}%
+\contentsline {subsection}{\numberline {15.4}The Node setTimeout() Function}{96}{subsection.15.4}%
+\contentsline {section}{\numberline {16}Async-Await}{97}{section.16}%
+\contentsline {section}{\numberline {17}Requests}{98}{section.17}%

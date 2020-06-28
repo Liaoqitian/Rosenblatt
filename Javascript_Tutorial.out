@@ -161,5 +161,6 @@
 \BOOKMARK [2][-]{subsection.15.1}{Introduction}{section.15}% 161
 \BOOKMARK [2][-]{subsection.15.2}{What is a Promise?}{section.15}% 162
 \BOOKMARK [2][-]{subsection.15.3}{Constructing a Promise Object}{section.15}% 163
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 164
-\BOOKMARK [1][-]{section.17}{Requests}{}% 165
+\BOOKMARK [2][-]{subsection.15.4}{The Node setTimeout\(\) Function}{section.15}% 164
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 165
+\BOOKMARK [1][-]{section.17}{Requests}{}% 166
