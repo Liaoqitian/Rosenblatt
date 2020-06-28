@@ -3432,9 +3432,56 @@ Similarly, web development makes use of asynchronous operations. Operations like
 \newline
 This chapter will teach how modern JavaScript handles asynchronicity using the \colorbox{lightgray}{Promise} object, introduced with ES6. 
 
+\subsection{What is a Promise?}
+Promises are objects that represent the eventual outcome of an asynchronous operation. A \colorbox{lightgray}{Promise} object can be in one of three states:
+\begin{itemize}[leftmargin = *]
+\item \textbf{Pending}: The initial state— the operation has not completed yet.
+\item \textbf{Fulfilled}: The operation has completed successfully and the promise now has a \textit{resolved value}. For example, a request’s promise might resolve with a JSON object as its value.
+\item \textbf{Rejected}: The operation has failed and the promise has a reason for the failure. This reason is usually an \colorbox{lightgray}{Error} of some kind. 
+\end{itemize}
+We refer to a promise as \textit{settled} if it is no longer pending— it is either fulfilled or rejected. Let us think of a dishwasher as having the states of a promise:
+\begin{itemize}[leftmargin = *]
+\item \textbf{Pending}: The dishwasher is running but has not completed the washing cycle.
+\item \textbf{Fulfilled}: The dishwasher has completed the washing cycle and is full of clean dishes.
+\item \textbf{Rejected}: The dishwasher encountered a problem (it did not receive soap) and returns unclean dishes.
+\end{itemize}
+If our dishwashing promise is fulfilled, we will be able to perform related tasks, such as unloading the clean dishes from the dishwasher. If it is rejected, we can take alternate steps, such as running it again with soap or washing the dishes by hand. \\
+\newline
+All promises eventually settle, enabling us to write logic for what to do if the promise fulfills or if it rejects.
 
-
-
+\subsection{Constructing a Promise Object}
+Let us construct a promise. To create a new \colorbox{lightgray}{Promise} object, we use the \colorbox{lightgray}{new} keyword and the \colorbox{lightgray}{Promise} constructor method:
+\begin{lstlisting}
+const executorFunction = (resolve, reject) => { };
+const myFirstPromise = new Promise(executorFunction);
+\end{lstlisting}
+The \colorbox{lightgray}{Promise} constructor method takes a function parameter called the \textit{executor function} which runs automatically when the constructor is called. The executor function generally starts an asynchronous operation and dictates how the promise should be settled. \\
+\newline
+The executor function has two function parameters, usually referred to as the \colorbox{lightgray}{resolve()} and \colorbox{lightgray}{reject()} functions. The \colorbox{lightgray}{resolve()} and \colorbox{lightgray}{reject()} functions are not defined by the programmer. When the \colorbox{lightgray}{Promise} constructor runs, JavaScript will pass \textbf{its own} \colorbox{lightgray}{resolve()} and \colorbox{lightgray}{reject()} functions into the executor function.
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{resolve} is a function with one argument. Under the hood, if invoked, \colorbox{lightgray}{resolve()} will change the promise’s status from \colorbox{lightgray}{pending} to \colorbox{lightgray}{fulfilled}, and the promise’s resolved value will be set to the argument passed into \colorbox{lightgray}{resolve()}.
+\item \colorbox{lightgray}{reject} is a function that takes a reason or error as an argument. Under the hood, if invoked, \colorbox{lightgray}{reject()} will change the promise’s status from \colorbox{lightgray}{pending} to \colorbox{lightgray}{rejected}, and the promise’s rejection reason will be set to the argument passed into \colorbox{lightgray}{reject()}.
+\end{itemize}
+Let us look at an example executor function in a \colorbox{lightgray}{Promise} constructor:
+\begin{lstlisting}
+const executorFunction = (resolve, reject) => {
+  if (someCondition) {
+      resolve("I resolved!");
+  } else {
+      reject("I rejected!"); 
+  }
+}
+const myFirstPromise = new Promise(executorFunction);
+\end{lstlisting}
+Let us break down what’s happening above:
+\begin{itemize}[leftmargin = *]
+\item We declare a variable \colorbox{lightgray}{myFirstPromise}. 
+\item \colorbox{lightgray}{myFirstPromise} is constructed using \colorbox{lightgray}{new Promise()} which is the \colorbox{lightgray}{Promise} constructor method.
+\item \colorbox{lightgray}{executorFunction()} is passed to the constructor and has two functions as parameters: \colorbox{lightgray}{resolve} and \colorbox{lightgray}{reject}.
+\item If \colorbox{lightgray}{someCondition} evaluates to \colorbox{lightgray}{true}, we invoke \colorbox{lightgray}{resolve()} with the string \colorbox{lightgray}{"I resolved!"}. 
+\item If not, we invoke \colorbox{lightgray}{reject()} with the string \colorbox{lightgray}{"I rejected!"}.
+\end{itemize}
+In our example, \colorbox{lightgray}{myFirstPromise} resolves or rejects based on a simple condition, but, in practice, promises settle based on the results of asynchronous operations. For example, a database request may fulfill with the data from a query or reject with an error thrown. 
 
 
 
