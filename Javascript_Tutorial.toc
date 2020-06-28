@@ -169,5 +169,7 @@
 \contentsline {subsection}{\numberline {15.9}Avoiding Common Mistakes}{101}{subsection.15.9}%
 \contentsline {subsection}{\numberline {15.10}Using Promise.all()}{102}{subsection.15.10}%
 \contentsline {subsection}{\numberline {15.11}Review}{103}{subsection.15.11}%
-\contentsline {section}{\numberline {16}Async-Await}{104}{section.16}%
+\contentsline {section}{\numberline {16}Async Await}{104}{section.16}%
+\contentsline {subsection}{\numberline {16.1}Introduction}{104}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}The async Keyword}{104}{subsection.16.2}%
 \contentsline {section}{\numberline {17}Requests}{105}{section.17}%

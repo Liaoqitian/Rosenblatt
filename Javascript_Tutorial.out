@@ -169,5 +169,7 @@
 \BOOKMARK [2][-]{subsection.15.9}{Avoiding Common Mistakes}{section.15}% 169
 \BOOKMARK [2][-]{subsection.15.10}{Using Promise.all\(\)}{section.15}% 170
 \BOOKMARK [2][-]{subsection.15.11}{Review}{section.15}% 171
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 172
-\BOOKMARK [1][-]{section.17}{Requests}{}% 173
+\BOOKMARK [1][-]{section.16}{Async Await}{}% 172
+\BOOKMARK [2][-]{subsection.16.1}{Introduction}{section.16}% 173
+\BOOKMARK [2][-]{subsection.16.2}{The async Keyword}{section.16}% 174
+\BOOKMARK [1][-]{section.17}{Requests}{}% 175
