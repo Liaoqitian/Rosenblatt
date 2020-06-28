@@ -3771,25 +3771,29 @@ Originally, JavaScript used callback functions to handle asynchronous actions. T
 The \colorbox{lightgray}{async...await} syntax is \href{https://en.wikipedia.org/wiki/Syntactic_sugar}{syntactic sugar}— it does not introduce new functionality into the language, but rather introduces a new syntax for using promises and \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator}{generators}. Both of these were already built in to the language. Despite this, \colorbox{lightgray}{async...await} powerfully improves the readability and scalability of our code. 
 
 \subsection{The async Keyword}
-The async keyword is used to write functions that handle asynchronous actions. We wrap our asynchronous logic inside a function prepended with the async keyword. Then, we invoke that function.
-
+The \colorbox{lightgray}{async} keyword is used to write functions that handle asynchronous actions. We wrap our asynchronous logic inside a function prepended with the \colorbox{lightgray}{async} keyword. Then, we invoke that function.
+\begin{lstlisting}
 async function myFunc() {
   // Function body here
 };
 
 myFunc();
-We’ll be using async function declarations throughout this lesson, but we can also create async function expressions:
-
+\end{lstlisting}
+We will be using \colorbox{lightgray}{async} function declarations throughout this chapter, but we can also create \colorbox{lightgray}{async} function expressions:
+\begin{lstlisting}
 const myFunc = async () => {
   // Function body here
 };
 
 myFunc();
-async functions always return a promise. This means we can use traditional promise syntax, like .then() and .catch with our async functions. An async function will return in one of three ways:
-
-If there’s nothing returned from the function, it will return a promise with a resolved value of undefined.
-If there’s a non-promise value returned from the function, it will return a promise resolved to that value.
-If a promise is returned from the function, it will simply return that promise
+\end{lstlisting}
+\colorbox{lightgray}{async} functions always return a promise. This means we can use traditional promise syntax, like \colorbox{lightgray}{.then()} and \colorbox{lightgray}{.catch} with our \colorbox{lightgray}{async} functions. An \colorbox{lightgray}{async} function will return in one of three ways:
+\begin{itemize}[leftmargin = *]
+\item If there is nothing returned from the function, it will return a promise with a resolved value of \colorbox{lightgray}{undefined}.
+\item If there is a non-promise value returned from the function, it will return a promise resolved to that value.
+\item If a promise is returned from the function, it will simply return that promise. 
+\end{itemize}
+\begin{lstlisting}
 async function fivePromise() { 
   return 5;
 }
@@ -3798,15 +3802,94 @@ fivePromise()
 .then(resolvedValue => {
     console.log(resolvedValue);
   })  // Prints 5
-In the example above, even though we return 5 inside the function body, what’s actually returned when we invoke fivePromise() is a promise with a resolved value of 5.
+\end{lstlisting}
+In the example above, even though we return \colorbox{lightgray}{5} inside the function body, what is actually returned when we invoke \colorbox{lightgray}{fivePromise()} is a promise with a resolved value of \colorbox{lightgray}{5}.
 
+\subsection{The await Operator}
+Previously, we covered the \colorbox{lightgray}{async} keyword. By itself, it does not do much; \colorbox{lightgray}{async} functions are almost always used with the additional keyword \colorbox{lightgray}{await} inside the function body. \\
+\newline
+The \colorbox{lightgray}{await} keyword can only be used inside an \colorbox{lightgray}{async} function. \colorbox{lightgray}{await} is an operator: it returns the resolved value of a promise. Since promises resolve in an indeterminate amount of time, \colorbox{lightgray}{await} halts, or pauses, the execution of our \colorbox{lightgray}{async} function until a given promise is resolved. \\
+\newline
+In most situations, we are dealing with promises that were returned from functions. Generally, these functions are through a library, and here we will be providing them. We can \colorbox{lightgray}{await} the resolution of the promise it returns inside an \colorbox{lightgray}{async} function. In the example below, \colorbox{lightgray}{myPromise()} is a function that returns a promise which will resolve to the string \colorbox{lightgray}{``I am resolved now!''}.
+\begin{lstlisting}
+async function asyncFuncExample(){
+  let resolvedValue = await myPromise();
+  console.log(resolvedValue);
+}
 
+asyncFuncExample(); // Prints: I am resolved now!
+\end{lstlisting}
+Within our \colorbox{lightgray}{async} function, \colorbox{lightgray}{asyncFuncExample()}, we use \colorbox{lightgray}{await} to halt our execution until \colorbox{lightgray}{myPromise()} is resolved and assign its resolved value to the variable \colorbox{lightgray}{resolvedValue}. Then we log \colorbox{lightgray}{resolvedValue} to the console. We are able to handle the logic for a promise in a way that reads like synchronous code.
 
+\subsection{Writing async Functions} 
+We have seen that the \colorbox{lightgray}{await} keyword halts the execution of an \colorbox{lightgray}{async} function until a promise is no longer pending. Do not forget the \colorbox{lightgray}{await} keyword. It may seem obvious, but this can be a tricky mistake to catch because our function will still run— it just will not have the desired results. We are going to explore this using the following function, which returns a promise that resolves to \colorbox{lightgray}{``Yay, I resolved!''} after a 1 second delay:
+\begin{lstlisting}
+let myPromise = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Yay, I resolved!")
+    }, 1000);
+  });
+}
+\end{lstlisting}
+Now we will write two async functions which invoke \colorbox{lightgray}{myPromise()}:
+\begin{lstlisting}
+async function noAwait() {
+ let value = myPromise();
+ console.log(value);
+}
 
+async function yesAwait() {
+ let value = await myPromise();
+ console.log(value);
+}
 
+noAwait(); // Prints: Promise { <pending> }
+yesAwait(); // Prints: Yay, I resolved!
+\end{lstlisting}
+In the first \colorbox{lightgray}{async} function, \colorbox{lightgray}{noAwait()}, we left off the \colorbox{lightgray}{await} keyword before \colorbox{lightgray}{myPromise()}. In the second, \colorbox{lightgray}{yesAwait()}, we included it. The \colorbox{lightgray}{noAwait()} function logs \colorbox{lightgray}{Promise \{ <pending> \}} to the console. Without the \colorbox{lightgray}{await} keyword, the function execution was not paused. The \colorbox{lightgray}{console.log()} on the following line was executed before the promise had resolved. \\
+\newline
+Remember that the \colorbox{lightgray}{await} operator returns the resolved value of a promise. When used properly in \colorbox{lightgray}{yesAwait()}, the variable value was assigned the resolved value of the \colorbox{lightgray}{myPromise()} promise, whereas in \colorbox{lightgray}{noAwait()}, \colorbox{lightgray}{value} was assigned the promise object itself.
 
-
-
+\subsection{Handling Dependent Promises}
+The true beauty of \colorbox{lightgray}{async...await} is when we have a series of asynchronous actions which depend on one another. For example, we may make a network request based on a query to a database. In that case, we would need to wait to make the network request until we had the results from the database. With native promise syntax, we use a chain of  \colorbox{lightgray}{.then()} functions making sure to return correctly each one:
+\begin{lstlisting}
+function nativePromiseVersion() {
+    returnsFirstPromise()
+    .then((firstValue) => {
+        console.log(firstValue);
+        return returnsSecondPromise(firstValue);
+    })
+   .then((secondValue) => {
+        console.log(secondValue);
+    });
+}
+\end{lstlisting}
+Let us break down what is happening in the \colorbox{lightgray}{nativePromiseVersion()} function:
+\begin{itemize}[leftmargin = *]
+\item Within our function we use two functions which return promises: \colorbox{lightgray}{returnsFirstPromise()} and \colorbox{lightgray}{returnsSecondPromise()}.
+\item We invoke \colorbox{lightgray}{returnsFirstPromise()} and ensure that the first promise resolved by using \colorbox{lightgray}{.then()}.
+\item In the callback of our first \colorbox{lightgray}{.then()}, we log the resolved value of the first promise, \colorbox{lightgray}{firstValue}, and then return \colorbox{lightgray}{returnsSecondPromise(firstValue)}.
+\item We use another \colorbox{lightgray}{.then()} to print the second promise’s resolved value to the console.
+\end{itemize}[leftmargin = *]
+Here is how we would write an async function to accomplish the same thing:
+\begin{lstlisting}
+async function asyncAwaitVersion() {
+ let firstValue = await returnsFirstPromise();
+ console.log(firstValue);
+ let secondValue = await returnsSecondPromise(firstValue);
+ console.log(secondValue);
+}
+\end{lstlisting}
+Let us break down what is happening in our \colorbox{lightgray}{asyncAwaitVersion()} function:
+\begin{itemize}[leftmargin = *]
+\item We mark our function as \colorbox{lightgray}{async}.
+\item Inside our function, we create a variable \colorbox{lightgray}{firstValue} assigned \colorbox{lightgray}{await returnsFirstPromise()}. This means \colorbox{lightgray}{firstValue} is assigned the resolved value of the awaited promise.
+\item Next, we log \colorbox{lightgray}{firstValue} to the console.
+\item Then, we create a variable \colorbox{lightgray}{secondValue} assigned to \colorbox{lightgray}{await returnsSecondPromise(firstValue)}. Therefore, \colorbox{lightgray}{secondValue} is assigned this promise’s resolved value.
+\item Finally, we log \colorbox{lightgray}{secondValue} to the console.
+\end{itemize}
+Though using the \colorbox{lightgray}{async...await} syntax can save us some typing, the length reduction is not the main point. Given the two versions of the function, the \colorbox{lightgray}{async...await} version more closely resembles synchronous code, which helps developers maintain and debug their code. The \colorbox{lightgray}{async...await} syntax also makes it easy to store and refer to resolved values from promises further back in our chain which is a much more difficult task with native promise syntax. 
 
 
 
