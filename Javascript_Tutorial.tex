@@ -3510,7 +3510,20 @@ const prom = returnPromiseFunction();
 \end{lstlisting}
 In the example code, we invoked \colorbox{lightgray}{returnPromiseFunction()} which returned a promise. We assigned that promise to the variable \colorbox{lightgray}{prom}. Similar to the asynchronous promises you may encounter in production, \colorbox{lightgray}{prom} will initially have a status of pending.
 
+\subsection{Consuming Promises}
+The initial state of an asynchronous promise is \colorbox{lightgray}{pending}, but we have a guarantee that it will settle. How do we tell the computer what should happen then? Promise objects come with an aptly named \colorbox{lightgray}{.then()} method. It allows us to say, “I have a promise, when it settles, \textbf{then} here’s what I want to happen…”
 
+In the case of our dishwasher promise, the dishwasher will run \textbf{then}:
+\begin{itemize}[leftmargin = *]
+\item If our promise rejects, this means we have dirty dishes, and we’ll add soap and run the dishwasher again.
+\item If our promise fulfills, this means we have clean dishes, and we’ll put the dishes away.
+\end{itemize}
+\colorbox{lightgray}{.then()} is a higher-order function— it takes two callback functions as arguments. We refer to these callbacks as \textit{handlers}. When the promise settles, the appropriate handler will be invoked with that settled value.
+\begin{itemize}[leftmargin = *]
+\item The first handler, sometimes called \colorbox{lightgray}{onFulfilled}, is a \textit{success handler}, and it should contain the logic for the promise resolving.
+\item The second handler, sometimes called \colorbox{lightgray}{onRejected}, is a \textit{failure handler}, and it should contain the logic for the promise rejecting.
+\end{itemize}
+We can invoke \colorbox{lightgray}{.then()} with one, both, or neither handler. This allows for flexibility, but it can also make for tricky debugging. If the appropriate handler is not provided, instead of throwing an error, \colorbox{lightgray}{.then()} will just return a promise with the same settled value as the promise it was called on. One important feature of \colorbox{lightgray}{.then()} is that it always returns a promise. We will return to this in more detail in a later exercise and explore why it’s so important.
 
 
 
