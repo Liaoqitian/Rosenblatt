@@ -157,6 +157,7 @@
 \BOOKMARK [2][-]{subsection.14.13}{Combining Export Statements}{section.14}% 157
 \BOOKMARK [2][-]{subsection.14.14}{Combining Import Statements}{section.14}% 158
 \BOOKMARK [2][-]{subsection.14.15}{Review}{section.14}% 159
-\BOOKMARK [1][-]{section.15}{Promises}{}% 160
-\BOOKMARK [1][-]{section.16}{Async-Await}{}% 161
-\BOOKMARK [1][-]{section.17}{Requests}{}% 162
+\BOOKMARK [1][-]{section.15}{JavaScript Promises}{}% 160
+\BOOKMARK [2][-]{subsection.15.1}{Introduction}{section.15}% 161
+\BOOKMARK [1][-]{section.16}{Async-Await}{}% 162
+\BOOKMARK [1][-]{section.17}{Requests}{}% 163
