@@ -180,3 +180,4 @@
 \contentsline {subsection}{\numberline {16.8}Await Promise.all()}{109}{subsection.16.8}%
 \contentsline {subsection}{\numberline {16.9}Review}{109}{subsection.16.9}%
 \contentsline {section}{\numberline {17}Requests}{111}{section.17}%
+\contentsline {subsection}{\numberline {17.1}Introduction to Requests}{111}{subsection.17.1}%
