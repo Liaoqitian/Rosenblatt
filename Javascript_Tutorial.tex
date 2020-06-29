@@ -3867,7 +3867,8 @@ function nativePromiseVersion() {
 \end{lstlisting}
 Let us break down what is happening in the \colorbox{lightgray}{nativePromiseVersion()} function:
 \begin{itemize}[leftmargin = *]
-\item Within our function we use two functions which return promises: \colorbox{lightgray}{returnsFirstPromise()} and \colorbox{lightgray}{returnsSecondPromise()}.
+\item Within our function we use two functions which return promises: \colorbox{lightgray}{returnsFirstPromise()} and \\
+\colorbox{lightgray}{returnsSecondPromise()}.
 \item We invoke \colorbox{lightgray}{returnsFirstPromise()} and ensure that the first promise resolved by using \colorbox{lightgray}{.then()}.
 \item In the callback of our first \colorbox{lightgray}{.then()}, we log the resolved value of the first promise, \colorbox{lightgray}{firstValue}, and then return \colorbox{lightgray}{returnsSecondPromise(firstValue)}.
 \item We use another \colorbox{lightgray}{.then()} to print the second promise’s resolved value to the console.
@@ -3891,10 +3892,112 @@ Let us break down what is happening in our \colorbox{lightgray}{asyncAwaitVersio
 \end{itemize}
 Though using the \colorbox{lightgray}{async...await} syntax can save us some typing, the length reduction is not the main point. Given the two versions of the function, the \colorbox{lightgray}{async...await} version more closely resembles synchronous code, which helps developers maintain and debug their code. The \colorbox{lightgray}{async...await} syntax also makes it easy to store and refer to resolved values from promises further back in our chain which is a much more difficult task with native promise syntax. 
 
+\subsection{Handling Errors}
+When \colorbox{lightgray}{.catch()} is used with a long promise chain, there is no indication of where in the chain the error was thrown. This can make debugging challenging. \\
+\newline
+With \colorbox{lightgray}{async...await}, we use \colorbox{lightgray}{try...catch} statements for error handling. By using this syntax, not only are we able to handle errors in the same way we do with synchronous code, but we can also catch both synchronous and asynchronous errors. This makes for easier debugging. 
+\begin{lstlisting}
+async function usingTryCatch() {
+ try {
+   let resolveValue = await asyncFunction("thing that will fail");
+   let secondValue = await secondAsyncFunction(resolveValue);
+ } catch (err) {
+   // Catches any errors in the try block
+   console.log(err);
+ }
+}
 
+usingTryCatch();
+\end{lstlisting}
+Remember, since \colorbox{lightgray}{async} functions return promises we can still use native promise’s \colorbox{lightgray}{.catch()} with an \colorbox{lightgray}{async} function
+\begin{lstlisting}
+async function usingPromiseCatch() {
+   let resolveValue = await asyncFunction("thing that will fail");
+}
 
+let rejectedPromise = usingPromiseCatch();
+rejectedPromise.catch((rejectValue) => {
+console.log(rejectValue);
+})
+\end{lstlisting}
+This is sometimes used in the global scope to catch final errors in complex code. Let us look at the following example. 
+\begin{lstlisting}
+const cookBeanSouffle = require("./library.js");
 
+// Write your code below:
+async function hostDinnerParty() {
+  try {
+    let resolvedValue = await cookBeanSouffle(); 
+    console.log((*@\texttt{\textasciigrave}@*)${resolvedValue} is served!(*@\texttt{\textasciigrave}@*))
+  } catch(error) {
+    console.log(error);
+    console.log("Ordering a pizza!"); 
+  }
+}
 
+hostDinnerParty(); 
+\end{lstlisting}
+\colorbox{lightgray}{cookBeanSouffle()} returns a promise that resolves or rejects randomly. When it resolves, the promise resolves with a value of \colorbox{lightgray}{``Bean Souffle''} and, when it rejects, it rejects with a value of \colorbox{lightgray}{``Dinner is ruined!''}. 
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+$ node app.js
+Fingers crossed... Putting the Bean Souffle in the oven
+Bean Souffle is served!
+$ node app.js
+Fingers crossed... Putting the Bean Souffle in the oven
+Dinner is ruined!
+Ordering a pizza!
+\end{lstlisting}
+
+\subsection{Handling Independent Promises}
+Remember that \colorbox{lightgray}{await} halts the execution of our \colorbox{lightgray}{async} function. This allows us to conveniently write synchronous-style code to handle dependent promises. But what if our \colorbox{lightgray}{async} function contains multiple promises which are not dependent on the results of one another to execute?
+\begin{lstlisting}
+async function waiting() {
+ const firstValue = await firstAsyncThing();
+ const secondValue = await secondAsyncThing();
+ console.log(firstValue, secondValue);
+}
+
+async function concurrent() {
+ const firstPromise = firstAsyncThing();
+ const secondPromise = secondAsyncThing();
+console.log(await firstPromise, await secondPromise);
+}
+\end{lstlisting}
+In the \colorbox{lightgray}{waiting()} function, we pause our function until the first promise resolves, then we construct the second promise. Once that resolves, we print both resolved values to the console. \\
+\newline
+In our \colorbox{lightgray}{concurrent()} function, both promises are constructed without using \colorbox{lightgray}{await}. We then \colorbox{lightgray}{await} each of their resolutions to print them to the console. \\
+\newline
+With our \colorbox{lightgray}{concurrent()} function both promises’ asynchronous operations can be run simultaneously. If possible, we want to get started on each asynchronous operation as soon as possible. Within our \colorbox{lightgray}{async} functions we should still take advantage of \textit{concurrency}, the ability to perform asynchronous actions at the same time. \\
+\newline
+Note: if we have multiple truly independent promises that we would like to execute fully in parallel, we must use individual \colorbox{lightgray}{.then()} functions and avoid halting our execution with \colorbox{lightgray}{await}.
+
+\subsection{Await Promise.all()}
+Another way to take advantage of concurrency when we have multiple promises which can be executed simultaneously is to \colorbox{lightgray}{await} a \colorbox{lightgray}{Promise.all()}. \\
+\newline
+We can pass an array of promises as the argument to \colorbox{lightgray}{Promise.all()}, and it will return a single promise. This promise will resolve when all of the promises in the argument array have resolved. This promise’s resolve value will be an array containing the resolved values of each promise from the argument array.
+\begin{lstlisting}
+async function asyncPromAll() {
+  const resultArray = await Promise.all([asyncTask1(), asyncTask2(), asyncTask3(), asyncTask4()]);
+  for (let i = 0; i<resultArray.length; i++){
+    console.log(resultArray[i]); 
+  }
+}
+\end{lstlisting}
+In our above example, we \colorbox{lightgray}{await} the resolution of a \colorbox{lightgray}{Promise.all()}. This \colorbox{lightgray}{Promise.all()} was invoked with an argument array containing four promises (returned from required-in functions). Next, we loop through our \colorbox{lightgray}{resultArray}, and log each item to the console. The first element in \colorbox{lightgray}{resultArray} is the resolved value of the \colorbox{lightgray}{asyncTask1()} promise, the second is the value of the \colorbox{lightgray}{asyncTask2()} promise, and so on. \\
+\newline
+\colorbox{lightgray}{Promise.all()} allows us to take advantage of asynchronicity— each of the four asynchronous tasks can process concurrently. \colorbox{lightgray}{Promise.all()} also has the benefit of \textit{failing fast}, meaning it will not wait for the rest of the asynchronous actions to complete once any one has rejected. As soon as the first promise in the array rejects, the promise returned from \colorbox{lightgray}{Promise.all()} will reject with that reason. As it was when working with native promises, \colorbox{lightgray}{Promise.all()} is a good choice if multiple asynchronous tasks are all required, but none must wait for any other before executing.
+
+\subsection{Review}
+Let us review what we have learned about the \colorbox{lightgray}{async...await} syntax:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{async...await} is syntactic sugar built on native JavaScript promises and generators.
+\item We declare an async function with the keyword \colorbox{lightgray}{async}.
+\item Inside an \colorbox{lightgray}{async} function we use the \colorbox{lightgray}{await} operator to pause execution of our function until an asynchronous action completes and the awaited promise is no longer pending .
+\item \colorbox{lightgray}{await} returns the resolved value of the awaited promise.
+\item We can write multiple \colorbox{lightgray}{await} statements to produce code that reads like synchronous code.
+\item We use \colorbox{lightgray}{try...catch} statements within our \colorbox{lightgray}{async} functions for error handling.
+\item We should still take advantage of concurrency by writing \colorbox{lightgray}{async} functions that allow asynchronous actions to happen in concurrently whenever possible.
+\end{itemize}
 
 
 

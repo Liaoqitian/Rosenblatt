@@ -175,4 +175,8 @@
 \BOOKMARK [2][-]{subsection.16.3}{The await Operator}{section.16}% 175
 \BOOKMARK [2][-]{subsection.16.4}{Writing async Functions}{section.16}% 176
 \BOOKMARK [2][-]{subsection.16.5}{Handling Dependent Promises}{section.16}% 177
-\BOOKMARK [1][-]{section.17}{Requests}{}% 178
+\BOOKMARK [2][-]{subsection.16.6}{Handling Errors}{section.16}% 178
+\BOOKMARK [2][-]{subsection.16.7}{Handling Independent Promises}{section.16}% 179
+\BOOKMARK [2][-]{subsection.16.8}{Await Promise.all\(\)}{section.16}% 180
+\BOOKMARK [2][-]{subsection.16.9}{Review}{section.16}% 181
+\BOOKMARK [1][-]{section.17}{Requests}{}% 182

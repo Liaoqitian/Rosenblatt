@@ -175,4 +175,8 @@
 \contentsline {subsection}{\numberline {16.3}The await Operator}{105}{subsection.16.3}%
 \contentsline {subsection}{\numberline {16.4}Writing async Functions}{105}{subsection.16.4}%
 \contentsline {subsection}{\numberline {16.5}Handling Dependent Promises}{106}{subsection.16.5}%
-\contentsline {section}{\numberline {17}Requests}{108}{section.17}%
+\contentsline {subsection}{\numberline {16.6}Handling Errors}{107}{subsection.16.6}%
+\contentsline {subsection}{\numberline {16.7}Handling Independent Promises}{108}{subsection.16.7}%
+\contentsline {subsection}{\numberline {16.8}Await Promise.all()}{109}{subsection.16.8}%
+\contentsline {subsection}{\numberline {16.9}Review}{109}{subsection.16.9}%
+\contentsline {section}{\numberline {17}Requests}{111}{section.17}%
