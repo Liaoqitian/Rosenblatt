@@ -179,7 +179,7 @@
 \contentsline {subsection}{\numberline {16.7}Handling Independent Promises}{108}{subsection.16.7}%
 \contentsline {subsection}{\numberline {16.8}Await Promise.all()}{109}{subsection.16.8}%
 \contentsline {subsection}{\numberline {16.9}Review}{109}{subsection.16.9}%
-\contentsline {section}{\numberline {17}Requests}{111}{section.17}%
+\contentsline {section}{\numberline {17}Requests I}{111}{section.17}%
 \contentsline {subsection}{\numberline {17.1}Introduction to Requests}{111}{subsection.17.1}%
 \contentsline {subsection}{\numberline {17.2}HTTP Requests}{111}{subsection.17.2}%
 \contentsline {subsection}{\numberline {17.3}XHR GET Requests}{112}{subsection.17.3}%
@@ -187,3 +187,4 @@
 \contentsline {subsubsection}{\numberline {17.3.2}Find Adjectives}{114}{subsubsection.17.3.2}%
 \contentsline {subsection}{\numberline {17.4}XHR POST Requests}{116}{subsection.17.4}%
 \contentsline {subsection}{\numberline {17.5}Review Requests}{118}{subsection.17.5}%
+\contentsline {section}{\numberline {18}Requests II}{119}{section.18}%

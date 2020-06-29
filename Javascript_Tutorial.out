@@ -179,7 +179,7 @@
 \BOOKMARK [2][-]{subsection.16.7}{Handling Independent Promises}{section.16}% 179
 \BOOKMARK [2][-]{subsection.16.8}{Await Promise.all\(\)}{section.16}% 180
 \BOOKMARK [2][-]{subsection.16.9}{Review}{section.16}% 181
-\BOOKMARK [1][-]{section.17}{Requests}{}% 182
+\BOOKMARK [1][-]{section.17}{Requests I}{}% 182
 \BOOKMARK [2][-]{subsection.17.1}{Introduction to Requests}{section.17}% 183
 \BOOKMARK [2][-]{subsection.17.2}{HTTP Requests}{section.17}% 184
 \BOOKMARK [2][-]{subsection.17.3}{XHR GET Requests}{section.17}% 185
@@ -187,3 +187,4 @@
 \BOOKMARK [3][-]{subsubsection.17.3.2}{Find Adjectives}{subsection.17.3}% 187
 \BOOKMARK [2][-]{subsection.17.4}{XHR POST Requests}{section.17}% 188
 \BOOKMARK [2][-]{subsection.17.5}{Review Requests}{section.17}% 189
+\BOOKMARK [1][-]{section.18}{Requests II}{}% 190
