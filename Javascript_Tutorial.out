@@ -188,3 +188,5 @@
 \BOOKMARK [2][-]{subsection.17.4}{XHR POST Requests}{section.17}% 188
 \BOOKMARK [2][-]{subsection.17.5}{Review Requests}{section.17}% 189
 \BOOKMARK [1][-]{section.18}{Requests II}{}% 190
+\BOOKMARK [2][-]{subsection.18.1}{Introduction to Requests with ES6}{section.18}% 191
+\BOOKMARK [2][-]{subsection.18.2}{fetch\(\) GET Requests}{section.18}% 192

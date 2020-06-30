@@ -188,3 +188,5 @@
 \contentsline {subsection}{\numberline {17.4}XHR POST Requests}{116}{subsection.17.4}%
 \contentsline {subsection}{\numberline {17.5}Review Requests}{118}{subsection.17.5}%
 \contentsline {section}{\numberline {18}Requests II}{119}{section.18}%
+\contentsline {subsection}{\numberline {18.1}Introduction to Requests with ES6}{119}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}fetch() GET Requests}{119}{subsection.18.2}%
