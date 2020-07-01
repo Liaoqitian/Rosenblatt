@@ -190,3 +190,7 @@
 \BOOKMARK [1][-]{section.18}{Requests II}{}% 190
 \BOOKMARK [2][-]{subsection.18.1}{Introduction to Requests with ES6}{section.18}% 191
 \BOOKMARK [2][-]{subsection.18.2}{fetch\(\) GET Requests}{section.18}% 192
+\BOOKMARK [2][-]{subsection.18.3}{fetch\(\) POST Requests}{section.18}% 193
+\BOOKMARK [2][-]{subsection.18.4}{async GET Requests}{section.18}% 194
+\BOOKMARK [2][-]{subsection.18.5}{async POST Requests}{section.18}% 195
+\BOOKMARK [2][-]{subsection.18.6}{Review Requests II}{section.18}% 196

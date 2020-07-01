@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  30 JUN 2020 16:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  1 JUL 2020 14:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1104,23 +1104,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 815--818
  []
 
 [20]
-<./images/4_1.png, id=1409, 266.9975pt x 207.77625pt>
+<./images/4_1.png, id=1429, 266.9975pt x 207.77625pt>
 File: ./images/4_1.png Graphic file (type png)
 <use ./images/4_1.png>
 Package pdftex.def Info: ./images/4_1.png  used on input line 824.
 (pdftex.def)             Requested size: 213.59827pt x 166.2212pt.
  [21 <./images/4_1.png>]
-<./images/4_2.png, id=1424, 131.49126pt x 88.33pt>
+<./images/4_2.png, id=1444, 131.49126pt x 88.33pt>
 File: ./images/4_2.png Graphic file (type png)
 <use ./images/4_2.png>
 Package pdftex.def Info: ./images/4_2.png  used on input line 850.
 (pdftex.def)             Requested size: 85.46829pt x 57.4138pt.
-<./images/4_3.png, id=1425, 395.4775pt x 202.7575pt>
+<./images/4_3.png, id=1445, 395.4775pt x 202.7575pt>
 File: ./images/4_3.png Graphic file (type png)
 <use ./images/4_3.png>
 Package pdftex.def Info: ./images/4_3.png  used on input line 856.
 (pdftex.def)             Requested size: 237.28833pt x 121.65543pt.
-<./images/4_4.png, id=1426, 312.16624pt x 146.5475pt>
+<./images/4_4.png, id=1446, 312.16624pt x 146.5475pt>
 File: ./images/4_4.png Graphic file (type png)
 <use ./images/4_4.png>
 Package pdftex.def Info: ./images/4_4.png  used on input line 866.
@@ -1130,7 +1130,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 862--868
 
  []
 
-<./images/4_5.png, id=1427, 223.83624pt x 119.44624pt>
+<./images/4_5.png, id=1447, 223.83624pt x 119.44624pt>
 File: ./images/4_5.png Graphic file (type png)
 <use ./images/4_5.png>
 Package pdftex.def Info: ./images/4_5.png  used on input line 873.
@@ -1141,7 +1141,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 869--875
  []
 
 [22 <./images/4_2.png> <./images/4_3.png> <./images/4_4.png>]
-<./images/4_6.png, id=1439, 299.1175pt x 132.495pt>
+<./images/4_6.png, id=1459, 299.1175pt x 132.495pt>
 File: ./images/4_6.png Graphic file (type png)
 <use ./images/4_6.png>
 Package pdftex.def Info: ./images/4_6.png  used on input line 878.
@@ -1157,7 +1157,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 886--889
  []
 
 [23 <./images/4_5.png> <./images/4_6.png>]
-<./images/4_7.png, id=1456, 311.1625pt x 110.4125pt>
+<./images/4_7.png, id=1476, 311.1625pt x 110.4125pt>
 File: ./images/4_7.png Graphic file (type png)
 <use ./images/4_7.png>
 Package pdftex.def Info: ./images/4_7.png  used on input line 914.
@@ -1173,7 +1173,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 934--937
  []
 
 [24 <./images/4_7.png>] [25]
-<./images/4_8.png, id=1492, 380.42125pt x 130.4875pt>
+<./images/4_8.png, id=1512, 380.42125pt x 130.4875pt>
 File: ./images/4_8.png Graphic file (type png)
 <use ./images/4_8.png>
 Package pdftex.def Info: ./images/4_8.png  used on input line 964.
@@ -1184,12 +1184,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 979--982
  []
 
 [26 <./images/4_8.png>]
-<./images/4_9.png, id=1509, 382.42876pt x 168.63pt>
+<./images/4_9.png, id=1529, 382.42876pt x 168.63pt>
 File: ./images/4_9.png Graphic file (type png)
 <use ./images/4_9.png>
 Package pdftex.def Info: ./images/4_9.png  used on input line 995.
 (pdftex.def)             Requested size: 279.17065pt x 123.09886pt.
-<./images/4_10.png, id=1510, 357.335pt x 154.5775pt>
+<./images/4_10.png, id=1530, 357.335pt x 154.5775pt>
 File: ./images/4_10.png Graphic file (type png)
 <use ./images/4_10.png>
 Package pdftex.def Info: ./images/4_10.png  used on input line 1001.
@@ -1212,7 +1212,7 @@ File: ./images/4_8.png Graphic file (type png)
 Package pdftex.def Info: ./images/4_8.png  used on input line 1046.
 (pdftex.def)             Requested size: 277.70518pt x 95.25507pt.
  [28]
-<./images/4_11.png, id=1537, 312.16624pt x 121.45375pt>
+<./images/4_11.png, id=1557, 312.16624pt x 121.45375pt>
 File: ./images/4_11.png Graphic file (type png)
 <use ./images/4_11.png>
 Package pdftex.def Info: ./images/4_11.png  used on input line 1051.
@@ -1278,12 +1278,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1162--1165
  []
 
 [32] [33]
-<./images/6_1.png, id=1616, 271.0125pt x 132.495pt>
+<./images/6_1.png, id=1636, 271.0125pt x 132.495pt>
 File: ./images/6_1.png Graphic file (type png)
 <use ./images/6_1.png>
 Package pdftex.def Info: ./images/6_1.png  used on input line 1231.
 (pdftex.def)             Requested size: 176.15602pt x 86.12071pt.
-<./images/6_2.png, id=1617, 389.455pt x 171.64125pt>
+<./images/6_2.png, id=1637, 389.455pt x 171.64125pt>
 File: ./images/6_2.png Graphic file (type png)
 <use ./images/6_2.png>
 Package pdftex.def Info: ./images/6_2.png  used on input line 1250.
@@ -1443,7 +1443,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1733--1738
 
  []
 
-<./images/9_1.png, id=1915, 390.45876pt x 255.95625pt>
+<./images/9_1.png, id=1936, 390.45876pt x 255.95625pt>
 File: ./images/9_1.png Graphic file (type png)
 <use ./images/9_1.png>
 Package pdftex.def Info: ./images/9_1.png  used on input line 1742.
@@ -1485,7 +1485,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1981--1988
 
  []
 
-<./images/10_1.png, id=2045, 321.2pt x 182.6825pt>
+<./images/10_1.png, id=2065, 321.2pt x 182.6825pt>
 File: ./images/10_1.png Graphic file (type png)
 <use ./images/10_1.png>
 Package pdftex.def Info: ./images/10_1.png  used on input line 1998.
@@ -1500,18 +1500,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 2012--2015
 
  []
 
-<./images/10_2.png, id=2056, 175.65625pt x 114.4275pt>
+<./images/10_2.png, id=2076, 175.65625pt x 114.4275pt>
 File: ./images/10_2.png Graphic file (type png)
 <use ./images/10_2.png>
 Package pdftex.def Info: ./images/10_2.png  used on input line 2028.
 (pdftex.def)             Requested size: 122.95853pt x 80.0987pt.
-<./images/10_3.png, id=2057, 210.7875pt x 74.2775pt>
+<./images/10_3.png, id=2077, 210.7875pt x 74.2775pt>
 File: ./images/10_3.png Graphic file (type png)
 <use ./images/10_3.png>
 Package pdftex.def Info: ./images/10_3.png  used on input line 2043.
 (pdftex.def)             Requested size: 147.55025pt x 51.99388pt.
 [56 <./images/10_2.png> <./images/10_3.png>]
-<./images/10_4.png, id=2086, 380.42125pt x 115.43124pt>
+<./images/10_4.png, id=2106, 380.42125pt x 115.43124pt>
 File: ./images/10_4.png Graphic file (type png)
 <use ./images/10_4.png>
 Package pdftex.def Info: ./images/10_4.png  used on input line 2070.
@@ -1622,7 +1622,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2756--2761
 
  []
 
-<12_1.png, id=2617, 1200.485pt x 946.53625pt>
+<12_1.png, id=2638, 1200.485pt x 946.53625pt>
 File: 12_1.png Graphic file (type png)
 <use 12_1.png>
 Package pdftex.def Info: 12_1.png  used on input line 2783.
@@ -1834,7 +1834,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3497--3502
  []
 
 [96]
-<./images/15_1.png, id=3071, 807.015pt x 878.28125pt>
+<./images/15_1.png, id=3091, 807.015pt x 878.28125pt>
 File: ./images/15_1.png Graphic file (type png)
 <use ./images/15_1.png>
 Package pdftex.def Info: ./images/15_1.png  used on input line 3528.
@@ -1985,7 +1985,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4014--4021
 
  []
 
-<./images/17_1.png, id=3394, 924.45375pt x 720.6925pt>
+<./images/17_1.png, id=3414, 924.45375pt x 720.6925pt>
 File: ./images/17_1.png Graphic file (type png)
 <use ./images/17_1.png>
 Package pdftex.def Info: ./images/17_1.png  used on input line 4039.
@@ -1996,7 +1996,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4035--4041
  []
 
 [111] [112 <./images/17_1.png>]
-<./images/17_2.png, id=3435, 426.59375pt x 470.75874pt>
+<./images/17_2.png, id=3455, 426.59375pt x 470.75874pt>
 File: ./images/17_2.png Graphic file (type png)
 <use ./images/17_2.png>
 Package pdftex.def Info: ./images/17_2.png  used on input line 4102.
@@ -2007,23 +2007,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 4106--4109
  []
 
 [114 <./images/17_2.png>]
-<./images/17_3.png, id=3508, 434.62375pt x 518.93875pt>
+<./images/17_3.png, id=3528, 434.62375pt x 518.93875pt>
 File: ./images/17_3.png Graphic file (type png)
 <use ./images/17_3.png>
 Package pdftex.def Info: ./images/17_3.png  used on input line 4160.
 (pdftex.def)             Requested size: 234.69333pt x 280.22275pt.
-<./images/17_4.png, id=3510, 917.4275pt x 708.6475pt>
+<./images/17_4.png, id=3530, 917.4275pt x 708.6475pt>
 File: ./images/17_4.png Graphic file (type png)
 <use ./images/17_4.png>
 Package pdftex.def Info: ./images/17_4.png  used on input line 4169.
-(pdftex.def)             Requested size: 366.96451pt x 283.45398pt.
+(pdftex.def)             Requested size: 321.10445pt x 248.03033pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 4165--4171
 
  []
 
 [115 <./images/17_3.png>] [116 <./images/17_4.png>] [117]
-<./images/17_5.png, id=3616, 437.635pt x 360.34625pt>
+<./images/17_5.png, id=3636, 437.635pt x 360.34625pt>
 File: ./images/17_5.png Graphic file (type png)
 <use ./images/17_5.png>
 Package pdftex.def Info: ./images/17_5.png  used on input line 4241.
@@ -2038,31 +2038,67 @@ Underfull \hbox (badness 10000) in paragraph at lines 4276--4279
 
  []
 
-<./images/18_1.png, id=3628, 1060.96375pt x 548.0475pt>
+<./images/18_1.png, id=3648, 1060.96375pt x 548.0475pt>
 File: ./images/18_1.png Graphic file (type png)
 <use ./images/18_1.png>
 Package pdftex.def Info: ./images/18_1.png  used on input line 4285.
 (pdftex.def)             Requested size: 371.34286pt x 191.81949pt.
 [119 <./images/18_1.png>] [120]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4304.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4304.
+<./images/18_2.png, id=3707, 440.64626pt x 465.74pt>
+File: ./images/18_2.png Graphic file (type png)
+<use ./images/18_2.png>
+Package pdftex.def Info: ./images/18_2.png  used on input line 4343.
+(pdftex.def)             Requested size: 264.38979pt x 279.44615pt.
+ [121 <./images/18_2.png>]
+<./images/18_3.png, id=3722, 950.55125pt x 692.5875pt>
+File: ./images/18_3.png Graphic file (type png)
+<use ./images/18_3.png>
+Package pdftex.def Info: ./images/18_3.png  used on input line 4352.
+(pdftex.def)             Requested size: 332.69792pt x 242.40926pt.
+ [122 <./images/18_3.png>]
+<./images/18_4.png, id=3754, 1121.18875pt x 686.565pt>
+File: ./images/18_4.png Graphic file (type png)
+<use ./images/18_4.png>
+Package pdftex.def Info: ./images/18_4.png  used on input line 4430.
+(pdftex.def)             Requested size: 392.42194pt x 240.30135pt.
+ [123]
+Underfull \hbox (badness 10000) in paragraph at lines 4434--4437
+
+ []
+
+[124 <./images/18_4.png>]
+<./images/18_5.png, id=3821, 422.57875pt x 468.75125pt>
+File: ./images/18_5.png Graphic file (type png)
+<use ./images/18_5.png>
+Package pdftex.def Info: ./images/18_5.png  used on input line 4499.
+(pdftex.def)             Requested size: 236.64249pt x 262.4989pt.
+ [125]
+<./images/18_6.png, id=3865, 1161.33875pt x 830.10126pt>
+File: ./images/18_6.png Graphic file (type png)
+<use ./images/18_6.png>
+Package pdftex.def Info: ./images/18_6.png  used on input line 4506.
+(pdftex.def)             Requested size: 406.47466pt x 290.5398pt.
+ [126 <./images/18_5.png> <./images/18_6.png>]
+[127] [128]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4589.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4589.
  (./Javascript_Tutorial.aux
 
 Package pdfbase Warning: Rerun to get internal references right!
 
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4304.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4304.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4589.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4589.
 
 Package rerunfilecheck Info: File `Javascript_Tutorial.out' has not changed.
-(rerunfilecheck)             Checksum: 78C84BB340D9450B983A0A43C3688670;13000.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4304.
+(rerunfilecheck)             Checksum: 31BF2E1E2B196DAF681E0BFD140011F7;13290.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4589.
  ) 
 Here is how much of TeX's memory you used:
- 26587 strings out of 480608
- 479970 string characters out of 5903631
- 924929 words of memory out of 5000000
- 39788 multiletter control sequences out of 15000+600000
+ 26857 strings out of 480608
+ 484332 string characters out of 5903631
+ 905929 words of memory out of 5000000
+ 39832 multiletter control sequences out of 15000+600000
  547600 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,8n,60p,1208b,1858s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2080,10 +2116,10 @@ live/2020/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/local/texli
 ve/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive
 /2020/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2
 020/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Javascript_Tutorial.pdf (126 pages, 1450780 bytes).
+Output written on Javascript_Tutorial.pdf (134 pages, 1787841 bytes).
 PDF statistics:
- 4157 PDF objects out of 4296 (max. 8388607)
- 3925 compressed objects within 40 object streams
- 2220 named destinations out of 2487 (max. 500000)
- 1679 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4496 PDF objects out of 5155 (max. 8388607)
+ 4243 compressed objects within 43 object streams
+ 2446 named destinations out of 2487 (max. 500000)
+ 1736 words of extra memory for PDF output out of 10000 (max. 10000000)
 

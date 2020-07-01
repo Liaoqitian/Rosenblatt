@@ -151,9 +151,9 @@
 \subsection{What is Javascript? }
 Last year, millions of learners from our community started with JavaScript. Why? JavaScript is primarily known as the language of most modern web browsers, and its early quirks gave it a bit of a bad reputation. However, the language has continued to evolve and improve. JavaScript is a powerful, flexible, and fast programming language now being used for increasingly complex web development and beyond! \\
 \newline
-Since JavaScript remains at the core of web development, it’s often the first language learned by self-taught coders eager to learn and build. We’re excited for what you’ll be able to create with the JavaScript foundation you gain here. JavaScript powers the dynamic behavior on most websites, including this one. \\
+Since JavaScript remains at the core of web development, it is often the first language learned by self-taught coders eager to learn and build. We are excited for what you will be able to create with the JavaScript foundation you gain here. JavaScript powers the dynamic behavior on most websites, including this one. \\
 \newline
-In this lesson, you will learn introductory coding concepts including data types and built-in objects—essential knowledge for all aspiring developers. Make sure to take notes and pace yourself. This foundation will set you up for understanding the more complex concepts you’ll encounter later. 
+In this lesson, you will learn introductory coding concepts including data types and built-in objects—essential knowledge for all aspiring developers. Make sure to take notes and pace yourself. This foundation will set you up for understanding the more complex concepts you will encounter later. 
 \subsection{Console}
 The console is a panel that displays important messages, like errors, for developers. Much of the work the computer does with our code is invisible to us by default. If we want to see things appear on our screen, we can print, or log, to our console directly. \\
 \newline
@@ -165,7 +165,7 @@ console.log(5);
 \end{lstlisting}
 This example logs 5 to the console. The semicolon denotes the end of the line, or statement. Although in JavaScript your code will usually run as intended without a semicolon, we recommend learning the habit of ending each statement with a semicolon so you never leave one out in the few instances when they are required. \\
 \newline
-You’ll see later on that we can use \colorbox{lightgray}{console.log()} to print different kinds of data.
+You will see later on that we can use \colorbox{lightgray}{console.log()} to print different kinds of data.
 \subsection{Comments}
 Programming is often highly collaborative. In addition, our own code can quickly become difficult to understand when we return to it. For these reasons, it’s often useful to leave notes in our code for other developers or ourselves.\\
 \newline
@@ -2778,7 +2778,7 @@ class Animal {
   }
 } 
 \end{lstlisting}
-In the example above, the \colorbox{lightgray}{Animal} class contains the properties and methods that the \colorbox{lightgray}{Cat} and \colorbox{lightgray}{Dog} classes share (\colorbox{lightgray}{name}, \colorbox{lightgray}{behavior}, \colorbox{lightgray}{.incrementBehavior()}). The diagram to the right shows the relationships we want to create between the \colorbox{lightgray}{Animal}, \colorbox{lightgray}{Cat}, and \colorbox{lightgray}{Dog} classes.
+In the example above, the \colorbox{lightgray}{Animal} class contains the properties and methods that the \colorbox{lightgray}{Cat} and \colorbox{lightgray}{Dog} classes share (\colorbox{lightgray}{name}, \colorbox{lightgray}{behavior}, \colorbox{lightgray}{.incrementBehavior()}). The diagram below shows the relationships we want to create between the \colorbox{lightgray}{Animal}, \colorbox{lightgray}{Cat}, and \colorbox{lightgray}{Dog} classes.
 \begin{figure}[H]
 \includegraphics[scale = 0.242]{12_1}
 \centering
@@ -4166,7 +4166,7 @@ To signed up for an API Key from Rebrandly, please read this \href{https://www.c
 \newline
 The major difference between a GET request and POST request is that a POST request requires additional information to be sent through the request. This additional information is sent in the \textit{body} of the post request.
 \begin{figure}[H]
-\includegraphics[scale = 0.4]{17_4}
+\includegraphics[scale = 0.35]{17_4}
 \centering
 \end{figure}
 See below the boilerplate code for an AJAX \colorbox{lightgray}{POST} request using an \colorbox{lightgray}{XMLHttpRequest} object.
@@ -4300,14 +4300,290 @@ fetch("https://api-to-call.com/endpoint").then(response => {
   return jsonResponse; 
 }) 
 \end{lstlisting}
-Now let us use the boilerplate code for a GET request using  \colorbox{lightgray}{fetch()} and  \colorbox{lightgray}{.then()} and manipulate it to access the Datamuse API and render information in the browser.
+Now let us use the boilerplate code for a GET request using \colorbox{lightgray}{fetch()} and \colorbox{lightgray}{.then()} and manipulate it to access the \href{https://www.datamuse.com/api/}{Datamuse API} and render information in the browser. If the request is successful, you will get back an array of words that sound like the word you typed into the input field. Then we take the information that was returned with the promise and manipulate the webpage
+\begin{lstlisting}
+// Information to reach API
+const url = "https://api.datamuse.com/words";
+const queryParams = "?sl=";
+
+// Selects page elements
+const inputField = document.querySelector("#input");
+const submit = document.querySelector("#submit");
+const responseField = document.querySelector("#responseField");
+
+// AJAX function
+const getSuggestions = () => {
+  const wordQuery = inputField.value;
+  const endpoint = (*@\texttt{\textasciigrave}@*)${url}${queryParams}${wordQuery}(*@\texttt{\textasciigrave}@*);
+  
+  fetch(endpoint, {cache: "no-cache"}).then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Request failed!');
+  }, networkError => {
+    console.log(networkError.message)
+  }).then(jsonResponse => {
+    renderResponse(jsonResponse); 
+  })
+}
+
+// Clears previous results and display results to webpage
+const displaySuggestions = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  }
+  getSuggestions();
+};
+
+submit.addEventListener("click", displaySuggestions);
+\end{lstlisting}
+\begin{figure}[H]
+\includegraphics[scale = 0.6]{18_2}
+\centering
+\end{figure}
 
 
+\newpage
+\subsection{fetch() POST Requests}
+Now let us  learn how to use \colorbox{lightgray}{fetch()} to construct POST requests. Take a look at the diagram below. It has the boilerplate code for a POST request using \colorbox{lightgray}{fetch()}.
+\begin{figure}[H]
+\includegraphics[scale = 0.35]{18_3}
+\centering
+\end{figure}
+We are going to reconstruct the code step-by-step until we have written a complete POST request using \colorbox{lightgray}{fetch()} and \colorbox{lightgray}{.then()}.
+\begin{lstlisting}
+fetch("https://api-to-call.com/endpoint", {
+  method: "POST", 
+  body: JSON.stringify({id: "200"})
+}).then(response => {
+  if (response.ok) {
+    return response.json(); 
+  }
+  throw new Error("Request failed!"); 
+}, networkError => {
+  console.log(networkError.message);
+}).then(jsonResponse => {
+  return jsonResponse; 
+})
+\end{lstlisting}
+Now let us update the boilerplate code to allow us to shorten a URL using the \href{https://developers.rebrandly.com/docs}{Rebrandly URL Shortener API}. And then add another \colorbox{lightgray}{.then()} to the chain to finally make the information available to our webpage.
+\begin{lstlisting}
+// Information to reach API
+const apiKey = "798b6253a27d4900a4232c106c01a026";
+const url = "https://api.rebrandly.com/v1/links";
 
+// Some page elements
+const inputField = document.querySelector("#input");
+const shortenButton = document.querySelector("#shorten");
+const responseField = document.querySelector("#responseField");
 
+// AJAX functions
+const shortenUrl = () => {
+  const urlToShorten = inputField.value;
+  const data = JSON.stringify({destination: urlToShorten})
+  
+	fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "apikey": apiKey
+    },
+    body: data
+  }).then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error("Request failed!");
+  }, networkError => {
+    console.log(networkError.message)
+  }).then(jsonResponse => {
+    renderResponse(jsonResponse); 
+  })
+}
 
+// Clear page and call AJAX functions
+const displayShortUrl = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild)
+  }
+  shortenUrl();
+}
 
+shortenButton.addEventListener("click", displayShortUrl);
+\end{lstlisting}
 
+\subsection{async GET Requests}
+Let us take a minute to appreciate what we have accomplished so far:
+\begin{itemize}[leftmargin = *]
+\item used \colorbox{lightgray}{fetch()} to make GET and POST requests.
+\item check the status of the responses coming back
+\item catch errors that might possibly arise
+\item taking successful responses and rendering it on the webpage
+\end{itemize}
 
+Now we are going to take what we have learned about chaining Promises and make it simpler using functionality introduced in ES8: \colorbox{lightgray}{async} and \colorbox{lightgray}{await}. The structure for this request will also be slightly different. Notice the new keywords \colorbox{lightgray}{async} and \colorbox{lightgray}{await}, as well as the \colorbox{lightgray}{try} and \colorbox{lightgray}{catch} statements.
+
+\begin{figure}[H]
+\includegraphics[scale = 0.35]{18_4}
+\centering
+\end{figure}
+
+Let walk through and recreate the boilerplate code necessary to create a GET request using the \colorbox{lightgray}{async} and \colorbox{lightgray}{await}. \\
+\newline
+Here are some key points to keep in mind as we walk through the code:
+\begin{itemize}[leftmargin = *]
+\item Using an \colorbox{lightgray}{async} function that will return a promise.
+\item \colorbox{lightgray}{await} can only be used in an \colorbox{lightgray}{async} function. \colorbox{lightgray}{await} allows a program to run while waiting for a promise to resolve.
+\item In a \colorbox{lightgray}{try...catch} statement, code in the \colorbox{lightgray}{try} block will be run and in the event of an exception/error, the code in the \colorbox{lightgray}{catch} statement will run.
+\end{itemize}
+\begin{lstlisting}
+const getData = async () => {
+  try {
+    const response = await fetch("https://api-to-call.com/endpoint");
+    if (response.ok) {
+      const jsonResponse = await response.json(); 
+      // response will save the the response of endpoint once that information has been sent back.
+      // Since .json() is an asynchronous method we have to await until the promise status is resolved. Then we store the value to know what data the JSON holds.
+      return jsonResponse; 
+    }
+    throw new Error("Request failed!");
+  }
+  catch(error) {
+    console.log(error);
+  }; 
+}
+\end{lstlisting}
+Now let us build on previously created boilerplate code to get nouns that describe the inputted word from the \href{https://www.datamuse.com/api/}{Datamuse API}:
+\begin{lstlisting}
+// Information to reach API
+const url = "https://api.datamuse.com/words?";
+const queryParams = "rel_jja=";
+
+// Selecting page elements
+const inputField = document.querySelector("#input");
+const submit = document.querySelector("#submit");
+const responseField = document.querySelector("#responseField");
+
+// AJAX function
+// Code goes here
+const getSuggestions = async () => {
+  const wordQuery = inputField.value; 
+  const endpoint = (*@\texttt{\textasciigrave}@*)${url}${queryParams}${wordQuery}(*@\texttt{\textasciigrave}@*); 
+  try {
+    const response = await fetch(endpoint, {cache: "no-cache"});
+    if (response.ok) {
+      const jsonResponse = await response.json(); 
+      renderResponse(jsonResponse); 
+    }
+  }
+  catch(error) {
+    console.log(error); 
+  }
+}
+
+// Clear previous results and display results to webpage
+const displaySuggestions = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild)
+  }
+  getSuggestions();
+}
+
+submit.addEventListener("click", displaySuggestions);
+\end{lstlisting}
+\begin{figure}[H]
+\includegraphics[scale = 0.56]{18_5}
+\centering
+\end{figure}
+
+\subsection{async POST Requests}
+Let us start on the \colorbox{lightgray}{async} POST request. As with the other GET and POST requests that we have been making, an \colorbox{lightgray}{async} POST request requires more information. Take a look at the diagram below.
+\begin{figure}[H]
+\includegraphics[scale = 0.35]{18_6}
+\centering
+\end{figure}
+We still have the same structure of using \colorbox{lightgray}{try} and \colorbox{lightgray}{catch} as before. But, in the \colorbox{lightgray}{fetch()} call, we now have to include an additional argument that contains more information like \colorbox{lightgray}{method} and \colorbox{lightgray}{body}. Let us piece together a POST request using \colorbox{lightgray}{async} and \colorbox{lightgray}{await}.
+\begin{lstlisting}
+const getData = async () => {
+  try {
+    const response = await fetch("https://api-to-call.com/endpoint", {
+      method: "POST", 
+      body: JSON.stringify({id: 200})
+    });
+    if (response.ok) {
+      const jsonResponse = await response.json(); 
+      return jsonResponse; 
+    }
+    throw new Error("Request failed!");
+  }
+  catch(error) {
+    console.log(error);
+  }
+}
+\end{lstlisting}
+Now let us retrieve our Rebrandly API key to access the \href{https://app.rebrandly.com/account/api-keys}{Rebrandly API}. 
+\begin{lstlisting}
+// information to reach API
+const apiKey = "798b6253a27d4900a4232c106c01a026";
+const url = "https://api.rebrandly.com/v1/links";
+
+// Some page elements
+const inputField = document.querySelector("#input");
+const shortenButton = document.querySelector("#shorten");
+const responseField = document.querySelector("#responseField");
+
+// AJAX functions
+// Code goes here
+const shortenUrl = async () => {
+  const urlToShorten = inputField.value; 
+  const data = JSON.stringify({destination: urlToShorten});
+  try {
+    const response = await fetch(url, {
+      method: "POST", 
+      body: data, 
+      headers: {
+      "Content-type": "application/json",
+      "apikey": apiKey
+      }
+    }); 
+    if (response.ok) {
+      const jsonResponse = await response.json(); 
+      renderResponse(jsonResponse);
+    }
+  }
+  catch(error) {
+    console.log(error);
+  }
+}
+
+// Clear page and call AJAX functions
+const displayShortUrl = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  }
+  shortenUrl();
+}
+
+shortenButton.addEventListener("click", displayShortUrl);
+\end{lstlisting}
+
+\subsection{Review Requests II}
+Let us recap on the concepts covered in this chapter:
+\begin{itemize}[leftmargin = *]
+\item GET and POST requests can be created a variety of ways.
+\item Use AJAX to asynchronously request data from APIs. \colorbox{lightgray}{fetch()} and \colorbox{lightgray}{async}/\colorbox{lightgray}{await} are new functionalities developed in ES6 (promises) and ES8 respectively.
+\item Promises are a new type of JavaScript object that represent data that will eventually be returned from a request.
+\item \colorbox{lightgray}{fetch()} is a web API that can be used to create requests. \colorbox{lightgray}{fetch()} will return promises.
+\item We can chain \colorbox{lightgray}{.then()} methods to handle promises returned by \colorbox{lightgray}{fetch()}.
+\item The \colorbox{lightgray}{.json()} method converts a returned promise to a JSON object.
+\item \colorbox{lightgray}{async} is a keyword that is used to create functions that will return promises.
+\item \colorbox{lightgray}{await} is a keyword that is used to tell a program to continue moving through the message queue while a promise resolves.
+\item \colorbox{lightgray}{await} can only be used within functions declared with \colorbox{lightgray}{async}.
+\end{itemize}
 
 \end{document}
