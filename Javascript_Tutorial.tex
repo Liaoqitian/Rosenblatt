@@ -4296,9 +4296,18 @@ fetch("https://api-to-call.com/endpoint").then(response => {
   // If we could not reach the endpoint at all, e.g., the server is down, then we would get this networkError.
   console.log(networkError.message);
 }).then(jsonResponse => {
-  // The second .then()'s success callback won't run until the previous .then() method has finished running. It will also not run if there was an error was thrown previously.
+  // The second .then()'s success callback will not run until the previous .then() method has finished running. It will also not run if there was an error was thrown previously.
   return jsonResponse; 
 }) 
 \end{lstlisting}
+Now let us use the boilerplate code for a GET request using  \colorbox{lightgray}{fetch()} and  \colorbox{lightgray}{.then()} and manipulate it to access the Datamuse API and render information in the browser.
+
+
+
+
+
+
+
+
 
 \end{document}
