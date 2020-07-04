@@ -27,3 +27,6 @@
 \contentsline {subsection}{\numberline {2.9}Linking At Will}{12}{subsection.2.9}%
 \contentsline {subsection}{\numberline {2.10}Linking to Same Page}{13}{subsection.2.10}%
 \contentsline {subsection}{\numberline {2.11}Whitespace}{13}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}Indentation}{14}{subsection.2.12}%
+\contentsline {subsection}{\numberline {2.13}Comments}{14}{subsection.2.13}%
+\contentsline {subsection}{\numberline {2.14}HTML Tags}{15}{subsection.2.14}%

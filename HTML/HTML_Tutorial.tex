@@ -643,12 +643,60 @@ Paragraph 2
 \end{lstlisting}
 Next we will learn how to use indentation to help visualize nested elements.
 
+\subsection{Indentation}
+The second tool web developers use to make the structure of code easier to read is indentation. The spaces are inserted using the space and tab bars on your keyboard.
 
+The \href{https://www.w3.org/Consortium/}{World Wide Web Consortium}, or W3C, is responsible for maintaining the style standards of HTML. At the time of writing, the W3C recommends 2 spaces of indentation when writing HTML code. Although your code will work without exactly two spaces, this standard is followed by the majority of professional web developers. Indentation is used to easily visualize which elements are nested within other elements.
+\begin{lstlisting}
+<body>
+  <p>Paragraph 1</p>
+  <div>
+    <p>Paragraph 2</p>
+  </div>
+</body>
+\end{lstlisting}
+In the example above, \colorbox{lightgray}{Paragraph 1} and the \colorbox{lightgray}{<div>} tag are nested inside of the \colorbox{lightgray}{<body>} tag, so they are indented two spaces. The \colorbox{lightgray}{Paragraph 2} element is nested inside of the \colorbox{lightgray}{<div>} tag, so it is indented an additional two spaces.
 
+\subsection{Comments}
+HTML files also allow you to add comments to your code.
 
+Comments begin with \colorbox{lightgray}{<!--} and end with \colorbox{lightgray}{-->}. Any characters in between will be ignored by your browser.
+\begin{lstlisting}
+<!-- This is a comment that the browser will not display. -->
+\end{lstlisting}
+Including comments in our code is helpful for many reasons:
+\begin{enumerate}[leftmargin = *]
+\item They help us (and others) understand our code if we decide to come back and review it at a much later date.
+\item They allow us to experiment with new code, without having to delete old code.
+\end{enumerate}
+\begin{lstlisting}
+<!-- Favorite Films Section -->
+<p>The following is a list of my favorite films:</p>
+\end{lstlisting}
+In this example, the comment is used to denote that the following text makes up a particular section of the page.
+\begin{lstlisting}
+<!-- <p> Test Code </p> -->
+\end{lstlisting}
+In the example above, a valid HTML element (a paragraph element) has been “commented out.” This practice is useful when there is code you want to experiment with, or return to, in the future.
 
+\subsection{HTML Tags}
+We now know all of the basic elements and set-up we need to structure an HTML page and add different types of content. With the help of CSS, very soon we will be creating beautiful websites. 
 
+While some tags have a very specific purpose, such as image and video tags, most tags are used to describe the content that they surround, which helps us modify and style our content later. There are seemingly infinite numbers of tags to use. Knowing when to use each one is based on how you want to describe the content of your HTML. Descriptive, well-chosen tags are one key to high-quality web development. A full list of available HTML tags can be found in \href{https://developer.mozilla.org/en-US/docs/Web/HTML/Element}{Mozilla documentation}.
 
+Let us review what we have learned:
+\begin{itemize}[leftmargin = *]
+\item The \colorbox{lightgray}{<!DOCTYPE html>} declaration should always be the first line of code in our HTML files. This lets the browser know what version of HTML to expect.
+\item The \colorbox{lightgray}{<html>} element will contain all of your HTML code.
+\item Information about the web page, like the title, belongs within the \colorbox{lightgray}{<head>} of the page.
+\item You can add a title to your web page by using the \colorbox{lightgray}{<title>} element, inside of the head.
+\item A webpage’s title appears in a browser’s tab.
+\item Anchor tags (\colorbox{lightgray}{<a>}) are used to link to internal pages, external pages or content on the same page.
+\item You can create sections on a webpage and jump to them using \colorbox{lightgray}{<a>} tags and adding \colorbox{lightgray}{id}s to the elements you wish to jump to.
+\item Whitespace between HTML elements helps make code easier to read while not changing how elements appear in the browser.
+\item Indentation also helps make code easier to read. It makes parent-child relationships visible.
+\item Comments are written in HTML using the following syntax: \colorbox{lightgray}{<!-- comment -->}.
+\end{itemize}
 
 
 
