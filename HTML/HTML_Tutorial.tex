@@ -41,9 +41,8 @@
 
 
 \lstdefinelanguage{Comment}{
-  identifierstyle=\color{black},
+  identifierstyle=\color{white},
   sensitive=false,
-  breaklines = true, 
 }
 
 \lstdefinelanguage{HTML5}{
@@ -65,7 +64,15 @@
         <ol>, </ol>, 
         <img, />, 
         <video, </video>, 
-        <canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><, <div, <strong>, </strong>, <em>, </em>
+        <canvas, \/canvas>, 
+        <script>, </script>, 
+      	</html>, <!, html>, 
+	<style>, </style>, 
+	><, 
+	<div, 
+	<strong>, </strong>, 
+	<em>, </em>, 
+	<a>, </a>, <a
         },  
         %ndkeywords={
         % General
@@ -156,6 +163,7 @@
 \newpage
 
 \section{Introduction to HTML}
+Now we will learn the basic structure of an HTML document.
 \subsection{Introduction to HTML}
 HTML is the skeleton of all web pages. It is often the first language learned by developers, marketers, and designers and is core to front-end development work. HTML provides structure to the content appearing on a website, such as images, text, or videos. Right-click on any page on the internet, choose “Inspect,” and we will see HTML in a panel of your screen. 
 
@@ -257,9 +265,6 @@ One of the most popular elements in HTML is the \colorbox{lightgray}{<div>} elem
   </div>
 </body>
 \end{lstlisting}
-\begin{figure}[H]
-\includegraphics[scale = 0.7]{1_2}
-\end{figure}
 \colorbox{lightgray}{<div>}s can contain any text or other HTML elements, such as links, images, or videos. Remember to always add two spaces of indentation when you nest elements inside of \colorbox{lightgray}{<div>}s for better readability.
 
 \subsection{Attributes}
@@ -441,6 +446,179 @@ Let us review what we have learned in this chapter:
 \item Images (\colorbox{lightgray}{<img>}) and videos (\colorbox{lightgray}{<video>}) can be added by linking to an existing source.
 \end{itemize}
 Next, we will take the content that we have added to the website and transform it into an HTML document that is ready to go on the web.
+
+\newpage
+\section{HTML Document Standards}
+Now we will learn how to set up a proper HTML Document, how to link to other pages, and how to format our code for readability.
+\subsection{Preparing for HTML}
+Now it is time to learn how to set up an HTML file. HTML files require certain elements to set up the document properly. We can let web browsers know that we are using HTML by starting our document with a \textit{document type declaration}.
+
+The declaration looks like this:
+\begin{lstlisting}
+<!DOCTYPE html>
+\end{lstlisting}
+This declaration is an instruction, and it must be the first line of code in your HTML document. It tells the browser what type of document to expect, along with what version of HTML is being used in the document. For now, the browser will correctly assume that the \colorbox{lightgray}{html} in \colorbox{lightgray}{<!DOCTYPE html>} is referring to HTML5, as it is the current standard.
+
+In the future, however, a new standard will override HTML5. To make sure your document is forever interpreted correctly, always include \colorbox{lightgray}{<!DOCTYPE html>} at the very beginning of your HTML documents.
+
+Lastly, HTML code is always saved in a file with an \textbf{.html} extension.
+
+\subsection{The <html> tag}
+The \colorbox{lightgray}{<!DOCTYPE html>} declaration provides the browser with two pieces of information (the type of document and the HTML version to expect), but it does not actually add any HTML structure or content.
+
+To create HTML structure and content, we must add opening and closing \colorbox{lightgray}{<html>} tags after declaring \colorbox{lightgray}{<!DOCTYPE html>}:
+\begin{lstlisting}
+<!DOCTYPE html>
+<html>
+
+</html>
+\end{lstlisting}
+Anything between the opening \colorbox{lightgray}{<html>} and closing \colorbox{lightgray}{</html>} tags will be interpreted as HTML code. Without these tags, it is possible that browsers could incorrectly interpret your HTML code.
+
+\subsection{The Head}
+So far we have done two things to set up the file properly:
+\begin{itemize}[leftmargin = *]
+\item Declared to the browser that your code is HTML with \colorbox{lightgray}{<!DOCTYPE html>}
+\item Added the HTML element (\colorbox{lightgray}{<html>}) that will contain the rest of your code.
+\end{itemize}
+Now, let us also give the browser some information about the page itself. We can do this by adding a \colorbox{lightgray}{<head>} element.
+
+The \colorbox{lightgray}{<head>} element is part of the HTML metaphor as the \colorbox{lightgray}{<body>} tag. It goes above the \colorbox{lightgray}{<body>} element.
+
+The \colorbox{lightgray}{<head>} element contains the \textit{metadata} for a web page. Metadata is information about the page that is not displayed directly on the web page. Unlike the information inside of the \colorbox{lightgray}{<body>} tag, the metadata in the head is information about the page itself. 
+
+The opening and closing head tags typically appear as the first item after our first HTML tag:
+\begin{lstlisting}
+<head>
+</head>
+\end{lstlisting}
+
+\subsection{Page Titles}
+Let us investigate what kind of metadata about the web page can the \colorbox{lightgray}{<head>} element contain.
+
+A browser’s tab displays the \textit{title} specified in the \colorbox{lightgray}{<title>} tag. The \colorbox{lightgray}{<title>} tag is always inside of the \colorbox{lightgray}{<head>}.
+\begin{lstlisting}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Coding Journal</title>
+  </head>
+</html>
+\end{lstlisting}
+If we were to open a file containing the HTML code in the example above, the browser would display the words \colorbox{lightgray}{My Coding Journal} in the title bar (or in the tab’s title).
+
+\subsection{Where Does the Title Appear?}
+Our title would appear as depicted in the diagram below.
+\begin{figure}[H]
+\includegraphics[scale = 0.4]{1_2}
+\centering
+\end{figure}
+So far, we have learned about:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{<!DOCTYPE html>}, the declaration specifying the version of HTML for the browser
+\item The \colorbox{lightgray}{<html>} tags that enclose all of your HTML code
+\item The \colorbox{lightgray}{<head>} tag that contains the metadata of a webpage, such as its \colorbox{lightgray}{<title>}
+\end{itemize}
+Next, we will learn about new types of elements that go inside the body.
+
+\subsection{Linking to Other Web Pages}
+One of the powerful aspects of HTML (and the Internet), is the ability to \textit{link} to other web pages.
+
+We can add links to a web page by adding an \textit{anchor} element \colorbox{lightgray}{<a>} and including the text of the link in between the opening and closing tags.
+\begin{lstlisting}
+<a>This Is A Link To Wikipedia</a>
+\end{lstlisting}
+Technically, the link in the example above is incomplete. The link above cannot work because there is no URL that will lead users to the actual Wikipedia page. 
+
+The anchor element in the example above is incomplete without the \colorbox{lightgray}{href} attribute. This attribute stands for \textit{hyperlink reference} and is used to link to a \textit{path}, or the address to where a file is located (whether it is on your computer or another location). The paths provided to the \colorbox{lightgray}{href} attribute are often URLs.
+\begin{lstlisting}
+<a href="https://www.wikipedia.org/">This Is A Link To Wikipedia</a>
+\end{lstlisting}
+In the example above, the \colorbox{lightgray}{href} attribute has been set to the value of the URL \colorbox{lightgray}{https://www.wikipedia.org/}. The example now shows the correct use of an anchor element.
+
+When reading technical documentation, we may come across the term \textit{hyperlink}. This is simply the technical term for link, and these terms are often used interchangeably.
+
+\subsection{Opening Links in a New Window}
+Have you ever clicked on a link and observed the resulting web page open in a new browser window? If so, you can thank the \colorbox{lightgray}{<a>} element’s \colorbox{lightgray}{target} attribute.
+
+The \colorbox{lightgray}{target} attribute specifies how a link should open.
+
+It is possible that one or more links on your web page link to an entirely different website. In that case, you may want users to read the linked website, but hope that they return to your web page. This is exactly when the \colorbox{lightgray}{target} attribute is useful.
+
+For a link to open in a new window, the \colorbox{lightgray}{target} attribute requires a value of \colorbox{lightgray}{\_blank}. The \colorbox{lightgray}{target} attribute can be added directly to the opening tag of the anchor element, just like the \colorbox{lightgray}{href} attribute.
+\begin{lstlisting}
+<a href="https://en.wikipedia.org/wiki/Brown_bear" 
+target="_blank">The Brown Bear</a>
+\end{lstlisting}
+In the example above, setting the \colorbox{lightgray}{target} attribute to "\colorbox{lightgray}{\_blank}" instructs the browser to open the relevant Wikipedia page in a new window.
+
+In this exercise, we have used the terminology “open in a new window.” It is likely that you are using a modern browser that opens up websites in new \textit{tabs}, rather than new windows. Before the advent of browsers with tabs, additional browser windows had to be opened to view more websites. The \colorbox{lightgray}{target="\_blank"} attribute, when used in modern browsers, will open new websites in a new tab.
+
+\subsection{Linking to Relative Page}
+Thus far we have learned how to link to external web pages. Many sites also link to internal web pages like Home, About, and Contact.
+
+Before we learn how to link between internal pages, let us establish where our files are stored. When making multi-page static websites, web developers often store HTML files in the root directory, or a main folder where all the files for the project are stored. As the size of the projects you create grows, you may use additional folders within the main project folder to organize your code.
+\begin{lstlisting}[basicstyle=\small\ttfamily\color{theWhite}, backgroundcolor = \color{theBlack}, language = Comment]
+project-folder/
+|__ about.html
+|__ contact.html
+|__ index.html
+\end{lstlisting}
+The example above shows three different files — \textbf{about.html}, \textbf{contact.html}, and \textbf{index.html} in one folder.
+
+HTML files are often stored in the same folder, as shown in the example above. If the browser is currently displaying \textbf{index.html}, it also knows that \textbf{about.html} and \textbf{contact.html} are in the same folder. Because the files are stored in the same folder, we can link web pages together using a \textit{relative path}.
+\begin{lstlisting}
+<a href="./contact.html">Contact</a>
+\end{lstlisting}
+In this example, the \colorbox{lightgray}{<a>} tag is used with a relative path to link from the current HTML file to the \colorbox{lightgray}{contact.html} file in the same folder. On the web page, \colorbox{lightgray}{Contact} will appear as a link.
+
+A relative path is a filename that shows the path to a \textit{local file} (a file on the same website, such as \colorbox{lightgray}{./index.htm}l) versus an absolute path (a full URL, like \colorbox{lightgray}{https://www.codecademy.com/learn/learn-html} which is stored in a different folder). The \colorbox{lightgray}{./} in \colorbox{lightgray}{./index.html} tells the browser to look for the file in the current folder.
+
+\subsection{Linking At Will}
+You have probably visited websites where not all links were made up of text. Maybe the links you clicked on were images or some other form of content.
+
+So far, we have added links that were made up of only text, like the following:
+\begin{lstlisting}
+<a href="https://en.wikipedia.org/wiki/Opuntia"
+target="_blank">Prickly Pear</a>
+\end{lstlisting}
+Text-only links, however, would significantly decrease our flexibility as web developers.
+
+Thankfully, HTML allows us to turn nearly any element into a link by wrapping that element with an anchor element. With this technique, it is possible to turn images into links by simply wrapping the \colorbox{lightgray}{<img>} element with an \colorbox{lightgray}{<a>} element.
+\begin{lstlisting}
+<a href="https://en.wikipedia.org/wiki/Opuntia" 
+target="_blank">(*@@*)<img
+src="https://www.Prickly_Pear_Closeup.jpg" alt="A(*@ @*)red 
+prickly(*@ @*)pear fruit"/></a>
+\end{lstlisting}
+In the example above, an image of a prickly pear has been turned into a link by wrapping the outside of the \colorbox{lightgray}{<img>} element with an \colorbox{lightgray}{<a>} element.
+
+\subsection{Linking to Same Page}
+At this point, we have all the content we want on our page. Since we have so much content, it does not all fit on the screen. How do we make it easier for a user to jump to different portions of our page?
+
+When users visit our site, we want them to be able to click a link and have the page automatically scroll to a specific section.
+
+In order to link to a target on the same page, we must give the target an \textit{id}, like this:
+\begin{lstlisting}
+<p id="top">This is the top of the page!</p>
+<h1 id="bottom">This is the bottom! </h1>
+\end{lstlisting}
+In this example, the \colorbox{lightgray}{<p>} element is assigned an \colorbox{lightgray}{id} of “top” and the \colorbox{lightgray}{<h1>} element is assigned “bottom.” An \colorbox{lightgray}{id} can be added to most elements on a webpage.
+
+An \colorbox{lightgray}{id} should be descriptive to make it easier to remember the purpose of a link. The target link is a string containing the \colorbox{lightgray}{\#} character and the target element’s \colorbox{lightgray}{id}.
+\begin{lstlisting}
+<ol>
+  <li><a href="#top">Top</a></li>
+  <li><a href="#bottom">Bottom</a></li>
+</ol>
+\end{lstlisting}
+In the example above, the links to \colorbox{lightgray}{<p id="top">} and \colorbox{lightgray}{<h1 id="bottom">} are embedded in an ordered list. These links appear in the browser as a numbered list of links. An \colorbox{lightgray}{id} is especially helpful for organizing content belonging to a \colorbox{lightgray}{div}.
+
+
+
+
+
+
 
 
 

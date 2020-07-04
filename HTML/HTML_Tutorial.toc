@@ -14,4 +14,15 @@
 \contentsline {subsection}{\numberline {1.13}Images}{6}{subsection.1.13}%
 \contentsline {subsection}{\numberline {1.14}Image Alts}{7}{subsection.1.14}%
 \contentsline {subsection}{\numberline {1.15}Videos}{7}{subsection.1.15}%
-\contentsline {subsection}{\numberline {1.16}Review}{8}{subsection.1.16}%
+\contentsline {subsection}{\numberline {1.16}Review}{7}{subsection.1.16}%
+\contentsline {section}{\numberline {2}HTML Document Standards}{9}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Preparing for HTML}{9}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The <html> tag}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The Head}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Page Titles}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Where Does the Title Appear?}{10}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Linking to Other Web Pages}{11}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Opening Links in a New Window}{11}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Linking to Relative Page}{11}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Linking At Will}{12}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Linking to Same Page}{13}{subsection.2.10}%
