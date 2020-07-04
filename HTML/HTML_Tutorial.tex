@@ -41,8 +41,9 @@
 
 
 \lstdefinelanguage{Comment}{
-  identifierstyle=\color{white},
+  identifierstyle=\color{black},
   sensitive=false,
+  breaklines = true, 
 }
 
 \lstdefinelanguage{HTML5}{
@@ -51,23 +52,35 @@
         alsoletter={<>=-},
         otherkeywords={
         % HTML tags
-        <html>, <head>, <title>, </title>, <meta, />, </head>, <body>, <p>, </p>, <div>, </div>, <h1>, </h1>, 
-        <canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><
+        <html>, <head>, 
+        <title>, </title>, 
+        <meta, />, </head>, 
+        <body>, </body>, 
+        <p>, </p>, 
+        <div>, </div>, 
+        <h1>, </h1>,
+        <br>, 
+        <ul>, </ul>, 
+        <li>, </li>,
+        <ol>, </ol>, 
+        <img, />, 
+        <video, </video>, 
+        <canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><, <div, <strong>, </strong>, <em>, </em>
         },  
-        ndkeywords={
+        %ndkeywords={
         % General
-        =,
+        % =,
         % HTML attributes
-        charset=, id=, width=, height=,
+        %charset=, id=, width=, height=,
         % CSS properties
-        border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
-        },  
+        %border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
+        %},  
         morecomment=[s]{<!--}{-->},
-        tag=[s]
+        %tag=[s]
 }
 
-\lstset{%
-    % Basic design
+\lstset{
+    language={HTML5},
     backgroundcolor=\color{backcolour},
     basicstyle={\small\ttfamily},   
     frame=l,
@@ -83,24 +96,15 @@
     keywordstyle=\color{blue},
     commentstyle=\color{gray},
     stringstyle=\color{mauve},
+    escapeinside={(*@}{@*)}, 
     % Code
-    language=HTML5,
-    alsodigit={.:;},
-    tabsize=2,
-    showtabs=false,
-    showspaces=false,
-    showstringspaces=false,
-    extendedchars=true,
-    breaklines=true,        
-    % Support for German umlauts
-    literate=%
-    {Ö}{{\"O}}1
-    {Ä}{{\"A}}1
-    {Ü}{{\"U}}1
-    {ß}{{\ss}}1
-    {ü}{{\"u}}1
-    {ä}{{\"a}}1
-    {ö}{{\"o}}1
+    %alsodigit={.:;},
+    %tabsize=2,
+    %showtabs=false,
+    %showspaces=false,
+    %showstringspaces=false,
+    %extendedchars=true,
+    %breaklines=true,        
 }
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
@@ -224,6 +228,219 @@ In this example, the \colorbox{lightgray}{<body>} element is the parent of the \
 
 Understanding HTML hierarchy is important because child elements can inherit behavior and styling from their parent element. We will learn more about webpage hierarchy when you start digging into CSS.
 
+\subsection{Headings}
+Headings in HTML are similar to headings in other types of media. For example, in newspapers, large headings are typically used to capture a reader’s attention. Other times, headings are used to describe content, like the title of a movie or an educational article.
+
+HTML follows a similar pattern. In HTML, there are six different \textit{headings}, or \textit{heading elements}. Headings can be used for a variety of purposes, like titling sections, articles, or other forms of content.
+
+The following is the list of heading elements available in HTML. They are ordered from largest to smallest in size.
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{<h1>} — used for main headings. All other smaller headings are used for subheadings.
+\item \colorbox{lightgray}{<h2>}
+\item \colorbox{lightgray}{<h3>}
+\item \colorbox{lightgray}{<h4>}
+\item \colorbox{lightgray}{<h5>}
+\item \colorbox{lightgray}{<h6>}
+\end{enumerate}
+The following example code uses a headline intended to capture a reader’s attention. It uses the largest heading available, the main heading element:
+\begin{lstlisting}
+<h1>BREAKING NEWS</h1>
+\end{lstlisting}
+
+\subsection{Divs}
+One of the most popular elements in HTML is the \colorbox{lightgray}{<div>} element. \colorbox{lightgray}{<div>} is short for “division” or a container that divides the page into sections. These sections are very useful for grouping elements in your HTML together.
+\begin{lstlisting}
+<body>
+  <div>
+    <h1>Why use divs?</h1>
+    <p>Great for grouping elements!</p>
+  </div>
+</body>
+\end{lstlisting}
+\begin{figure}[H]
+\includegraphics[scale = 0.7]{1_2}
+\end{figure}
+\colorbox{lightgray}{<div>}s can contain any text or other HTML elements, such as links, images, or videos. Remember to always add two spaces of indentation when you nest elements inside of \colorbox{lightgray}{<div>}s for better readability.
+
+\subsection{Attributes}
+If we want to expand an element’s tag, we can do so using an \textit{attribute}. Attributes are content added to the opening tag of an element and can be used in several different ways, from providing information to changing styling. Attributes are made up of the following two parts:
+\begin{itemize}[leftmargin = *]
+\item The \textit{name} of the attribute
+\item The \textit{value} of the attribute
+\end{itemize}
+One commonly used attribute is the \colorbox{lightgray}{id}. We can use the \colorbox{lightgray}{id} attribute to specify different content (such as \colorbox{lightgray}{<div>}s) and is really helpful when you use an element more than once. \colorbox{lightgray}{id}s have several different purposes in HTML, but for now, we will focus on how they can help us identify content on our page.
+
+When we add an \colorbox{lightgray}{id} to a \colorbox{lightgray}{<div>}, we place it in the opening tag:
+\begin{lstlisting}
+<div id="intro">
+  <h1>Introduction</h1>
+</div>
+\end{lstlisting}
+
+\subsection{Displaying Text}
+If you want to display text in HTML, you can use a \textit{paragraph} or \textit{span}:
+\begin{itemize}[leftmargin = *]
+\item \textit{Paragraphs} (\colorbox{lightgray}{<p>}) contain a block of plain text.
+\item \colorbox{lightgray}{<span>} contains short pieces of text or other HTML. They are used to separate small pieces of content that are on the same line as other content.
+\end{itemize}
+Take a look at each of these elements in action below:
+\begin{lstlisting}
+<div>
+  <h1>Technology</h1>
+</div>
+<div>
+  <p><span>Self-driving cars</span> are anticipated to 
+  replace up to 2 million jobs over the next two decades.</p>
+</div>
+\end{lstlisting}
+In the example above, there are two different \colorbox{lightgray}{<div>}. The second \colorbox{lightgray}{<div>} contains a \colorbox{lightgray}{<p>} with \\
+\colorbox{lightgray}{<span>Self-driving cars</span>}. This \colorbox{lightgray}{<span>} element separates “Self-driving cars” from the rest of the text in the paragraph.
+
+It is best to use a \colorbox{lightgray}{<span>} element when you want to target a specific piece of content that is inline, or on the same line as other text. If you want to divide your content into blocks, it is better to use a \colorbox{lightgray}{<div>}.
+
+\subsection{Styling Text}
+You can also style text using HTML tags. The \colorbox{lightgray}{<em>} tag emphasizes text, while the \colorbox{lightgray}{<strong>} tag highlights important text.
+
+Later, when we begin to style websites, we will decide how you want browsers to display content within \colorbox{lightgray}{<em>} and \colorbox{lightgray}{<strong>} tags. Browsers, however, have built-in style sheets that will generally style these tags in the following ways:
+\begin{itemize}[leftmargin = *]
+\item The \colorbox{lightgray}{<em>} tag will generally render as italic emphasis.
+\item The \colorbox{lightgray}{<strong>} will generally render as bold emphasis.
+\end{itemize}
+Take a look at each style in action:
+\begin{lstlisting}
+<p><strong>The Nile River</strong> is the <em>longest</em> 
+river in the world, measuring over 6,850 kilometers long 
+(approximately 4,260 miles).</p>
+\end{lstlisting}
+In this example, the \colorbox{lightgray}{<strong>} and \colorbox{lightgray}{<em>} tags are used to emphasize the text to produce the following:
+\vspace{-3mm}
+\par\noindent\rule{\textwidth}{0.2pt}
+\textbf{The Nile River} is the \textit{longest} river in the world, measuring over 6,850 kilometers long (approximately 4,260 miles).
+\vspace{-3mm}
+\par\noindent\rule{\textwidth}{0.2pt}
+As we can see, “The Nile River” is bolded and “longest” is in italics.
+
+\subsection{Line Breaks}
+The spacing between code in an HTML file does not affect the positioning of elements in the browser. If you are interested in modifying the spacing in the browser, you can use HTML’s \textit{line break} element: \colorbox{lightgray}{<br>}.
+
+The line break element is unique because it is only composed of a starting tag. You can use it anywhere within your HTML code and a line break will be shown in the browser.
+\begin{lstlisting}
+<p>The Nile River is the longest river <br> in the world, 
+measuring over 6,850 <br> kilometers long (approximately 
+4,260 <br> miles).</p>
+\end{lstlisting}
+The code in the example above will result in an output that looks like the following:
+\vspace{-3mm}
+\par\noindent\rule{\textwidth}{0.2pt}
+The Nile River is the longest river \\ 
+in the world, measuring over 6,850 \\ 
+kilometers long (approximately 4,260 \\
+miles).
+\vspace{-3mm}
+\par\noindent\rule{\textwidth}{0.2pt}
+
+\subsection{Unordered Lists}
+In addition to organizing text in paragraph form, you can also display content in an easy-to-read list.
+
+In HTML, you can use an \textit{unordered list} tag (\colorbox{lightgray}{<ul>}) to create a list of items in no particular order. An unordered list outlines individual list items with a bullet point.
+
+The \colorbox{lightgray}{<ul>} element should not hold raw text and will not automatically format raw text into an unordered list of items. Individual list items must be added to the unordered list using the \colorbox{lightgray}{<li>} tag. The \colorbox{lightgray}{<li>} or list item tag is used to describe an item in a list.
+\begin{lstlisting}
+<ul>
+  <li>Limes</li>
+  <li>Tortillas</li>
+  <li>Chicken</li>
+</ul>
+\end{lstlisting}
+In the example above, the list was created using the \colorbox{lightgray}{<ul>} tag and all individual list items were added using \colorbox{lightgray}{<li>} tags.
+
+The output will look like this:
+\vspace{-3mm}
+\par\noindent\rule{\textwidth}{0.2pt}
+\begin{itemize}[leftmargin = 24pt]
+\item Limes
+\item Tortillas
+\item Chicken
+\end{itemize}
+\vspace{-3mm}
+\par\noindent\rule{\textwidth}{0.2pt}
+
+\subsection{Ordered Lists}
+\textit{Ordered lists} (\colorbox{lightgray}{<ol>}) are like unordered lists, except that each list item is numbered. They are useful when you need to list different steps in a process or rank items for first to last.
+
+You can create the ordered list with the \colorbox{lightgray}{<ol>} tag and then add individual list items to the list using \colorbox{lightgray}{<li>} tags.
+\begin{lstlisting}
+<ol>
+  <li>Preheat the oven to 350 degrees.</li>
+  <li>Mix whole wheat flour, baking soda, and salt.</li>
+  <li>Cream the butter, sugar in separate bowl.</li>
+  <li>Add eggs and vanilla extract to bowl.</li>
+</ol>
+\end{lstlisting}
+The output will look like this:
+\vspace{-3mm}
+\par\noindent\rule{\textwidth}{0.2pt}
+\begin{enumerate}[leftmargin = 24pt]
+\item Preheat the oven to 350 degrees.
+\item Mix whole wheat flour, baking soda, and salt.
+\item Cream the butter, sugar in separate bowl.
+\item Add eggs and vanilla extract to bowl.
+\end{enumerate}
+\vspace{-3mm}
+\par\noindent\rule{\textwidth}{0.2pt}
+
+\subsection{Images}
+All of the elements we have learned about so far (headings, paragraphs, lists, and spans) share one thing in common: they are composed entirely of text. What if we want to add content to our web page that is not composed of text, like images?
+
+The \colorbox{lightgray}{<img>} tag allows us to add an image to a web page. Most elements require both opening and closing tags, but the \colorbox{lightgray}{<img>} tag is a self-closing tag. Note that the end of the \colorbox{lightgray}{<img>} tag has a forward slash \colorbox{lightgray}{/}. Self-closing tags may include or omit the final slash — both will render properly.
+\begin{lstlisting}
+<img src="image-location.jpg" (*@/@*)>
+\end{lstlisting}
+The \colorbox{lightgray}{<img>} tag has a required \textit{attribute} called \colorbox{lightgray}{src}. The \colorbox{lightgray}{src} attribute must be set to the image’s \textit{source}, or the location of the image. In this case, the value of \colorbox{lightgray}{src} must be the \textit{uniform resource locator} (URL) of the image. A URL is the web address or local address where a file is stored.
+
+\subsection{Image Alts}
+Part of being an exceptional web developer is making our site accessible to users of all backgrounds. In order to make the Web more inclusive, we need to consider what happens when assistive technologies such as screen readers come across image tags.
+
+The \colorbox{lightgray}{alt} attribute, which means alternative text, brings meaning to the images on our sites. The \colorbox{lightgray}{alt} attribute can be added to the image tag just like the \colorbox{lightgray}{src} attribute. The value of \colorbox{lightgray}{alt} should be a description of the image.
+\begin{lstlisting}
+<img src="#" alt="A(*@ @*)field of yellow sunflowers" (*@/@*)>
+\end{lstlisting}
+The \colorbox{lightgray}{alt} attribute also serves the following purposes:
+\begin{itemize}[leftmargin = *]
+\item If an image fails to load on a web page, a user can mouse over the area originally intended for the image and read a brief description of the image. This is made possible by the description you provide in the \colorbox{lightgray}{alt} attribute.
+\item Visually impaired users often browse the web with the aid of screen reading software. When you include the alt attribute, the screen reading software can read the image’s description out loud to the visually impaired user.
+\item The alt attribute also plays a role in Search Engine Optimization (SEO), because search engines cannot “see” the images on websites as they crawl the internet. Having descriptive alt attributes can improve the ranking of your site.
+\end{itemize}
+If the image on the web page is not one that conveys any meaningful information to a user (visually impaired or otherwise), the \colorbox{lightgray}{alt} attribute should be left empty.
+
+\subsection{Videos}
+In addition to images, HTML also supports displaying videos. Like the \colorbox{lightgray}{<img>} tag, the \colorbox{lightgray}{<video>} tag requires a src attribute with a link to the video source. Unlike the \colorbox{lightgray}{<img>} tag however, the \colorbox{lightgray}{<video>} element requires an opening and a closing tag.
+\begin{lstlisting}
+<video src="myVideo.mp4" width="320" height="240" controls>
+  Video not supported
+</video>
+\end{lstlisting}
+In this example, the video source (\colorbox{lightgray}{src}) is \colorbox{lightgray}{myVideo.mp4}. The source can be a video file that is hosted alongside your webpage, or a URL that points to a video file hosted on another webpage.
+
+After the \colorbox{lightgray}{src} attribute, the \colorbox{lightgray}{width} and \colorbox{lightgray}{height} attributes are used to set the size of the video displayed in the browser. The \colorbox{lightgray}{controls} attribute instructs the browser to include basic video controls: pause, play and skip.
+
+The text, “Video not supported”, between the opening and closing video tags will only be displayed if the browser is unable to load the video.
+
+\subsection{Review}
+Let us review what we have learned in this chapter:
+\begin{itemize}[leftmargin = *]
+\item \textbf{HTML} stands for \textbf{H}yper\textbf{T}ext \textbf{M}arkup \textbf{L}anguage and is used to create the structure and content of a webpage.
+\item Most HTML elements contain opening and closing tags with raw text or other HTML tags between them.
+\item HTML elements can be nested inside other elements. The enclosed element is the child of the enclosing parent element.
+\item Any visible content should be placed within the opening and closing \colorbox{lightgray}{<body>} tags.
+\item Headings and sub-headings, \colorbox{lightgray}{<h1>} to \colorbox{lightgray}{<h6>} tags, are used to enlarge text.
+\item \colorbox{lightgray}{<p>}, \colorbox{lightgray}{<span>} and \colorbox{lightgray}{<div>} tags specify text or blocks.
+\item The \colorbox{lightgray}{<em>} and \colorbox{lightgray}{<strong>} tags are used to emphasize text.
+\item Line breaks are created with the \colorbox{lightgray}{<br>} tag.
+\item Ordered lists (\colorbox{lightgray}{<ol>}) are numbered and unordered lists (\colorbox{lightgray}{<ul>}) are bulleted.
+\item Images (\colorbox{lightgray}{<img>}) and videos (\colorbox{lightgray}{<video>}) can be added by linking to an existing source.
+\end{itemize}
+Next, we will take the content that we have added to the website and transform it into an HTML document that is ready to go on the web.
 
 
 
