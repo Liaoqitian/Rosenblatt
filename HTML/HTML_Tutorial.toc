@@ -30,3 +30,17 @@
 \contentsline {subsection}{\numberline {2.12}Indentation}{14}{subsection.2.12}%
 \contentsline {subsection}{\numberline {2.13}Comments}{14}{subsection.2.13}%
 \contentsline {subsection}{\numberline {2.14}HTML Tags}{15}{subsection.2.14}%
+\contentsline {section}{\numberline {3}HTML Tables}{15}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Introduction to Tables}{15}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Create a Table}{15}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Table Rows}{16}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Table Data}{16}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Table Headings}{16}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Table Borders}{17}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Spanning Columns}{17}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Spanning Rows}{18}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Table Body}{19}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Table Head}{20}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}Table Footer}{20}{subsection.3.11}%
+\contentsline {subsection}{\numberline {3.12}Styling with CSS}{21}{subsection.3.12}%
+\contentsline {subsection}{\numberline {3.13}Review}{21}{subsection.3.13}%
