@@ -35,7 +35,7 @@
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \definecolor{orange}{RGB}{255,127,0}
-\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+%\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
 \definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
 %\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
 \definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
@@ -120,6 +120,7 @@
 	<thead, </thead, 
 	<tfoot, </tfoot, 
 	<form, </form,
+	<input, </input,
   % More tags...
   <canvas, /canvas>, <svg, <rect, <animateTransform, </rect>, </svg>, <video, <source, <iframe, </iframe>, </video>, <image, </image>, <header, </header, <article, </article
   },
@@ -127,7 +128,7 @@
   % General
   =,
   % HTML attributes
-  charset=, src=, id=, width=, height=, style=, type=, rel=, href=, alt=, controls, target=, border=, colspan=, rowspan=, scope=, action=, method=, 
+  charset=, src=, id=, width=, height=, style=, type=, rel=, href=, alt=, controls, target=, border=, colspan=, rowspan=, scope=, action=, method=, name=, value=, 
   % SVG attributes
   fill=, attributeName=, begin=, dur=, from=, to=, poster=, controls=, x=, y=, repeatCount=, xlink:href=,
   % properties
@@ -1078,8 +1079,43 @@ The \colorbox{lightgray}{<form>} element can also contain child elements. For in
 </form>
 \end{lstlisting}
 
+\subsection{Text Input}
+If we want to create an input field in our \colorbox{lightgray}{<form>}, we will need the help of the \colorbox{lightgray}{<input>} element.
 
+The \colorbox{lightgray}{<input>} element has a \colorbox{lightgray}{type} attribute which determines how it renders on the web page and what kind of data it can accept.
 
+The first value for the \colorbox{lightgray}{type} attribute we are going to explore is \colorbox{lightgray}{"text"}. When we create an \colorbox{lightgray}{<input>} element with \colorbox{lightgray}{type="text"}, it renders a text field that users can type into. It is also important that we include a name attribute for the \colorbox{lightgray}{<input>} — without the name attribute, information in the \colorbox{lightgray}{<input>} will not be sent when the \colorbox{lightgray}{<form>} is submitted. We will explain more about submissions and the submit button later. For now, let us examine the following code that produces a text input field:
+\begin{lstlisting}
+<form action="/example.html" method="POST">
+  <input type="text" name="first-text-field">
+</form>
+\end{lstlisting}
+Here is a screen shot of how the rendered form looks like on a web page for the Chrome browser (different browsers have different default rendering). When initially loaded, it will be an empty box:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_2}
+\centering
+\end{figure}
+\vspace{-4mm}
+After users type into the \colorbox{lightgray}{<input>} element, the value of the \colorbox{lightgray}{value} attribute becomes what is typed into the text field. The value of the \colorbox{lightgray}{value} attribute is paired with the value of the \colorbox{lightgray}{name} attribute and sent as text when the form is submitted. For instance, if a user typed in “important details” in the text field created by our \colorbox{lightgray}{<input>} element:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_3}
+\centering
+\end{figure}
+\vspace{-4mm}
+When the form is submitted, the text: \colorbox{lightgray}{"first-text-field=important details"} is sent to \colorbox{lightgray}{/example.html} because the value of the name attribute is \colorbox{lightgray}{"first-text-field"} and the value of value is \colorbox{lightgray}{"important details"}.
+
+We could also assign a default value for the \colorbox{lightgray}{value} attribute so that users have a pre-filled text field when they first see the rendered form like so:
+\begin{lstlisting}
+<form action="/example.html" method="POST">
+  <input type="text" name="first-text-field" value="already pre-filled">
+</form>
+\end{lstlisting}
+This renders:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_4}
+\centering
+\end{figure}
+\vspace{-4mm}
 
 
 

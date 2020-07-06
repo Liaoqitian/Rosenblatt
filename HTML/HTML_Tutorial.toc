@@ -47,3 +47,4 @@
 \contentsline {section}{\numberline {4}HTML Forms}{23}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Introduction to HTML Forms}{23}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}How a Form Works}{23}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Text Input}{24}{subsection.4.3}%
