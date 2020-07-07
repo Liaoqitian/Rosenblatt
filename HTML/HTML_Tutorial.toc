@@ -48,3 +48,11 @@
 \contentsline {subsection}{\numberline {4.1}Introduction to HTML Forms}{23}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}How a Form Works}{23}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Text Input}{24}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Adding a Label}{24}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Password Input}{25}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Number Input}{25}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Range Input}{26}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Checkbox Input}{26}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}Radio Button Input}{27}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}Dropdown list}{27}{subsection.4.10}%
+\contentsline {subsection}{\numberline {4.11}Datalist Input}{28}{subsection.4.11}%

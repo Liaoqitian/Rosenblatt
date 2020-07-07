@@ -121,6 +121,9 @@
 	<tfoot, </tfoot, 
 	<form, </form,
 	<input, </input,
+	<label, </label, 
+	<select, </select, 
+	<option, </option, 
   % More tags...
   <canvas, /canvas>, <svg, <rect, <animateTransform, </rect>, </svg>, <video, <source, <iframe, </iframe>, </video>, <image, </image>, <header, </header, <article, </article
   },
@@ -128,7 +131,7 @@
   % General
   =,
   % HTML attributes
-  charset=, src=, id=, width=, height=, style=, type=, rel=, href=, alt=, controls, target=, border=, colspan=, rowspan=, scope=, action=, method=, name=, value=, 
+  charset=, src=, id=, width=, height=, style=, type=, rel=, href=, alt=, controls, target=, border=, colspan=, rowspan=, scope=, action=, method=, name=, value=, for=, step=, min=, max=, 
   % SVG attributes
   fill=, attributeName=, begin=, dur=, from=, to=, poster=, controls=, x=, y=, repeatCount=, xlink:href=,
   % properties
@@ -1117,11 +1120,191 @@ This renders:
 \end{figure}
 \vspace{-4mm}
 
+\subsection{Adding a Label}
+Previously we created an \colorbox{lightgray}{<input>} element but we did not include anything to explain what the \colorbox{lightgray}{<input>} is used for. For a user to properly identify an \colorbox{lightgray}{<input>} we use the appropriately named \colorbox{lightgray}{<label>} element.
 
+The \colorbox{lightgray}{<label>} element has an opening and closing tag and displays text that is written between the opening and closing tags. To associate a \colorbox{lightgray}{<label>} and an \colorbox{lightgray}{<input>}, the \colorbox{lightgray}{<input>} needs an \colorbox{lightgray}{id} attribute. We then assign the \colorbox{lightgray}{for} attribute of the \colorbox{lightgray}{<label>} element with the value of the \colorbox{lightgray}{id} attribute of \colorbox{lightgray}{<input>}, like so:
+\begin{lstlisting}
+<form action="/example.html" method="POST">
+  <label for="meal">What do you want to eat?</label>
+  <br>
+  <input type="text" name="food" id="meal">
+</form>
+\end{lstlisting}
+The code above renders:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_5}
+\centering
+\end{figure}
+\vspace{-4mm}
+Now users know what the \colorbox{lightgray}{<input>} element is for. Another benefit for using the \colorbox{lightgray}{<label>} element is when this element is clicked, the corresponding \colorbox{lightgray}{<input>} is highlighted/selected.
 
+\subsection{Password Input}
+Think about all those times we have to put sensitive information, like a password or PIN, into a \colorbox{lightgray}{<form>}. We would not want our information to be seen by anyone peeking over our shoulder. Luckily, we have the \colorbox{lightgray}{type="password"} attribute for \colorbox{lightgray}{<input>}.
 
+An \colorbox{lightgray}{<input type ="password">} element will replace input text with another character like an asterisk (*) or a dot (•). The code below provides an example of how to create a password field:
+\begin{lstlisting}
+<form>
+  <label for="user-password">Password: </label>
+  <input type="password" id="user-password" name="user-password">
+</form>
+\end{lstlisting}
+After a user types into the field, it would look like:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_6}
+\centering
+\end{figure}
+\vspace{-4mm}
+Even though the password field obscures the text of the password, when the form is submitted, the value of the text is sent. In other words, if “hunter2” is typed into the password field, “user-password=hunter2” is sent along with the other information on the form.
 
+\subsection{Number Input}
+We have now gone over two type attributes for \colorbox{lightgray}{<input>} related to text. But, we might want our users to type in a number — in which case we can set the type attribute to \colorbox{lightgray}{"number"}. 
 
+By setting \colorbox{lightgray}{type="number"} for an \colorbox{lightgray}{<input>} we can restrict what users type into the input field to just numbers (and a few special characters like \colorbox{lightgray}{$-$}, \colorbox{lightgray}{$+$}, and \colorbox{lightgray}{$.$}). We can also provide a \colorbox{lightgray}{step} attribute which creates arrows inside the input field to increase or decrease by the value of the \colorbox{lightgray}{step} attribute. Below is the code needed to render an input field for numbers:
+\begin{lstlisting}
+<form>
+  <label for="years"> Years of experience: </label>
+  <input id="years" name="years" type="number" step="1">
+</form>
+\end{lstlisting}
+The code above renders:
+\begin{figure}[H]
+\includegraphics[scale = 0.4]{3_7}
+\centering
+\end{figure}
+\vspace{-4mm}
+
+\subsection{Range Input}
+Using an \colorbox{lightgray}{<input type="number">} is great if we want to allow users to type in any number of their choosing. But, if we wanted to limit what numbers our users could type we might consider using a different type value. Another option we could use is setting \colorbox{lightgray}{type} to \colorbox{lightgray}{"range"} which creates a slider.
+
+To set the minimum and maximum values of the slider we assign values to the \colorbox{lightgray}{min} and \colorbox{lightgray}{max} attribute of the \colorbox{lightgray}{<input>}. We could also control how smooth and fluid the slider works by assigning the \colorbox{lightgray}{step} attribute a value. Smaller \colorbox{lightgray}{step} values will make the slider more fluidly, whereas larger \colorbox{lightgray}{step} values will make the slider move more noticeably. Take a look at the code to create a slider:
+\begin{lstlisting}
+<form>
+  <label for="volume"> Volume Control</label>
+  <input id="volume" name="volume" type="range" min="0" max="100" step="1">
+</form>
+\end{lstlisting}
+The code above renders: 
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_8}
+\centering
+\end{figure}
+\vspace{-4mm}
+In the example above, every time the slider moves by one, the value of the \colorbox{lightgray}{<input>}'s \colorbox{lightgray}{value} attribute changes.
+
+\subsection{Checkbox Input}
+So far the types of inputs we have allowed were all single choices. But, what if we presented multiple options to users and allow them to select any number of options? Sounds like we could use checkboxes. In a \colorbox{lightgray}{<form>} we would use the \colorbox{lightgray}{<input>} element and set \colorbox{lightgray}{type="checkbox"}. Examine the code used to create multiple checkboxes:
+\begin{lstlisting}
+<form>
+  <p>Choose your pizza toppings:</p>
+  <label for="cheese">Extra cheese</label>
+  <input id="cheese" name="topping" type="checkbox" value="cheese">
+  <br>
+  <label for="pepperoni">Pepperoni</label>
+  <input id="pepperoni" name="topping" type="checkbox" value="pepperoni">
+  <br>
+  <label for="anchovy">Anchovy</label>
+  <input id="anchovy" name="topping" type="checkbox" value="anchovy">
+</form>
+\end{lstlisting}
+The code above renders:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_9}
+\centering
+\end{figure}
+\vspace{-4mm}
+Notice in the example provided:
+\begin{itemize}[leftmargin = *]
+\item there are assigned values to the \colorbox{lightgray}{value} attribute of the checkboxes. These values are not visible on the form itself, that is why it is important that we use an associated \colorbox{lightgray}{<label>} to identify the checkbox.
+\item each \colorbox{lightgray}{<input>} has the same value for the \colorbox{lightgray}{name} attribute. Using the same \colorbox{lightgray}{name} for each checkbox groups the \colorbox{lightgray}{<input>}s together. However, each \colorbox{lightgray}{<input>} has a unique \colorbox{lightgray}{id} to pair with a \colorbox{lightgray}{<label>}.
+\end{itemize}
+
+\subsection{Radio Button Input}
+Checkboxes work well if we want to present users with multiple options and let them choose one or more of the options. However, there are cases where we want to present multiple options and only allow for one selection — like asking users if they agree or disagree with the terms and conditions. Let us look over the code used to create radio buttons:
+\begin{lstlisting}
+<form>
+  <p>What is sum of 1 + 1?</p>
+  <input type="radio" id="two" name="answer" value="2">
+  <label for="two">2</label>
+  <br>
+  <input type="radio" id="eleven" name="answer" value="11">
+  <label for="eleven">11</label>
+</form>
+\end{lstlisting}
+The code above renders:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_10}
+\centering
+\end{figure}
+\vspace{-4mm}
+Notice from the code snippet, radio buttons (like checkboxes) do not display their value. We have an associated \colorbox{lightgray}{<label>} to represent the value of the radio button. To group radio buttons together, we assign them the same \colorbox{lightgray}{name} and only one radio button from that group can be selected.
+
+\subsection{Dropdown list}
+Radio buttons are great if we want our users to pick one option out of a few visible options, but imagine if we have a whole list of options. This situation could quickly lead to a lot of radio buttons to keep track of. 
+
+An alternative solution is to use a dropdown list to allow our users to choose one option from an organized list. Here is the code to create a dropdown menu:
+\begin{lstlisting}
+<form>
+  <label for="lunch">What's for lunch?</label>
+  <select id="lunch" name="lunch">
+    <option value="pizza">Pizza</option>
+    <option value="curry">Curry</option>
+    <option value="salad">Salad</option>
+    <option value="ramen">Ramen</option>
+    <option value="tacos">Tacos</option>
+  </select>
+</form>
+\end{lstlisting}
+The code above renders:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_11}
+\centering
+\end{figure}
+\vspace{-4mm}
+And if we click on the field containing the first option, the list is revealed:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_12}
+\centering
+\end{figure}
+\vspace{-4mm}
+Notice in the code that we are using the element \colorbox{lightgray}{<select>} to create the dropdown list. To populate the dropdown list, we add multiple \colorbox{lightgray}{<option>} elements, each with a \colorbox{lightgray}{value} attribute. By default, only one of these options can be selected.
+
+The text rendered is the text included between the opening and closing \colorbox{lightgray}{<option>} tags. However, it is the \colorbox{lightgray}{value} of the \colorbox{lightgray}{value} attribute that is used in \colorbox{lightgray}{<form>} submission (notice the difference in the text and \colorbox{lightgray}{value} capitalization). When the \colorbox{lightgray}{<form>} is submitted, the information from this input field will be sent using the \colorbox{lightgray}{name} of the \colorbox{lightgray}{<select>} and the \colorbox{lightgray}{value} of the chosen \colorbox{lightgray}{<option>}. For instance, if a user selected Pizza from the dropdown list, the information would be sent as \colorbox{lightgray}{"lunch=pizza"}.
+
+\subsection{Datalist Input}
+Even if we have an organized dropdown list, if the list has a lot of options, it could be tedious for users to scroll through the entire list to locate one option. That is where using the \colorbox{lightgray}{<datalist>} element comes in handy.
+
+The \colorbox{lightgray}{<datalist>} is used with an \colorbox{lightgray}{<input type="text">} element. The \colorbox{lightgray}{<input>} creates a text field that users can type into and filter options from the \colorbox{lightgray}{<datalist>}. Let us go over a concrete example:
+\begin{lstlisting}
+<form>
+  <label for="city">Ideal city to visit?</label>
+  <input type="text" list="cities" id="city" name="city">
+
+  <datalist id="cities">
+    <option value="New York City"></option>
+    <option value="Tokyo"></option>
+    <option value="Barcelona"></option>
+    <option value="Mexico City"></option>
+    <option value="Melbourne"></option>
+    <option value="Other"></option>  
+  </datalist>
+</form>
+\end{lstlisting}
+Notice, in the code above, we have an \colorbox{lightgray}{<input>} that has a \colorbox{lightgray}{list} attribute. The \colorbox{lightgray}{<input>} is associated to the \colorbox{lightgray}{<datalist>} via the \colorbox{lightgray}{<input>}'s list attribute and the id of the \colorbox{lightgray}{<datalist>}.
+
+From the code provided, the following form is rendered:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_13}
+\centering
+\end{figure}
+\vspace{-4mm}
+And when field is selected:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_14}
+\centering
+\end{figure}
+\vspace{-4mm}
+While \colorbox{lightgray}{<select>} and \colorbox{lightgray}{<datalist>} share some similarities, there are some major differences. In the associated \colorbox{lightgray}{<input>} element, users can type in the input field to search for a particular option. If none of the \colorbox{lightgray}{<option>}s match, the user can still use what they typed in. When the form is submitted, the value of the \colorbox{lightgray}{<input>}'s \colorbox{lightgray}{name} and the \colorbox{lightgray}{value} of the option selected, or what the user typed in, is sent as a pair.
 
 
 
