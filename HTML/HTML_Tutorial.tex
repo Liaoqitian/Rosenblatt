@@ -124,6 +124,7 @@
 	<label, </label, 
 	<select, </select, 
 	<option, </option, 
+	<textarea, </textarea, 
   % More tags...
   <canvas, /canvas>, <svg, <rect, <animateTransform, </rect>, </svg>, <video, <source, <iframe, </iframe>, </video>, <image, </image>, <header, </header, <article, </article
   },
@@ -131,7 +132,8 @@
   % General
   =,
   % HTML attributes
-  charset=, src=, id=, width=, height=, style=, type=, rel=, href=, alt=, controls, target=, border=, colspan=, rowspan=, scope=, action=, method=, name=, value=, for=, step=, min=, max=, 
+  charset=, src=, id=, width=, height=, style=, type=, rel=, href=, alt=, controls, target=, border=, colspan=, rowspan=, scope=, action=, method=, name=, value=, for=, step=, min=, max=, rows=, 
+  cols=, 
   % SVG attributes
   fill=, attributeName=, begin=, dur=, from=, to=, poster=, controls=, x=, y=, repeatCount=, xlink:href=,
   % properties
@@ -1305,6 +1307,32 @@ And when field is selected:
 \end{figure}
 \vspace{-4mm}
 While \colorbox{lightgray}{<select>} and \colorbox{lightgray}{<datalist>} share some similarities, there are some major differences. In the associated \colorbox{lightgray}{<input>} element, users can type in the input field to search for a particular option. If none of the \colorbox{lightgray}{<option>}s match, the user can still use what they typed in. When the form is submitted, the value of the \colorbox{lightgray}{<input>}'s \colorbox{lightgray}{name} and the \colorbox{lightgray}{value} of the option selected, or what the user typed in, is sent as a pair.
+
+\subsection{Textarea element}
+An \colorbox{lightgray}{<input>} element with \colorbox{lightgray}{type="text"} creates a single row input field for users to type in information. However, there are cases where users need to write in more information, like a blog post. In such cases, instead of using an \colorbox{lightgray}{<input>}, we could use \colorbox{lightgray}{<textarea>}.
+
+The \colorbox{lightgray}{<textarea>} element is used to create a bigger text field for users to write more text. We can add the attributes rows and cols to determine the amount of rows and columns for the \colorbox{lightgray}{<textarea>}. Take a look:
+\begin{lstlisting}
+<form>
+  <label for="blog">New Blog Post: </label>
+  <br>
+  <textarea id="blog" name="blog" rows="5" cols="30">
+  </textarea>
+</form>
+\end{lstlisting}
+In the code above, an empty \colorbox{lightgray}{<textarea>} that is 5 rows by 30 columns is rendered to the page like so:
+\begin{figure}[H]
+\includegraphics[scale = 0.5]{3_15}
+\centering
+\end{figure}
+\vspace{-4mm}
+If we wanted an even bigger text field, we could click and drag on the bottom right corner to expand it.
+
+When we submit the form, the value of \colorbox{lightgray}{<textarea>} is the text written inside the box. If we want to add a default value to text to \colorbox{lightgray}{<textarea>} we would include it within the opening and closing tags like so:
+\begin{lstlisting}
+<textarea>Adding default text</textarea>
+\end{lstlisting}
+This code will render a \colorbox{lightgray}{<textarea>} that contains pre-filled text: “Adding default text”.
 
 
 
