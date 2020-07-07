@@ -57,3 +57,5 @@
 \contentsline {subsection}{\numberline {4.10}Dropdown list}{27}{subsection.4.10}%
 \contentsline {subsection}{\numberline {4.11}Datalist Input}{28}{subsection.4.11}%
 \contentsline {subsection}{\numberline {4.12}Textarea element}{29}{subsection.4.12}%
+\contentsline {subsection}{\numberline {4.13}Submit Form}{30}{subsection.4.13}%
+\contentsline {subsection}{\numberline {4.14}Review}{30}{subsection.4.14}%
