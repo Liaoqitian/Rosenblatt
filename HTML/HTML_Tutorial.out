@@ -59,3 +59,8 @@
 \BOOKMARK [2][-]{subsection.4.12}{Textarea element}{section.4}% 59
 \BOOKMARK [2][-]{subsection.4.13}{Submit Form}{section.4}% 60
 \BOOKMARK [2][-]{subsection.4.14}{Review}{section.4}% 61
+\BOOKMARK [1][-]{section.5}{Form Validation}{}% 62
+\BOOKMARK [2][-]{subsection.5.1}{Introduction to HTML Form Validation}{section.5}% 63
+\BOOKMARK [2][-]{subsection.5.2}{Requiring an Input}{section.5}% 64
+\BOOKMARK [2][-]{subsection.5.3}{Set a Minimum and Maximum}{section.5}% 65
+\BOOKMARK [2][-]{subsection.5.4}{Checking Text Length}{section.5}% 66

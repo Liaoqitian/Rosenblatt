@@ -133,7 +133,7 @@
   =,
   % HTML attributes
   charset=, src=, id=, width=, height=, style=, type=, rel=, href=, alt=, controls, target=, border=, colspan=, rowspan=, scope=, action=, method=, name=, value=, for=, step=, min=, max=, rows=, 
-  cols=, 
+  cols=, required, minlength=, maxlength=, 
   % SVG attributes
   fill=, attributeName=, begin=, dur=, from=, to=, poster=, controls=, x=, y=, repeatCount=, xlink:href=,
   % properties
@@ -1345,7 +1345,7 @@ To make a submit button in a \colorbox{lightgray}{<form>}, we are going to use t
 \end{lstlisting}
 The code above renders:
 \begin{figure}[H]
-\includegraphics[scale = 0.8]{3_16}
+\includegraphics[scale = 0.7]{3_16}
 \centering
 \end{figure}
 \vspace{-4mm}
@@ -1374,6 +1374,77 @@ Let us review what we learned about the \colorbox{lightgray}{<form>} element:
 \item When a \colorbox{lightgray}{<form>} is submitted, the \colorbox{lightgray}{name} of the fields that accept input and the \colorbox{lightgray}{value} of those fields are sent as \colorbox{lightgray}{name=value} pairs.
 \end{itemize}
 Using the \colorbox{lightgray}{<form>} element in conjunction with the other elements listed above allows us to create sites that take into consideration the wants and needs of our users.
+
+\newpage
+\section{Form Validation}
+Now we learn how to add attributes to inputs and validate the information a user provides in a form. 
+\subsection{Introduction to HTML Form Validation}
+Ever wonder how a login page actually works? Or why the combination of a username and password grants you access to a website? The answers lie in \textit{validation}. Validation is the concept of checking user provided data against the required data.
+
+There are different types of validation. One type is \textit{server-side validation}, this happens when data is sent to another machine (typically a server) for validation. An example of this type of validation is the usage of a login page. The form on the login page accepts username and password input, then sends the data to a server that checks that the pair matches up correctly.
+
+On the other hand, we use \textit{client-side validation} if we want to check the data on the browser (the client). This validation occurs before data is sent to the server. Different browsers implement client-side validation differently, but it leads to the same outcome.
+
+Shared among the different browsers are the benefits of using HTML5’s built-in client-side validation. It saves us time from having to send information to the server and wait for the server to send back confirmation or rejection of the data. This can also help us protect our server from malicious code or data from a malicious user. It also allows us to quickly give feedback to users for specific fields rather than having them fill in a form again if the data they input into the form was rejected.
+
+\subsection{Requiring an Input}
+Sometimes we have fields in our \colorbox{lightgray}{<form>}s which are not optional, i.e. there must be information provided before we can submit it. To enforce this rule, we can add the \colorbox{lightgray}{required} attribute to an \colorbox{lightgray}{<input>} element.
+
+Take for example:
+\begin{lstlisting}
+<form action="/example.html" method="POST">
+  <label for="allergies">Do you have any dietary restrictions?</label>
+  <br>
+  <input id="allergies" name="allergies" type="text" required>
+  <br>
+  <input type="submit" value="Submit">
+</form>
+\end{lstlisting}
+This renders a text box, and if we try to submit the \colorbox{lightgray}{<form>} without filling it out we get this message:
+\begin{figure}[H]
+\includegraphics[scale = 0.7]{5_1}
+\centering 
+\end{figure}
+\vspace{-4mm}
+
+The styling of the message varies from browser to browser, the picture above depicts the message in a Chrome browser. We will also continue to show these messages as they appear in Chrome in later exercises.
+
+\subsection{Set a Minimum and Maximum}
+Another built-in validation we can use is to assign a minimum or maximum value for a number field, e.g. \colorbox{lightgray}{<input type="number">} and \colorbox{lightgray}{<input type="range">}. To set a minimum acceptable value, we use the \colorbox{lightgray}{min} attribute and assign a value. On the flip side, to set a maximum acceptable value, we assign the \colorbox{lightgray}{max} attribute a value. Let’s see this in code:
+\begin{lstlisting}
+<form action="/example.html" method="POST">
+  <label for="guests">Enter # of guests:</label>
+  <input id="guests" name="guests" type="number" min="1" max="4">
+  <input type="submit" value="Submit">
+</form>
+\end{lstlisting}
+If a user tries to submit an input that is less than 1 a warning will appear:
+\begin{figure}[H]
+\includegraphics[scale = 0.7]{5_2}
+\centering
+\end{figure}
+\vspace{-4mm}
+A similar message will appear if a user tries to input a number greater than 4. 
+
+\subsection{Checking Text Length}
+Previously, we were able to use \colorbox{lightgray}{min} and \colorbox{lightgray}{max} to set acceptable minimum and maximum values in a number field. Now let us consider about text fields. There are certainly cases where we would not want our users typing more than a certain number of characters (think about the character cap for messages on Twitter). We might even want to set a minimum number of characters. Conveniently, there are built-in HTML5 validations for these situations.
+
+To set a minimum number of characters for a text field, we add the \colorbox{lightgray}{minlength} attribute and a value to set a minimum value. Similarly, to set the maximum number of characters for a text field, we use the \colorbox{lightgray}{maxlength} attribute and set a maximum value. Let us take a look at these attributes in code:
+\begin{lstlisting}
+<form action="/example.html" method="POST">
+  <label for="summary">Summarize your feelings in less than 250 characters</label>
+  <input id="summary" name="summary" type="text" minlength="5" maxlength="250" required>
+  <input type="submit" value="Submit">
+</form>
+\end{lstlisting}
+If a user tries to submit the \colorbox{lightgray}{<form>} with less than the set minimum, this message appears:
+\begin{figure}[H]
+\includegraphics[scale = 0.75]{5_3}
+\centering
+\end{figure}
+\vspace{-4mm}
+
+And if a user tries to type in more than the maximum allowed number of characters, they do not get a warning message, but they cannot type it in. 
 
 
 

@@ -59,3 +59,8 @@
 \contentsline {subsection}{\numberline {4.12}Textarea element}{29}{subsection.4.12}%
 \contentsline {subsection}{\numberline {4.13}Submit Form}{30}{subsection.4.13}%
 \contentsline {subsection}{\numberline {4.14}Review}{30}{subsection.4.14}%
+\contentsline {section}{\numberline {5}Form Validation}{32}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Introduction to HTML Form Validation}{32}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Requiring an Input}{32}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Set a Minimum and Maximum}{33}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Checking Text Length}{33}{subsection.5.4}%
