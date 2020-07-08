@@ -133,7 +133,7 @@
   =,
   % HTML attributes
   charset=, src=, id=, width=, height=, style=, type=, rel=, href=, alt=, controls, target=, border=, colspan=, rowspan=, scope=, action=, method=, name=, value=, for=, step=, min=, max=, rows=, 
-  cols=, required, minlength=, maxlength=, 
+  cols=, required, minlength=, maxlength=, pattern=, 
   % SVG attributes
   fill=, attributeName=, begin=, dur=, from=, to=, poster=, controls=, x=, y=, repeatCount=, xlink:href=,
   % properties
@@ -1433,7 +1433,8 @@ To set a minimum number of characters for a text field, we add the \colorbox{lig
 \begin{lstlisting}
 <form action="/example.html" method="POST">
   <label for="summary">Summarize your feelings in less than 250 characters</label>
-  <input id="summary" name="summary" type="text" minlength="5" maxlength="250" required>
+  <input id="summary" name="summary" type="text" 
+  minlength="5" maxlength="250" required>
   <input type="submit" value="Submit">
 </form>
 \end{lstlisting}
@@ -1446,9 +1447,42 @@ If a user tries to submit the \colorbox{lightgray}{<form>} with less than the se
 
 And if a user tries to type in more than the maximum allowed number of characters, they do not get a warning message, but they cannot type it in. 
 
+\subsection{Matching a Pattern}
+In addition to checking the length of a text, we could also add a validation to check how the text was provided. For cases when we want user input to follow specific guidelines, we use the \colorbox{lightgray}{pattern} attribute and assign it a \textit{regular expression}, or regex. Regular expressions are a sequence of characters that make up a search pattern. If the input matches the regex, the form can be submitted.
 
+Let us say we wanted to check for a valid credit card number (a 14 to 16 digit number). We could use the regex: \colorbox{lightgray}{[0-9]\{14,16\}} which checks that the user provided only numbers and that they entered at least 14 digits and at most 16 digits.
 
+To add this to a form:
+\begin{lstlisting}
+<form action="/example.html" method="POST">
+  <label for="payment">Credit Card Number (no spaces):</label>
+  <br>
+  <input id="payment" name="payment" type="text" required 
+  pattern="[0-9]{14,16}">
+  <input type="submit" value="Submit">
+</form>
+\end{lstlisting}
+With the \colorbox{lightgray}{pattern} in place, users cannot submit the \colorbox{lightgray}{<form>} with a number that does not follow the regex. When they try, they will see a validation message like so:
+\begin{figure}[H]
+\includegraphics[scale = 0.45]{5_4}
+\centering
+\end{figure}
+\vspace{-4mm}
+More information about Regex can be found at \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions}{MDN’s regex article}.
 
+\subsection{Review}
+Let us review how to add client-side validation to \colorbox{lightgray}{<form>}s: 
+\begin{itemize}[leftmargin = *]
+\item Client-side validations happen in the browser before information is sent to a server.
+\item Adding the \colorbox{lightgray}{required} attribute to an input related element will validate that the input field has information in it.
+\item Assigning a value to the \colorbox{lightgray}{min} attribute of a number input element will validate an acceptable minimum value.
+\item Assigning a value to the \colorbox{lightgray}{max} attribute of a number input element will validate an acceptable maximum value.
+\item Assigning a value to the \colorbox{lightgray}{minlength} attribute of a text input element will validate an acceptable minimum number of characters.
+\item Assigning a value to the \colorbox{lightgray}{maxlength} attribute of a text input element will validate an acceptable maximum number of characters.
+\item Assigning a regex to \colorbox{lightgray}{pattern} matches the input to the provided regex.
+\item If validations on a \colorbox{lightgray}{<form>} do not pass, the user gets a message explaining why and the \colorbox{lightgray}{<form>} cannot be submitted.
+\end{itemize}
+These quick checks help ensure that input data is correct and safe for our servers. It also helps give users immediate feedback on what they need to fix instead of having to wait for a server to send back that information.
 
 
 \end{document}
