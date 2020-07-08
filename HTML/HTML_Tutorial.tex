@@ -68,17 +68,6 @@
   alsodigit={-}
 }
 
-% JavaScript
-\iffalse
-\lstdefinelanguage{JavaScript}{
-  morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, while, do, else, case, break},
-  morecomment=[s]{/*}{*/},
-  morecomment=[l]//,
-  morestring=[b]",
-  morestring=[b]'
-}
-\fi
-
 \lstdefinelanguage{HTML5}{
   language=html,
   sensitive=true,	
@@ -90,7 +79,7 @@
   >,
   % Standard tags
 	<!DOCTYPE,
-  </html, <html, <head, <title, </title, <style, </style, <link, </head, <meta, />,
+  </html, <html, <header, <title, </title, <style, </style, <link, </header, <meta, />,
 	% body
 	</body, <body,
 	% Divs
@@ -111,7 +100,9 @@
 	<img, 
 	</video, 
 	html>, 
-	<a, </a, 
+%	<a, </a, 
+	<article, </article, 
+	<audio, </audio, 
 	<table, </table,
 	<tr, </tr, 
 	<td, </td, 
@@ -125,8 +116,18 @@
 	<select, </select, 
 	<option, </option, 
 	<textarea, </textarea, 
+	<nav, </nav, 
+	<main, </main, 
+	<h2, </h2, 
+	<h3, </h3, 
+	<footer, </footer, 
+	<section, </section, 
+	<aside, </aside, 
+	<figure, </figure, 
+	<figcaption, </figcaption, 
+	<embed,  
   % More tags...
-  <canvas, /canvas>, <svg, <rect, <animateTransform, </rect>, </svg>, <video, <source, <iframe, </iframe>, </video>, <image, </image>, <header, </header, <article, </article
+  <canvas, /canvas>, <svg, <rect, <animateTransform, </rect>, </svg>, <video, <source, <iframe, </iframe>, </video>, <image, </image>
   },
   ndkeywords={
   % General
@@ -149,13 +150,12 @@
   % General design
   backgroundcolor=\color{backcolour},
   basicstyle={\small\ttfamily},   
-  %frame=b,
   % line-numbers
   xleftmargin={0.75cm},
   numbers=left,
   stepnumber=1,
   firstnumber=1,
-  numberfirstline=true,	
+  numberfirstline=false,	
   % Code design
   identifierstyle=\color{black},
   keywordstyle=\color{blue}\bfseries,
@@ -164,7 +164,6 @@
   commentstyle=\color{brown}\ttfamily,
   % Code
   language=HTML5,
-  %alsolanguage=JavaScript,
   alsodigit={.:;},	
   tabsize=2,
   showtabs=false,
@@ -183,15 +182,6 @@
   {ö}{{\"o}}1
 }
 
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
-\setlength\parindent{0pt}
-\setlist[itemize,1]{leftmargin=\dimexpr 26pt-.5in}
-
-\sectionfont{\fontsize{12}{15}\selectfont}
-\title{Introduction to Programming with Javascript}
-\author{Qitian Liao}
-\date{Aug 3, 2020} 
 \usepackage[left=2cm, right=2cm, top=2cm]{geometry}
 %\setlength\parindent{0pt}
 
@@ -1483,6 +1473,243 @@ Let us review how to add client-side validation to \colorbox{lightgray}{<form>}s
 \item If validations on a \colorbox{lightgray}{<form>} do not pass, the user gets a message explaining why and the \colorbox{lightgray}{<form>} cannot be submitted.
 \end{itemize}
 These quick checks help ensure that input data is correct and safe for our servers. It also helps give users immediate feedback on what they need to fix instead of having to wait for a server to send back that information.
+
+\newpage
+\section{Semantic HTML}
+\subsection{Introduction to Semantic HTML}
+When building web pages, we use a combination of non-semantic HTML and \textit{Semantic HTML}. The word semantic means “relating to meaning,” so semantic elements provide information about the content between the opening and closing tags.
+
+By using Semantic HTML, we select HTML elements based on their meaning, not on how they are presented. Elements such as \colorbox{lightgray}{<div>} and \colorbox{lightgray}{<span>} are not semantic elements since they provide no context as to what is inside of those tags.
+
+For example, instead of using a \colorbox{lightgray}{<div>} element to contain our header information, we could use a \colorbox{lightgray}{<header>} element, which is used as a heading section. By using a \colorbox{lightgray}{<header>} tag instead of a \colorbox{lightgray}{<div>}, we provide context as to what information is inside of the opening and closing tag.
+
+\textbf{Why use Semantic HTML?}
+\begin{itemize}[leftmargin = *]
+\item \textbf{Accessibility:} Semantic HTML makes webpages accessible for mobile devices and for people with disabilities as well. This is because screen readers and browsers are able to interpret the code better.
+
+\item \textbf{SEO:} It improves the website SEO, or \textit{Search Engine Optimization}, which is the process of increasing the number of people that visit your webpage. With better SEO, search engines are better able to identify the content of your website and weight the most important content appropriately.
+
+\item \textbf{Easy to Understand:} Semantic HTML also makes the website’s source code easier to read for other web developers.
+\end{itemize}
+To better understand this, we can think of comparing non-semantic HTML to going into a store with no signs on the aisles. Since the aisles are not labeled, we do not know what products are in those aisles. However, stores that do have signs for each aisle make it much easier to find the items we need, just like Semantic HTML.
+\begin{figure}[H]
+\includegraphics[scale = 0.2]{5_5}
+\centering
+\end{figure}
+\vspace{-4mm}
+
+\subsection{Header and Nav}
+Let us take a look at some semantic elements that assist in the structure of a web page. A \colorbox{lightgray}{<header>} is a container usually for either navigational links or introductory content containing \colorbox{lightgray}{<h1>} to \colorbox{lightgray}{<h6>} headings.
+
+The example below shows \colorbox{lightgray}{<header>} in action:
+\begin{lstlisting}
+<header>
+  <h1>
+     Everything you need to know about pizza!
+  </h1>
+</header>
+\end{lstlisting}
+This can be compared to the code below which uses a \colorbox{lightgray}{<div>} tag instead of a \colorbox{lightgray}{<header>} tag:
+\begin{lstlisting}
+<div id="header">
+  <h1>
+    Everything you need to know about pizza!
+  </h1>
+</div>
+\end{lstlisting}
+By using a \colorbox{lightgray}{<header>} tag, our code becomes easier to read. It is much easier to identify what is inside of the \colorbox{lightgray}{<h1>}'s parent tags, as opposed to a \colorbox{lightgray}{<div>} tag which would provide no details as to what was inside of the tag.
+
+A \colorbox{lightgray}{<nav>} is used to define a block of navigation links such as menus and tables of contents. It is important to note that \colorbox{lightgray}{<nav>} can be used inside of the \colorbox{lightgray}{<header>} element but can also be used on its own.
+
+Let us take a look at the example below:
+\begin{lstlisting}
+<header> 
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>      
+    </ul>
+  </nav>
+</header>
+\end{lstlisting}
+By using \colorbox{lightgray}{<nav>} as a way to label our navigation links, it will be easier for not only us, but also for web browsers and screen readers to read the code.
+
+\subsection{Main and Footer}
+Two more structural elements are \colorbox{lightgray}{<main>} and \colorbox{lightgray}{<footer>}. These elements along with \colorbox{lightgray}{<nav>} and \colorbox{lightgray}{<header>} help describe where an element is located based on conventional web development standards.
+
+The element \colorbox{lightgray}{<main>} is used to encapsulate the dominant content within a webpage. This tag is separate from the \colorbox{lightgray}{<footer>} and the \colorbox{lightgray}{<nav>} of a web page since these elements do not contain the principal content. By using \colorbox{lightgray}{<main>} as opposed to a \colorbox{lightgray}{<div>} element, screen readers and web browsers are better able to identify that whatever is inside of the tag is the bulk of the content.
+
+Let us see how <main> look when incorporated into our code. 
+\begin{lstlisting}
+<main>
+  <header>
+    <h1>Types of Sports</h1>
+  </header>
+  <article>
+    <h3>Baseball</h3>
+    <p>
+      The first game of baseball was played in Cooperstown, New York in the summer of 1839.
+    </p>
+  </article>
+</main>
+\end{lstlisting}
+As we see above, \colorbox{lightgray}{<main>} contains an \colorbox{lightgray}{<article>} and \colorbox{lightgray}{<header>} tag with child elements that hold the most important information related to the page.
+
+The content at the bottom of the subject information is known as the \textit{footer}, indicated by the \colorbox{lightgray}{<footer>} element. The footer contains information such as:
+\begin{itemize}[leftmargin = *]
+\item Contact information
+\item Copyright information
+\item Terms of use
+\item Site Map
+\item Reference to top of page links
+\end{itemize}
+For example:
+\begin{lstlisting}
+<footer>
+  <p>Email me at liaoqitian1024@gmail.com</p>
+</footer>
+\end{lstlisting}
+In the example above, the footer is used to contain contact information. The \colorbox{lightgray}{<footer>} tag is separate from the \colorbox{lightgray}{<main>} element and typically located at the bottom of the content.
+
+\subsection{Article and Section}
+Now that we covered the body of Semantic HTML, let us focus on what can go in the body. The two elements we are going to focus on now are \colorbox{lightgray}{<section>} and \colorbox{lightgray}{<article>}.
+
+\colorbox{lightgray}{<section>} defines elements in a document, such as chapters, headings, or any other area of the document with the same theme. For example, content with the same theme such as articles about cricket can go under a single \colorbox{lightgray}{<section>}. A website’s home page could be split into sections for the introduction, news items, and contact information.
+
+Here is an example of how to use \colorbox{lightgray}{<section>}:
+\begin{lstlisting}
+<section>
+  <h2>Fun Facts About Cricket</h2> 
+</section>
+\end{lstlisting}
+In the code above we created a \colorbox{lightgray}{<section>} element to encapsulate the code. In \colorbox{lightgray}{<section>} we added a \colorbox{lightgray}{<h2>} element as a heading.
+
+The \colorbox{lightgray}{<article>} element holds content that makes sense on its own. \colorbox{lightgray}{<article>} can hold content such as articles, blogs, comments, magazines, etc. An \colorbox{lightgray}{<article>} tag would help someone using a screen reader understand where the article content (that might contain a combination of text, images, audio, etc.) begins and ends.
+
+Here is an example of how to use \colorbox{lightgray}{<article>}:
+\begin{lstlisting}
+<section>
+  <h2>Fun Facts About Cricket</h2>
+  <article>
+    <p>A single match of cricket can last up to 5 days.</p>
+  </article>
+</section>
+\end{lstlisting}
+In the code above, the \colorbox{lightgray}{<article>} element containing a fact about cricket was placed inside of the \colorbox{lightgray}{<section>} element. It is important to note that a \colorbox{lightgray}{<section>} element could also be placed in an \colorbox{lightgray}{<article>} element depending on the context.
+
+\subsection{The Aside Element}
+The \colorbox{lightgray}{<aside>} element is used to mark additional information that can enhance another element but is not required in order to understand the main content. This element can be used alongside other elements such as \colorbox{lightgray}{<article>} or \colorbox{lightgray}{<section>}. Some common uses of the \colorbox{lightgray}{<aside>} element are for:
+\begin{itemize}[leftmargin = *]
+\item Bibliographies
+\item Endnotes
+\item Comments
+\item \href{https://en.wikipedia.org/wiki/Pull_quote}{Pull quotes}
+\item Editorial sidebars
+\item Additional information
+\end{itemize}
+
+Here is an example of \colorbox{lightgray}{<aside>} being used alongside \colorbox{lightgray}{<article>}:
+\begin{lstlisting}
+<section>
+  <h2>Fun Facts About Cricket</h2>
+  <article>
+    <p>The first World Series was played between Pittsburgh and Boston in 1903 and was a nine-game series.</p>
+  </article>
+  <aside>
+  <p>Legends never die. </p>
+  </aside>
+</section>
+\end{lstlisting}
+As shown above, the information within the \colorbox{lightgray}{<article>} is the important content. Meanwhile the information within the \colorbox{lightgray}{<aside>} enhances the information in \colorbox{lightgray}{<article>} but is not required in order to understand it.
+
+\subsection{Figure and Figcaption}
+With \colorbox{lightgray}{<aside>}, we learned that we can put additional information next to a main piece of content, and now we want to add an image or illustration, That is where \colorbox{lightgray}{<figure>} and \colorbox{lightgray}{<figcaption>} come in.
+
+\colorbox{lightgray}{<figure>} is an element used to encapsulate media such as an image, illustration, diagram, code snippet, etc, which is referenced in the main flow of the document.
+\begin{lstlisting}
+<figure>
+  <img src="overwatch.jpg"/>
+</figure>
+\end{lstlisting}
+In this code, we created a \colorbox{lightgray}{<figure>} element so that we can encapsulate our \colorbox{lightgray}{<img>} tag. In \colorbox{lightgray}{<figure>} we used the \colorbox{lightgray}{<img>} tag to insert an image onto the webpage. We used the \colorbox{lightgray}{src} attribute within the \colorbox{lightgray}{<img>} tag so that we can link the source of the image.
+
+It is possible to add a caption to the image by using \colorbox{lightgray}{<figcaption>}.
+
+\colorbox{lightgray}{<figcaption>} is an element used to describe the media in the \colorbox{lightgray}{<figure>} tag. Usually, \colorbox{lightgray}{<figcaption>} will go inside \colorbox{lightgray}{<figure>}. This is different than using a \colorbox{lightgray}{<p>} element to describe the content; if we decide to change the location of \colorbox{lightgray}{<figure>}, the paragraph tag may get displaced from the figure while a \colorbox{lightgray}{<figcaption>} will move with the figure. This is useful for grouping an image with a caption.
+\begin{lstlisting}
+<figure>
+  <img src="overwatch.jpg">
+  <figcaption>This picture shows characters from Overwatch.</figcaption>
+</figure>
+\end{lstlisting}
+In the example above, we added a \colorbox{lightgray}{<figcaption>} into the \colorbox{lightgray}{<figure>} element to describe the image from the previous example. This helps group the \colorbox{lightgray}{<figure>} content with the \colorbox{lightgray}{<figcaption>} content.
+
+While the content in \colorbox{lightgray}{<figure>} is related to the main flow of the document, its position is independent. This means that you can remove it or move it somewhere else without affecting the flow of the document.
+
+\subsection{Audio and Attributes}
+Now that we learned about text-based content, let us dig into \colorbox{lightgray}{<audio>}. The \colorbox{lightgray}{<audio>} element is used to embed audio content into a document. Like \colorbox{lightgray}{<video>}, \colorbox{lightgray}{<audio>} uses \colorbox{lightgray}{src} to link the audio source.
+\begin{lstlisting}
+<audio>
+  <source src="iAmAnAudioFile.mp3" type="audio/mp3">
+</audio>
+\end{lstlisting}
+In this example, we created an \colorbox{lightgray}{<audio>} element. Then we created a \colorbox{lightgray}{<source>} element to encapsulate our audio link. In this case, \colorbox{lightgray}{iAmAnAudioFile.mp3} is our audio file. Then we specified the type by using \colorbox{lightgray}{type} and named what kind of audio it is. Although not always necessary, it is recommended that we state the type of audio as it helps the browser identify it more easily and determine if that type of audio file is supported by the browser.
+
+We linked our audio file into the browser but now we need to give it controls. This is where \textit{attributes} come in. Attributes provide additional information about an element.
+
+Attributes allow us to do many different things to our audio file. There are many attributes for \colorbox{lightgray}{<audio>} but now we focus on \colorbox{lightgray}{controls} and \colorbox{lightgray}{src}.
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{controls}: automatically displays the audio controls into the browser such as play and mute.
+\item \colorbox{lightgray}{src}: specifies the URL of the audio file.
+\end{itemize}
+As you might have noticed, we already used the \colorbox{lightgray}{src} attribute. Most attributes go in the opening tag of \colorbox{lightgray}{<audio>}. For example, here is how we could add both autoplay functionality and audio controls:
+\begin{lstlisting}
+<audio autoplay controls>
+\end{lstlisting}
+We can find other attributes here: \href{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#Attributes}{Useful attributes}.
+
+\subsection{Video and Embed}
+As demonstrated previously, media content can be a useful addition to a website. By using a \colorbox{lightgray}{<video>} element, we can add videos to our website. The \colorbox{lightgray}{<video>} element makes it clear that a developer is attempting to display a video to the user.
+
+Some attributes that can alter a video playback include:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{controls}: When added in, a play/pause button will be added onto the video along with volume control and a fullscreen option.
+\item \colorbox{lightgray}{autoplay}: The attribute which results in a video automatically playing as soon as the page is loaded.
+\item \colorbox{lightgray}{loop}: This attribute results in the video continuously playing on repeat.
+\end{itemize}
+Below is an example of \colorbox{lightgray}{<video>} being used with the controls attribute:
+\begin{lstlisting}
+<video src="coding.mp4" controls>Video not supported</video>
+\end{lstlisting}
+In the code above, a video file named \colorbox{lightgray}{coding.mp4} is being played. The “Video not supported” will only show up if the browser is unable to display the video.
+
+Another tag that can be used to incorporate media content into a page is the \colorbox{lightgray}{<embed>} tag, which can embed any media content including videos, audio files, and gifs from an external source. This means that websites that have an embed button have some form of media content that can be added to other websites. The \colorbox{lightgray}{<embed>} tag is a self-closing tag, unlike the \colorbox{lightgray}{<video>} element.
+
+Below we will take a look at \colorbox{lightgray}{<embed>} being used in action.
+\begin{lstlisting}
+<embed src="download.gif"/>
+\end{lstlisting}
+In the example above, \colorbox{lightgray}{<embed>} is being used to add in a gif from a local file known as \colorbox{lightgray}{download.gif}. Embed can be used to add local files as well as media content straight from some other websites.
+
+\subsection{Review}
+We can incorporate semantic elements into your website to make it more accessible and to make the code easier to read.
+
+Let us review the benefits of Semantic HTML and how to use it:
+\begin{itemize}[leftmargin = *]
+\item Semantic HTML introduces meaning to a page through specific elements that provide context as to what is in between the tags.
+\item Semantic HTML is a modern standard and makes a website accessible for people who use screen readers to translate the webpage and improves your website’s SEO.
+\item \colorbox{lightgray}{<header>}, \colorbox{lightgray}{<nav>} , \colorbox{lightgray}{<main>} and \colorbox{lightgray}{<footer>} create the basic structure of the webpage.
+\item \colorbox{lightgray}{<section>} defines elements in a document, such as chapters, headings, or any other area of the document with the same theme.
+\item \colorbox{lightgray}{<article>} holds content that makes sense on its own such as articles, blogs, comments, etc.
+\item \colorbox{lightgray}{<aside>} contains information that is related to the main content, but not required in order to understand the dominant information.
+\item \colorbox{lightgray}{<figure>} encapsulates all types of media.
+\item \colorbox{lightgray}{<figcaption>} is used to describe the media in <figure>.
+\item \colorbox{lightgray}{<video>}, \colorbox{lightgray}{<embed>}, and \colorbox{lightgray}{<audio>} elements are used for media files.
+\end{itemize}
+Now, we can apply this knowledge to become a better Web Developer.
+
+
+
 
 
 \end{document}

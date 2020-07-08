@@ -66,3 +66,13 @@
 \contentsline {subsection}{\numberline {5.4}Checking Text Length}{33}{subsection.5.4}%
 \contentsline {subsection}{\numberline {5.5}Matching a Pattern}{34}{subsection.5.5}%
 \contentsline {subsection}{\numberline {5.6}Review}{34}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Semantic HTML}{36}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Introduction to Semantic HTML}{36}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Header and Nav}{36}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Main and Footer}{37}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Article and Section}{38}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}The Aside Element}{39}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Figure and Figcaption}{39}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Audio and Attributes}{40}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Video and Embed}{41}{subsection.6.8}%
+\contentsline {subsection}{\numberline {6.9}Review}{41}{subsection.6.9}%
