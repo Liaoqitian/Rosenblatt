@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+\usepackage[table]{xcolor}
+\usepackage{amsmath} 
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{sectsty}
+\usepackage{amssymb}
+ \usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{romannum}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage[super]{nth}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{pagecolor,lipsum}
+\usepackage{color,soul}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{media9}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{parskip}
+
+\definecolor{theWhite}{gray}{0.9}
+\definecolor{theBlack}{gray}{0.0}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{orange}{RGB}{255,127,0}
+%\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
+%\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
+\definecolor{orange}{rgb}{1,0.45,0.13}		
+\definecolor{olive}{rgb}{0.17,0.59,0.20}
+\definecolor{brown}{rgb}{0.69,0.31,0.31}
+\definecolor{purple}{rgb}{0.38,0.18,0.81}
+\definecolor{lightblue}{rgb}{0.1,0.57,0.7}
+\definecolor{lightred}{rgb}{1,0.4,0.5}
+\pagecolor{white}
+\graphicspath{ {./images/} }
+\setlength{\fboxsep}{1pt}
+
+\lstdefinelanguage{Comment}{
+  identifierstyle=\color{white},
+  sensitive=false,
+}
+
+\lstset {%
+  % General design
+  backgroundcolor=\color{backcolour},
+  basicstyle={\small\ttfamily},   
+  % line-numbers
+  xleftmargin={0.75cm},
+  numbers=left,
+  stepnumber=1,
+  firstnumber=1,
+  numberfirstline=false,	
+  % Code design
+  identifierstyle=\color{black},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{editorGreen}\bfseries,
+  stringstyle=\color{editorOcher}\ttfamily,
+  commentstyle=\color{brown}\ttfamily,
+  % Code
+  language=SQL,
+  alsodigit={.:;},	
+  tabsize=2,
+  showtabs=false,
+  showspaces=false,
+  showstringspaces=false,
+  extendedchars=true,
+  breaklines=true,
+}
+
+\usepackage[left=2cm, right=2cm, top=2cm]{geometry}
+%\setlength\parindent{0pt}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+\begin{document}
+\begin{titlepage}
+	\begin{center} 
+	\line(1, 0){400}\\
+	[0.25in]
+	\huge{\bfseries Introduction to SQL} \\
+	[2mm]
+	\line(1, 0){300} \\
+	[1.5cm]
+	\textsc{\LARGE Qitian Liao} \\
+	[0.5cm]
+	\textsc{\large University of California, Berkeley} \\
+	[15cm]
+	\end{center}
+	\begin{flushright}	
+	\end{flushright}
+\end{titlepage}
+
+\thispagestyle{empty}
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+\setcounter{page}{1}
+\def\Arg{\mathop{\operator@font Arg}\nolimits}
+\pagenumbering{arabic}
+\titleformat*{\section}{\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+\newpage
+
+\section{Manipulation}
+Get up and running with SQL by learning commands to manipulate data stored in relational databases.
+\subsection{Introduction to SQL}
+SQL, \textbf{S}tructured \textbf{Q}uery \textbf{L}anguage, is a programming language designed to manage data stored in relational databases. SQL operates through simple, declarative statements. This keeps data accurate and secure, and helps maintain the integrity of databases, regardless of size.
+
+The SQL language is widely used today across web frameworks and database applications. Knowing SQL gives you the freedom to explore your data, and the power to make better decisions. By learning SQL, you will also learn concepts that apply to nearly every data storage system.
+
+The statements covered in this course use SQLite Relational Database Management System (\href{https://www.codecademy.com/articles/what-is-rdbms-sql}{RDBMS}). You can also access a glossary of all the \href{https://www.codecademy.com/articles/sql-commands}{SQL commands} taught in this chapter.
+
+\subsection{Relational Databases}
+In one line of code, we can return information from a relational database.
+\begin{lstlisting}
+SELECT * FROM celebs;
+\end{lstlisting}
+A \textit{relational database} is a database that organizes information into one or more tables. Here, the relational database contains one table.
+
+A \textit{table} is a collection of data organized into rows and columns. Tables are sometimes referred to as \textit{relations}. Here the table is \colorbox{lightgray}{celebs}.
+
+A \textit{column} is a set of data values of a particular type. Here, \colorbox{lightgray}{id}, \colorbox{lightgray}{name}, and \colorbox{lightgray}{age} are the columns.
+
+A \textit{row} is a single record in a table. 
+
+All data stored in a relational database is of a certain data type. Some of the most common data types are:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{INTEGER}, a positive or negative whole number
+\item \colorbox{lightgray}{TEXT}, a text string
+\item \colorbox{lightgray}{DATE}, the date formatted as YYYY-MM-DD
+\item \colorbox{lightgray}{REAL}, a decimal value
+\end{itemize}
+
+\subsection{Statements}
+The code below is a SQL statement. A \textit{statement} is text that the database recognizes as a valid command. Statements always end in a semicolon \colorbox{lightgray}{;}.
+\begin{lstlisting}
+CREATE TABLE table_name (
+   column_1 data_type, 
+   column_2 data_type, 
+   column_3 data_type
+);
+\end{lstlisting}
+Let us break down the components of a statement:
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{CREATE TABLE} is a \textit{clause}. Clauses perform specific tasks in SQL. By convention, clauses are written in capital letters. Clauses can also be referred to as commands.
+\item \colorbox{lightgray}{table\_name} refers to the name of the table that the command is applied to.
+\item \colorbox{lightgray}{(column\_1 data\_type, column\_2 data\_type, column\_3 data\_type)} is a \textit{parameter}. A parameter is a list of columns, data types, or values that are passed to a clause as an argument. Here, the parameter is a list of column names and the associated data type.
+\end{enumerate}
+The structure of SQL statements vary. The number of lines used does not matter. A statement can be written all on one line, or split up across multiple lines if it makes it easier to read. 
+
+\end{document}
