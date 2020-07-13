@@ -229,4 +229,21 @@ SELECT * FROM celebs;
 \colorbox{lightgray}{*} is a special wildcard character that we have been using. It allows you to select every column in a table without having to name each one individually. Here, the result set contains every column in the \colorbox{lightgray}{celebs} table.
 
 \colorbox{lightgray}{SELECT} statements always return a new table called the \textit{result set}.
+
+\subsection{Alter}
+The \colorbox{lightgray}{ALTER TABLE} statement adds a new column to a table. You can use this command when you want to add columns to a table. The statement below adds a new column \colorbox{lightgray}{twitter\_handle} to the \colorbox{lightgray}{celebs} table.
+\begin{lstlisting}
+ALTER TABLE celebs 
+ADD COLUMN twitter\_handle TEXT;
+\end{lstlisting}
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{ALTER TABLE} is a clause that lets you make the specified changes.
+\item \colorbox{lightgray}{celebs} is the name of the table that is being changed.
+\item \colorbox{lightgray}{ADD COLUMN} is a clause that lets you add a new column to a table:
+\begin{itemize}
+\item \colorbox{lightgray}{twitter\_handle} is the name of the new column being added
+\item \colorbox{lightgray}{TEXT} is the data type for the new column
+\end{itemize}
+\item \colorbox{lightgray}{NULL} is a special value in SQL that represents missing or unknown data. Here, the rows that existed before the column was added have \colorbox{lightgray}{NULL} ($\varnothing$) values for \colorbox{lightgray}{twitter\_handle}.
+\end{enumerate}
 \end{document}
