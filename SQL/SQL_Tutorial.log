@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  13 JUL 2020 01:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  13 JUL 2020 12:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -941,21 +941,28 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 142.
  [2] [3] [4]
-[5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 280.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
+[5] [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 318.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 318.
  (./SQL_Tutorial.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 280.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 280.
-Package rerunfilecheck Info: File `SQL_Tutorial.out' has not changed.
-(rerunfilecheck)             Checksum: BA1040F57DE8024BA76FE56B886C2923;573.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 280.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 318.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 318.
+
+
+Package rerunfilecheck Warning: File `SQL_Tutorial.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `SQL_Tutorial.out':
+(rerunfilecheck)             Before: 82A0E2DCA93AB157113690BA61E1A336;635
+(rerunfilecheck)             After:  2A3DBA802D54DA48AB99A2570E838A90;692.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 318.
  ) 
 Here is how much of TeX's memory you used:
- 23794 strings out of 480608
- 437846 string characters out of 5903631
- 974964 words of memory out of 5000000
- 39145 multiletter control sequences out of 15000+600000
+ 23811 strings out of 480608
+ 438067 string characters out of 5903631
+ 981965 words of memory out of 5000000
+ 39148 multiletter control sequences out of 15000+600000
  547303 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,7n,60p,1201b,1833s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -972,10 +979,10 @@ al/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local
 /texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/t
 exlive/2020/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/tex
 live/2020/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on SQL_Tutorial.pdf (6 pages, 180229 bytes).
+Output written on SQL_Tutorial.pdf (7 pages, 188544 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 192 compressed objects within 2 object streams
- 72 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 242 PDF objects out of 1000 (max. 8388607)
+ 219 compressed objects within 3 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

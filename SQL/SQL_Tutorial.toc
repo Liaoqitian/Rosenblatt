@@ -8,3 +8,5 @@
 \contentsline {subsection}{\numberline {1.7}Alter}{4}{subsection.1.7}%
 \contentsline {subsection}{\numberline {1.8}Update}{5}{subsection.1.8}%
 \contentsline {subsection}{\numberline {1.9}Delete}{5}{subsection.1.9}%
+\contentsline {subsection}{\numberline {1.10}Constraints}{5}{subsection.1.10}%
+\contentsline {subsection}{\numberline {1.11}Review}{6}{subsection.1.11}%

@@ -279,20 +279,40 @@ WHERE twitter_handle IS NULL;
 \end{enumerate}
 
 \subsection{Constraints}
-Constraints that add information about how a column can be used are invoked after specifying the data type for a column. They can be used to tell the database to reject inserted data that does not adhere to a certain restriction. The statement below sets constraints on the celebs table.
-
+\textit{Constraints} that add information about how a column can be used are invoked after specifying the data type for a column. They can be used to tell the database to reject inserted data that does not adhere to a certain restriction. The statement below sets \textit{constraints} on the \colorbox{lightgray}{celebs} table.
+\begin{lstlisting}
 CREATE TABLE celebs (
    id INTEGER PRIMARY KEY, 
    name TEXT UNIQUE,
    date_of_birth TEXT NOT NULL,
-   date_of_death TEXT DEFAULT 'Not Applicable'
+   date_of_death TEXT DEFAULT "Not Applicable"
 );
-1. PRIMARY KEY columns can be used to uniquely identify the row. Attempts to insert a row with an identical value to a row already in the table will result in a constraint violation which will not allow you to insert the new row.
+\end{lstlisting}
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{PRIMARY KEY} columns can be used to uniquely identify the row. Attempts to insert a row with an identical value to a row already in the table will result in a \textit{constraint violation} which will not allow you to insert the new row.
+\item \colorbox{lightgray}{UNIQUE} columns have a different value for every row. This is similar to \colorbox{lightgray}{PRIMARY KEY} except a table can have many different \colorbox{lightgray}{UNIQUE} columns.
+\item \colorbox{lightgray}{NOT NULL} columns must have a value. Attempts to insert a row without a value for a \colorbox{lightgray}{NOT NULL} column will result in a constraint violation and the new row will not be inserted.
+\item \colorbox{lightgray}{DEFAULT} columns take an additional argument that will be the assumed value for an inserted row if the new row does not specify a value for that column.
+\end{enumerate}
 
-2. UNIQUE columns have a different value for every row. This is similar to PRIMARY KEY except a table can have many different UNIQUE columns.
+\subsection{Review}
+We have learned six commands commonly used to manage data stored in a relational database and how to set constraints on such data. 
 
-3. NOT NULL columns must have a value. Attempts to insert a row without a value for a NOT NULL column will result in a constraint violation and the new row will not be inserted.
+SQL is a programming language designed to manipulate and manage data stored in relational databases.
+\begin{itemize}
+\item A \textit{relational database} is a database that organizes information into one or more tables.
+\item A \textit{table} is a collection of data organized into rows and columns.
+\end{itemize}
+A \textit{statement} is a string of characters that the database recognizes as a valid command.
+\begin{itemize}
+\item \colorbox{lightgray}{CREATE TABLE} creates a new table.
+\item \colorbox{lightgray}{INSERT INTO} adds a new row to a table.
+\item \colorbox{lightgray}{SELECT} queries data from a table.
+\item \colorbox{lightgray}{ALTER TABLE} changes an existing table.
+\item \colorbox{lightgray}{UPDATE} edits a row in a table.
+\item \colorbox{lightgray}{DELETE FROM} deletes rows from a table.
+\end{itemize}
+\textit{Constraints} add information about how a column can be used.
 
-4. DEFAULT columns take an additional argument that will be the assumed value for an inserted row if the new row does not specify a value for that column.
 
 \end{document}
