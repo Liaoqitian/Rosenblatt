@@ -636,4 +636,185 @@ We just learned how to query data from a database using SQL. We also learned how
 \item \colorbox{lightgray}{LIMIT} specifies the maximum number of rows that the query will return.
 \item \colorbox{lightgray}{CASE} creates different outputs.
 \end{itemize}
+
+\newpage
+\section{Aggregate Functions}
+Now we learn how to use SQL to perform calculations during a query.
+\subsection{Introduction}
+We have learned how to write queries to retrieve information from the database. Now, we are going to learn how to perform calculations using SQL.
+
+Calculations performed on multiple rows of a table are called \textbf{aggregates}.
+
+In this chapter, we will use a table named \colorbox{lightgray}{fake\_apps} which is made up of fake mobile applications data.
+
+Here is a quick preview of some important aggregates that we will cover in this chapter:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{COUNT()}: count the number of rows
+\item \colorbox{lightgray}{SUM()}: the sum of the values in a column
+\item \colorbox{lightgray}{MAX()}/\colorbox{lightgray}{MIN()}: the largest/smallest value
+\item \colorbox{lightgray}{AVG()}: the average of the values in a column
+\item \colorbox{lightgray}{ROUND()}: round the values in the column
+\end{itemize}
+
+\subsection{Count}
+The fastest way to calculate how many rows are in a table is to use the \colorbox{lightgray}{COUNT()} function.
+
+\colorbox{lightgray}{COUNT()} is a function that takes the name of a column as an argument and counts the number of non-empty values in that column.
+\begin{lstlisting}
+SELECT COUNT(*)
+FROM table_name;
+\end{lstlisting}
+Here, we want to count every row, so we pass \colorbox{lightgray}{*} as an argument inside the parenthesis.
+
+\subsection{Sum}
+SQL makes it easy to add all values in a particular column using \colorbox{lightgray}{SUM()}.
+
+\colorbox{lightgray}{SUM()} is a function that takes the name of a column as an argument and returns the sum of all the values in that column.
+
+The following code computes the total number of downloads for all of the apps combined
+\begin{lstlisting}
+SELECT SUM(downloads)
+FROM fake_apps;
+\end{lstlisting}
+This adds all values in the \colorbox{lightgray}{downloads} column.
+
+\subsection{Max / Min}
+The \colorbox{lightgray}{MAX()} and \colorbox{lightgray}{MIN()} functions return the highest and lowest values in a column, respectively.
+
+The following code computes the number of downloads the most popular app have?
+\begin{lstlisting}
+SELECT MAX(downloads)
+FROM fake_apps;
+\end{lstlisting}
+\colorbox{lightgray}{MAX()} takes the name of a column as an argument and returns the largest value in that column. Here, we returned the largest value in the \colorbox{lightgray}{downloads} column.
+
+\colorbox{lightgray}{MIN()} works the same way but it does the exact opposite; it returns the smallest value.
+
+\subsection{Average}
+SQL uses the \colorbox{lightgray}{AVG()} function to quickly calculate the average value of a particular column.
+
+The statement below returns the average number of downloads for an app in our database:
+\begin{lstlisting}
+SELECT AVG(downloads)
+FROM fake_apps;
+\end{lstlisting}
+The \colorbox{lightgray}{AVG()} function works by taking a column name as an argument and returns the average value for that column.
+
+\subsection{Round}
+By default, SQL tries to be as precise as possible without rounding. We can make the result table easier to read using the \colorbox{lightgray}{ROUND()} function.
+
+\colorbox{lightgray}{ROUND()} function takes two arguments inside the parenthesis:
+\begin{enumerate}[leftmargin = *]
+\item a column name
+\item an integer
+\end{enumerate}
+It rounds the values in the column to the number of decimal places specified by the integer.
+\begin{lstlisting}
+SELECT ROUND(price, 0)
+FROM fake_apps;
+\end{lstlisting}
+Here, we pass the column \colorbox{lightgray}{price} and integer \colorbox{lightgray}{0} as arguments. SQL rounds the values in the column to 0 decimal places in the output.
+
+\subsection{Group By}
+Oftentimes, we will want to calculate an aggregate for data with certain characteristics.
+
+For instance, we might want to know the mean IMDb ratings for all movies each year. We could calculate each number by a series of queries with different \colorbox{lightgray}{WHERE} statements, like so:
+\begin{lstlisting}
+SELECT AVG(imdb_rating)
+FROM movies
+WHERE year = 1999;
+
+SELECT AVG(imdb_rating)
+FROM movies
+WHERE year = 2000;
+
+SELECT AVG(imdb_rating)
+FROM movies
+WHERE year = 2001;
+and so on.
+\end{lstlisting}
+
+However, we can use \colorbox{lightgray}{GROUP BY} to do this in a single step:
+\begin{lstlisting}
+SELECT year,
+   AVG(imdb_rating)
+FROM movies
+GROUP BY year
+ORDER BY year;
+\end{lstlisting}
+\colorbox{lightgray}{GROUP BY} is a clause in SQL that is used with aggregate functions. It is used in collaboration with the \colorbox{lightgray}{SELECT} statement to arrange identical data into groups.
+
+The \colorbox{lightgray}{GROUP BY} statement comes after any \colorbox{lightgray}{WHERE} statements, but before \colorbox{lightgray}{ORDER BY} or \colorbox{lightgray}{LIMIT}.
+
+Sometimes, we want to \colorbox{lightgray}{GROUP BY} a calculation done on a column.
+
+For instance, we might want to know how many movies have IMDb ratings that round to 1, 2, 3, 4, 5. We could do this using the following syntax:
+\begin{lstlisting}
+SELECT ROUND(imdb_rating),
+   COUNT(name)
+FROM movies
+GROUP BY ROUND(imdb_rating)
+ORDER BY ROUND(imdb_rating);
+\end{lstlisting}
+However, this query may be time-consuming to write and more prone to error.
+
+SQL lets us use column reference(s) in our \colorbox{lightgray}{GROUP BY} that will make our lives easier.
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{1} is the first column selected
+\item \colorbox{lightgray}{2} is the second column selected
+\item \colorbox{lightgray}{3} is the third column selected
+\end{itemize}
+and so on.
+
+The following query is equivalent to the one above:
+\begin{lstlisting}
+SELECT ROUND(imdb_rating),
+   COUNT(name)
+FROM movies
+GROUP BY 1
+ORDER BY 1;
+\end{lstlisting}
+Here, the 1 refers to the first column in our \colorbox{lightgray}{SELECT} statement, \colorbox{lightgray}{ROUND(imdb\_rating)}.
+
+\subsection{Having}
+In addition to being able to group data using \colorbox{lightgray}{GROUP BY}, SQL also allows you to filter which groups to include and which to exclude.
+
+For instance, imagine that we want to see how many movies of different genres were produced each year, but we only care about years and genres with at least 10 movies.
+
+We cannot use \colorbox{lightgray}{WHERE} here because we do not want to filter the rows; we want to filter groups.
+
+This is where \colorbox{lightgray}{HAVING} comes in.
+
+\colorbox{lightgray}{HAVING} is very similar to \colorbox{lightgray}{WHERE}. In fact, all types of \colorbox{lightgray}{WHERE} clauses you learned about thus far can be used with \colorbox{lightgray}{HAVING}.
+
+We can use the following for the problem:
+\begin{lstlisting}
+SELECT year,
+   genre,
+   COUNT(name)
+FROM movies
+GROUP BY 1, 2
+HAVING COUNT(name) > 10;
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item When we want to limit the results of a query based on values of the individual rows, use \colorbox{lightgray}{WHERE}.
+\item When we want to limit the results of a query based on an aggregate property, use \colorbox{lightgray}{HAVING}.
+\end{itemize}
+\colorbox{lightgray}{HAVING} statement always comes after \colorbox{lightgray}{GROUP BY}, but before \colorbox{lightgray}{ORDER BY} and \colorbox{lightgray}{LIMIT}.
+
+\subsection{Review}
+
+We just learned how to use aggregate functions to perform calculations on our data.
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{COUNT()}: count the number of rows
+\item \colorbox{lightgray}{SUM()}: the sum of the values in a column
+\item \colorbox{lightgray}{MAX()}/\colorbox{lightgray}{MIN()}: the largest/smallest value
+\item \colorbox{lightgray}{AVG()}: the average of the values in a column
+\item \colorbox{lightgray}{ROUND()}: round the values in the column
+\end{itemize}
+\textit{Aggregate functions} combine multiple rows together to form a single value of more meaningful information.
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{GROUP BY} is a clause used with aggregate functions to combine data from one or more columns.
+\item \colorbox{lightgray}{HAVING} limit the results of a query based on an aggregate property.
+\end{itemize}
 \end{document}

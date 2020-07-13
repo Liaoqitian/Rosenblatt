@@ -25,3 +25,13 @@
 \contentsline {subsection}{\numberline {2.12}Limit}{12}{subsection.2.12}%
 \contentsline {subsection}{\numberline {2.13}Case}{12}{subsection.2.13}%
 \contentsline {subsection}{\numberline {2.14}Review}{13}{subsection.2.14}%
+\contentsline {section}{\numberline {3}Aggregate Functions}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Introduction}{14}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Count}{14}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Sum}{14}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Max / Min}{14}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Average}{15}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Round}{15}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Group By}{15}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Having}{16}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Review}{17}{subsection.3.9}%
