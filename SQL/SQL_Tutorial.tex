@@ -59,7 +59,8 @@
 \lstdefinelanguage{SQLite}{
   language=SQL,
   sensitive=true,	
-  ndkeywords={INTEGER, TEXT, IS, NULL}
+  otherkeywords = {DESC, ASC, IS NULL, IS NOT NULL}, 
+  ndkeywords={INTEGER, TEXT}
 }
 
 \lstset {%
@@ -314,5 +315,325 @@ A \textit{statement} is a string of characters that the database recognizes as a
 \end{itemize}
 \textit{Constraints} add information about how a column can be used.
 
+\newpage
+\section{Queries}
+Now we learn the most commonly used SQL commands to query a table in a database
+\subsection{Introduction}
+Now, we will be learning different SQL commands to query a single table in a database.
 
+One of the core purposes of the SQL language is to retrieve information stored in a database. This is commonly referred to as querying. Queries allow us to communicate with the database by asking questions and returning a result set with data relevant to the question.
+
+We will be querying a database with one table named \colorbox{lightgray}{movies}.
+
+Fun fact: IBM started out SQL as SEQUEL (\textbf{S}tructured \textbf{E}nglish \textbf{QUE}ry \textbf{L}anguage) in the 1970’s to query databases.
+
+\subsection{Select}
+Previously, we learned that \colorbox{lightgray}{SELECT} is used every time you want to query data from a database and \colorbox{lightgray}{*} means all columns.
+
+Suppose we are only interested in two of the columns. We can select individual columns by their names (separated by a comma):
+\begin{lstlisting}
+SELECT column1, column2 
+FROM table_name;
+\end{lstlisting}
+To make it easier to read, we moved \colorbox{lightgray}{FROM} to another line.
+
+Line breaks do not mean anything specific in SQL. We could write this entire query in one line, and it would run just fine.
+
+\subsection{As}
+Knowing how \colorbox{lightgray}{SELECT} works, suppose we have the code below:
+\begin{lstlisting}
+SELECT name AS "Titles"
+FROM movies;
+\end{lstlisting}
+
+\colorbox{lightgray}{AS} is a keyword in SQL that allows you to rename a column or table using an alias. The new name can be anything you want as long as you put it inside of single quotes. Here we renamed the \colorbox{lightgray}{name} column as \colorbox{lightgray}{Titles}.
+\begin{itemize}
+\item Although it is not always necessary, it’s best practice to surround your aliases with single quotes.
+\item When using \colorbox{lightgray}{AS}, the columns are not being renamed in the table. The aliases only appear in the result.
+\end{itemize}
+
+\subsection{Distinct}
+When we are examining data in a table, it can be helpful to know what distinct values exist in a particular column.
+
+\colorbox{lightgray}{DISTINCT} is used to return unique values in the output. It filters out all duplicate values in the specified column(s).
+
+For instance,
+\begin{lstlisting}
+SELECT tools 
+FROM inventory;
+\end{lstlisting}
+might produce:
+
+{\rowcolors{1}{yellow}{white}
+\begin{tabular}{ | m{45em} | }
+\hline
+tools \\
+\hline
+Hammer \\
+\hline
+Nails \\
+\hline 
+Nails \\
+\hline 
+Nails \\
+\hline
+\end{tabular}
+
+By adding \colorbox{lightgray}{DISTINCT} before the column name,
+\begin{lstlisting}
+SELECT DISTINCT tools 
+FROM inventory;
+\end{lstlisting}
+the result would now be:
+
+{\rowcolors{1}{yellow}{white}
+\begin{tabular}{ | m{45em} | }
+\hline
+tools \\
+\hline 
+Hammer \\
+\hline
+Nails \\
+\hline 
+\end{tabular} 
+
+Filtering the results of a query is an important skill in SQL. It is easier to see the different possible \colorbox{lightgray}{genres} in the \colorbox{lightgray}{movie} table after the data has been filtered than to scan every row in the table.
+\begin{lstlisting}
+SELECT DISTINCT genre 
+FROM movies; 
+\end{lstlisting}
+
+\subsection{Where}
+We can restrict our query results using the \colorbox{lightgray}{WHERE} clause in order to obtain only the information we want.
+
+Following this format, the statement below filters the result set to only include top rated movies (IMDb ratings greater than 8):
+\begin{lstlisting}
+SELECT *
+FROM movies
+WHERE imdb_rating > 8;
+\end{lstlisting}
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{WHERE} clause filters the result set to only include rows where the following \textit{condition} is true.
+\item \colorbox{lightgray}{imdb\_rating > 8} is the condition. Here, only rows with a value greater than 8 in the \colorbox{lightgray}{imdb\_rating} column will be returned.
+\end{enumerate}
+The \colorbox{lightgray}{>} is an operator. Operators create a condition that can be evaluated as either \textit{true} or \textit{false}.
+
+Comparison operators used with the \colorbox{lightgray}{WHERE} clause are:
+\begin{itemize}
+\item $=$ equal to
+\item $!$$=$ not equal to
+\item $>$ greater than
+\item $<$ less than
+\item $>$$=$ greater than or equal to
+\item $<$$=$ less than or equal to
+\end{itemize}
+
+\subsection{Like}
+\colorbox{lightgray}{LIKE} can be a useful operator when you want to compare similar values.
+
+The \colorbox{lightgray}{movies} table contains two films with similar titles, ‘Se7en’ and ‘Seven’.
+
+In order to select all movies that start with ‘Se’ and end with ‘en’ and have exactly one character in the middle, 
+\begin{lstlisting}
+SELECT * 
+FROM movies
+WHERE name LIKE "Se_en";
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{LIKE} is a special operator used with the \colorbox{lightgray}{WHERE} clause to search for a specific pattern in a column.
+\item \colorbox{lightgray}{name LIKE 'Se\_en'} is a condition evaluating the \colorbox{lightgray}{name} column for a specific pattern.
+\item \colorbox{lightgray}{Se\_en} represents a pattern with a wildcard character.
+\end{itemize}
+The \colorbox{lightgray}{\_} means you can substitute any individual character here without breaking the pattern. The names \colorbox{lightgray}{Seven} and \colorbox{lightgray}{Se7en} both match this pattern.
+
+The percentage sign \colorbox{lightgray}{\%} is another wildcard character that can be used with \colorbox{lightgray}{LIKE}.
+
+This statement below filters the result set to only include movies with names that begin with the letter ‘A’:
+\begin{lstlisting}
+SELECT * 
+FROM movies
+WHERE name LIKE "A%";
+\end{lstlisting}
+\colorbox{lightgray}{\%} is a wildcard character that matches zero or more missing letters in the pattern. For example:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{A\%} matches all movies with names that begin with letter ‘A’
+\item \colorbox{lightgray}{\%a} matches all movies that end with ‘a’
+\end{itemize}
+We can also use \colorbox{lightgray}{\%} both before and after a pattern:
+\begin{lstlisting}
+SELECT * 
+FROM movies 
+WHERE name LIKE "%man%";
+\end{lstlisting}
+Here, any movie that contains the word ‘man’ in its name will be returned in the result.
+
+\colorbox{lightgray}{LIKE} is not case sensitive. ‘Batman’ and ‘Man of Steel’ will both appear in the result of the query above.
+
+\subsection{Is Null}
+More often than not, the data you encounter will have missing values. Unknown values are indicated by \colorbox{lightgray}{NULL}.
+
+It is not possible to test for \colorbox{lightgray}{NULL} values with comparison operators, such as \colorbox{lightgray}{$=$} and \colorbox{lightgray}{$!$$=$}.
+
+Instead, we will have to use these operators:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{IS NULL}
+\item \colorbox{lightgray}{IS NOT NULL}
+\end{itemize}
+To filter for all movies \textit{with} an IMDb rating:
+\begin{lstlisting}
+SELECT name
+FROM movies 
+WHERE imdb_rating IS NOT NULL;
+\end{lstlisting}
+
+\subsection{Between}
+The \colorbox{lightgray}{BETWEEN} operator is used in a \colorbox{lightgray}{WHERE} clause to filter the result set within a certain \textit{range}. It accepts two values that are either numbers, text or dates.
+
+For example, this statement filters the result set to only include movies with \colorbox{lightgray}{years} from 1990 up to, \colorbox{lightgray}{and including} 1999.
+\begin{lstlisting}
+SELECT *
+FROM movies
+WHERE year BETWEEN 1990 AND 1999;
+\end{lstlisting}
+When the values are text, \colorbox{lightgray}{BETWEEN} filters the result set for within the alphabetical range.
+
+In this statement, \colorbox{lightgray}{BETWEEN} filters the result set to only include movies with \colorbox{lightgray}{name}s that begin with the letter ‘A’ up to, \colorbox{lightgray}{but not including} ones that begin with ‘J’.
+\begin{lstlisting}
+SELECT *
+FROM movies
+WHERE name BETWEEN "A" AND "J";
+\end{lstlisting}
+However, if a movie has a name of simply ‘J’, it would actually match. This is because \colorbox{lightgray}{BETWEEN} goes \textit{up to} the second value — up to ‘J’. So the movie named ‘J’ would be included in the result set but not ‘Jaws’.
+
+\subsection{And}
+Sometimes we want to combine multiple conditions in a \colorbox{lightgray}{WHERE} clause to make the result set more specific and useful.
+
+One way of doing this is to use the \colorbox{lightgray}{AND} operator. Here, we use the \colorbox{lightgray}{AND} operator to only return 90’s romance movies.
+\begin{lstlisting}
+SELECT * 
+FROM movies
+WHERE year BETWEEN 1990 AND 1999
+   AND genre = "romance";
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{year BETWEEN 1990 AND 1999} is the 1st condition.
+\item \colorbox{lightgray}{genre = 'romance'} is the 2nd condition.
+\item \colorbox{lightgray}{AND} combines the two conditions.
+\end{itemize}
+
+With \colorbox{lightgray}{AND}, both conditions must be true for the row to be included in the result.
+
+\subsection{Or}
+Similar to \colorbox{lightgray}{AND}, the \colorbox{lightgray}{OR} operator can also be used to combine multiple conditions in \colorbox{lightgray}{WHERE}, but there is a fundamental difference:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{AND} operator displays a row if \textit{all} the conditions are true.
+\item \colorbox{lightgray}{OR} operator displays a row if \textit{any} condition is true.
+\end{itemize}
+Suppose we want to check out a new movie or something action-packed:
+\begin{lstlisting}
+SELECT *
+FROM movies
+WHERE year > 2014
+   OR genre = "action";
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{year > 2014} is the first condition.
+\item \colorbox{lightgray}{genre = "action"} is the second condition.
+\item \colorbox{lightgray}{OR} combines the two conditions. 
+\end{itemize}
+With \colorbox{lightgray}{OR}, if any of the conditions are true, then the row is added to the result.
+
+\subsection{Order By}
+It is often useful to list the data in our result set in a particular order.
+
+We can \textit{sort} the results using \colorbox{lightgray}{ORDER BY}, either alphabetically or numerically. Sorting the results often makes the data more useful and easier to analyze.
+
+For example, if we want to sort everything by the movie’s title from A through Z:
+\begin{lstlisting}
+SELECT *
+FROM movies
+ORDER BY name;
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{ORDER BY} is a clause that indicates you want to sort the result set by a particular column.
+\item \colorbox{lightgray}{name} is the specified column.
+\end{itemize}
+Sometimes we want to sort things in a decreasing order. For example, if we want to select all of the well-received movies, sorted from highest to lowest by their year:
+\begin{lstlisting}
+SELECT *
+FROM movies
+WHERE imdb_rating > 8
+ORDER BY year DESC;
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{DESC} is a keyword used in \colorbox{lightgray}{ORDER BY} to sort the results in \textit{descending order} (high to low or Z-A).
+\item \colorbox{lightgray}{ASC} is a keyword used in \colorbox{lightgray}{ORDER BY} to sort the results in \textit{ascending order} (low to high or A-Z).
+\end{itemize}
+The column that we \colorbox{lightgray}{ORDER BY} does not even have to be one of the columns that we are displaying.
+
+Note: \colorbox{lightgray}{ORDER BY} always goes after \colorbox{lightgray}{WHERE} (if \colorbox{lightgray}{WHERE} is present).
+
+\subsection{Limit}
+Most SQL tables contain hundreds of thousands of records. In those situations, it becomes important to cap the number of rows in the result.
+
+For instance, imagine that we just want to see a few examples of records.
+\begin{lstlisting}
+SELECT *
+FROM movies
+LIMIT 10;
+\end{lstlisting}
+\colorbox{lightgray}{LIMIT} is a clause that lets you specify the maximum number of rows the result set will have. This saves space on our screen and makes our queries run faster.
+
+Here, we specify that the result set cannot have more than 10 rows.
+
+\colorbox{lightgray}{LIMIT} always goes at the very end of the query. Also, it is not supported in all SQL databases.
+
+\subsection{Case}
+A \colorbox{lightgray}{CASE} statement allows us to create different outputs (usually in the \colorbox{lightgray}{SELECT} statement). It is SQL’s way of handling \href{https://en.wikipedia.org/wiki/Conditional_(computer_programming)}{if-then} logic.
+
+Suppose we want to condense the ratings in \colorbox{lightgray}{movies} to three levels:
+\begin{itemize}[leftmargin = *]
+\item \textit{If the rating is above 8, then it is Fantastic.}
+\item \textit{If the rating is above 6, then it is Poorly Received.}
+\item \textit{Else, Avoid at All Costs.}
+\end{itemize}
+\begin{lstlisting}
+SELECT name,
+ CASE
+  WHEN imdb_rating > 8 THEN "Fantastic"
+  WHEN imdb_rating > 6 THEN "Poorly Received"
+  ELSE "Avoid at All Costs"
+ END
+FROM movies;
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item Each \colorbox{lightgray}{WHEN} tests a condition and the following THEN gives us the string if the condition is true.
+\item The \colorbox{lightgray}{ELSE} gives us the string if all the above conditions are false.
+\item The \colorbox{lightgray}{CASE} statement must end with \colorbox{lightgray}{END}.
+\end{itemize}
+In the result, you have to scroll right because the column name is very long. To shorten it, we can rename the column to ‘Review’ using \colorbox{lightgray}{AS}:
+\begin{lstlisting}
+SELECT name,
+ CASE
+  WHEN imdb_rating > 8 THEN "Fantastic"
+  WHEN imdb_rating > 6 THEN "Poorly Received"
+  ELSE "Avoid at All Costs"
+ END AS "Review"
+FROM movies;
+\end{lstlisting}
+
+\subsection{Review}
+
+We just learned how to query data from a database using SQL. We also learned how to filter queries to make the information more specific and useful. Let us summarize:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{SELECT} is the clause we use every time we want to query information from a database.
+\item \colorbox{lightgray}{AS} renames a column or table.
+\item \colorbox{lightgray}{DISTINCT} return unique values.
+\item \colorbox{lightgray}{WHERE} is a popular command that lets you filter the results of the query based on conditions that you specify.
+\item \colorbox{lightgray}{LIKE} and \colorbox{lightgray}{BETWEEN} are special operators.
+\item \colorbox{lightgray}{AND} and \colorbox{lightgray}{OR} combines multiple conditions.
+\item \colorbox{lightgray}{ORDER BY} sorts the result.
+\item \colorbox{lightgray}{LIMIT} specifies the maximum number of rows that the query will return.
+\item \colorbox{lightgray}{CASE} creates different outputs.
+\end{itemize}
 \end{document}
