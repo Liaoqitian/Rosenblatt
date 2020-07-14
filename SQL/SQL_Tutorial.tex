@@ -1214,6 +1214,103 @@ As you might recall, \colorbox{lightgray}{AVG()} (from the example above) is an 
 \end{itemize}
 \end{enumerate}
 
+\newpage
+\section{Nested and Repeated Data}
+Now we will learn how to query nested and repeated data. These are the most complex data types that you can find in BigQuery datasets. 
 
+\subsection{Nested Data}
+Consider a hypothetical dataset containing information about pets and their toys. We could organize this information in two different tables (a \colorbox{lightgray}{pets} table and a \colorbox{lightgray}{toys} table). The \colorbox{lightgray}{toys} table could contain a \colorbox{lightgray}{Pet\_ID} column that could be used to match each toy to the pet that owns it.
+
+Another option in BigQuery is to organize all of the information in a single table, similar to the \colorbox{lightgray}{pets\_and\_toys} table below.
+\begin{figure}[H]
+\includegraphics[scale = 0.6]{6_1}
+\centering
+\end{figure}
+\vspace{-4mm}
+In this case, all of the information from the \colorbox{lightgray}{toys} table is collapsed into a single column (the \colorbox{lightgray}{Toy} column in the \colorbox{lightgray}{pets\_and\_toys} table). We refer to the \colorbox{lightgray}{Toy} column in the \colorbox{lightgray}{pets\_and\_toys} table as a \textbf{nested column}, and say that the \colorbox{lightgray}{Name} and \colorbox{lightgray}{Type} fields are nested inside of it.
+
+Nested columns have type \textbf{STRUCT} (or type \textbf{RECORD}). This is reflected in the table schema below.
+\begin{figure}[H]
+\includegraphics[scale = 0.8]{6_2}
+\centering
+\end{figure}
+\vspace{-4mm}
+To query a column with nested data, we need to identify each field in the context of the column that contains it:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{Toy.Name} refers to the \colorbox{lightgray}{Name} field in the \colorbox{lightgray}{Toy} column
+\item \colorbox{lightgray}{Toy.Type} refers to the \colorbox{lightgray}{Type} field in the \colorbox{lightgray}{Toy} column.
+\end{itemize}
+\begin{lstlisting}
+SELECT Name AS Pet_Name, 
+	      Toy.Name AS Toy_Name, 
+	      Toy.Type AS Toy_Type
+FROM pets_and_toys;
+\end{lstlisting}
+The code above yields: 
+\begin{figure}[H]
+\includegraphics[scale = 0.7]{6_3}
+\centering
+\end{figure}
+\vspace{-4mm}
+Otherwise, our usual rules remain the same - we need not change anything else about our queries.
+
+\subsection{Repeated Data}
+Now consider the case where each pet can have multiple toys. In this case, to collapse this information into a single table, we need to leverage a different datatype.
+\begin{figure}[H]
+\includegraphics[scale = 0.65]{6_4}
+\centering
+\end{figure}
+\vspace{-4mm}
+We say that the \colorbox{lightgray}{Toys} column contains \textbf{repeated data}, because it permits more than one value for each row. This is reflected in the table schema below, where the mode of the \colorbox{lightgray}{Toys} column appears as \colorbox{lightgray}{REPEATED}.
+\begin{figure}[H]
+\includegraphics[scale = 0.8]{6_5}
+\centering
+\end{figure}
+Each entry in a repeated field is an \colorbox{lightgray}{ARRAY}, or an ordered list of (zero or more) values with the same datatype. For instance, the entry in the \colorbox{lightgray}{Toys} column for \colorbox{lightgray}{Moon} the Dog is \textbf{[Frisbee, Bone, Rope]}, which is an \colorbox{lightgray}{ARRAY} with three values.
+
+When querying repeated data, we need to put the name of the column containing the repeated data inside an \colorbox{lightgray}{UNNEST()} function.
+\begin{lstlisting}
+SELECT Name AS PetName,
+	       Toy_Type
+FROM pets_and_toys_type
+	UNNEST(Toys) AS Toy_Type;
+\end{lstlisting}
+\begin{figure}[H]
+\includegraphics[scale = 0.9]{6_6}
+\centering
+\end{figure}
+\vspace{-4mm}
+This essentially flattens the repeated data (which is then appended to the right side of the table) so that we have one element on each row.
+
+\subsection{Nested and repeated data}
+If pets can have multiple toys, and we would like to keep track of both the name and type of each toy, we can make the \colorbox{lightgray}{Toys} column both \textbf{nested} and \textbf{repeated}.
+\begin{figure}[H]
+\includegraphics[scale = 0.75]{6_7}
+\centering
+\end{figure}
+\vspace{-4mm}
+In the \colorbox{lightgray}{more\_pets\_and\_toys} table above, \colorbox{lightgray}{Name} and \colorbox{lightgray}{Type} are both fields contained within the \colorbox{lightgray}{Toys} \colorbox{lightgray}{STRUCT}, and each entry in both \colorbox{lightgray}{Toys.Name} and \colorbox{lightgray}{Toys.Type} is an \colorbox{lightgray}{ARRAY}.
+\begin{figure}[H]
+\includegraphics[scale = 0.9]{6_8}
+\centering
+\end{figure}
+\vspace{-4mm}
+Let us look at a sample query. 
+\begin{lstlisting}
+SELECT Name AS Pet_Name, 
+	      t.Name AS Toy_Name, 
+	      t.Type AS Toy_Type
+FROM more_pets_and_toys 
+	UNNEST(Toys) AS t; 
+\end{lstlisting}
+The code above generates:
+
+\begin{figure}[H]
+\includegraphics[scale = 0.8]{6_9}
+\centering
+\end{figure}
+\vspace{-4mm}
+
+Since the \colorbox{lightgray}{Toys} column is repeated, we flatten it with the \colorbox{lightgray}{UNNEST()} function. And, since we give the flattened column an alias of \colorbox{lightgray}{t}, we can refer to the \colorbox{lightgray}{Name} and \colorbox{lightgray}{Type} fields in the \colorbox{lightgray}{Toys} column as \colorbox{lightgray}{t.Name} and \colorbox{lightgray}{t.Type}, respectively.
 
 \end{document}
