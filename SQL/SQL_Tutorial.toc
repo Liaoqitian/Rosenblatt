@@ -35,3 +35,14 @@
 \contentsline {subsection}{\numberline {3.7}Group By}{15}{subsection.3.7}%
 \contentsline {subsection}{\numberline {3.8}Having}{16}{subsection.3.8}%
 \contentsline {subsection}{\numberline {3.9}Review}{17}{subsection.3.9}%
+\contentsline {section}{\numberline {4}Multiple Tables}{18}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Introduction}{18}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Combining Tables Manually}{18}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Combining Tables with SQL}{20}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Inner Joins}{20}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Left Joins}{20}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Primary Key vs Foreign Key}{21}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Cross Join}{22}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Union}{23}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}With}{23}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}Review}{24}{subsection.4.10}%

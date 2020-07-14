@@ -35,3 +35,14 @@
 \BOOKMARK [2][-]{subsection.3.7}{Group By}{section.3}% 35
 \BOOKMARK [2][-]{subsection.3.8}{Having}{section.3}% 36
 \BOOKMARK [2][-]{subsection.3.9}{Review}{section.3}% 37
+\BOOKMARK [1][-]{section.4}{Multiple Tables}{}% 38
+\BOOKMARK [2][-]{subsection.4.1}{Introduction}{section.4}% 39
+\BOOKMARK [2][-]{subsection.4.2}{Combining Tables Manually}{section.4}% 40
+\BOOKMARK [2][-]{subsection.4.3}{Combining Tables with SQL}{section.4}% 41
+\BOOKMARK [2][-]{subsection.4.4}{Inner Joins}{section.4}% 42
+\BOOKMARK [2][-]{subsection.4.5}{Left Joins}{section.4}% 43
+\BOOKMARK [2][-]{subsection.4.6}{Primary Key vs Foreign Key}{section.4}% 44
+\BOOKMARK [2][-]{subsection.4.7}{Cross Join}{section.4}% 45
+\BOOKMARK [2][-]{subsection.4.8}{Union}{section.4}% 46
+\BOOKMARK [2][-]{subsection.4.9}{With}{section.4}% 47
+\BOOKMARK [2][-]{subsection.4.10}{Review}{section.4}% 48

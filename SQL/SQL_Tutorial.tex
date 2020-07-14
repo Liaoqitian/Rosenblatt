@@ -817,4 +817,315 @@ We just learned how to use aggregate functions to perform calculations on our da
 \item \colorbox{lightgray}{GROUP BY} is a clause used with aggregate functions to combine data from one or more columns.
 \item \colorbox{lightgray}{HAVING} limit the results of a query based on an aggregate property.
 \end{itemize}
+
+\newpage
+\section{Multiple Tables}
+Now we learn how to query multiple tables using joins.
+\subsection{Introduction}
+In order to efficiently store data, we often spread related information across multiple tables.
+
+For instance, imagine that we are running a magazine company where users can have different types of subscriptions to different products. Different subscriptions might have many different properties. Each customer would also have lots of associated information.
+
+We could have one table with all of the following information:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{order\_id}
+\item \colorbox{lightgray}{customer\_id}
+\item \colorbox{lightgray}{customer\_name}
+\item \colorbox{lightgray}{customer\_address}
+\item \colorbox{lightgray}{subscription\_id}
+\item \colorbox{lightgray}{subscription\_description}
+\item \colorbox{lightgray}{subscription\_monthly\_price}
+\item \colorbox{lightgray}{subscription\_length}
+\item \colorbox{lightgray}{purchase\_date}
+\end{itemize}
+However, a lot of this information would be repeated. If the same customer has multiple subscriptions, that customer’s name and address will be reported multiple times. If the same subscription type is ordered by multiple customers, then the subscription price and subscription description will be repeated. This will make our table big and unmanageable.
+
+So instead, we can split our data into three tables:
+\begin{enumerate}[leftmargin = *]
+\item \colorbox{lightgray}{orders} would contain just the information necessary to describe what was ordered:
+\begin{itemize}
+\item \colorbox{lightgray}{order\_id}, \colorbox{lightgray}{customer\_id}, \colorbox{lightgray}{subscription\_id}, \colorbox{lightgray}{purchase\_date}
+\end{itemize}
+\item subscriptions would contain the information to describe each type of subscription:
+\begin{itemize}
+\item \colorbox{lightgray}{subscription\_id}, \colorbox{lightgray}{description}, \colorbox{lightgray}{price\_per\_month}, \colorbox{lightgray}{subscription\_length}
+\end{itemize}
+\item customers would contain the information for each customer:
+\begin{itemize}
+\item \colorbox{lightgray}{customer\_id}, \colorbox{lightgray}{customer\_name}, \colorbox{lightgray}{address}
+\end{itemize}
+\end{enumerate}
+
+\subsection{Combining Tables Manually}
+Let us return to our magazine company. Suppose we have the three tables described previously and are shown below:
+\begin{itemize}[leftmargin = *]
+\item orders
+\item subscriptions
+\item customers
+\end{itemize}
+\begin{figure}[H]
+\includegraphics[scale = 0.73]{4_1}
+\centering
+\end{figure}
+If we just look at the \colorbox{lightgray}{orders} table, we cannot really tell what has happened in each order. However, if we refer to the other tables, we can get a complete picture.
+
+Let us examine the order with an \colorbox{lightgray}{order\_id} of 2. It was purchased by the customer with a \colorbox{lightgray}{customer\_id} of 2.
+
+To find out the customer’s name, we look at the \colorbox{lightgray}{customers} table and look for the item with a \colorbox{lightgray}{customer\_id} value of 2. We can see that Customer 2’s name is ‘Jane Doe’ and that she lives at ‘456 Park Ave’.
+
+Doing this kind of matching is called \textbf{joining} two tables.
+
+\subsection{Combining Tables with SQL}
+Combining tables manually is time-consuming. Luckily, SQL gives us an easy sequence for this: it is called a \colorbox{lightgray}{JOIN}.
+
+If we want to combine orders and customers, we would type:
+\begin{lstlisting}
+SELECT *
+FROM orders
+JOIN customers
+  ON orders.customer_id = customers.customer_id;
+\end{lstlisting}
+Let us break down this command:
+\begin{enumerate}[leftmargin = *]
+\item The first line selects all columns from our combined table. If we only want to select certain columns, we can specify which ones we want.
+\item The second line specifies the first table that we want to look in, \colorbox{lightgray}{orders}
+\item The third line uses \colorbox{lightgray}{JOIN} to say that we want to combine information from \colorbox{lightgray}{orders} with \colorbox{lightgray}{customers}.
+\item The fourth line tells us how to combine the two tables. We want to match \colorbox{lightgray}{orders} table’s \colorbox{lightgray}{customer\_id} column with \colorbox{lightgray}{customers} table’s \colorbox{lightgray}{customer\_id} column.
+\end{enumerate}
+Because column names are often repeated across multiple tables, we use the syntax \colorbox{lightgray}{table\_name.column\_name} to be sure that our requests for columns are unambiguous. In our example, we use this syntax in the \colorbox{lightgray}{ON} statement, but we will also use it in the \colorbox{lightgray}{SELECT} or any other statement where we refer to column names.
+
+For example: Instead of selecting all the columns using \colorbox{lightgray}{*}, if we only wanted to select \colorbox{lightgray}{orders} table’s \colorbox{lightgray}{order\_id} column and \colorbox{lightgray}{customers} table’s \colorbox{lightgray}{customer\_name} column, we could use the following query:
+\begin{lstlisting}
+SELECT orders.order_id,
+   customers.customer_name
+FROM orders
+JOIN customers
+  ON orders.customer_id = customers.customer_id;
+\end{lstlisting}
+
+\subsection{Inner Joins}
+Let us revisit how we joined \colorbox{lightgray}{orders} and \colorbox{lightgray}{customers}. For every possible value of \colorbox{lightgray}{customer\_id} in \colorbox{lightgray}{orders}, there was a corresponding row of customers with the same \colorbox{lightgray}{customer\_id}.
+
+But there are cases that it is not true. For instance, imagine that our \colorbox{lightgray}{customers} table was out of date, and was missing any information on customer 11. If that customer had an \colorbox{lightgray}{order} in orders, then when we perform a simple \colorbox{lightgray}{JOIN} (often called an \textit{inner join}) our result only includes rows that match our \colorbox{lightgray}{ON} condition.
+
+\subsection{Left Joins}
+If we want to combine two tables and keep some of the un-matched rows, we can do this through a command called \colorbox{lightgray}{LEFT JOIN} (or \colorbox{lightgray}{RIGHT JOIN}). A \textit{left join} will keep all rows from the first table, regardless of whether there is a matching row in the second table. The final result will keep all rows of the first table but will omit the un-matched row from the second table.
+
+Consider the following code 
+\begin{lstlisting}
+SELECT *
+FROM table1
+LEFT JOIN table2
+  ON table1.c2 = table2.c2;
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item The first line selects all columns from both tables.
+\item The second line selects \colorbox{lightgray}{table1} (the “left” table).
+\item The third line performs a \colorbox{lightgray}{LEFT JOIN} on \colorbox{lightgray}{table2} (the “right” table).
+\item The fourth line tells SQL how to perform the join (by looking for matching values in column \colorbox{lightgray}{c2}).
+\end{itemize}
+
+\subsection{Primary Key vs Foreign Key}
+Let us return to our example of the magazine subscriptions. Recall that we had three tables: \colorbox{lightgray}{orders}, \colorbox{lightgray}{subscriptions}, and \colorbox{lightgray}{customers}.
+
+Each of these tables has a column that uniquely identifies each row of that table:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{order\_id} for orders
+\item \colorbox{lightgray}{subscription\_id} for subscriptions
+\item \colorbox{lightgray}{customer\_id} for customers
+\end{itemize}
+These special columns are called \textbf{primary keys}.
+
+Primary keys have a few requirements:
+\begin{itemize}[leftmargin = *]
+\item None of the values can be \colorbox{lightgray}{NULL}.
+\item Each value must be unique (i.e., you cannot have two customers with the same \colorbox{lightgray}{customer\_id} in the \colorbox{lightgray}{customers} table).
+\item A table can not have more than one primary key column.
+\end{itemize}
+Let us reexamine the \colorbox{lightgray}{orders} table:
+
+{\rowcolors{1}{white}{yellow}
+\begin{tabular}{ | m{10em} | m{10em} | m{10em} | m{10em} |}
+\hline
+\textbf{order\_id} & \textbf{customer\_id} & \textbf{subscription\_id} & \textbf{purchase\_date} \\
+\hline
+1 & 2 & 3 &  2017-01-01\\
+\hline
+2 & 2 & 2 &  2017-01-01\\
+\hline 
+3 & 3 & 1 &  2017-01-01\\
+\hline 
+\end{tabular}
+
+Note that \colorbox{lightgray}{customer\_id} (the primary key for \colorbox{lightgray}{customers}) and \colorbox{lightgray}{subscription\_id} (the primary key for \colorbox{lightgray}{subscriptions}) both appear in this.
+
+When the primary key for one table appears in a different table, it is called a \textbf{foreign key}.
+
+So \colorbox{lightgray}{customer\_id} is a primary key when it appears in \colorbox{lightgray}{customers}, but a foreign key when it appears in \colorbox{lightgray}{orders}.
+
+In this example, our primary keys all had somewhat descriptive names. Generally, the primary key will just be called \colorbox{lightgray}{id}. Foreign keys will have more descriptive names.
+
+This is important because the most common types of joins will be joining a foreign key from one table with the primary key from another table. For instance, when we join \colorbox{lightgray}{orders} and \colorbox{lightgray}{customers}, we join on \colorbox{lightgray}{customer\_id}, which is a foreign key in \colorbox{lightgray}{orders} and the primary key in \colorbox{lightgray}{customers}.
+
+\subsection{Cross Join}
+So far, we have focused on matching rows that have some information in common.
+
+Sometimes, we just want to combine all rows of one table with all rows of another table. For instance, if we had a table of shirts and a table of pants, we might want to know all the possible combinations to create different outfits. Our code might look like this:
+\begin{lstlisting}
+SELECT shirts.shirt_color,
+   pants.pants_color
+FROM shirts
+CROSS JOIN pants;
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item The first two lines select the columns \colorbox{lightgray}{shirt\_color} and \colorbox{lightgray}{pants\_color}.
+\item The third line pulls data from the table \colorbox{lightgray}{shirts}.
+\item The fourth line performs a \colorbox{lightgray}{CROSS JOIN} with \colorbox{lightgray}{pants}.
+\end{itemize}
+Notice that cross joins do not require an \colorbox{lightgray}{ON} statement because we are not joining on any columns. 
+
+If we have 3 different shirts (white, grey, and olive) and 2 different pants (light denim and black), the results might look like this:
+
+{\rowcolors{1}{white}{yellow}
+\begin{tabular}{ | m{20em} | m{20em} |}
+\hline
+\textbf{shirt\_color} & \textbf{pants\_color} \\
+\hline
+white & light denim \\
+\hline
+white & black \\
+\hline 
+grey	& light denim\\
+\hline 
+grey	& black \\
+\hline
+olive	& light denim \\
+\hline
+olive	& black \\
+\hline
+\end{tabular}
+
+3 shirts $\times$ 2 pants = 6 combinations
+
+A more common usage of \colorbox{lightgray}{CROSS JOIN} is when we need to compare each row of a table to a list of values.
+
+Let us return to our \colorbox{lightgray}{newspaper} subscriptions. This table contains two columns that we have not discussed yet:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{start\_month}: the first month where the customer subscribed to the print newspaper (i.e., \colorbox{lightgray}{2} for February)
+\item \colorbox{lightgray}{end\_month}: the final month where the customer subscribed to the print newspaper
+\end{itemize}
+Suppose we wanted to know how many users were subscribed during each month of the year. For each month (\colorbox{lightgray}{1}, \colorbox{lightgray}{2}, \colorbox{lightgray}{3}) we would need to know if a user was subscribed. 
+\begin{lstlisting}
+SELECT month, COUNT(*)
+FROM newspaper 
+CROSS JOIN months 
+WHERE start_month <= month AND end_month >= month 
+GROUP BY month; 
+\end{lstlisting}
+
+\subsection{Union}
+Sometimes we just want to stack one dataset on top of the other. The \colorbox{lightgray}{UNION} operator allows us to do that.
+
+Suppose we have two tables and they have the same columns.
+
+\colorbox{lightgray}{table1}:
+
+{\rowcolors{1}{white}{yellow}
+\begin{tabular}{ | m{20em} | m{20em} |}
+\hline
+\textbf{pokemon} & \textbf{type} \\
+\hline
+Bulbasaur & Grass \\
+\hline
+Charmander & Fire\\
+\hline 
+Squirtle & Water\\
+\hline
+\end{tabular}
+
+\colorbox{lightgray}{table2}:
+
+{\rowcolors{1}{white}{yellow}
+\begin{tabular}{ | m{20em} | m{20em} |}
+\hline
+\textbf{pokemon} & \textbf{type} \\ 
+\hline
+Snorlax & Normal \\
+\hline
+\end{tabular}
+
+If we combine these two with \colorbox{lightgray}{UNION}:
+\begin{lstlisting}
+SELECT *
+FROM table1
+UNION
+SELECT *
+FROM table2;
+\end{lstlisting}
+The result would be:
+
+{\rowcolors{1}{white}{yellow}
+\begin{tabular}{ | m{20em} | m{20em} |}
+\hline
+\textbf{pokemon} & \textbf{type} \\ 
+\hline
+Bulbasaur & Grass \\ 
+\hline
+Charmander & Fire \\
+\hline
+Squirtle & Water \\ 
+\hline
+Snorlax & Normal \\
+\hline
+\end{tabular}
+
+SQL has strict rules for appending data:
+\begin{itemize}[leftmargin = *]
+\item Tables must have the same number of columns.
+\item The columns must have the same data types in the same order as the first table.
+\end{itemize}
+
+\subsection{With}
+Often times, we want to combine two tables, but one of the tables is the result of another calculation.
+
+Let us return to our magazine order example. Our marketing department might want to know a bit more about our customers. For instance, they might want to know how many magazines each customer subscribes to. We can easily calculate this using our \colorbox{lightgray}{orders} table:
+\begin{lstlisting}
+SELECT customer_id,
+   COUNT(subscription_id) AS "subscriptions"
+FROM orders
+GROUP BY customer_id;
+\end{lstlisting}
+This query is good, but a \colorbox{lightgray}{customer\_id} is not terribly useful for our marketing department, they probably want to know the customer's name.
+
+We want to be able to join the results of this query with our \colorbox{lightgray}{customers} table, which will tell us the name of each customer. We can do this by using a \colorbox{lightgray}{WITH} clause.
+\begin{lstlisting}
+WITH previous_results AS (
+   SELECT ...
+   ...
+   ...
+   ...
+)
+SELECT *
+FROM previous_results
+JOIN customers
+  ON _____ = _____;
+\end{lstlisting}
+\begin{itemize}[leftmargin = *]
+\item The \colorbox{lightgray}{WITH} statement allows us to perform a separate query (such as aggregating customer’s subscriptions)
+\item \colorbox{lightgray}{previous\_results} is the alias that we will use to reference any columns from the query inside of the \colorbox{lightgray}{WITH} clause
+\item We can then go on to do whatever we want with this temporary table (such as join the temporary table with another table)
+\end{itemize}
+Essentially, we are putting a whole first query inside the parentheses \colorbox{lightgray}{()} and giving it a name. After that, we can use this name as if it is a table and write a new query using the first query.
+
+\subsection{Review}
+We learned about relationships between tables in relational databases and how to query information from multiple tables using SQL.
+\begin{itemize}
+\item \colorbox{lightgray}{JOIN} will combine rows from different tables if the join condition is true.
+\item \colorbox{lightgray}{LEFT JOIN} will return every row in the left table, and if the join condition is not met, NULL values are used to fill in the columns from the right table.
+\item \colorbox{lightgray}{Primary key} is a column that serves a unique identifier for the rows in the table.
+\item \colorbox{lightgray}{Foreign key} is a column that contains the primary key to another table.
+\item \colorbox{lightgray}{CROSS JOIN} lets us combine all rows of one table with all rows of another table.
+\item \colorbox{lightgray}{UNION} stacks one dataset on top of another.
+\item \colorbox{lightgray}{WITH} allows us to define one or more temporary tables that can be used in the final query.
+\end{itemize}
 \end{document}
