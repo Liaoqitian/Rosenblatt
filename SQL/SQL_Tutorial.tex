@@ -91,7 +91,6 @@
 }
 
 \usepackage[left=2cm, right=2cm, top=2cm]{geometry}
-%\setlength\parindent{0pt}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
@@ -114,18 +113,22 @@
 	\end{flushright}
 \end{titlepage}
 
-\thispagestyle{empty}
+\cleardoublepage
+\pagenumbering{roman}
+
 \newpage
 \tableofcontents
-\thispagestyle{empty}
+\cleardoublepage
 \setcounter{page}{1}
 \def\Arg{\mathop{\operator@font Arg}\nolimits}
 \pagenumbering{arabic}
+
 \titleformat*{\section}{\Large\bfseries}
 \titleformat*{\subsection}{\large\bfseries}
 \titleformat*{\subsubsection}{\normalsize\bfseries}
 \titleformat*{\paragraph}{\large\bfseries}
 \titleformat*{\subparagraph}{\large\bfseries}
+
 \newpage
 
 \section{Manipulation}
@@ -1128,4 +1131,89 @@ We learned about relationships between tables in relational databases and how to
 \item \colorbox{lightgray}{UNION} stacks one dataset on top of another.
 \item \colorbox{lightgray}{WITH} allows us to define one or more temporary tables that can be used in the final query.
 \end{itemize}
+
+\newpage
+\section{Analytic Functions}
+\subsection{Introduction}
+Now we will learn how to define \textit{analytic functions}, which also operate on a set of rows like \textit{aggregate functions}. However, unlike aggregate functions, analytic functions return a (potentially different) value for each row in the original table.
+
+Analytic functions allow us to perform complex calculations with relatively straightforward syntax. For instance, we can quickly calculate moving averages and running totals, among other quantities.
+
+\subsection{Syntax}
+To understand how to write analytic functions, we will work with a small table containing data from two different people who are training for a race. The \colorbox{lightgray}{id} column identifies each runner, the \colorbox{lightgray}{date} column holds the day of the training session, and \colorbox{lightgray}{time} shows the time (in minutes) that the runner dedicated to training. 
+{\rowcolors{1}{white}{yellow}
+\begin{tabular}{ | m{13em} | m{13em} | m{13em} | }
+\hline
+\textbf{id} & \textbf{date} & \textbf{time} \\ 
+\hline
+1 & 2019-07-05 & 22 \\ 
+\hline
+1 & 2019-04-15 & 26 \\ 
+\hline
+2 & 2019-02-06 & 28 \\ 
+\hline
+1 & 2019-01-02 & 30 \\ 
+\hline
+1 & 2019-08-30 & 30 \\
+\hline
+1 & 2019-03-09 & 22 \\
+\hline  
+\end{tabular}
+
+Say we would like to calculate a \textit{moving average} of the training times for each runner, where we always take the average of the current and previous training sessions. We can do this with the following query:
+\begin{lstlisting}
+SELECT *, 
+	AVG(time) OVER(
+				   PARTITION BY id 
+				   ORDER BY date 
+				   ROWS BETWEEN 1 PRECEDING AND CURRENT ROW 
+				   ) as avg_time 
+FROM table; 
+\end{lstlisting}
+All analytic functions have an \colorbox{lightgray}{OVER} clause, which defines the sets of rows used in each calculation. The \colorbox{lightgray}{OVER} clause has three (optional) parts:
+\begin{itemize}[leftmargin = *]
+\item The \colorbox{lightgray}{PARTITION BY} clause divides the rows of the table into different groups. In the query above, we divide by \colorbox{lightgray}{id} so that the calculations are separated by runner.
+\item The \colorbox{lightgray}{ORDER BY} clause defines an ordering within each partition. In the sample query, ordering by the date column ensures that earlier training sessions appear first.
+\item The final clause (\colorbox{lightgray}{ROWS BETWEEN 1 PRECEDING AND CURRENT ROW}) is known as a \textbf{window frame} clause. It identifies the set of rows used in each calculation. We can refer to this group of rows as a \textbf{window}. (Actually, analytic functions are sometimes referred to as \textbf{analytic window functions} or \textbf{window functions}.)
+\end{itemize}
+\begin{figure}[H]
+\includegraphics[scale = 0.6]{5_1}
+\centering
+\end{figure}
+
+\subsection{(More on) window frame clauses}
+There are many ways to write window frame clauses:
+\begin{itemize}[leftmargin = *]
+\item \colorbox{lightgray}{ROWS BETWEEN 1 PRECEDING AND CURRENT ROW} - the previous row and the current row.
+\item \colorbox{lightgray}{ROWS BETWEEN 3 PRECEDING AND 1 FOLLOWING} - the 3 previous rows, the current row, and the following row.
+\item \colorbox{lightgray}{ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING} - all rows in the partition.
+\end{itemize}
+Of course, this is not an exhaustive list, and you can imagine that there are many more options. In the code below, you will see some of these clauses in action.
+
+\subsection{Three types of analytic functions}
+The example above uses only one of many analytic functions. BigQuery supports a wide variety of analytic functions, and we will explore a few here. For a complete listing, you can take a look at the \href{https://cloud.google.com/bigquery/docs/reference/standard-sql/analytic-function-concepts}{documentation}.
+\begin{enumerate}[leftmargin = *]
+\item Analytic aggregate functions
+As you might recall, \colorbox{lightgray}{AVG()} (from the example above) is an aggregate function. The \colorbox{lightgray}{OVER} clause is what ensures that it is treated as an analytic (aggregate) function. \textbf{Aggregate functions} take all of the values within the window as input and return a single value.
+\begin{itemize}
+\item \colorbox{lightgray}{MIN()} (or \colorbox{lightgray}{MAX()}) - Returns the minimum (or maximum) of input values
+\item \colorbox{lightgray}{AVG()} (or \colorbox{lightgray}{SUM()}) - Returns the average (or sum) of input values
+\item \colorbox{lightgray}{COUNT()} - Returns the number of rows in the input
+\end{itemize}
+\item Analytic navigation functions
+\textbf{Navigation functions} assign a value based on the value in a (usually) different row than the current row.
+\begin{itemize}
+\item \colorbox{lightgray}{FIRST\_VALUE()} (or \colorbox{lightgray}{LAST\_VALUE()}) - Returns the first (or last) value in the input
+\item \colorbox{lightgray}{LEAD()} (and \colorbox{lightgray}{LAG()}) - Returns the value on a subsequent (or preceding) row
+\end{itemize}
+\item Analytic numbering functions
+\textbf{Numbering functions} assign integer values to each row based on the ordering.
+\begin{itemize}
+\item \colorbox{lightgray}{ROW\_NUMBER()} - Returns the order in which rows appear in the input (starting with 1)
+\item \colorbox{lightgray}{RANK()} - All rows with the same value in the ordering column receive the same rank value, where the next row receives a rank value which increments by the number of rows with the previous rank value.
+\end{itemize}
+\end{enumerate}
+
+
+
 \end{document}

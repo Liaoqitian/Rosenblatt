@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  13 JUL 2020 23:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  14 JUL 2020 11:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -811,22 +811,22 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (./SQL_Tutorial.aux)
 \openout1 = `SQL_Tutorial.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 99.
-LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
 
 (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -851,7 +851,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box72
-Package hyperref Info: Link coloring OFF on input line 99.
+Package hyperref Info: Link coloring OFF on input line 98.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -865,9 +865,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count329
 )
-LaTeX Info: Redefining \ref on input line 99.
-LaTeX Info: Redefining \pageref on input line 99.
-LaTeX Info: Redefining \nameref on input line 99.
+LaTeX Info: Redefining \ref on input line 98.
+LaTeX Info: Redefining \pageref on input line 98.
+LaTeX Info: Redefining \nameref on input line 98.
  (./SQL_Tutorial.out) (./SQL_Tutorial.out)
 \@outlinefile=\write4
 \openout4 = `SQL_Tutorial.out'.
@@ -931,69 +931,85 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.44 ...ry Key vs Foreign Key}{21}{subsection.4.6}
-                                                  % [1])
+l.44 ...ry Key vs Foreign Key}{20}{subsection.4.6}
+                                                  % [1
+
+])
 \tf@toc=\write5
 \openout5 = `SQL_Tutorial.toc'.
 
- [1]
+ [2]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-42.
+45.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 143.
- [2] [3] [4]
-[5] [6] [7]
-Overfull \hbox (2.27052pt too wide) in paragraph at lines 368--381
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 146.
+ [1
+
+] [2] [3]
+[4] [5] [6]
+Overfull \hbox (2.27052pt too wide) in paragraph at lines 371--384
 [][] 
  []
 
 
-Overfull \hbox (2.27052pt too wide) in paragraph at lines 390--399
+Overfull \hbox (2.27052pt too wide) in paragraph at lines 393--402
 [][] 
  []
 
-[8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
-<./images/4_1.png, id=579, 583.17876pt x 629.35126pt>
+[7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17]
+<./images/4_1.png, id=604, 583.17876pt x 629.35126pt>
 File: ./images/4_1.png Graphic file (type png)
 <use ./images/4_1.png>
-Package pdftex.def Info: ./images/4_1.png  used on input line 867.
+Package pdftex.def Info: ./images/4_1.png  used on input line 870.
 (pdftex.def)             Requested size: 425.71696pt x 459.42259pt.
- [19 <./images/4_1.png>]
-Overfull \hbox (15.9116pt too wide) in paragraph at lines 895--896
+ [18 <./images/4_1.png>]
+Overfull \hbox (15.9116pt too wide) in paragraph at lines 898--899
 \T1/cmr/m/n/10.95 Because col-umn names are of-ten re-peated across mul-ti-ple 
 ta-bles, we use the syn-tax [][][][][][]
  []
 
-[20] [21] [22] [23] [24]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1131.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1131.
+[19] [20] [21] [22] [23]
+<./images/5_1.png, id=694, 852.18375pt x 317.185pt>
+File: ./images/5_1.png Graphic file (type png)
+<use ./images/5_1.png>
+Package pdftex.def Info: ./images/5_1.png  used on input line 1180.
+(pdftex.def)             Requested size: 511.3142pt x 190.31245pt.
+
+Overfull \hbox (10.8302pt too wide) in paragraph at lines 1180--1182
+ [][] 
+ []
+
+[24] [25 <./images/5_1.png>] [26]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1219.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1219.
  (./SQL_Tutorial.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1131.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1131.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1219.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1219.
 
 Package rerunfilecheck Info: File `SQL_Tutorial.out' has not changed.
-(rerunfilecheck)             Checksum: 37D2BA908B5A57739B6A418F566C2A1C;2771.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1131.
+(rerunfilecheck)             Checksum: 767B31CC8909FA39F3FEC1148FFF9708;3108.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1219.
  )
-(\end occurred inside a group at level 7)
+(\end occurred inside a group at level 8)
 
-### simple group (level 7) entered at line 1067 ({)
-### simple group (level 6) entered at line 1048 ({)
-### simple group (level 5) entered at line 1033 ({)
-### simple group (level 4) entered at line 989 ({)
-### simple group (level 3) entered at line 947 ({)
-### simple group (level 2) entered at line 389 ({)
-### simple group (level 1) entered at line 367 ({)
+### simple group (level 8) entered at line 1144 ({)
+### simple group (level 7) entered at line 1070 ({)
+### simple group (level 6) entered at line 1051 ({)
+### simple group (level 5) entered at line 1036 ({)
+### simple group (level 4) entered at line 992 ({)
+### simple group (level 3) entered at line 950 ({)
+### simple group (level 2) entered at line 392 ({)
+### simple group (level 1) entered at line 370 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 24165 strings out of 480608
- 442972 string characters out of 5903631
+ 24207 strings out of 480608
+ 443499 string characters out of 5903631
  986088 words of memory out of 5000000
- 39250 multiletter control sequences out of 15000+600000
+ 39272 multiletter control sequences out of 15000+600000
  547303 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,9n,60p,1201b,2042s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1013,10 +1029,10 @@ fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb
 /usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></u
 sr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr
 /local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on SQL_Tutorial.pdf (26 pages, 384971 bytes).
+Output written on SQL_Tutorial.pdf (29 pages, 755765 bytes).
 PDF statistics:
- 790 PDF objects out of 1000 (max. 8388607)
- 738 compressed objects within 8 object streams
- 336 named destinations out of 1000 (max. 500000)
- 402 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 849 PDF objects out of 1000 (max. 8388607)
+ 792 compressed objects within 8 object streams
+ 356 named destinations out of 1000 (max. 500000)
+ 447 words of extra memory for PDF output out of 10000 (max. 10000000)
 

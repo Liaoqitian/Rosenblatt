@@ -1,48 +1,53 @@
-\contentsline {section}{\numberline {1}Manipulation}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Introduction to SQL}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Relational Databases}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Statements}{2}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Create}{3}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Insert}{3}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Select}{4}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}Alter}{4}{subsection.1.7}%
-\contentsline {subsection}{\numberline {1.8}Update}{5}{subsection.1.8}%
-\contentsline {subsection}{\numberline {1.9}Delete}{5}{subsection.1.9}%
-\contentsline {subsection}{\numberline {1.10}Constraints}{5}{subsection.1.10}%
-\contentsline {subsection}{\numberline {1.11}Review}{6}{subsection.1.11}%
-\contentsline {section}{\numberline {2}Queries}{7}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Introduction}{7}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Select}{7}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}As}{7}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Distinct}{7}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Where}{8}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Like}{9}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Is Null}{10}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Between}{10}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}And}{10}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}Or}{11}{subsection.2.10}%
-\contentsline {subsection}{\numberline {2.11}Order By}{11}{subsection.2.11}%
-\contentsline {subsection}{\numberline {2.12}Limit}{12}{subsection.2.12}%
-\contentsline {subsection}{\numberline {2.13}Case}{12}{subsection.2.13}%
-\contentsline {subsection}{\numberline {2.14}Review}{13}{subsection.2.14}%
-\contentsline {section}{\numberline {3}Aggregate Functions}{14}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Introduction}{14}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Count}{14}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Sum}{14}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Max / Min}{14}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Average}{15}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Round}{15}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Group By}{15}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Having}{16}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}Review}{17}{subsection.3.9}%
-\contentsline {section}{\numberline {4}Multiple Tables}{18}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Introduction}{18}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Combining Tables Manually}{18}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Combining Tables with SQL}{20}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Inner Joins}{20}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Left Joins}{20}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}Primary Key vs Foreign Key}{21}{subsection.4.6}%
-\contentsline {subsection}{\numberline {4.7}Cross Join}{22}{subsection.4.7}%
-\contentsline {subsection}{\numberline {4.8}Union}{23}{subsection.4.8}%
-\contentsline {subsection}{\numberline {4.9}With}{23}{subsection.4.9}%
-\contentsline {subsection}{\numberline {4.10}Review}{24}{subsection.4.10}%
+\contentsline {section}{\numberline {1}Manipulation}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Introduction to SQL}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Relational Databases}{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Statements}{1}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Create}{2}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Insert}{2}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Select}{3}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Alter}{3}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}Update}{4}{subsection.1.8}%
+\contentsline {subsection}{\numberline {1.9}Delete}{4}{subsection.1.9}%
+\contentsline {subsection}{\numberline {1.10}Constraints}{4}{subsection.1.10}%
+\contentsline {subsection}{\numberline {1.11}Review}{5}{subsection.1.11}%
+\contentsline {section}{\numberline {2}Queries}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Introduction}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Select}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}As}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Distinct}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Where}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Like}{8}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Is Null}{9}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Between}{9}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}And}{9}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Or}{10}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}Order By}{10}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}Limit}{11}{subsection.2.12}%
+\contentsline {subsection}{\numberline {2.13}Case}{11}{subsection.2.13}%
+\contentsline {subsection}{\numberline {2.14}Review}{12}{subsection.2.14}%
+\contentsline {section}{\numberline {3}Aggregate Functions}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Introduction}{13}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Count}{13}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Sum}{13}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Max / Min}{13}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Average}{14}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Round}{14}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Group By}{14}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Having}{15}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Review}{16}{subsection.3.9}%
+\contentsline {section}{\numberline {4}Multiple Tables}{17}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Introduction}{17}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Combining Tables Manually}{17}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Combining Tables with SQL}{19}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Inner Joins}{19}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Left Joins}{19}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Primary Key vs Foreign Key}{20}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Cross Join}{21}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Union}{22}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}With}{22}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}Review}{23}{subsection.4.10}%
+\contentsline {section}{\numberline {5}Analytic Functions}{24}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Introduction}{24}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Syntax}{24}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}(More on) window frame clauses}{25}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Three types of analytic functions}{25}{subsection.5.4}%
