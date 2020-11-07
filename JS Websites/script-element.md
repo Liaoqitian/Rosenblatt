@@ -1,6 +1,6 @@
 # The Script Element
-- [JavaScript and HTML](JavaScript-and-HTML) 
-- [The <script> tag](The-<script>-tag)
+- [JavaScript and HTML](#JavaScript-and-HTML) 
+- [The <script> tag](#The-<script>-tag)
 
 
 ## JavaScript and HTML
