@@ -4,7 +4,7 @@
 - [JavaScript and HTML](#JavaScript-and-HTML) 
 - [The <script> tag](#The-script-tag)
 - [The src attribute](#The-src-attribute)
-- [How are scripts loaded?](#How-are-scripts-loaded?)
+- [How are scripts loaded?](#How-are-scripts-loaded)
 - [Defer attribute](#Defer-attribute)
 - [Async attribute](#Async-attribute)
 - [Review](#Review)
