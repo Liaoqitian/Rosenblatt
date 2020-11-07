@@ -1,3 +1,8 @@
+# The Script Element
+- [JavaScript and HTML](JavaScript-and-HTML) 
+- [The <script> tag](The-<script>-tag)
+
+
 ## JavaScript and HTML
 
 HTML defines the structure of a web page by using page elements as the building blocks. However, HTML by itself can not produce web page interactivity, that’s where JavaScript comes in.
