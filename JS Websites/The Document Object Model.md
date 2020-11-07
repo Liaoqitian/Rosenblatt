@@ -57,7 +57,7 @@ There are nine different types of node objects in the DOM tree. In the diagram b
 
 When trying to modify a web page, the script will mostly interact with the DOM nodes of type element. Elements are the building units of HTML web pages, they contain everything between an opening tag and a closing tag. If the tag is a self-closing tag, then that is the element itself.
 
-<img src="/Users/liaoqt/Documents/GITHUB/Web-Programming/JS Websites/images/2.1.png" alt="2.1" style="zoom:100%;" class="center"/>
+<img src="./images/2.1.png" alt="2.1" style="zoom:100%;" class="center"/>
 
 
 
@@ -69,7 +69,7 @@ Much like an element in an HTML page, the DOM allows us to access a node’s att
 
 In the diagram below, we have highlighted the paragraph element with an `id` of “bio” in the HTML document. If we were accessing that element node in our script, the DOM would allow us to tweak each of those attributes, or simply access them to check their value in the code.
 
-<img src="/Users/liaoqt/Documents/GITHUB/Web-Programming/JS Websites/images/2.2.png" alt="2.2" style="zoom:100%;" />
+<img src="./images/2.2.png" alt="2.2" style="zoom:100%;" />
 
 
 
