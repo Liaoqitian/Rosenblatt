@@ -2,7 +2,7 @@
 
 ## Table of Contents
 - [What is an Event](#What-is-an-Event)
-- ["Firing" Events](#"Firing"-Events)
+- ["Firing" Events](#Firing-Events)
 - [Event Handler Registration](#Event-Handler-Registration)
 - [Adding Event Handlers](#Adding-Event-Handlers)
 - [Removing Event Handlers](#Removing-Event-Handlers)
