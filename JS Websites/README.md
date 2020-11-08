@@ -6,6 +6,6 @@ Learn the Document Object Model, the interface between JavaScript and HTML eleme
 ## Table of Contents
 - [JavaScript Interactive Websites]
 Learn how to bring JavaScript and HTML together with the script tag and the DOM model.
-	- [The Script Element](contents/The-Script-Element.md)
+	- [The Script Element](contents/The%20Script%20Element.md)
 	- [The Document Object Model](contents/)
 	- [JavaScript and the DOM](contents/)
