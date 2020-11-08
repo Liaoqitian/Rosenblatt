@@ -4,9 +4,9 @@
 - [Introduction to Handlebars](#Introduction-to-Handlebars)
 - [Implementing Handlebars](#Implementing-Handlebars)
 - [Using Handlebars expressions](#Using-Handlebars-expressions)
-- [Handlebars "If" block helper](Handlebars-if-block-helper)
-- [Handlebars "Else" section](Handlebars-else-section)
-- [Handlebars "Each" and "This"](Handlebars-Each-and-This)
+- [Handlebars "If" block helper](#Handlebars-if-block-helper)
+- [Handlebars "Else" section](#Handlebars-else-section)
+- [Handlebars "Each" and "This"](#Handlebars-Each-and-This)
 - [Combining "If" and "Each"](#Combining-If-and-Each)
 - [Review](#Review)
 
