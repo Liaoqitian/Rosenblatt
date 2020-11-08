@@ -8,3 +8,4 @@ Use Jekyll, a popular static site generator, to quickly create a functional, cus
 - [Deploy Your Website-to-GitHub-Pages](contents/Deploy-Your-Website-to-GitHub-Pages.md)
 Use GitHub Pages, a free service from GitHub, to host your personal website.
 - [Assign a Custom Domain Name to Your Website](contents/Assign-a-Custom-Domain-Name-to-Your-Website.md)
+Use Amazon Web Services to purchase a custom domain name and assign it to your personal website.
