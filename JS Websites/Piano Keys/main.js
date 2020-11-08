@@ -45,6 +45,7 @@ nextOne.addEventListener("click", function(){
   document.getElementById("letter-note-six").innerHTML = "C"; 
 });
 
+// Write anonymous event handler property and function for the second progress button
 nextTwo.addEventListener("click", function() {
   nextThree.hidden = false; 
   nextTwo.hidden = true; 
@@ -57,6 +58,7 @@ nextTwo.addEventListener("click", function() {
   document.getElementById("letter-note-six").innerHTML = "B";
 });
 
+// Write anonymous event handler property and function for the third progress button
 nextThree.addEventListener("click", function() {
   startOver.hidden = false; 
   nextThree.hidden = true; 
@@ -74,11 +76,6 @@ nextThree.addEventListener("click", function() {
   document.getElementById("letter-note-six").innerHTML = "C"; 
   lastLyric.style.display = "";
 });
-// Write anonymous event handler property and function for the second progress button
-
-
-// Write anonymous event handler property and function for the third progress button
-
 
 // This is the event handler property and function for the startOver button
 startOver.onclick = function() {
