@@ -6,7 +6,7 @@
 - [Installing Jekyll](#Installing-Jekyll)
 - [Generate a Static Site](#Generate-a-Static-Site)
 - [Preview Your Site Locally](#Preview-Your-Site-Locally)
-- [Jekyll's Directory Structure](#Jekyll's-Directory-Structure)
+- [Jekyll's Directory Structure](#Jekylls-Directory-Structure)
 - [Review](#Review)
 
 
