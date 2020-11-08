@@ -1,7 +1,14 @@
 # What is the Back-end? 
 
 ## Table of Contents
-
+- [Front and Back](#Front-and-Back)
+- [The Web Server](#The-Web-Server)
+- [So What is the Back-end?](#So-What-is-the-Back-end)
+- [Storing Data](#Storing-Data)
+- [What is an API?](#What-is-an-API)
+- [Authorization and Authentication](#Authorization-and-Authentication)
+- [Different Back-end Stacks](#Different-Back-end-Stacks)
+- [Review](#Review)
 
 
 ## Front and Back
@@ -17,7 +24,6 @@ You’ll sometimes hear front-end development referred to as *client-side* devel
 While the front-end is the part of the website that makes it to the browser, the back-end consists of all the behind-the-scenes processes and data that make a website function and send resources to clients.
 
 
-
 ## The Web Server
 
 We talked about how the front-end consists of the information sent to a client so that a user can see and interact with a website, but where does the information come from? The answer is a *web server*.
@@ -31,7 +37,6 @@ For the simplest websites, a client makes a single request. The web server recei
 A static website is like ordering takeout, but modern web applications are like dining in person at a sit-down restaurant. A restaurant patron might order drinks, different courses, make substitutions, or ask questions of the waiter. To accomplish this level of complexity, an equally complex back-end is required.
 
 
-
 ## So What is the Back-end?
 
 When a user navigates to google.com, their request specifies the URL but not the filename for today’s [Google Doodle](https://en.wikipedia.org/wiki/Google_Doodle). The web application’s back-end will need to hold the logic for deciding which assets to send. Moreover, modern web applications often cater to the specific user rather than sending the same files to every visitor of a webpage. This is known as *dynamic content*.
@@ -41,7 +46,6 @@ When we eat at a restaurant, we’ll order to our tastes, make substitutions, et
 The collection of programming logic required to deliver dynamic content to a client, manage security, process payments, and myriad other tasks is sometimes known as the “application” or *application server*. The application server can be responsible for anything from sending an email confirmation after a purchase to running the complicated algorithms a search engine uses to give us meaningful results.
 
 
-
 ## Storing Data
 
 Data is a big deal. By some measures, 90% of the world’s data has been generated in just the past two years! From a stored credit card number on an e-commerce site to the timestamp when you hit pause on Netflix, modern web applications collect a lot of data. For that data to be useful, it has to be organized and stored somewhere.
@@ -49,7 +53,6 @@ Data is a big deal. By some measures, 90% of the world’s data has been generat
 The back-ends of modern web applications include some sort of *database*, often more than one. Databases are collections of information. There are many different databases, but we can divide them into two types: [relational databases](https://www.codecademy.com/articles/what-is-rdbms-sql) and [non-relational databases (also known as NoSQL databases)](https://en.wikipedia.org/wiki/NoSQL). Whereas relational databases store information in tables with columns and rows, non-relational databases might use other systems such as key-value pairs or a document storage model. *SQL*, **S**tructured **Q**uery **L**anguage, is a programming language for accessing and changing data stored in relational databases. Popular relational databases include [MySQL](https://www.mysql.com/) and [PostgreSQL](https://www.postgresql.org/) while popular NoSQL databases include [MongoDB](https://www.mongodb.com/) and [Redis](https://redis.io/).
 
 In addition to the database itself, the back-end needs a way to programmatically access, change, and analyze the data stored there.
-
 
 
 ## What is an API?
@@ -63,7 +66,6 @@ Let’s walk through the example of making an online purchase again, but this ti
 Some web APIs are open to the public. [Instagram](https://www.instagram.com/developer/), for example, has an API that other developers can use to access some of the data Instagram stores. Others are only used by the web application internally. 
 
 
-
 ## Authorization and Authentication
 
 Two other concepts we’ll want our server-side logic to handle are *authentication* and *authorization*.
@@ -73,7 +75,6 @@ Two other concepts we’ll want our server-side logic to handle are *authenticat
 *Authorization* controls which users have access to which resources and actions. Certain application views, like the page to edit a social media personal profile, are only accessible to that user. Other activities, like deleting a post, are often similarly restricted.
 
 When building a robust web application back-end, we need to incorporate both authentication (Who is this user? Are they who they claim to be?) and authorization (Who is allowed to do and see what?) into our server-side logic to make sure we’re creating secure, personalized, and dynamic content.
-
 
 
 ## Different Back-end Stacks
@@ -98,7 +99,6 @@ There are numerous [back-end frameworks](https://developer.mozilla.org/en-US/doc
 The collection of technologies used to create the front-end and back-end of a web application is referred to as a *stack*. This is where the term *full-stack developer* comes from; rather than working in either the front-end or the back-end exclusively, a full-stack developer works in both.
 
 For example, [the MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)) is a technology stack for building web applications that uses **M**ongoDB, **E**xpress.js, **A**ngularJS, and **N**ode.js: MongoDB is used as the database, Node.js with Express.js for the rest of the back-end, and Angular is used as a front-end framework. While the [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)), sometimes considered the archetypal stack, uses **L**inux, **A**pache, **M**ySQL, and **P**HP.
-
 
 
 ## Review
