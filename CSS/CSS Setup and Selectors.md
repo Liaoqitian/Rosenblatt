@@ -4,7 +4,7 @@
 
 - [Introduction to CSS](#Introduction-to-CSS)
 - [Inline Styles](#Inline-Styles)
-- [The <style> Tag](#The-<style>-Tag)
+- [The <style> Tag](#The-style-Tag)
 - [The .css file](The-css-file)
 - [Linking the CSS File](Linking-the-CSS-File)
 - [Tag Name](#Tag-Name)
