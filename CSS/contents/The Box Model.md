@@ -3,21 +3,34 @@
 ## Table of Contents 
 
 - [Introduction to the Box Model](#Introduction-to-the-Box-Model)
+
 - [The Box Model](#The-Box-Model)
+
 - [Height and Width](#Height-and-Width)
+
 - [Borders](#Borders)
+
 - [Border Radius](#Border-Radius)
+
 - [Padding](#Padding)
+
 - [Margins](#Margins)
+
 - [Auto](#Auto)
+
 - [Margin Collapse](#Margin-Collapse)
+
 - [Minimum and Maximum Height and Width](#Minimum-and-Maximum-Height-and-Width)
+
 - [Overflow](#Overflow)
+
 - [Resetting Defaults](#Resetting-Defaults)
+
 - [Visibility](#Visibility)
+
 - [Review](#Review)
 
-
+  
 
 ## Introduction to the Box Model
 
