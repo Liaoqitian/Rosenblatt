@@ -3,8 +3,8 @@
 ## Table of Contents 
 
 - [Why Change the Box Model?](#Why-Change-the-Box-Model)
-- [Box Model: Content-Box](#Box-Model-ContentBox)
-- [Box Model: Border-Box](#Box-Model-BorderBox)
+- [Box Model: Content-Box](#Box-Model-Content-Box)
+- [Box Model: Border-Box](#Box-Model-Border-Box)
 - [Review: Changing the Box Model](#Review-Changing-the-Box-Model)
 
 
