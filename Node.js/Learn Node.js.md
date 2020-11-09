@@ -379,8 +379,6 @@ In our example web server, we showed you a handful of the methods available on r
 
 ## Review
 
-Awesome work! You’ve learned a lot about Node.js including:
-
 - Node.js is a JavaScript *runtime*, an environment that allows us to execute our JavaScript code by converting it into something a computer can understand.
 - REPLs are processes that **r**ead, **e**valuate, **p**rint, and repeat (**l**oop), and Node.js comes with its own REPL we can access in our terminal with the `node` command.
 - We run JavaScript programs with Node in the terminal by typing `node` followed by the file name (if we’re in the same directory) or the absolute path of the file.
@@ -396,6 +394,4 @@ Awesome work! You’ve learned a lot about Node.js including:
 - *Streams* allow us to read or write data piece by piece instead of all at once.
 - The Node `http` core module allows for easy creation of *web servers*, computer processes that listen for requests from clients and return responses.
 
-Woah, that was a lot… And there’s even more to Node that we didn’t cover in this lesson, but don’t panic! Learning Node isn’t about memorizing every aspect of the environment. The best way to get comfortable with Node is just to practice making things in it. Your imagination is the limit! If you haven’t already, [download Node on your local machine](https://www.codecademy.com/articles/setting-up-node-locally). You can start by recreating some of the programs you built in this lesson— put your own spin on a guessing game, for example. If you’re eager to build web application back-ends, we recommend you start [learning the awesome Express.js](https://www.codecademy.com/learn/learn-express) web framework.
-
-Great work! We’re excited to see what you build!
+Learning Node isn’t about memorizing every aspect of the environment. The best way to get comfortable with Node is just to practice making things in it. Your imagination is the limit! If you haven’t already, [download Node on your local machine](https://www.codecademy.com/articles/setting-up-node-locally). You can start by recreating some of the programs you built in this lesson— put your own spin on a guessing game, for example. If you’re eager to build web application back-ends, we recommend you start [learning the awesome Express.js](https://www.codecademy.com/learn/learn-express) web framework.
