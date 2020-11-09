@@ -6,3 +6,5 @@ Learn how to style and visually organize HTML with CSS. This course covers versi
 We will learn how to set up a CSS file, and how to create CSS selectors, and how to set up CSS rule sets.
 - [CSS Visual Rules](./contents/CSS%20Visual%20Rules.md)  
 We will learn the fundamentals of CSS visual rules, which will enable you to add style to HTML elements.
+- [The Box Model](.contents/The%20Box%20Model.md)  
+We will learn about the CSS Box Model.
