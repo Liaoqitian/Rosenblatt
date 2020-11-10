@@ -9,7 +9,7 @@
 - [Position: Fixed](#Position-Fixed)
 - [Z-Index](#Z-Index)
 - [Inline Display](#Inline-Display)
-- [Block Display](#Block Display)
+- [Block Display](#Block-Display)
 - [Inline-Block Display](#Inline-Block-Display)
 - [Float](#Float)
 - [Review: Layout](#Review-Layout)
