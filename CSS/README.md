@@ -10,6 +10,5 @@ We will learn the fundamentals of CSS visual rules, which will enable you to add
 We will learn about the CSS Box Model.
 - [Changing the Box Model](./contents/Changing%20the%20Box%20Model.md)  
 We will learn about a new box model used to design web pages.
-- [CSS Display and Positioning](./contents/CSS%20Display%20and%20Positioning.md)
-
+- [CSS Display and Positioning](./contents/CSS%20Display%20and%20Positioning.md)  
 We will learn how to position HTML elements on various parts of a web page.
