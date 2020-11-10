@@ -12,3 +12,5 @@ Learn about the CSS Box Model.
 Learn about a new box model used to design web pages.
 - [CSS Display and Positioning](./contents/CSS%20Display%20and%20Positioning.md)  
 Learn how to position HTML elements on various parts of a web page.
+- [CSS Color](./contents/CSS$20Color.md)  
+Learn how to create color values like Hex, RGB, and HSL.

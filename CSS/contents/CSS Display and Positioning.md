@@ -191,7 +191,7 @@ The `z-index` property accepts integer values. Depending on their values, the in
 }
 ```
 
-In the example above, we set the `.box-top` position to relative and the z-index to 2. We changed position to `relative`, because the z-index property does *not* work on static elements. The z-index of `2` moves the `.box-top` element forward, because it is greater than the `.box-bottom` z-index, `1`. See the example image below:
+In the example above, we set the `.box-top` position to relative and the z-index to 2. We changed position to `relative`, because the z-index property does **not** work on static elements. The z-index of `2` moves the `.box-top` element forward, because it is greater than the `.box-bottom` z-index, `1`. See the example image below:
 
 ![img](https://content.codecademy.com/courses/web-101/unit-7/alex-clark-experiment/z-index.png)
 
