@@ -8,7 +8,7 @@
 - [Font-Style](#Font-Style)
 - [Word Spacing](#Word-Spacing)
 - [Letter Spacing](#Letter-Spacing)
-- [Text Transformation](#Text Transformation)
+- [Text Transformation](#Text-Transformation)
 - [Text Alignment](#Text-Alignment)
 - [Line Height Anatomy](#Line-Height-Anatomy)
 - [Line Height](#Line-Height)
