@@ -511,7 +511,7 @@ The `flex-direction` property can accept four values:
 
 Like the `flex` property, the `flex-flow` property is used to declare both the `flex-wrap` and `flex-direction` properties in one line.
 
-```
+```css
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -521,7 +521,7 @@ Like the `flex` property, the `flex-flow` property is used to declare both the `
 
 In the example above, we take two lines to accomplish what can be done with one.
 
-```
+```css
 .container {
   display: flex;
   flex-flow: column wrap;
