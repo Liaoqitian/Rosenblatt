@@ -14,6 +14,9 @@
 - [Line Height](#Line-Height)
 - [Serif and Sans Serif](#Serif-and-Sans-Serif)
 - [Fallback Fonts](#Fallback-Fonts)
+- [Linking Fonts](#Linking-Fonts)
+- [Font-Face](#Font-Face)
+- [Review](#Review)
 
 
 
@@ -253,3 +256,95 @@ The CSS rule above says:
 3. If Garamond and Times are not available, use any serif font pre-installed on the user’s computer.
 
 The fonts specified after Garamond are the fallback fonts (`Times`, `serif`). Fallback fonts help ensure a consistent experience for the diverse audience of users that visit a site.
+
+
+
+## Linking Fonts
+
+With the number of fonts available with modern typography, it is unrealistic to expect users to have all fonts installed on their computers. New fonts are often centralized in directories made available for public use. We refer to these fonts as *non-user fonts*.
+
+[Google Fonts](https://fonts.google.com/) is one such directory of thousands of open-source fonts, available for free use. Google Fonts gives us a way to retrieve the link for a single font, multiple fonts, or multiple fonts with the `font-weight` and `font-style` properties.
+
+
+
+When we have the link to the font and the styles of our choice, we can add the font to the `<head>` section of the HTML document, using the `<link>` tag and the `href` property.
+
+Let’s take a look at a few examples:
+
+1. A single linked font, using `Open Sans` as an example:
+
+   ```html
+   <head>
+     <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
+   </head>
+   ```
+
+2. Multiple linked fonts, using the `Open Sans` and `Playfair Display` fonts as an example:
+
+   ```html
+   <head>
+     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display" rel="stylesheet">
+   </head>
+   ```
+
+3. Multiple linked fonts, along with weights and styles. Here `Open Sans` has font weights of `400`, `700`, and `700i`, while `Playfair Display` has font weights of `400`, `700`, and `900i`:
+
+   ```html
+   <head>
+     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,900" rel="stylesheet">
+   </head>
+   ```
+
+Once a font is linked, we can create CSS selectors to target elements, just as we do with other fonts.
+
+
+
+## Font-Face
+
+There are other ways to link non-user fonts that do not require the use of the `<link>` tag in the HTML document. CSS offers a way to import fonts directly into stylesheets with the `@font-face` property.
+
+To load fonts with the `@font-face` property:
+
+1. Instead of using the font’s link in the HTML document, enter the link into the URL bar in the browser.
+2. The browser will load the CSS rules. We will need to focus on the rules that are directly labeled as `/* latin */`. Some of the latin rules are on separate lines. 
+3. Copy each of the CSS rules labeled latin, and paste the rules from the browser to the top of **style.css**.
+
+It is important to stress the need to copy the `@font-face` rules to the top of the stylesheet for the font to load correctly in the project. 
+
+
+
+While Google Fonts and other resources can broaden font selection, we may wish to use an entirely different font or abstain from using a font from an external service.
+
+We can modify our `@font-face` rule to use local font files as well. We can supply the user with the desired font family and host it along with our site instead of depending on a different site.
+
+```css
+@font-face {
+  font-family: "Roboto";
+  src: url(fonts/Roboto.woff2) format('woff2'),
+       url(fonts/Roboto.woff) format('woff'),
+       url(fonts/Roboto.tff) format('truetype');
+}
+```
+
+Here:
+
+1. The main difference is the use of a relative filepath instead of a web URL.
+2. We add a format for each file to specify which font to use. Different browsers support different font types, so providing multiple font file options will support more browsers.
+
+As of now `.woff2` appears to be the way of the future, due to greatly reduced file sizes and improved performance, but many browsers still do not support it. There are lots of great sources to find fonts to use locally, such as [Font Squirrel](https://www.fontsquirrel.com/).
+
+
+
+## Review
+
+- *Typography* is the art of arranging text on a page.
+- Text can appear in any number of weights, with the `font-weight` property.
+- Text can appear in italics with the `font-style` property.
+- The vertical spacing between lines of text can be modified with the `line-height` property.
+- *Serif* fonts have extra details on the ends of each letter. *Sans-Serif* fonts do not.
+- *Fallback fonts* are used when a certain font is not installed on a user’s computer.
+- Google Fonts provides free fonts that can be used in an HTML file with the `<link>` tag or the `@font-face` property.
+- Local fonts can be added to a document with the `@font-face` property and the path to the font’s source.
+- The `word-spacing` property changes how far apart individual words are.
+- The `letter-spacing` property changes how far apart individual letters are.
+- The `text-align` property changes the horizontal alignment of text.
