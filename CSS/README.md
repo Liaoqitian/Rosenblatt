@@ -15,3 +15,4 @@ Learn how to position HTML elements on various parts of a web page.
 - [CSS Color](./contents/CSS%20Color.md)  
 Learn how to create color values like Hex, RGB, and HSL.
 - [CSS Typography](./contents/CSS%20Typography.md)  
+Learn important CSS properties that you can use to edit the appearance of text on your web pages.
