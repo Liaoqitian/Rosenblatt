@@ -106,6 +106,12 @@ $ cd ../2014
 
 The command above will move to **2014/**. 
 
+```shell
+$ cd ../..
+```
+
+The command above will move the current working directory up two levels. 
+
 
 
 ## mkdir
@@ -141,6 +147,12 @@ $ touch keyboard.txt
 The `touch` command creates a new file inside the working directory. It takes in a filename as an argument and then creates an empty file with that name in the current working directory.
 
 Here we used `touch` to create a new file named **keyboard.txt**.
+
+We could also do something like: 
+
+```shell
+$ touch media/popular.txt
+```
 
 
 
