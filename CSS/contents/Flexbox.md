@@ -146,7 +146,7 @@ In the definitions above, “no extra space” means that margins and borders wi
 
 ## align-items
 
-Previously, you learned how to justify the content of a flex container from left to right across the page. It is also possible to align flex items vertically within the container. The `align-items` property makes it possible to space flex items vertically.
+Previously, we learned how to justify the content of a flex container from left to right across the page. It is also possible to align flex items vertically within the container. The `align-items` property makes it possible to space flex items vertically.
 
 ```css
 .container {
