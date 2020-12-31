@@ -138,3 +138,5 @@ The browser now has all the information it needs to render the document requeste
 HTTP is a protocol that is built *on top* of the TCP/IP protocols. Each HTTP request is inside an IP packet, and each HTTP response is inside another IP packet--or more typically, multiple packets, since the response data can be quite large. There are many other protocols built on top of TCP/IP, like protocols for sending email (SMTP, POP, IMAP) and uploading files (FTP). All of these protocols enable us to use the Internet to connect with other computers in useful ways, and to communicate and collaborate across wide distances. 
 
 The HTML of the webpage, the logo, the JavaScript code for the map pop-ups, each graphic file, and the custom font file are loaded using the Hypertext Transfer Protocol. 
+
+What does TCP/IP stand for?TCP/IP stands for Transmission Control Protocol/Internet Protocol. TCP/IP is a set of standardized rules that allow computers to communicate on a network such as the internet.
