@@ -2,6 +2,7 @@
 
 
 ## Table of Contents 
+- [Web Technologies]
 - [CSS](CSS)
 - [HTML](HTML)
 - [JavaScript](JavaScript)
