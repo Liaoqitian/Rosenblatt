@@ -1,4 +1,4 @@
-# Web-Programming-Languages
+# Self Study Material
 
 
 ## Table of Contents 
