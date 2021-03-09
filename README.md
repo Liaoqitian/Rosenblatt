@@ -2,7 +2,7 @@
 
 
 ## Table of Contents 
-- [Web Technologies](Web Technologies.md)
+- [Web Technologies](Web-Technologies.md)
 - [CSS](CSS)
 - [HTML](HTML)
 - [JavaScript](JavaScript)
