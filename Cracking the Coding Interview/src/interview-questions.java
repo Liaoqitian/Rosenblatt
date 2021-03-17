@@ -67,6 +67,26 @@ class ArraysAndStrings {
         return true;
     }
 
+    /** There are three types of edits that can be performed on strings:
+     * insert a character, remove a character, or replace a character.
+     * Given two strings, write a function to check if they are one edit (or zero edits) away. */
+    public static boolean Q5(String s, String t) {
+        if (Math.abs(s.length() - t.length()) > 1) return false;
+        String s1 = (s.length() > t.length()) ? t : s;
+        String s2 = (s.length() > t.length()) ? s : t;
+        int index1 = 0, index2 = 0, diff = 0;
+        while (index1 < s1.length() && index2 < s2.length()) {
+            if (s1.charAt(index1) != s2.charAt(index2)) {
+                if (diff++ > 0) return false;
+                if (s1.length() == s2.length()) index1++;
+            } else index1++;
+            index2++;
+        }
+        return true;
+    }
+
+
+
     public static void main(String[] args) {
 //        // Tests for Q1
 //        String s = "abcad";
@@ -77,6 +97,10 @@ class ArraysAndStrings {
 //        // Test for Q2
 //        System.out.println(Q2("dat", "tac"));
 
-        System.out.println(Q4("abacddc"));
+//        // Test for Q4
+//        System.out.println(Q4("abacddc"));
+
+        // Test for Q5
+        System.out.println(Q5("apple", "aple"));
     }
 }
