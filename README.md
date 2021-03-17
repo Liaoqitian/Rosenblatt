@@ -1,8 +1,8 @@
-# Web-Programming-Languages
+# Self Study Material
 
 
 ## Table of Contents 
-- [Web Technologies]
+- [Web Technologies](Web-Technologies.md)
 - [CSS](CSS)
 - [HTML](HTML)
 - [JavaScript](JavaScript)
