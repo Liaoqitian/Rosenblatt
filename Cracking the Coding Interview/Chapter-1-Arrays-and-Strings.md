@@ -97,7 +97,7 @@ public boolean Q1S3(String s) {
 
 ---
 
-**Check Permutation:** Given two strings, write a method to decide if one is a permutation of the other.  
+**1.2 Check Permutation:** Given two strings, write a method to decide if one is a permutation of the other.  
 
 We create a hash table which maps each character to its frequency. We increment the first string, then decrement through the second string. If the strings are permutations, then the array will be zeroes at the end. 
 
@@ -113,4 +113,8 @@ public static boolean Q2(String s, String t) {
     return true;
 }
 ```
+
+---
+
+**1.3 URLify:** Write a method to replace all spaces in a string with '%20'. You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the "true" length of the string. 
 
