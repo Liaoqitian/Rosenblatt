@@ -48,14 +48,35 @@ class ArraysAndStrings {
         return true;
     }
 
-    public static void main(String[] args) {
-        // Tests for Q1
-        String s = "abcad";
-        System.out.println(Q1S1(s));
-        System.out.println(Q1S2(s));
-        System.out.println(Q1S3(s));
+    /** Write a method to replace all spaces in a string with '%20'.
+     * You may assume that the string has sufficient space at the end to hold the additional characters,
+     * and that you are given the "true" length of the string. */
+    public static String Q3(String s, int trueLength) {
+        return "";
+    }
 
-        // Test for Q2
-        System.out.println(Q2("dat", "tac"));
+    /** Given a string, write a function to check if it is a permutation of a palindrome. */
+    public static boolean Q4(String s) {
+        int[] hashTable = new int[128];
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) hashTable[s.charAt(i)]++;
+        for (int i = 0; i < 128; i++) {
+            if (hashTable[i] % 2 == 1) count++;
+            if (count > 1) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+//        // Tests for Q1
+//        String s = "abcad";
+//        System.out.println(Q1S1(s));
+//        System.out.println(Q1S2(s));
+//        System.out.println(Q1S3(s));
+//
+//        // Test for Q2
+//        System.out.println(Q2("dat", "tac"));
+
+        System.out.println(Q4("abacddc"));
     }
 }

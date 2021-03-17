@@ -118,3 +118,27 @@ public static boolean Q2(String s, String t) {
 
 **1.3 URLify:** Write a method to replace all spaces in a string with '%20'. You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the "true" length of the string. 
 
+
+
+---
+
+**1.4 Palindrome Permutation:** Given a string, write a function to check if it is a permutation of a palindrome. 
+
+In order for a string to be a permutation of a palindrome, we need to have an even number of almost all characters, so that half can be on one side and half can be on the other side. At most one character (the middle character) can have an odd count. Therefore, we use a hash table to count how many times each character appears. Then, we iterate through the hash table and ensure that no more than one character has an odd count. 
+
+```java
+public static boolean Q4(String s) {
+    int[] hashTable = new int[128];
+    int count = 0;
+    for (int i = 0; i < s.length(); i++) hashTable[s.charAt(i)]++;
+    for (int i = 0; i < 128; i++) {
+        if (hashTable[i] % 2 == 1) count++;
+        if (count > 1) return false;
+    }
+    return true;
+}
+```
+
+---
+
+**1.5 One Away:** There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away. 
