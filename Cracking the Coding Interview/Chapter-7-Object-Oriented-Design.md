@@ -22,3 +22,4 @@ Now we should have the basic outline of our object-oriented design. What remains
 
 #### Design Patterns 
 
+There are mainly two types of design patterns 
